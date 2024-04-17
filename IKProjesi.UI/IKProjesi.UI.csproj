@@ -8,6 +8,23 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.29" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\CompanyManager\Controllers\" />
+    <Folder Include="Areas\CompanyManager\Data\" />
+    <Folder Include="Areas\CompanyManager\Models\" />
+    <Folder Include="Areas\CompanyManager\Views\" />
+    <Folder Include="Areas\Emloyee\Controllers\" />
+    <Folder Include="Areas\Emloyee\Data\" />
+    <Folder Include="Areas\Emloyee\Models\" />
+    <Folder Include="Areas\Emloyee\Views\" />
+    <Folder Include="Areas\SiteManager\Controllers\" />
+    <Folder Include="Areas\SiteManager\Data\" />
+    <Folder Include="Areas\SiteManager\Models\" />
+    <Folder Include="Areas\SiteManager\Views\" />
   </ItemGroup>
 
 </Project>
