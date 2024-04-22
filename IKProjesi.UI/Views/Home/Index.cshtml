@@ -1,8 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@* @model LoginDto
+@{
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid mb-5 ">
+    <div class="container-fluid pt-5 ">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5">
+                <span class="px-2">Giriş Yap</span>
+            </h2>
+        </div>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5 offset-3">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <form asp-controller="Account" asp-action="Login" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <input asp-for="UserName" class="form-control" placeholder="Kullanıcı Adı" required="required" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="control-group">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Şifre" required="required" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="login">Giriş Yap</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+ *@
+
