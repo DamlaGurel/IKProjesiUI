@@ -9,6 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.29" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +27,10 @@
     <Folder Include="Areas\SiteManager\Data\" />
     <Folder Include="Areas\SiteManager\Models\" />
     <Folder Include="Areas\SiteManager\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IKProjesi.Application\IKProjesi.Application.csproj" />
   </ItemGroup>
 
 </Project>
