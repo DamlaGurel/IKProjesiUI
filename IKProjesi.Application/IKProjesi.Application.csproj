@@ -8,9 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Services\CompanyManager\" />
     <Folder Include="VMs\" />
-    <Folder Include="VMs\CompanyManagerVMs\" />
   </ItemGroup>
 
   <ItemGroup>

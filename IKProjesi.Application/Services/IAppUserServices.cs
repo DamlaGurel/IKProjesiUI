@@ -9,7 +9,7 @@ namespace IKProjesi.Application.Services
 {
     public interface IAppUserServices
     {
-        [Post("/Login")]
-        Task<SignInResult> Login(LoginDto model);
+        //[Post("/Login")]
+        //Task<SignInResult> Login(LoginDto model);
     }
 }

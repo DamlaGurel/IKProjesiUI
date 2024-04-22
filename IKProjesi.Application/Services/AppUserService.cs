@@ -8,9 +8,9 @@ namespace IKProjesi.Application.Services
 {
     public class AppUserService : IAppUserServices
     {
-        public Task<SignInResult> Login(AppUserVM model)
-        {
-            throw new NotImplementedException();
-        }
+        //public Task<SignInResult> Login(AppUserVM model)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

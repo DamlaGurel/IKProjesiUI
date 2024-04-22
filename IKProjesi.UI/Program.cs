@@ -1,4 +1,4 @@
-using IKProjesi.Application.Services.AppUserService;
+
 using Refit;
 
 namespace IKProjesi.UI
