@@ -28,7 +28,6 @@
     <Folder Include="Areas\SiteManager\Models\" />
     <Folder Include="Areas\SiteManager\Views\" />
     <Folder Include="Services\CompanyManager\" />
-    <Folder Include="Models\VMs\CompanyManagerVMs\" />
   </ItemGroup>
 
   <ItemGroup>
