@@ -1,4 +1,5 @@
 
+using IKProjesi.UI.Services.Company;
 using Refit;
 
 namespace IKProjesi.UI
@@ -12,7 +13,7 @@ namespace IKProjesi.UI
             // Add services to the container.
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            builder.Services.AddRefitClient<ICompanyApiService>()
+            builder.Services.AddRefitClient<Services.Company.ICompanyApiService>()
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
 
