@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IKProjesi.UI.Models.VMs.CompanyVMs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Controllers
 {
@@ -8,5 +9,11 @@ namespace IKProjesi.UI.Controllers
         {
             return View();
         }
+
+        public IActionResult Create([FromBody] CreateCompanyVM model)
+        {
+            return View(model);
+        }
+
     }
 }
