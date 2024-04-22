@@ -12,10 +12,17 @@ namespace IKProjesi.UI
             // Add services to the container.
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+            builder.Services.AddRefitClient<ICompanyApiService>()
+   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
+
+
+
             //builder.Services.AddRefitClient<IAppUserService>().ConfigureHttpClient(c =>
             //{
             //    c.BaseAddress = new Uri("https://localhost:7116/api");
             //});
+
+            builder.Services.AddScoped<ICompanyService, CompanyService>();
 
 
             var app = builder.Build();
