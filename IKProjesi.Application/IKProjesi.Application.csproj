@@ -8,6 +8,17 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Services\CompanyManager\" />
+    <Folder Include="VMs\" />
+    <Folder Include="VMs\CompanyManagerVMs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Refit" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Services\CompanyManager\" />
+    <None Remove="VMs\" />
+    <None Remove="VMs\CompanyManagerVMs\" />
+  </ItemGroup>
 </Project>
