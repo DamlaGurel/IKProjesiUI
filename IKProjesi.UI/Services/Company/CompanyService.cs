@@ -1,4 +1,5 @@
 ﻿using IKProjesi.UI.Models.VMs.CompanyVMs;
+using Microsoft.AspNetCore.Mvc;
 using Refit;
 
 namespace IKProjesi.UI.Services.Company
@@ -16,6 +17,16 @@ namespace IKProjesi.UI.Services.Company
         {
 
             return await _companyApiService.GetCompanies();
+        }
+
+        public async Task Create()
+        {
+            await _companyApiService.Create();
+        }
+
+        public async Task Create([FromBody] CreateCompanyVM model)
+        {
+            await _companyApiService.Create(model);
         }
     }
 }
