@@ -16,6 +16,7 @@ namespace IKProjesi.UI
             builder.Services.AddRefitClient<Services.Company.ICompanyApiService>()
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
+            builder.Services.AddRazorPages();
 
 
             //builder.Services.AddRefitClient<IAppUserService>().ConfigureHttpClient(c =>
@@ -42,6 +43,11 @@ namespace IKProjesi.UI
             app.UseRouting();
 
             app.UseAuthorization();
+            app.MapRazorPages();
+
+            app.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

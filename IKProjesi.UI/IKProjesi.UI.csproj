@@ -30,6 +30,8 @@
     <Folder Include="Services\CompanyManager\" />
     <Folder Include="Models\VMs\CompanyManagerVMs\" />
     <Folder Include="Models\Enums\" />
+    <Folder Include="Areas\SiteManager\Views\Shared\" />
+    <Folder Include="Areas\SiteManager\Views\SiteManager\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,5 +40,7 @@
     <None Remove="Services\CompanyManager\" />
     <None Remove="Models\VMs\CompanyManagerVMs\" />
     <None Remove="Models\Enums\" />
+    <None Remove="Areas\SiteManager\Views\Shared\" />
+    <None Remove="Areas\SiteManager\Views\SiteManager\" />
   </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@ using Refit;
 
 namespace IKProjesi.UI.Services.CompanyManager
 {
-    public interface ICompanyManager
+    public interface ICompanyManagerService
     {
         //[Post(path: "SiteManager")]
         //Task CreateCompanyManager([Body] CreateCompanyManagerVm createCompanyManager);

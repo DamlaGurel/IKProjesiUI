@@ -6,11 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
-    public class SiteManagersController : Controller
+    public class SiteManagerController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult CompanyManagerList()
+        {
+            return View();
+        }
+        public IActionResult AddCompanyManager()
+        {
+            return View();
+        }
+
     }
 }

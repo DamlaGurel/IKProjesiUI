@@ -1,0 +1,14 @@
+@page
+
+@model IKProjesi.UI.Areas.SiteManager.Views.SiteManager.AddCompanyManagerModel
+@{
+    ViewData["Title"] = "AddCompanyManager";
+    Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
+
+}
+
+<h1>AddCompanyManager</h1>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
