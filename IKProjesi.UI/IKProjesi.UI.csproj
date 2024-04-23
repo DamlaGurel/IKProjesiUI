@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\" />
     <Folder Include="Areas\CompanyManager\Controllers\" />
     <Folder Include="Areas\CompanyManager\Data\" />
     <Folder Include="Areas\CompanyManager\Models\" />
@@ -23,10 +22,8 @@
     <Folder Include="Areas\Emloyee\Data\" />
     <Folder Include="Areas\Emloyee\Models\" />
     <Folder Include="Areas\Emloyee\Views\" />
-    <Folder Include="Areas\SiteManager\Controllers\" />
     <Folder Include="Areas\SiteManager\Data\" />
     <Folder Include="Areas\SiteManager\Models\" />
-    <Folder Include="Areas\SiteManager\Views\" />
     <Folder Include="Services\CompanyManager\" />
     <Folder Include="Models\VMs\CompanyManagerVMs\" />
     <Folder Include="Models\Enums\" />

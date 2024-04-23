@@ -1,5 +1,7 @@
 
 using IKProjesi.UI.Services.Company;
+using IKProjesi.UI.Services.CompanyManager;
+using IKProjesi.UI.Services.SiteManager;
 using Refit;
 
 namespace IKProjesi.UI
@@ -12,11 +14,19 @@ namespace IKProjesi.UI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            builder.Services.AddRazorPages();
 
-            builder.Services.AddRefitClient<Services.Company.ICompanyApiService>()
+
+            builder.Services.AddRefitClient<ICompanyApiService>()
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
-            builder.Services.AddRazorPages();
+            builder.Services.AddRefitClient<ISiteManagerApiService>()
+   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:7033"));
+
+            builder.Services.AddRefitClient<ICompanyManagerApiService>()
+  .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:6300"));
+
+           
 
 
             //builder.Services.AddRefitClient<IAppUserService>().ConfigureHttpClient(c =>
@@ -24,7 +34,10 @@ namespace IKProjesi.UI
             //    c.BaseAddress = new Uri("https://localhost:7116/api");
             //});
 
-            builder.Services.AddScoped<ICompanyService, CompanyService>();
+            builder.Services.AddScoped<ICompanyService, CompanyService>()
+                            .AddScoped<ISiteManagerService, SiteManagerService>()
+                            .AddScoped<ICompanyManagerService, CompanyManagerService>();
+
 
 
             var app = builder.Build();

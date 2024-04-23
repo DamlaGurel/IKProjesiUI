@@ -4,8 +4,8 @@ using IKProjesi.UI.Models.Enums;
 
 namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-	public class CreateCompanyManagerVm
-	{
+    public class CreateCompanyManagerVm
+    {
         //[Required(ErrorMessage = "Şirket yöneticisi isminin girilmesi zorunludur.")]
         //[Display(Name = "İsim")]
         public string FirstName { get; set; }
