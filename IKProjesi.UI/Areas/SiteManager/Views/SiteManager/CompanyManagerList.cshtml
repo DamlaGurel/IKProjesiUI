@@ -1,13 +1,38 @@
-@page
-@model IKProjesi.UI.Areas.SiteManager.Views.SiteManager.CompanyManagerListModel
+
 @{
     ViewData["Title"] = "CompanyManagerList";
     Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
-
 }
+@model List<ListCompanyManagerVm>
 
-<h1>CompanyManagerList</h1>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Şirket Yöneticileri</h5>
+                <div class="row">
+                    @foreach (var manager in Model)
+                     {
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@manager.FirstName @manager.LastName</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">şirket</h6>
+                                    <p class="card-text">
+                                        <li>Telefon: @manager.PhoneNumber</li>
+                                        <li>E-Posta: @manager.Email</li>
+                                    </p>
+                                    <a href="#" class="card-link">yönlendirme</a>
+                                </div>
+                            </div>
+                        </div>
+                     }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
