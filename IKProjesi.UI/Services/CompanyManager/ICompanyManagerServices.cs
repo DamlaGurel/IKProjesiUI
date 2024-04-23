@@ -1,4 +1,5 @@
 ﻿using System;
+using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using Refit;
 
 namespace IKProjesi.UI.Services.CompanyManager

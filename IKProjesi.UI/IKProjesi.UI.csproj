@@ -28,7 +28,8 @@
     <Folder Include="Areas\SiteManager\Models\" />
     <Folder Include="Areas\SiteManager\Views\" />
     <Folder Include="Services\CompanyManager\" />
-    <Folder Include="wwwroot\css\NewFolder\" />
+    <Folder Include="Models\VMs\CompanyManagerVMs\" />
+    <Folder Include="Models\Enums\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,5 +37,6 @@
     <None Remove="Models\VMs\" />
     <None Remove="Services\CompanyManager\" />
     <None Remove="Models\VMs\CompanyManagerVMs\" />
+    <None Remove="Models\Enums\" />
   </ItemGroup>
 </Project>
