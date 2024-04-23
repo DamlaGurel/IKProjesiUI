@@ -18,14 +18,15 @@ namespace IKProjesi.UI
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
             builder.Services.AddRefitClient<ISiteManagerApiService>()
-   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:7033"));
 
             //builder.Services.AddRefitClient<IAppUserService>().ConfigureHttpClient(c =>
             //{
             //    c.BaseAddress = new Uri("https://localhost:7116/api");
             //});
 
-            builder.Services.AddScoped<ICompanyService, CompanyService>();
+            builder.Services.AddScoped<ICompanyService, CompanyService>()
+                            .AddScoped<ISiteManagerService, SiteManagerService>();
 
 
             var app = builder.Build();
