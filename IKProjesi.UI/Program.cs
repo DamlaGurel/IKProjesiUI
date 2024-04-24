@@ -1,5 +1,7 @@
 
 using IKProjesi.UI.Services.Company;
+using IKProjesi.UI.Services.User;
+using NuGet.Common;
 using Refit;
 
 namespace IKProjesi.UI
@@ -16,7 +18,8 @@ namespace IKProjesi.UI
             builder.Services.AddRefitClient<Services.Company.ICompanyApiService>()
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
-
+            builder.Services.AddRefitClient<IUserApiService>()
+   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
             //builder.Services.AddRefitClient<IAppUserService>().ConfigureHttpClient(c =>
             //{
@@ -25,6 +28,8 @@ namespace IKProjesi.UI
 
             builder.Services.AddScoped<ICompanyService, CompanyService>();
 
+            
+            
 
             var app = builder.Build();
 
