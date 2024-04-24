@@ -11,39 +11,44 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4">Şirket Yöneticisi Oluştur</h5>
-                <form asp-action="AddCompanyManager" method="post">
-                    <div class="mb-3">
-                        <label asp-for="FirstName" class="form-label">Adı</label>
+                <form asp-action="AddCompanyManager" enctype="multipart/form-data" method="post">
+                    <div class="mb-3 form-group">
+                        <label asp-for="FirstName" class="control-label">Adı</label>
                         <input asp-for="FirstName" class="form-control" />
                         <span asp-validation-for="FirstName" class="text-danger"></span>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="SecondName" class="form-label">İkinci Adı</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="SecondName" class="control-label">İkinci Adı</label>
                         <input asp-for="SecondName" class="form-control" />
                         <span asp-validation-for="SecondName" class="text-danger"></span>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="LastName" class="form-label">Soyadı</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="LastName" class="control-label">Soyadı</label>
                         <input asp-for="LastName" class="form-control" />
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="SecondLastName" class="form-label">İkinci Soyadı</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="SecondLastName" class="control-label">İkinci Soyadı</label>
                         <input asp-for="SecondLastName" class="form-control" />
                         <span asp-validation-for="SecondLastName" class="text-danger"></span>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="BirthDate" class="form-label">Doğum Tarihi</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="BirthDate" class="control-label">Doğum Tarihi</label>
                         <input asp-for="BirthDate" type="date" class="form-control" />
                         <span asp-validation-for="BirthDate" class="text-danger"></span>
                     </div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="StartDateOfWork" class="control-label">İşe Başlangıç Tarihi</label>
+                        <input asp-for="StartDateOfWork" type="date" class="form-control" />
+                        <span asp-validation-for="StartDateOfWork" class="text-danger"></span>
+                    </div>
                     <div class="mb-3">
-                        <label asp-for="IdentityNumber" class="form-label">TC Kimlik No</label>
+                        <label asp-for="IdentityNumber" class="control-label">TC Kimlik No</label>
                         <input asp-for="IdentityNumber" class="form-control" />
                         <span asp-validation-for="IdentityNumber" class="text-danger"></span>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="JobName" class="form-label">Meslek</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="JobName" class="control-label">Meslek</label>
                         <select asp-for="JobName" class="form-select">
                             <option value="">Seçiniz</option>
                             @foreach (var job in Enum.GetValues(typeof(Job)))
@@ -52,8 +57,8 @@
                             }
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="DepartmentName" class="form-label">Departman</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="DepartmentName" class="control-label">Departman</label>
                         <select asp-for="DepartmentName" class="form-select">
                             <option value="">Seçiniz</option>
                             @foreach (var department in Enum.GetValues(typeof(Department)))
@@ -62,17 +67,27 @@
                             }
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="Address" class="form-label">Adres</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="Address" class="control-label">Adres</label>
                         <textarea asp-for="Address" class="form-control"></textarea>
                         <span asp-validation-for="Address" class="text-danger"></span>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="PhoneNumber" class="form-label">Telefon Numarası</label>
+                    <div class="mb-3 form-group">
+                        <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
                         <input asp-for="PhoneNumber" class="form-control" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <div class="mb-3 form-group">
+                        <label asp-for="Password" class="control-label">Şifre</label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                        <a asp-action="CompanyManagerList" class="btn btn-warning ">Listeye dön</a>
+
+
+                    </div>
                 </form>
             </div>
         </div>

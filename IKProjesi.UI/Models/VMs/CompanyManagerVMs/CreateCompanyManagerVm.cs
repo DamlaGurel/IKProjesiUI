@@ -6,18 +6,15 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
     public class CreateCompanyManagerVm
     {
-        //[Required(ErrorMessage = "Şirket yöneticisi isminin girilmesi zorunludur.")]
-        //[Display(Name = "İsim")]
+       
         public string FirstName { get; set; }
 
-        //[Display(Name = "İkinci İsim")]
         public string? SecondName { get; set; }
 
-        //[Required(ErrorMessage = "Şirket yöneticisi soyisminin girilmesi zorunludur.")]
-        //[Display(Name = "Soyisim")]
+       
         public string? LastName { get; set; }
 
-        // [Display(Name = "İkinci Soyisim")]
+       
         public string? SecondLastName { get; set; }
 
         //[Display(Name = "Profil Fotoğrafı")]
@@ -25,10 +22,12 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         //public IFormFile? ProfilePicture { get; set; }
 
         public string? Password { get; set; }
-        //[Display(Name = "Doğum Tarihi")]
+      
         public DateTime? BirthDate { get; set; }
+        
 
-        // [Display(Name = "Doğum Yeri")]
+
+        
         public string? BirthPlace { get; set; }
 
         //[Required(ErrorMessage = "TC Kimlik numarası girilmesi zorunludur.")]

@@ -9,10 +9,10 @@ using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
-
     [Area("SiteManager")]
     public class SiteManagerController : Controller
     {
@@ -49,17 +49,17 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> AddCompanyManager()
-        //{
-        //    return View();
-        //}
+
+        public async Task<IActionResult> AddCompanyManager()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddCompanyManager([FromBody] CreateCompanyManagerVm model)
         {
             await _companyManagerService.CreateCompanyManager(model);
-            return RedirectToAction(nameof(model));
+            return RedirectToAction(nameof(CompanyManagerList));
         }
 
 
