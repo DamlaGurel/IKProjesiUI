@@ -2,7 +2,7 @@
 
 namespace IKProjesi.UI.Models.VMs.UserVM
 {
-    public class UserVM
+    public class LoginVM
     {
         [Required(ErrorMessage = "E-Posta adresinizi giriniz.")]
         [Display(Name = "E-Posta")]

@@ -1,22 +1,25 @@
 ﻿using IKProjesi.UI.Models.VMs.UserVM;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Reflection;
-using System.Text;
 
 namespace IKProjesi.UI.Services.User
 {
-    public class UserApiService : IUserApiService
+    public class UserService : IUserService
     {
         private readonly IUserApiService _userApiService;
-        public UserApiService(IUserApiService userApiService)
+
+        public UserService(IUserApiService userApiService)
         {
             _userApiService = userApiService;
         }
-        public async Task Login(UserVM user)
+
+        public async Task<LoginVM> Login(LoginVM login)
         {
-            await _userApiService.Login(user);
+            return await _userApiService.Login(login);
         }
+
+        //public async Task Logout()
+        //{
+        //}
     }
 }

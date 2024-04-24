@@ -4,7 +4,8 @@ namespace IKProjesi.UI.Services.SiteManager
 {
     public interface ISiteManagerService
     {
-        //Task<SiteManagerSummaryVM> GetSiteManagerSummary(int id);
-        //Task<SiteManagerDetailsVM> SiteManagerDetails(int id);
+        Task<SiteManagerSummaryVM> GetSiteManagerSummary(int id);
+        Task<SiteManagerDetailsVM> SiteManagerDetails(int id);
+        Task<CreateSiteManagerVM> CreateSiteManager(CreateSiteManagerVM createSiteManager);
     }
 }
