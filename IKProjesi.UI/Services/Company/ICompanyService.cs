@@ -9,7 +9,7 @@ namespace IKProjesi.UI.Services.Company
 
         //Task<IActionResult> Create();
 
-        Task<IActionResult> CreateCompany([FromBody] CreateCompanyVM model);
+        Task<IActionResult> CreateCompany(CreateCompanyVM model);
 
         Task<CompanyDetailsVM> GetCompanyDetails(int id);
     }

@@ -24,7 +24,6 @@
     <Folder Include="Areas\Emloyee\Views\" />
     <Folder Include="Areas\SiteManager\Data\" />
     <Folder Include="Areas\SiteManager\Models\" />
-    <Folder Include="Areas\SiteManager\Views\" />
     <Folder Include="Areas\SuperAdmin\Controllers\" />
     <Folder Include="Areas\SuperAdmin\Data\" />
     <Folder Include="Areas\SuperAdmin\Models\" />
@@ -32,7 +31,6 @@
     <Folder Include="Models\VMs\CompanyManagerVMs\" />
     <Folder Include="Models\Enums\" />
     <Folder Include="Areas\SiteManager\Views\Shared\" />
-    <Folder Include="Areas\SiteManager\Views\SiteManager\" />
     <Folder Include="Areas\SiteManager\Views\Company\" />
   </ItemGroup>
 
