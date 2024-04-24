@@ -68,10 +68,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return RedirectToAction(nameof(CompanyManagerList));
         }
 
-
-
-
-
         public async Task<IActionResult> CompanyIndex()
         {
             var companies = await _companyService.GetCompanies();
@@ -93,7 +89,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id = 1)
         {
             var company = await _companyService.GetCompanyDetails(id);
             return View(company);
