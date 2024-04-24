@@ -42,7 +42,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerSummary(int id = 1)
+        public async Task<IActionResult> GetSiteManagerSummary(int id = 2)
         {
             var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
             return View();
