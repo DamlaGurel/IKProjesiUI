@@ -30,6 +30,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetSiteManagerSummary(int id = 1)
         public async Task<IActionResult> CompanyManagerList()
         {
             var companyManagers = await _companyManagerService.GetCompanyManagers();

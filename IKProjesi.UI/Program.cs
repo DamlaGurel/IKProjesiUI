@@ -21,7 +21,7 @@ namespace IKProjesi.UI
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
             builder.Services.AddRefitClient<ISiteManagerApiService>()
-   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:7033"));
+   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:5209"));
 
             builder.Services.AddRefitClient<ICompanyManagerApiService>()
   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:6300"));
@@ -62,9 +62,24 @@ namespace IKProjesi.UI
             name: "areas",
             pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
+            app.MapAreaControllerRoute(
+                name: "siteMngr",
+                areaName: "SiteManager",
+                pattern: "SiteManager/{controller=SiteManager}/{action=GetSiteManagerSummary}");
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
             app.Run();
         }
