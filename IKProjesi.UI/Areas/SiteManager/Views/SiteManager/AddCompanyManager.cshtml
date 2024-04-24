@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4">Şirket Yöneticisi Oluştur</h5>
-                <form asp-action="AddCompanyManager" enctype="multipart/form-data" method="post">
+                <form asp-area="SiteManager" asp-controller="SiteManager" asp-action="AddCompanyManager" enctype="multipart/form-data" method="post">
                     <div class="mb-3 form-group">
                         <label asp-for="FirstName" class="control-label">Adı</label>
                         <input asp-for="FirstName" class="form-control" />
@@ -83,10 +83,9 @@
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                        <input type="submit" class="btn btn-primary" value="Kaydet"/>
+                        @*<button type="submit" class="btn btn-primary">Kaydet</button>*@
                         <a asp-action="CompanyManagerList" class="btn btn-warning ">Listeye dön</a>
-
-
                     </div>
                 </form>
             </div>
