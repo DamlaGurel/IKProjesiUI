@@ -1,5 +1,7 @@
 
 using IKProjesi.UI.Services.Company;
+using IKProjesi.UI.Services.User;
+using NuGet.Common;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 using Refit;
@@ -20,6 +22,8 @@ namespace IKProjesi.UI
             builder.Services.AddRefitClient<ICompanyApiService>()
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
+            builder.Services.AddRefitClient<IUserApiService>()
+   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
             builder.Services.AddRefitClient<ISiteManagerApiService>()
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:5209"));
 
@@ -39,6 +43,8 @@ namespace IKProjesi.UI
                             .AddScoped<ICompanyManagerService, CompanyManagerService>();
 
 
+            
+            
 
             var app = builder.Build();
 
