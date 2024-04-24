@@ -7,6 +7,6 @@ namespace IKProjesi.UI.Services.User
     public interface IUserApiService
     {
         [Post("/api/User/Login")]
-        Task Login([FromBody] UserVM user);
+        Task<LoginVM> Login(LoginVM user);
     }
 }

@@ -48,7 +48,7 @@
     </body>
     </html>*@
 
-    @*
+@*
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -331,12 +331,47 @@
 </head>
 
 <body>
-    @*<script>
-        window.location.href = "/Account/Login";
-    </script>*@
-    @RenderBody();
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container-fluid">
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="row bg-secondary py-2 px-xl-5">
+                <div class="col-lg-11 text-lg-right">
+                    <div class="d-flex justify-content-sm-end ">
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <a class="text-dark mr-3" asp-area="SuperAdmin" asp-controller="SuperAdmin" asp-action="Index">SuperAdmin Panel</a>
+                        }
+
+                        @if (User.IsInRole("SiteManager"))
+                        {
+                            <a class="text-dark mr-3" asp-area="SiteManager" asp-controller="SiteManager" asp-action="Index">SiteManager Panel</a>
+                            <a class="text-dark mr-3" asp-area="SiteManager" asp-controller="SiteManager" asp-action="IlgiliAction">Profilini Görüntüle (@User.Identity.Name)</a>
+                        }
+
+                        @if (User.IsInRole("CompanyManager"))
+                        {
+                            <a class="text-dark mr-3" asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="Index">CompanyManager Panel</a>
+                            <a class="text-dark mr-3" asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="IlgiliAction">Profilini Görüntüle (@User.Identity.Name)</a>
+                        }
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <a class="text-dark mr-3" asp-area="Employee" asp-controller="Employee" asp-action="Index">Employee Panel</a>
+                            <a class="text-dark mr-3" asp-area="Employee" asp-controller="Employee" asp-action="IlgiliAction">Profilini Görüntüle (@User.Identity.Name)</a>
+                        }
+                        <a class="text-dark " asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            TempData["Warning"] = "Giriş yapmaya çalıştığınız kullanıcının rolü uygun değildir.";
+        }
+        <partial name="_NotificationPartial" />
+        @RenderBody();
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -43,9 +43,7 @@ namespace IKProjesi.UI
                             .AddScoped<ISiteManagerService, SiteManagerService>()
                             .AddScoped<ICompanyManagerService, CompanyManagerService>();
 
-
-            
-            
+            builder.Services.AddTransient<IUserService, UserService>();
 
             var app = builder.Build();
 
@@ -84,7 +82,7 @@ namespace IKProjesi.UI
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Account}/{action=Login}");
 
 
 
