@@ -1,0 +1,48 @@
+﻿@using IKProjesi.UI.Models.VMs.CompanyVMs
+
+@{
+    ViewData["Title"] = "CompanyIndex";
+    Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
+
+}
+
+@model List<CompanyListVM>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/css/styles.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1>Company List</h1>
+
+    <div class="card-group">
+        @foreach (var company in Model)
+        {
+            <div class="card">
+                <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@company.CompanyName</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@company.CompanyTitle</h6>
+                    <p class="card-text">
+                        <strong>Email:</strong> @company.Email<br />
+                        <strong>Phone Number:</strong> @company.PhoneNumber
+                    </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        }
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/app.min.js"></script>
+    <script src="~/js/simplebar.js"></script>
+</body>
+
+</html>
+
+

@@ -19,7 +19,6 @@ namespace IKProjesi.UI.Models.VMs.CompanyVMs
         public DateTime FoundationYear { get; set; }
         public DateTime StartContractDate { get; set; }
         public DateTime EndContractDate { get; set; }
-        public DateTime CreatedDate => DateTime.Now;
 
         //public Status Status => Status.Active;
 

@@ -1,18 +1,19 @@
 ﻿@model IKProjesi.UI.Models.VMs.CompanyVMs.CreateCompanyVM
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "CreateCompany";
     Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
-
 }
 
-<h1>Create</h1>
+<h1>CreateCompany</h1>
+
+
 
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Company" asp-action="Create" method="post">
+        <form asp-area="SiteManager" asp-controller="SiteManager" asp-action="CreateCompany" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CompanyName" class="control-label"></label>
@@ -74,11 +75,7 @@
                 <input asp-for="EndContractDate" class="form-control" />
                 <span asp-validation-for="EndContractDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
