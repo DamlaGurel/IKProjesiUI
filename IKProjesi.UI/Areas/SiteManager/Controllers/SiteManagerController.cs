@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+using IKProjesi.UI.Models.VMs.CompanyVMs;
+using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 
@@ -16,12 +18,15 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
     {
         private readonly ISiteManagerService _siteManagerService;
         private readonly ICompanyManagerService _companyManagerService;
+        private readonly ICompanyService _companyService;
 
 
-        public SiteManagerController(ISiteManagerService siteManagerService, ICompanyManagerService companyManagerService)
+
+        public SiteManagerController(ISiteManagerService siteManagerService, ICompanyManagerService companyManagerService, ICompanyService companyService)
         {
             _siteManagerService = siteManagerService;
             _companyManagerService = companyManagerService;
+            _companyService = companyService;
         }
 
 
@@ -47,7 +52,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         public async Task<IActionResult> AddCompanyManager([FromBody] CreateCompanyManagerVm model)
         {
             await _companyManagerService.CreateCompanyManager(model);
-            return RedirectToAction(nameof(CompanyManagerList));
+            return RedirectToAction(nameof(model));
         }
 
         //public async Task<IActionResult> GetSiteManagerSummary(int id = 1)
@@ -56,6 +61,35 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         //    return View(siteManagerSummary);
 
         //}
+
+      
+       
+        public async Task<IActionResult> CompanyIndex()
+        {
+            var companies = await _companyService.GetCompanies();
+            return View(companies);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateCompanyVM model)
+        {
+            await _companyService.CreateCompany(model);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var company = await _companyService.GetCompanyDetails(id);
+            return View(company);
+        }
 
     }
 }
