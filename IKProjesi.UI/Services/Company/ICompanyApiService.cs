@@ -6,7 +6,7 @@ namespace IKProjesi.UI.Services.Company
 {
     public interface ICompanyApiService
     {
-        [Get("/api/SiteManager/Index")]
+        [Get("/api/SiteManager/CompanyIndex")]
         Task<List<CompanyListVM>> GetCompanies();
 
         //[Get("/api/Company/Create")]

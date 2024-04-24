@@ -33,6 +33,7 @@
     <Folder Include="Models\Enums\" />
     <Folder Include="Areas\SiteManager\Views\Shared\" />
     <Folder Include="Areas\SiteManager\Views\SiteManager\" />
+    <Folder Include="Areas\SiteManager\Views\Company\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,5 +44,6 @@
     <None Remove="Models\Enums\" />
     <None Remove="Areas\SiteManager\Views\Shared\" />
     <None Remove="Areas\SiteManager\Views\SiteManager\" />
+    <None Remove="Areas\SiteManager\Views\Company\" />
   </ItemGroup>
 </Project>

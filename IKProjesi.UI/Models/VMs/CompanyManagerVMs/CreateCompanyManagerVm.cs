@@ -51,7 +51,7 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         //[Display(Name = "Telefon Numarası")]
         public string? PhoneNumber { get; set; }
 
-        public string Email { get; set; }
+        //public string Email { get; set; }
 
         public DateTime CreatedDate => DateTime.Now;
 
