@@ -25,12 +25,12 @@ namespace IKProjesi.UI
             builder.Services.AddRefitClient<IUserApiService>()
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
             builder.Services.AddRefitClient<ISiteManagerApiService>()
-   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:5209"));
+   .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
             builder.Services.AddRefitClient<ICompanyManagerApiService>()
-  .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:6300"));
+  .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:30299"));
 
-           
+
 
 
             //builder.Services.AddRefitClient<IAppUserService>().ConfigureHttpClient(c =>

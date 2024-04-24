@@ -14,6 +14,8 @@ namespace IKProjesi.UI.Services.CompanyManager
         [Get("/api/SiteManager/GetAllCompanyManagers")]
         Task<List<ListCompanyManagerVm>> GetCompanyManagers();
 
+
+
        
     }
 }
