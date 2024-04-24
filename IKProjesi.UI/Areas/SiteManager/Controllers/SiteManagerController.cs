@@ -41,6 +41,13 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return View(companyManagers);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetSiteManagerSummary(int id = 1)
+        {
+            var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
+            return View();
+
+        }
 
         //[HttpGet]
         //public async Task<IActionResult> AddCompanyManager()
@@ -55,15 +62,10 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return RedirectToAction(nameof(model));
         }
 
-        //public async Task<IActionResult> GetSiteManagerSummary(int id = 1)
-        //{
-        //    var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
-        //    return View(siteManagerSummary);
 
-        //}
 
-      
-       
+
+
         public async Task<IActionResult> CompanyIndex()
         {
             var companies = await _companyService.GetCompanies();
