@@ -1,0 +1,41 @@
+﻿@model IKProjesi.UI.Models.VMs.SiteManagerVMs.SiteManagerUpdateVM
+
+@{
+    ViewData["Title"] = "GetSiteManagerUpdate";
+    Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
+}
+
+<h1>GetSiteManagerUpdate</h1>
+
+<h4>SiteManagerUpdateVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GetSiteManagerUpdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

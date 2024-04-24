@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
+using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
@@ -42,11 +43,34 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerSummary(int id = 2)
+        public async Task<IActionResult> GetSiteManagerSummary(int id = 40)
         {
             var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
             return View();
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSiteManagerDetail(int id)
+        {
+            var siteManagerDetail = await _siteManagerService.SiteManagerDetails(id);
+            return View(siteManagerDetail);
+        }
+
+
+        [HttpGet]
+        public IActionResult GetSiteManagerUpdate(int id)
+        {
+            var siteManagerUpdate = new SiteManagerUpdateVM { Id = id };
+            return View(siteManagerUpdate);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
+        {
+            await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
+            return RedirectToAction("GetSiteManagerSummary");
         }
 
         //[HttpGet]

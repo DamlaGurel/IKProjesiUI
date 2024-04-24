@@ -6,11 +6,14 @@ namespace IKProjesi.UI.Services.SiteManager
     //[Headers("Authorization: Bearer")]
     public interface ISiteManagerApiService
     {
-        [Get("/api/SiteManager/SiteManagerSummary")]
-        Task<SiteManagerSummaryVM> GetSiteManagerSummary(SiteManagerSummaryVM siteManagerSummaryVM);
+        [Get("/api/SiteManager/SiteManagerSummary/{id}")]
+        Task<SiteManagerSummaryVM> GetSiteManagerSummary(int id);
 
-        [Get("/api/SiteManager/SiteManagerDetails")]
+        [Get("/api/SiteManager/SiteManagerDetails/{id}")]
         Task<SiteManagerDetailsVM> GetSiteManagerDetails(int id);
+
+        [Put("/api/SiteManager/UpdateSiteManager")]
+        Task<SiteManagerDetailsVM> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
 
         [Post("/api/SiteManager/CreateSiteManager")]
         Task<CreateSiteManagerVM> CreateSiteManagerVM(CreateSiteManagerVM createSiteManager);
