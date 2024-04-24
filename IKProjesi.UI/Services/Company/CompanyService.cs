@@ -24,7 +24,7 @@ namespace IKProjesi.UI.Services.Company
         //   return await _companyApiService.Create();            
         //}
 
-        public async Task<IActionResult> CreateCompany([FromBody] CreateCompanyVM model)
+        public async Task<IActionResult> CreateCompany(CreateCompanyVM model)
         {
           return  await _companyApiService.CreateCompany(model);
 

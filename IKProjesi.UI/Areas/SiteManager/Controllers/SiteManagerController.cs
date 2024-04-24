@@ -76,20 +76,20 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> CreateCompany()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateCompanyVM model)
+        public async Task<IActionResult> CreateCompany([FromBody] CreateCompanyVM model)
         {
             await _companyService.CreateCompany(model);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(CompanyIndex));
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int id = 1)
+        public async Task<IActionResult> CompanyDetails(int id)
         {
             var company = await _companyService.GetCompanyDetails(id);
             return View(company);
