@@ -28,7 +28,7 @@ namespace IKProjesi.UI
    .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:5209"));
 
             builder.Services.AddRefitClient<ICompanyManagerApiService>()
-  .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:6300"));
+  .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
 
            
 
