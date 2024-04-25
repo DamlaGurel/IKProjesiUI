@@ -2,6 +2,7 @@
 {
     public class CompanyListVM
     {
+        public int Id { get; set; }
         public string CompanyName { get; set; }
         public string CompanyTitle { get; set; }
         //[NotMapped]

@@ -108,6 +108,11 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompany([FromBody] CreateCompanyVM model)
         {
+            if (model.Logo is not null)
+            {
+                await _companyService.SaveLogo(model.Logo);
+            }
+
             await _companyService.CreateCompany(model);
             return RedirectToAction(nameof(CompanyIndex));
         }
@@ -118,6 +123,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             var company = await _companyService.GetCompanyDetails(id);
             return View(company);
         }
+
+
 
     }
 }
