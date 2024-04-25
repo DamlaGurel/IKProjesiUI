@@ -82,6 +82,17 @@
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="CompanyName" class="control-label">Şirket Seçimi</label>
+                        <select asp-for="CompanyName" class="form-select">
+                            <option value="">Şirket Seçiniz</option>
+                            @foreach (var company in ViewBag.Companies)
+                            {
+                                <option value="@company.Id">@company.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CompanyName" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <div>
                             <input type="submit" class="btn btn-primary" value="Kaydet" />

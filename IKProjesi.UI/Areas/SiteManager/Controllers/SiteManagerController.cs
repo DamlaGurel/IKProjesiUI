@@ -62,9 +62,13 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompanyManager(CreateCompanyManagerVm model)
+        public async Task<IActionResult> AddCompanyManager( CreateCompanyManagerVm model)
         {
             await _companyManagerService.CreateCompanyManager(model);
+
+            var companies = await _companyService.GetCompanies();
+            ViewBag["companies"] = companies;
+
             return RedirectToAction(nameof(CompanyManagerList));
         }
 
