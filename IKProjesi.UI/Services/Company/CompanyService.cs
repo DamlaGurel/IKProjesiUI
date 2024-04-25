@@ -1,4 +1,5 @@
 ﻿using IKProjesi.UI.Models.VMs.CompanyVMs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.ProjectModel;
 using Refit;
@@ -35,7 +36,8 @@ namespace IKProjesi.UI.Services.Company
 
         public async Task<CompanyDetailsVM> GetCompanyDetails(int id)
         {
-            return await _companyApiService.GetCompanyDetails(id);
+            var company= await _companyApiService.GetCompanyDetails(id);                     
+            return company;
         }
 
         public async Task<string> SaveLogo(IFormFile logo)
@@ -60,16 +62,8 @@ namespace IKProjesi.UI.Services.Company
 
             string logoString=Convert.ToBase64String(logoBytes);
             return logoString;
-
-            //using (var memoryStream = new MemoryStream())
-            //{
-            //    await logo.CopyToAsync(memoryStream);
-            //    byte[] logoBytes = memoryStream.ToArray();
-            //    string logoString = Convert.ToBase64String(logoBytes);
-            //    return logoString;
-            //}
         }
 
- 
-    }
+      
+        }
 }

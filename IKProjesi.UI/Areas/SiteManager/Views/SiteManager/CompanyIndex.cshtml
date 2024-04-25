@@ -48,7 +48,7 @@
                         {
                             <div class="col-md-4">
                                 <div class="card">
-                                    <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="...">
+                                    <img src="data:image;base64,@(Convert.ToBase64String(company.LogoBytes))" class="img-fluid" alt="Company Logo">
                                     <div class="card-body">
                                         <h5 class="card-title">@company.CompanyName</h5>
                                         <h6 class="card-subtitle mb-2 text-muted">@company.CompanyTitle</h6>
