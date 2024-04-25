@@ -13,67 +13,76 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-area="SiteManager" asp-controller="SiteManager" asp-action="CreateCompany" method="post">
+        <form asp-area="SiteManager" asp-controller="SiteManager" asp-action="CreateCompany" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" />
+                <input asp-for="CompanyName" class="form-control" name="CompanyName" />
                 <span asp-validation-for="CompanyName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CompanyTitle" class="control-label"></label>
-                <input asp-for="CompanyTitle" class="form-control" />
+                <input asp-for="CompanyTitle" class="form-control" name="CompanyTitle" />
                 <span asp-validation-for="CompanyTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MersisNumber" class="control-label"></label>
-                <input asp-for="MersisNumber" class="form-control" />
+                <input asp-for="MersisNumber" class="form-control" name="MersisNumber" />
                 <span asp-validation-for="MersisNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CompanyTaxNumber" class="control-label"></label>
-                <input asp-for="CompanyTaxNumber" class="form-control" />
+                <input asp-for="CompanyTaxNumber" class="form-control" name="CompanyTaxNumber" />
                 <span asp-validation-for="CompanyTaxNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CompanyTaxOffice" class="control-label"></label>
-                <input asp-for="CompanyTaxOffice" class="form-control" />
+                <input asp-for="CompanyTaxOffice" class="form-control" name="CompanyTaxOffice" />
                 <span asp-validation-for="CompanyTaxOffice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
+                <input asp-for="PhoneNumber" class="form-control" name="PhoneNumber" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
+                <input asp-for="Address" class="form-control" name="Address" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" name="Email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EmployeeNumber" class="control-label"></label>
-                <input asp-for="EmployeeNumber" class="form-control" />
+                <input asp-for="EmployeeNumber" class="form-control" name="EmployeeNumber" />
                 <span asp-validation-for="EmployeeNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FoundationYear" class="control-label"></label>
-                <input asp-for="FoundationYear" class="form-control" />
+                <input asp-for="FoundationYear" class="form-control" name="FoundationYear" />
                 <span asp-validation-for="FoundationYear" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StartContractDate" class="control-label"></label>
-                <input asp-for="StartContractDate" class="form-control" />
+                <input asp-for="StartContractDate" class="form-control" name="StartContractDate" />
                 <span asp-validation-for="StartContractDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EndContractDate" class="control-label"></label>
-                <input asp-for="EndContractDate" class="form-control" />
+                <input asp-for="EndContractDate" class="form-control" name="EndContractDate" />
                 <span asp-validation-for="EndContractDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <div>
+                    @* <input asp-for="Logo" type="custom-file-input" id="customFile" class="form-control" /> *@
+                    <input asp-for="Logo" type="file" class="form-control" id="inputGroupFile02" name="Logo">
+                    <label class="custom-file-label" for="customFile">Dosya Seçiniz</label>
+                </div>             
+                <span asp-validation-for="Logo" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -87,3 +96,4 @@
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" </script>

@@ -10,7 +10,7 @@ namespace IKProjesi.UI.Services.Company
         Task<List<CompanyListVM>> GetCompanies();
 
         [Post("/api/SiteManager/CreateCompany")]
-        Task<IActionResult> CreateCompany(CreateCompanyVM model);
+        Task CreateCompany(CreateCompanyVM model);
 
         [Get("/api/SiteManager/CompanyDetails/{id}")]
         Task<CompanyDetailsVM> GetCompanyDetails(int id);

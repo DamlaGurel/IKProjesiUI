@@ -21,18 +21,15 @@ namespace IKProjesi.UI.Services.Company
             return await _companyApiService.GetCompanies();
         }
 
-        public async Task<IActionResult> CreateCompany(CreateCompanyVM model)
+        public async Task CreateCompany(CreateCompanyVM model)
         {
-            byte[] logoBytes = null;
-
+   
             if (model.Logo is not null)
             {
-                logoBytes =await  SaveLogo(model.Logo);
+                model.LogoString =await SaveLogo(model.Logo);
             }
 
-            model.LogoBytes = logoBytes;
-
-            return  await _companyApiService.CreateCompany(model);
+            await _companyApiService.CreateCompany(model);
 
         }
 
@@ -41,7 +38,7 @@ namespace IKProjesi.UI.Services.Company
             return await _companyApiService.GetCompanyDetails(id);
         }
 
-        public async Task<byte[]> SaveLogo(IFormFile logo)
+        public async Task<string> SaveLogo(IFormFile logo)
         {
             var logoFile = logo;
 
@@ -50,10 +47,29 @@ namespace IKProjesi.UI.Services.Company
             using (var memoryStream = new MemoryStream())
             {
                 await logoFile.CopyToAsync(memoryStream);
-                logoBytes = memoryStream.ToArray();
+
+                if (memoryStream.Length < 2097152)
+                {
+                    logoBytes = memoryStream.ToArray();
+                }
+                else
+                {
+                    logoBytes = null;
+                }
             }
 
-            return logoBytes;
+            string logoString=Convert.ToBase64String(logoBytes);
+            return logoString;
+
+            //using (var memoryStream = new MemoryStream())
+            //{
+            //    await logo.CopyToAsync(memoryStream);
+            //    byte[] logoBytes = memoryStream.ToArray();
+            //    string logoString = Convert.ToBase64String(logoBytes);
+            //    return logoString;
+            //}
         }
+
+ 
     }
 }
