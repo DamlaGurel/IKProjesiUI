@@ -43,7 +43,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerSummary(int id = 40)
+        public async Task<IActionResult> GetSiteManagerSummary(int id = 5)
         {
             var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
             return View();
@@ -51,7 +51,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerDetail(int id)
+        public async Task<IActionResult> GetSiteManagerDetail(int id = 5)
         {
             var siteManagerDetail = await _siteManagerService.SiteManagerDetails(id);
             return View(siteManagerDetail);
@@ -59,7 +59,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
 
         [HttpGet]
-        public IActionResult GetSiteManagerUpdate(int id)
+        public IActionResult GetSiteManagerUpdate(int id = 5)
         {
             var siteManagerUpdate = new SiteManagerUpdateVM { Id = id };
             return View(siteManagerUpdate);
@@ -69,8 +69,9 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
+            siteManagerUpdateVM.Id = 5;
             await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
-            return RedirectToAction("GetSiteManagerSummary");
+            return RedirectToAction("GetSiteManagerDetail");
         }
 
         //[HttpGet]

@@ -13,7 +13,7 @@ namespace IKProjesi.UI.Services.SiteManager
         Task<SiteManagerDetailsVM> GetSiteManagerDetails(int id);
 
         [Put("/api/SiteManager/UpdateSiteManager")]
-        Task<SiteManagerDetailsVM> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
+        Task GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
 
         [Post("/api/SiteManager/CreateSiteManager")]
         Task<CreateSiteManagerVM> CreateSiteManagerVM(CreateSiteManagerVM createSiteManager);
