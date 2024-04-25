@@ -9,8 +9,11 @@ namespace IKProjesi.UI.Models.VMs.CompanyVMs
         public string MersisNumber { get; set; }
         public string CompanyTaxNumber { get; set; }
         public string CompanyTaxOffice { get; set; }
-        //[NotMapped]
-        //public IFormFile? Logo { get; set; }
+        
+        public IFormFile? Logo { get; set; }
+
+        public byte[] LogoBytes { get; set; }
+
         //public string LogoPath { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
