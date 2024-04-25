@@ -16,6 +16,6 @@ namespace IKProjesi.UI.Services.SiteManager
         Task GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
 
         [Post("/api/SiteManager/CreateSiteManager")]
-        Task<CreateSiteManagerVM> CreateSiteManagerVM(CreateSiteManagerVM createSiteManager);
+        Task CreateSiteManagerVM(CreateSiteManagerVM createSiteManager);
     }
 }
