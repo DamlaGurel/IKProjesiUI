@@ -8,7 +8,7 @@ namespace IKProjesi.UI.Services.CompanyManager
 {
     public interface ICompanyManagerService
     {
-        //Task<IActionResult> CreateCompanyManager([FromBody] CreateCompanyManagerVm createCompanyManager);
+       
         Task<CreateCompanyManagerVm> CreateCompanyManager([FromBody] CreateCompanyManagerVm createCompanyManager);
 
         Task<List<ListCompanyManagerVm>> GetCompanyManagers();

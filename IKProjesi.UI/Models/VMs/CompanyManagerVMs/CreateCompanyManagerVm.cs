@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.NetworkInformation;
 using IKProjesi.UI.Models.Enums;
+using IKProjesi.UI.Models.VMs.CompanyVMs;
 
 namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
@@ -39,10 +40,10 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         public DateTime? StartDateOfWork { get; set; }
 
         //[Display(Name = "Meslek")]
-        public Job? JobName { get; set; }
+        public string? JobName { get; set; }
 
         //[Display(Name = "Departman Adı")]
-        public Department? DepartmentName { get; set; }
+        public string? DepartmentName { get; set; }
 
         //[Display(Name = "Adres")]
         public string? Address { get; set; }
@@ -52,14 +53,14 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 
         //public string Email { get; set; }
 
-        public DateTime CreatedDate => DateTime.Now;
+        //public DateTime CreatedDate => DateTime.Now;
 
-        public Status Status => Status.Active;
+        //public Status Status => Status.Active;
 
         // //Company Seçim 
         // public int? CompanyId { get; set; }
 
-        //public List<CompanyListDto>? Companies { get; set; } //burada list içerisine vm dto companyden alınıp koyulca!!
+        public string CompanyName { get; set; }
     }
 }
 
