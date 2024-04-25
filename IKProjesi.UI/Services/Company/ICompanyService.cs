@@ -12,5 +12,7 @@ namespace IKProjesi.UI.Services.Company
         Task<IActionResult> CreateCompany(CreateCompanyVM model);
 
         Task<CompanyDetailsVM> GetCompanyDetails(int id);
+
+        Task<byte[]> SaveLogo(IFormFile logo);
     }
 }
