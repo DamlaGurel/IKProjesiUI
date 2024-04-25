@@ -19,6 +19,12 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
         {
             return View();
         }
+
+       
+        public async Task<IActionResult> AddSiteManager()
+        {
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> AddSiteManager([FromBody] CreateSiteManagerVM model)
         {

@@ -1,116 +1,197 @@
-﻿@model IKProjesi.UI.Models.VMs.CompanyVMs.CompanyDetailsVM
+﻿@model CompanyDetailsVM
 
 @{
     ViewData["Title"] = "CompanyDetails";
     Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
 }
 
-<h1>CompanyDetails</h1>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Şirket Detayları</h5>
+                <div class="table-responsive">
+                    <table class="table text-nowrap mb-0 align-middle">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4"> Şirket Adı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.CompanyName</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4"> Şirket Başlığı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.CompanyTitle</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Mersis Numarası</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.MersisNumber</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Vergi Numarası</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.CompanyTaxNumber</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Vergi Dairesi</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.CompanyTaxOffice</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Telefon Numarası</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.PhoneNumber</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adres</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Address</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">E-Posta</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Email</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Çalışan Sayısı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.EmployeeNumber</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Kuruluş Yılı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.FoundationYear</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Sözleşme Başlama Tarihi</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.StartContractDate</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Sözleşme Bitiş Tarihi</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.EndContractDate</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Şirketin Sisteme Eklenme Tarihi</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.CreatedDate</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Şirketin Sistemdeki Son Güncellenme Tarihi</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.UpdatedDate</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Şirketin Sistemden Silinme Tarihi</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.DeletedDate</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Logo path</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.LogoPath</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <a class="badge bg-danger rounded-3 fw-semibold" asp-controller="SiteManager" asp-action="CompanyIndex">Şirket Listesine Dön</a>
+                    </div>
 
-
-
-<div>
-    <h4>CompanyDetailsVM</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompanyName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyTitle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompanyTitle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MersisNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MersisNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyTaxNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompanyTaxNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyTaxOffice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompanyTaxOffice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LogoPath)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LogoPath)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FoundationYear)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FoundationYear)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StartContractDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StartContractDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EndContractDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EndContractDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeletedDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeletedDate)
-        </dd>
-    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-controller="SiteManager" asp-action="CompanyIndex">Back to List</a>
-</div>
+@*<h1>CompanyDetails</h1>
+
+    <div>
+        <h4>CompanyDetailsVM</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompanyName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompanyTitle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompanyTitle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MersisNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MersisNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompanyTaxNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompanyTaxNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompanyTaxOffice)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompanyTaxOffice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LogoPath)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LogoPath)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmployeeNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmployeeNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FoundationYear)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FoundationYear)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StartContractDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StartContractDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EndContractDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EndContractDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UpdatedDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeletedDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeletedDate)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="badge bg-danger rounded-3 fw-semibold" asp-controller="SiteManager" asp-action="CompanyIndex">Back to List</a>
+    </div>*@
