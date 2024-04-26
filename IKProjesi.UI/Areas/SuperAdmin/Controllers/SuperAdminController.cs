@@ -15,9 +15,10 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
         private readonly ISiteManagerService _siteManagerService;
         private readonly ISuperAdminService _superAdminService;
 
-        public SuperAdminController(ISiteManagerService siteManagerService)
+        public SuperAdminController(ISiteManagerService siteManagerService, ISuperAdminService superAdminService)
         {
             _siteManagerService = siteManagerService;
+            _superAdminService = superAdminService;
         }
 
         public IActionResult Index()
@@ -25,16 +26,16 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
             return View();
         }
 
-       
-        public async Task<IActionResult> AddSiteManager()
+        [HttpGet]
+        public async Task<IActionResult> CreateSiteManager()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddSiteManager(CreateSiteManagerVM model)
+        public async Task<IActionResult> CreateSiteManager(CreateSiteManagerVM model)
         {
             await _superAdminService.CreateSiteManager(model);
-            return View();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

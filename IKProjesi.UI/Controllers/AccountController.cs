@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Plugins;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IKProjesi.UI.Controllers
 {
@@ -64,14 +65,22 @@ namespace IKProjesi.UI.Controllers
                     return RedirectToAction("Login");
                 }
             }
-            //[HttpPost]
-            //public async Task<IActionResult> Logout() 
-            //{
-            //    //await _userService.Logout();
-            //    TempData["Success"] = "Kullanıcı Çıkışı Gerçekleştirildi.";
-
-            //    return RedirectToAction("Index", "Home");
-            //}
+        }
+        public IActionResult SendMail()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> SendMail(string email)
+        {
+            var password = await _userService.SendMail(email);
+            if (password == null) 
+            {
+                TempData["Warning"] = "Geçiçi şifreniz gönderilemedi. Tekrar deneyiniz";
+                return View();
+            }
+            TempData["Success"] = "Şifreniz gönderildi. Lütfen mailinizi kontrol ediniz.";
+            return RedirectToAction("Login", "Account");
         }
     }
 }

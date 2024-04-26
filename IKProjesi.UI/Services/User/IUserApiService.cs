@@ -9,6 +9,9 @@ namespace IKProjesi.UI.Services.User
         [Post("/api/User/Login")]
         Task<TokenVM> Login(LoginVM user);
 
+        [Post("/api/Mail/SendMail/{email}")]
+        Task<string> SendMail(string email);
+
         //[Get("/api/User/Token")]
         //Task<string> GetUser([Header("Authorization")] string bearerToken);
     }
