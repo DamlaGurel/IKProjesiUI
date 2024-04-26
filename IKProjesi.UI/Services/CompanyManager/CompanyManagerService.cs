@@ -2,7 +2,9 @@
 using System.Reflection;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
+using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
+using IKProjesi.UI.Services.SiteManager;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Services.CompanyManager
@@ -30,8 +32,21 @@ namespace IKProjesi.UI.Services.CompanyManager
 
         }
 
-    
-    }
+        public async Task<SummaryCompanyManagerVm> GetCompanyManagerSummary(int id)
+        {
+            return await _companyManagerApiService.GetCompanyManagerSummary(id);
+        }
+
+        public async Task GetCompanyManagerUpdate(UpdateCompanyManagerVm updateCompanyManager)
+        {
+            await _companyManagerApiService.GetCompanyManagerUpdate(updateCompanyManager);
+        }
+
+        public async Task<DetailsCompanyManagerVm> GetCompanyManagerDetails(int id)
+        {
+            return await _companyManagerApiService.GetCompanyManagerDetails(id);
+
+        }
 
 }
 
