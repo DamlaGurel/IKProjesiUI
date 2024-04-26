@@ -31,19 +31,14 @@ namespace IKProjesi.UI
             builder.Services.AddRefitClient<ICompanyManagerApiService>()
                             .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
 
-           
-
-
-            //builder.Services.AddRefitClient<IAppUserService>().ConfigureHttpClient(c =>
-            //{
-            //    c.BaseAddress = new Uri("https://localhost:7116/api");
-            //});
 
             builder.Services.AddScoped<ICompanyService, CompanyService>()
                             .AddScoped<ISiteManagerService, SiteManagerService>()
                             .AddScoped<ICompanyManagerService, CompanyManagerService>();
 
             builder.Services.AddTransient<IUserService, UserService>();
+
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 
@@ -60,7 +55,10 @@ namespace IKProjesi.UI
 
             app.UseRouting();
 
+            
             app.UseAuthorization();
+            app.UseAuthentication();
+
             app.MapRazorPages();
 
             app.MapControllerRoute(

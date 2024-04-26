@@ -1,6 +1,8 @@
 ﻿using IKProjesi.UI.Models.VMs.UserVM;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
+using Refit;
 
 namespace IKProjesi.UI.Services.User
 {
@@ -13,10 +15,17 @@ namespace IKProjesi.UI.Services.User
             _userApiService = userApiService;
         }
 
-        public async Task<LoginVM> Login(LoginVM login)
+        public async Task<TokenVM> Login(LoginVM login)
         {
-            return await _userApiService.Login(login);
+            var token = await _userApiService.Login(login);
+            return token;
         }
+
+        //public async Task<TokenVM> GetToken(LoginVM login)
+        //{
+        //    return await _userApiService.GetToken(login);
+        //}
+
 
         //public async Task Logout()
         //{
