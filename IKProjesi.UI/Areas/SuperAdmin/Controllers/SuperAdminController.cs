@@ -1,6 +1,7 @@
 ﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.SiteManager;
+using IKProjesi.UI.Services.SuperAdmin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
@@ -12,6 +13,7 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
     public class SuperAdminController : Controller
     {
         private readonly ISiteManagerService _siteManagerService;
+        private readonly ISuperAdminService _superAdminService;
 
         public SuperAdminController(ISiteManagerService siteManagerService)
         {
@@ -29,9 +31,9 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddSiteManager([FromBody] CreateSiteManagerVM model)
+        public async Task<IActionResult> AddSiteManager(CreateSiteManagerVM model)
         {
-            //await _siteManagerService.CreateSiteManagerVM(model);
+            await _superAdminService.CreateSiteManager(model);
             return View();
         }
     }

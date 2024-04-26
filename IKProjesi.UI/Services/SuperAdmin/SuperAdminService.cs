@@ -12,9 +12,9 @@ namespace IKProjesi.UI.Services.SuperAdmin
             _superAdminApiService = superAdminApiService;
         }
 
-        public async Task<CreateSiteManagerVM> CreateSiteManager(CreateSiteManagerVM createSiteManager)
+        public async Task CreateSiteManager(CreateSiteManagerVM createSiteManager)
         {
-            return await _superAdminApiService.CreateSiteManagerVM(createSiteManager);
+            await _superAdminApiService.CreateSiteManagerVM(createSiteManager);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace IKProjesi.UI.Services.SuperAdmin
 {
     public interface ISuperAdminService
     {
-        Task<CreateSiteManagerVM> CreateSiteManager(CreateSiteManagerVM createSiteManager);
+        Task CreateSiteManager(CreateSiteManagerVM createSiteManager);
     }
 }
