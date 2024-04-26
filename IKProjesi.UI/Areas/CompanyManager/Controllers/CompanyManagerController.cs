@@ -45,9 +45,5 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             return RedirectToAction("GetCompanyManagerDetail");
         }
-
-
-            return RedirectToAction(nameof(Index));
-        }
     }
 }
