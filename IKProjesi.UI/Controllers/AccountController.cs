@@ -1,7 +1,10 @@
-﻿using IKProjesi.UI.Models.VMs.UserVM;
+﻿using IKProjesi.UI.Models.Enums;
+using IKProjesi.UI.Models.VMs.UserVM;
 using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Common;
+using NuGet.Protocol.Plugins;
+using System.Linq;
+using System.Security.Claims;
 
 namespace IKProjesi.UI.Controllers
 {
@@ -25,19 +28,50 @@ namespace IKProjesi.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login([FromBody] LoginVM user)
-        {// Api  ye refit kulllanarak login ol token al token değerini ya sesion ya da cookie olarak sakla
+        public async Task<IActionResult> Login(LoginVM user)
+        {
             
-            return View(user);
+            var token = await _userService.Login(user);
+
+            if (string.IsNullOrEmpty(token.Token))
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                var userToken = await _userService.Login(user);
+
+                if (userToken != null)
+                {
+                    if (userToken.Role == Job.SuperAdmin.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "SuperAdmin", new { area = "SuperAdmin" });
+                    }
+                    else if (userToken.Role == Job.SiteManager.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
+                    }
+                    else if (userToken.Role == Job.CompanyManager.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "CompanyManager", new { area = "CompanyManager" });
+                    }
+
+                    return RedirectToAction("Index", "Employee", new { area = "Employee" });
+
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
+            }
+            //[HttpPost]
+            //public async Task<IActionResult> Logout() 
+            //{
+            //    //await _userService.Logout();
+            //    TempData["Success"] = "Kullanıcı Çıkışı Gerçekleştirildi.";
+
+            //    return RedirectToAction("Index", "Home");
+            //}
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> Logout() 
-        //{
-        //    //await _userService.Logout();
-        //    TempData["Success"] = "Kullanıcı Çıkışı Gerçekleştirildi.";
-
-        //    return RedirectToAction("Index", "Home");
-        //}
     }
 }

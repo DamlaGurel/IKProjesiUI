@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
 
     [Area("SiteManager")]
+    //[Authorize(AuthenticationSchemes = "Bearer", Roles = "SÝTEMANAGER")]
     public class SiteManagerController : Controller
     {
         private readonly ISiteManagerService _siteManagerService;

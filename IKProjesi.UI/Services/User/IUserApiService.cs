@@ -7,6 +7,9 @@ namespace IKProjesi.UI.Services.User
     public interface IUserApiService
     {
         [Post("/api/User/Login")]
-        Task<LoginVM> Login(LoginVM user);
+        Task<TokenVM> Login(LoginVM user);
+
+        //[Get("/api/User/Token")]
+        //Task<string> GetUser([Header("Authorization")] string bearerToken);
     }
 }
