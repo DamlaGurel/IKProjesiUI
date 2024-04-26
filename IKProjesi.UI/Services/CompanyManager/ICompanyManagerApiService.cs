@@ -9,7 +9,9 @@ namespace IKProjesi.UI.Services.CompanyManager
 	{
 
         [Post("/api/SiteManager/AddCompanyManager")]
-        Task<CreateCompanyManagerVm> CreateCompanyManager(CreateCompanyManagerVm createCompanyManager);
+        Task CreateCompanyManager( CreateCompanyManagerVm model);
+
+        
 
         [Get("/api/SiteManager/GetAllCompanyManagers")]
         Task<List<ListCompanyManagerVm>> GetCompanyManagers();

@@ -20,16 +20,16 @@ namespace IKProjesi.UI
 
 
             builder.Services.AddRefitClient<ICompanyApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:46582"));
 
             builder.Services.AddRefitClient<IUserApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:46582"));
 
             builder.Services.AddRefitClient<ISiteManagerApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:46582"));
 
             builder.Services.AddRefitClient<ICompanyManagerApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:46582"));
 
 
             builder.Services.AddScoped<ICompanyService, CompanyService>()

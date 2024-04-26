@@ -74,14 +74,18 @@
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.DeletedDate</td>
                             </tr>
                             <tr>
-                                <label for="LogoBytes" class="form-label fw-semibold">Logo</label>
-                                <img src="data:image;base64,@(Convert.ToBase64String(Model.LogoBytes))" class="img-fluid" alt="Company Logo">
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Şirket Logosu</td>
+                                <td>
+                                    @*<label for="LogoBytes" class="form-label fw-semibold">Logo</label>*@
+                                    <label for="LogoBytes" class="form-label fw-semibold"></label>
+                                    <img src="data:image;base64,@(Convert.ToBase64String(Model.LogoBytes))" class="img-fluid" alt="Company Logo">
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                    
                     <div>
-                        <a class="badge bg-danger rounded-3 fw-semibold" asp-controller="SiteManager" asp-action="CompanyIndex">Şirket Listesine Dön</a>
+                        <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="SiteManager" asp-action="CompanyIndex">Şirket Listesine Dön</a>
                     </div>
 
                 </div>

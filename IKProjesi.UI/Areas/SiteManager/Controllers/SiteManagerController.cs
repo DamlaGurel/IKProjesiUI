@@ -15,12 +15,13 @@ using Refit;
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
     [Area("SiteManager")]
-    //[Authorize(AuthenticationSchemes = "Bearer", Roles = "SÝTEMANAGER")]
+    //[Authorize(AuthenticationSchemes = "Bearer", Roles = "Sï¿½TEMANAGER")]
     public class SiteManagerController : Controller
     {
         private readonly ISiteManagerService _siteManagerService;
         private readonly ICompanyManagerService _companyManagerService;
         private readonly ICompanyService _companyService;
+
 
 
 

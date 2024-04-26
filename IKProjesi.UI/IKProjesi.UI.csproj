@@ -33,6 +33,8 @@
     <Folder Include="Areas\SiteManager\Views\Shared\" />
     <Folder Include="Areas\SiteManager\Views\Company\" />
     <Folder Include="Areas\Emloyee\Views\Shared\" />
+    <Folder Include="Areas\CompanyManager\Views\Shared\" />
+    <Folder Include="Areas\CompanyManager\Views\CompanyManager\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,5 +47,7 @@
     <None Remove="Areas\SiteManager\Views\SiteManager\" />
     <None Remove="Areas\SiteManager\Views\Company\" />
     <None Remove="Areas\Emloyee\Views\Shared\" />
+    <None Remove="Areas\CompanyManager\Views\Shared\" />
+    <None Remove="Areas\CompanyManager\Views\CompanyManager\" />
   </ItemGroup>
 </Project>
