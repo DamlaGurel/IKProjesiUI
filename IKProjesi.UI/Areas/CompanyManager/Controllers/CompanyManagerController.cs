@@ -47,5 +47,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
 
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

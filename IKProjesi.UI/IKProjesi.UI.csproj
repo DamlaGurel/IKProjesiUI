@@ -16,7 +16,6 @@
   <ItemGroup>
     <Folder Include="Areas\CompanyManager\Data\" />
     <Folder Include="Areas\CompanyManager\Models\" />
-    <Folder Include="Areas\CompanyManager\Views\" />
     <Folder Include="Areas\Emloyee\Controllers\" />
     <Folder Include="Areas\Emloyee\Data\" />
     <Folder Include="Areas\Emloyee\Models\" />
