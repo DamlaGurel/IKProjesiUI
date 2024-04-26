@@ -11,6 +11,7 @@ namespace IKProjesi.UI.Services.User
     public interface IUserService 
     {
         Task<TokenVM> Login(LoginVM login);
+        Task<string> SendMail(string email);
 
         //Task<string> GetUser([Header("Authorization")] string bearerToken);
 

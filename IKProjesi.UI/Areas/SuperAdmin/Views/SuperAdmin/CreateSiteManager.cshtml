@@ -1,7 +1,7 @@
 
 
 @{
-    ViewData["Title"] = "AddSiteManager";
+    ViewData["Title"] = "CreateSiteManager";
     Layout = "~/Areas/SuperAdmin/Views/Shared/_SuperAdminLayout.cshtml";
 
 }
@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">Site Yöneticisi Oluştur</h5>
-                <form asp-area="SuperAdmin" asp-controller="SuperAdmin" asp-action="AddSiteManager" enctype="multipart/form-data" method="post">
+                <form asp-area="SuperAdmin" asp-controller="SuperAdmin" asp-action="CreateSiteManager" enctype="multipart/form-data" method="post">
                     <div class="mb-3 form-group">
                         <label asp-for="FirstName" class="control-label">Adı</label>
                         <input asp-for="FirstName" class="form-control" />
@@ -36,6 +36,11 @@
                         <input asp-for="SecondLastName" class="form-control" />
                         <span asp-validation-for="SecondLastName" class="text-danger"></span>
                     </div>
+                    @* <div class="mb-3 form-group">
+                        <label asp-for="UserName" class="control-label">Kullanıcı Adı</label>
+                        <input asp-for="UserName" class="form-control" name="UserName" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div> *@
                     <div class="mb-3 form-group">
                         <label asp-for="BirthDate" class="control-label">Doğum Tarihi</label>
                         <input asp-for="BirthDate" type="date" class="form-control" />
@@ -43,7 +48,7 @@
                     </div>
                     <div class="mb-3 form-group">
                         <label asp-for="BirthPlace" class="control-label">Doğum Yeri</label>
-                        <input asp-for="BirthPlace" type="date" class="form-control" />
+                        <input asp-for="BirthPlace" type="text" class="form-control" />
                         <span asp-validation-for="BirthPlace" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
@@ -53,7 +58,7 @@
                     </div>
                     <div class="mb-3 form-group">
                         <label asp-for="IdentityNumber" class="control-label">TC Kimlik Numarası</label>
-                        <input asp-for="IdentityNumber" type="date" class="form-control" />
+                        <input asp-for="IdentityNumber" type="text" class="form-control" />
                         <span asp-validation-for="IdentityNumber" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
@@ -67,20 +72,15 @@
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="UserName" class="control-label">Kullanıcı Adı</label>
-                        <input asp-for="UserName" class="form-control" />
-                        <span asp-validation-for="UserName" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
                         <label asp-for="Password" class="control-label">Şifre</label>
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="mb-3 form-group">
+@*                     <div class="mb-3 form-group">
                         <label asp-for="ImagePath" class="control-label">ImagePath</label>
                         <input asp-for="ImagePath" class="form-control" />
                         <span asp-validation-for="ImagePath" class="text-danger"></span>
-                    </div>
+                    </div> *@
                     <div class=" mb-3 form-group">
                         <div>
                             <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />

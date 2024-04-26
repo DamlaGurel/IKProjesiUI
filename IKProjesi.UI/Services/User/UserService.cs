@@ -21,6 +21,12 @@ namespace IKProjesi.UI.Services.User
             return token;
         }
 
+        public async Task<string> SendMail(string email)
+        {
+            var password = await _userApiService.SendMail(email);
+            return password;
+        }
+
         //public async Task<TokenVM> GetToken(LoginVM login)
         //{
         //    return await _userApiService.GetToken(login);
