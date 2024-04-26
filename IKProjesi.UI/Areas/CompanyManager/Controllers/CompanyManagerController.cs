@@ -15,15 +15,16 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerSummary(int id = 10)
+        public async Task<IActionResult> GetCompanyManagerSummary(int id = 22)
         {
+            /*https://localhost:7023/CompanyManager/CompanyManager/GetCompanyManagerSummary*/
             var companyManagerSummary = await _companyManagerService.GetCompanyManagerSummary(id);
-            return View();
+            return View(companyManagerSummary);
 
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerDetail(int id = 10)
+        public async Task<IActionResult> GetCompanyManagerDetail(int id = 22)
         {
             var companyManagerDetail = await _companyManagerService.GetCompanyManagerDetails(id);
             return View(companyManagerDetail);
@@ -31,7 +32,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
 
         [HttpGet]
-        public IActionResult GetCompanyManagerUpdate(int id = 10)
+        public IActionResult GetCompanyManagerUpdate(int id = 22)
         {
             var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
             return View(companyManagerUpdate);
