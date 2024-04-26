@@ -20,11 +20,11 @@ namespace IKProjesi.UI.Services.CompanyManager
 
         public async Task CreateCompanyManager(CreateCompanyManagerVm model)
         {
-             await _companyManagerApiService.CreateCompanyManager(model);
-            
+            await _companyManagerApiService.CreateCompanyManager(model);
+
 
         }
-       
+
 
         public async Task<List<ListCompanyManagerVm>> GetCompanyManagers()
         {
@@ -48,5 +48,6 @@ namespace IKProjesi.UI.Services.CompanyManager
 
         }
 
+    }
 }
 

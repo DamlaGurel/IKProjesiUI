@@ -1,0 +1,43 @@
+
+@{
+    ViewData["Title"] = "GetCompanyManagerUpdate";
+    Layout = "~/Areas/CompanyManager/Views/Shared/_CompanyManagerLayout.cshtml";
+}
+
+@model UpdateCompanyManagerVm
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-center text-primary">Şirket Yöneticisi Güncelle</h5>
+                <form asp-action="GetSiteManagerUpdate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="ImagePath" class="control-label">Resim Yolu</label>
+                        <input asp-for="ImagePath" class="form-control" />
+                        <span asp-validation-for="ImagePath" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="Address" class="control-label">Adres</label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <input type="submit" value="Kaydet" class="btn btn-danger rounded-3 fw-semibold" />
+                    </div>
+                    <div class=" mb-3 form-group">
+                        <div>
+                            <a asp-action="Index" class="btn btn-danger rounded-3 fw-semibold ">Geri Dön</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
