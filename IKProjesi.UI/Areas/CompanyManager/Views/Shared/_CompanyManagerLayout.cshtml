@@ -62,40 +62,21 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover" data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <i class="ti ti-layout-dashboard">Şirket Yöneticileri</i>
+                                <i class="ti ti-layout-dashboard">Personeller</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                 <div class="message-body">
-                                    <a asp-area="SiteManager" asp-controller="SiteManager" asp-action="CompanyManagerList" class="d-flex align-items-center gap-2 dropdown-item">
+                                    <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="PersonelList" class="d-flex align-items-center gap-2 dropdown-item">
                                         <i class="ti ti-user fs-6"></i>
-                                        <p class="mb-0 fs-3">Şirket Yönetici Listesi</p>
+                                        <p class="mb-0 fs-3">Personel Listesi</p>
                                     </a>
                                     <a asp-area="SiteManager" asp-controller="SiteManager" asp-action="AddCompanyManager" class="d-flex align-items-center gap-2 dropdown-item">
                                         <i class="ti ti-mail fs-6"></i>
-                                        <p class="mb-0 fs-3">Şirket Yöneticisi Ekle</p>
+                                        <p class="mb-0 fs-3">Personel Ekle</p>
                                     </a>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                <i class="ti ti-layout-dashboard">Şirketler</i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                                <div class="message-body">
-                                    <a asp-area="SiteManager" asp-controller="SiteManager" asp-action="CompanyIndex" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <i class="ti ti-user fs-6"></i>
-                                        <p class="mb-0 fs-3">Şirket Listesi</p>
-                                    </a>
-                                    <a asp-area="SiteManager" asp-controller="SiteManager" asp-action="CreateCompany" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <i class="ti ti-mail fs-6"></i>
-                                        <p class="mb-0 fs-3">Şirket Ekle</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -109,17 +90,13 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <div class="message-body">
-                                        <a asp-area="SiteManager" asp-controller="SiteManager" asp-action="GetSiteManagerDetail" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetCompanyManagerDetail" class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-user fs-6"></i>
                                             <p class="mb-0 fs-3">Profil</p>
                                         </a>
-                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                            <i class="ti ti-mail fs-6"></i>
-                                            <p class="mb-0 fs-3">Hesabım</p>
-                                        </a>
-                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                            <i class="ti ti-list-check fs-6"></i>
-                                            <p class="mb-0 fs-3">Görevler</p>
+                                        <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">Profil Düzenle</p>
                                         </a>
                                         <a href="/authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Çıkış Yap</a>
                                     </div>

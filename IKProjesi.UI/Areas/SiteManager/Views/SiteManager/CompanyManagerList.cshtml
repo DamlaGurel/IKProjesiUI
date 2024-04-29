@@ -30,17 +30,19 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">@manager.FirstName @manager.LastName</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">şirket</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">@manager.CompanyName</h6>
                                     <p class="card-text">
                                         <strong>Telefon: @manager.PhoneNumber</strong>
                                         <strong>E-Posta: @manager.Email</strong>
                                     </p>
-                                    <a href="#" class="card-link btn btn-danger rounded-3 fw-semibold">yönlendirme</a>
+                                    
+                                    <a asp-area="SiteManager" asp-controller="SiteManager" asp-action="GetSiteManagerDetail" class="card-link btn btn-danger rounded-3 fw-semibold">Şirket Yöneticisi Detayları</a>
                                 </div>
                             </div>
                         </div>
                     }
 
+                    }
                 </div>
             </div>
         </div>
