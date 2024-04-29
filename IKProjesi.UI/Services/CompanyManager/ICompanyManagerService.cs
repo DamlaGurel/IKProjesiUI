@@ -10,7 +10,7 @@ namespace IKProjesi.UI.Services.CompanyManager
     {
 
         Task CreateCompanyManager( CreateCompanyManagerVm model);
-
+        
         Task<List<ListCompanyManagerVm>> GetCompanyManagers();
         Task<SummaryCompanyManagerVm> GetCompanyManagerSummary(int id);
         Task GetCompanyManagerUpdate(UpdateCompanyManagerVm updateCompanyManager);
