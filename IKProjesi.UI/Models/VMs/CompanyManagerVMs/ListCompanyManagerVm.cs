@@ -11,7 +11,8 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         public string PhoneNumber { get; set; }
         public int? CompanyId { get; set; }
         public string CompanyName { get; set; }
-
+        public string? ImageString { get; set; }
+        public byte[]? ImageBytes { get; set; }
     }
 }
 
