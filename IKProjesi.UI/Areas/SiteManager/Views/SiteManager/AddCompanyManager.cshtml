@@ -4,125 +4,121 @@
     Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
 }
 
-@model CreateCompanyManagerVm
+@model CompanyManagerCompanyVm
 
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">Şirket Yöneticisi Oluştur</h5>
-                <form asp-area="SiteManager" asp-controller="SiteManager" asp-action="AddCompanyManager" enctype="multipart/form-data" method="post">
-                    <div class="mb-3 form-group">
-                        <label asp-for="FirstName" class="control-label">Adı</label>
-                        <input asp-for="FirstName" class="form-control" />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="SecondName" class="control-label">İkinci Adı</label>
-                        <input asp-for="SecondName" class="form-control" />
-                        <span asp-validation-for="SecondName" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="LastName" class="control-label">Soyadı</label>
-                        <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="SecondLastName" class="control-label">İkinci Soyadı</label>
-                        <input asp-for="SecondLastName" class="form-control" />
-                        <span asp-validation-for="SecondLastName" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="BirthDate" class="control-label">Doğum Tarihi</label>
-                        <input asp-for="BirthDate" type="date" class="form-control" />
-                        <span asp-validation-for="BirthDate" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="StartDateOfWork" class="control-label">İşe Başlangıç Tarihi</label>
-                        <input asp-for="StartDateOfWork" type="date" class="form-control" />
-                        <span asp-validation-for="StartDateOfWork" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label asp-for="IdentityNumber" class="control-label">TC Kimlik No</label>
-                        <input asp-for="IdentityNumber" class="form-control" />
-                        <span asp-validation-for="IdentityNumber" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="JobName" class="control-label">Meslek</label>
-                        <select asp-for="JobName" class="form-select">
-                            <option value="">Seçiniz</option>
-                            @foreach (var job in Enum.GetValues(typeof(Job)))
-                            {
-                                <option value="@job">@job</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="DepartmentName" class="control-label">Departman</label>
-                        <select asp-for="DepartmentName" class="form-select">
-                            <option value="">Seçiniz</option>
-                            @foreach (var department in Enum.GetValues(typeof(Department)))
-                            {
-                                <option value="@department">@department</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="Address" class="control-label">Adres</label>
-                        <textarea asp-for="Address" class="form-control"></textarea>
-                        <span asp-validation-for="Address" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="UserName" class="control-label">Kullanıcı Adı</label>
-                        <input asp-for="UserName" class="form-control" />
-                        <span asp-validation-for="UserName" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="Password" class="control-label">Şifre</label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    @*<div class="mb-3 form-group">
-            <label asp-for="CompanyName" class="control-label">Şirket Seçimi</label>
-            <select asp-for="CompanyName" class="form-select">
-                <option value="">Şirket Seçiniz</option>
-                @foreach (var company in ViewBag.Companies)
-                {
-                    <option value="@company.Id">@company.Name</option>
-                }
-            </select>
-            <span asp-validation-for="CompanyName" class="text-danger"></span>
-        </div>*@
-                    <div class=" mb-3 form-group">
-                        <div>
+                <div class="row">
+
+                    <form asp-area="SiteManager" asp-controller="SiteManager" asp-action="AddCompanyManager" enctype="multipart/form-data" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.FirstName" class="control-label">Adı</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.FirstName" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.SecondName" class="control-label">İkinci Adı</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.SecondName" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.SecondName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.LastName" class="control-label">Soyadı</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.LastName" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.LastName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.SecondLastName" class="control-label">İkinci Soyadı</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.SecondLastName" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.SecondLastName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.BirthDate" class="control-label">Doğum Tarihi</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.BirthDate" type="date" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.BirthDate" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.BirthPlace" class="control-label">Doğum Yeri</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.BirthPlace" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.BirthPlace" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.StartDateOfWork" class="control-label">İşe Başlangıç Tarihi</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.StartDateOfWork" type="date" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.StartDateOfWork" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.IdentityNumber" class="control-label">TC Kimlik No</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.IdentityNumber" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.IdentityNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.Address" class="control-label">Adres</label>
+                            <textarea asp-for="@Model.CreateCompanyManagerVm.Address" class="form-control"></textarea>
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.Address" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.PhoneNumber" class="control-label">Telefon Numarası</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 orm-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.CompanyId" class="control-label">Şirketler</label>
+                            <select id="CompanyId" name="CompanyId" class="form-select">
+                                <option value="Seçiniz"></option>
+                                @foreach (var company in Model.Companies)
+                                {
+                                    <option value="@company.Id">@company.CompanyName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="Companies" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mb-3 form-group">
+
                             <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />
-                            @*<button type="submit" class="btn btn-primary">Kaydet</button>*@
 
                         </div>
+                        <div class="mb-3 form-group">
 
-
-                    </div>
-                    <div class=" mb-3 form-group">
-
-                        <div>
                             <a asp-action="CompanyManagerList" class="btn btn-danger rounded-3 fw-semibold ">Listeye dön</a>
-
                         </div>
-                    </div>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 
 
 
 
+@*<div class="mb-3 form-group">
+        <label asp-for="CompanyName" class="control-label">Şirket Seçimi</label>
+        <select asp-for="CompanyName" class="form-select">
+            <option value="">Şirket Seçiniz</option>
+            @foreach (var company in ViewBag.Companies)
+            {
+                <option value="@company.Id">@company.Name</option>
+            }
+        </select>
+        <span asp-validation-for="CompanyName" class="text-danger"></span>
+    </div>*@
 
-
+@*<div class="mb-3 form-group">
+        <label asp-for="DepartmentName" class="control-label">Departman</label>
+        <select asp-for="DepartmentName" class="form-select">
+            <option value="">Seçiniz</option>
+            @foreach (var department in Enum.GetValues(typeof(Department)))
+            {
+                <option value="@department">@department</option>
+            }
+        </select>
+    </div>*@

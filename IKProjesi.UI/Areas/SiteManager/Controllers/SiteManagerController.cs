@@ -40,7 +40,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
         public async Task<IActionResult> CompanyManagerList()
         {
-            var companyManagers = await _companyManagerService.GetCompanyManagers();
+             var companyManagers = await _companyManagerService.GetCompanyManagers();
             return View(companyManagers);
         }
 
@@ -49,7 +49,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         {
             var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
             return View();
-
         }
 
         [HttpGet]
@@ -76,27 +75,38 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return RedirectToAction("GetSiteManagerDetail");
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> AddCompanyManager()
-        //{
-        //    return View();
-        //}
+
 
         [HttpGet]
-        public IActionResult AddCompanyManager()
+        public async Task<IActionResult> AddCompanyManager()
         {
-            return View();
+            CompanyManagerCompanyVm model = new CompanyManagerCompanyVm
+            {
+                     Companies= await _companyService.GetCompanies(),
+
+                };
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompanyManager( CreateCompanyManagerVm model)
+        public async Task<IActionResult> AddCompanyManager(CompanyManagerCompanyVm model,int companyId)
         {
-            await _companyManagerService.CreateCompanyManager(model);
 
-           // var companies = await _companyService.GetCompanies();
-           // ViewBag["companies"] = companies;
+            //if (ModelState.IsValid)
+            //{
+                model.CreateCompanyManagerVm.CompanyId = companyId;
+
+            var vm=model.CreateCompanyManagerVm;
+
+            await _companyManagerService.CreateCompanyManager(vm);
 
             return RedirectToAction(nameof(CompanyManagerList));
+            //}
+
+            //else
+            //{
+            //    return View();
+            //}
         }
 
         public async Task<IActionResult> CompanyIndex()
@@ -115,8 +125,11 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompany(CreateCompanyVM model)
         {
-            await _companyService.CreateCompany(model);
-            return RedirectToAction(nameof(CompanyIndex));
+            
+                await _companyService.CreateCompany(model);
+                return RedirectToAction(nameof(CompanyIndex));
+            
+            
         }
 
         [HttpGet]

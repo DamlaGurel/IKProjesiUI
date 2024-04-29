@@ -13,7 +13,10 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         {
             _companyManagerService = companyManagerService;
         }
-
+        public IActionResult Index()
+        {
+            return View();
+        }
         [HttpGet]
         public async Task<IActionResult> GetCompanyManagerSummary(int id = 10)
         {
@@ -45,5 +48,9 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             return RedirectToAction("GetCompanyManagerDetail");
         }
+
+
+           
+        
     }
 }
