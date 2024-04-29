@@ -45,7 +45,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVm companyManagerUpdateVM)
         {
-            companyManagerUpdateVM.Id = 5;
+            companyManagerUpdateVM.Id = 22;
             await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             return RedirectToAction("GetCompanyManagerDetail");
         }
