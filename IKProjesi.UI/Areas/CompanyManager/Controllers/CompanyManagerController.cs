@@ -22,10 +22,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         {
             return View();
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+
         [HttpGet]
         public async Task<IActionResult> GetCompanyManagerSummary(int id = 22)
         {
