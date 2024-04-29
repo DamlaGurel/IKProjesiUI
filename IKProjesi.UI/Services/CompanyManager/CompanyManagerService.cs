@@ -6,6 +6,8 @@ using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.SiteManager;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
+
 
 namespace IKProjesi.UI.Services.CompanyManager
 {
