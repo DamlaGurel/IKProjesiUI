@@ -40,6 +40,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
         public async Task<IActionResult> CompanyManagerList()
         {
+            
             var companyManagers = await _companyManagerService.GetCompanyManagers();
             return View(companyManagers);
         }
@@ -76,25 +77,38 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return RedirectToAction("GetSiteManagerDetail");
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> AddCompanyManager()
-        //{
-        //    return View();
-        //}
+
 
         [HttpGet]
-        public IActionResult AddCompanyManager()
+        public async Task<IActionResult> AddCompanyManager()
         {
-            return View();
+            CompanyManagerCompanyVm model = new CompanyManagerCompanyVm
+            {
+                     Companies= await _companyService.GetCompanies(),
+
+                };
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompanyManager( CreateCompanyManagerVm model)
+        public async Task<IActionResult> AddCompanyManager(CompanyManagerCompanyVm model,int companyId)
         {
-            await _companyManagerService.CreateCompanyManager(model);
+            model.CreateCompanyManagerVm.CompanyId = companyId;
 
-           // var companies = await _companyService.GetCompanies();
-           // ViewBag["companies"] = companies;
+            var vm=model.CreateCompanyManagerVm;
+            //var vm = model.CreateCompanyManagerVm;
+
+            //CreateCompanyManagerVm cm = new CreateCompanyManagerVm
+            //{
+            //    CompanyId = companyId,
+            //    CreateCompanyManagerVm = vm,
+
+            //};
+            //model.CreateCompanyManagerVm.CompanyId = companyId;
+            
+
+
+            await _companyManagerService.CreateCompanyManager(vm);
 
             return RedirectToAction(nameof(CompanyManagerList));
         }
