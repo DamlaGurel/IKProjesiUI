@@ -5,8 +5,8 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
 	public class CompaniesListCompanyManagerVm
 	{
-        public CompanyListVM? Companies { get; set; }
-        public ListCompanyManagerVm? ListCompanyManagerVms { get; set; }
+        public List<CompanyListVM?> Companies { get; set; }
+        public List<ListCompanyManagerVm?> ListCompanyManagerVms { get; set; }
 
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
@@ -7,7 +8,8 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
     public class CreateCompanyManagerVm
     {
-       
+
+        
         public string FirstName { get; set; }
         public string? SecondName { get; set; }
         public string? LastName { get; set; }

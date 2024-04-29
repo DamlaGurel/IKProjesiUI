@@ -40,8 +40,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
         public async Task<IActionResult> CompanyManagerList()
         {
-            
-            var companyManagers = await _companyManagerService.GetCompanyManagers();
+             var companyManagers = await _companyManagerService.GetCompanyManagers();
             return View(companyManagers);
         }
 
@@ -50,7 +49,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         {
             var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
             return View();
-
         }
 
         [HttpGet]
@@ -93,24 +91,22 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCompanyManager(CompanyManagerCompanyVm model,int companyId)
         {
-            model.CreateCompanyManagerVm.CompanyId = companyId;
+
+            //if (ModelState.IsValid)
+            //{
+                model.CreateCompanyManagerVm.CompanyId = companyId;
 
             var vm=model.CreateCompanyManagerVm;
-            //var vm = model.CreateCompanyManagerVm;
-
-            //CreateCompanyManagerVm cm = new CreateCompanyManagerVm
-            //{
-            //    CompanyId = companyId,
-            //    CreateCompanyManagerVm = vm,
-
-            //};
-            //model.CreateCompanyManagerVm.CompanyId = companyId;
-            
-
 
             await _companyManagerService.CreateCompanyManager(vm);
 
             return RedirectToAction(nameof(CompanyManagerList));
+            //}
+
+            //else
+            //{
+            //    return View();
+            //}
         }
 
         public async Task<IActionResult> CompanyIndex()
@@ -129,8 +125,11 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompany(CreateCompanyVM model)
         {
-            await _companyService.CreateCompany(model);
-            return RedirectToAction(nameof(CompanyIndex));
+            
+                await _companyService.CreateCompany(model);
+                return RedirectToAction(nameof(CompanyIndex));
+            
+            
         }
 
         [HttpGet]

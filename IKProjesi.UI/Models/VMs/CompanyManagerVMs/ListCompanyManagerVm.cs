@@ -9,7 +9,7 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         public string SecondLastName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public string CompanyId { get; set; }
+        public int? CompanyId { get; set; }
         public string CompanyName { get; set; }
 
     }
