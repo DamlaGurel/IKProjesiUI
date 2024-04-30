@@ -80,6 +80,25 @@ namespace IKProjesi.UI.Controllers
                 return View();
             }
             TempData["Success"] = "Şifreniz gönderildi. Lütfen mailinizi kontrol ediniz.";
+            return RedirectToAction("ChangePassword", "Account");
+        }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        { 
+            return View(); 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordVM password)
+        {
+           await _userService.ChangePassword(password);
+            if (password == null) 
+            {
+                TempData["Warning"] = "Şifreniz değiştirilemedi";
+                return View();
+            }
+            TempData["Success"] = "Şifreniz değiştirildi.";
             return RedirectToAction("Login", "Account");
         }
 

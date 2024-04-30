@@ -15,6 +15,9 @@ namespace IKProjesi.UI.Services.User
         [Get("/api/User/Logout")]
         Task Logout();
 
+        [Post("/api/User/ChangePassword")]
+        Task ChangePassword(ChangePasswordVM password);
+
         //[Get("/api/User/Token")]
         //Task<string> GetUser([Header("Authorization")] string bearerToken);
     }

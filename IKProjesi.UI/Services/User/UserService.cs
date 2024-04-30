@@ -37,5 +37,10 @@ namespace IKProjesi.UI.Services.User
         {
             await _userApiService.Logout();
         }
+
+        public async Task ChangePassword(ChangePasswordVM password)
+        {
+            await _userApiService.ChangePassword(password);
+        }
     }
 }

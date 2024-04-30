@@ -12,9 +12,7 @@ namespace IKProjesi.UI.Services.User
     {
         Task<TokenVM> Login(LoginVM login);
         Task<string> SendMail(string email);
-
-        //Task<string> GetUser([Header("Authorization")] string bearerToken);
-
+        Task ChangePassword(ChangePasswordVM password);
         Task Logout();
     }
 }
