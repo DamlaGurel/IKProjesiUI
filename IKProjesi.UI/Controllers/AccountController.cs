@@ -82,5 +82,12 @@ namespace IKProjesi.UI.Controllers
             TempData["Success"] = "Şifreniz gönderildi. Lütfen mailinizi kontrol ediniz.";
             return RedirectToAction("Login", "Account");
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _userService.Logout();
+            TempData["Success"] = "Çıkış yapıldı.";
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

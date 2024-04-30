@@ -69,7 +69,7 @@
                                         <i class="ti ti-user fs-6"></i>
                                         <p class="mb-0 fs-3">Site Yöneticisi Listesi</p>
                                     </a>
-                                    <a asp-area="SuperAdmin" asp-controller="SuperAdmin" asp-action="AddSiteManager" class="d-flex align-items-center gap-2 dropdown-item">
+                                    <a asp-area="SuperAdmin" asp-controller="SuperAdmin" asp-action="CreateSiteManager" class="d-flex align-items-center gap-2 dropdown-item">
                                         <i class="ti ti-mail fs-6"></i>
                                         <p class="mb-0 fs-3">Site Yöneticisi Ekle</p>
                                     </a>
@@ -99,7 +99,7 @@
                                             <i class="ti ti-list-check fs-6"></i>
                                             <p class="mb-0 fs-3">Görev</p>
                                         </a>
-                                        <a href="/authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Çıkış Yap</a>
+                                        <a asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-outline-primary mx-3 mt-2 d-block">Çıkış Yap</a>
                                     </div>
                                 </div>
                             </li>

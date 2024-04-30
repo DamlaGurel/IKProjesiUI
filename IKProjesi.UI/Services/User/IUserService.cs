@@ -15,6 +15,6 @@ namespace IKProjesi.UI.Services.User
 
         //Task<string> GetUser([Header("Authorization")] string bearerToken);
 
-        //Task Logout();
+        Task Logout();
     }
 }

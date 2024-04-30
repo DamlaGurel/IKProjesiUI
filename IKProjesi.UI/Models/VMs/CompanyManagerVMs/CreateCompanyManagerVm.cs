@@ -21,10 +21,10 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
         public int CompanyId { get; set; }
-
         public DateTime CreatedDate => DateTime.Now;
         public Status Status => Status.Active;
-   
+        public IFormFile? Image { get; set; }
+        public string? ImageString { get; set; }
     }
 }
 
