@@ -12,6 +12,9 @@ namespace IKProjesi.UI.Services.User
         [Post("/api/Mail/SendMail/{email}")]
         Task<string> SendMail(string email);
 
+        [Get("/api/User/Logout")]
+        Task Logout();
+
         //[Get("/api/User/Token")]
         //Task<string> GetUser([Header("Authorization")] string bearerToken);
     }

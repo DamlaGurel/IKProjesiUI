@@ -22,11 +22,38 @@ namespace IKProjesi.UI.Services.CompanyManager
 
         public async Task CreateCompanyManager(CreateCompanyManagerVm model)
         {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
             await _companyManagerApiService.CreateCompanyManager(model);
 
 
         }
 
+        private async Task<string> SaveImage(IFormFile image)
+        {
+            var imageFile = image;
+
+            byte[] imageBytes = null;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await imageFile.CopyToAsync(memoryStream);
+
+                if (memoryStream.Length < 2097152)
+                {
+                    imageBytes = memoryStream.ToArray();
+                }
+                else
+                {
+                    imageBytes = null;
+                }
+            }
+
+            string imageString = Convert.ToBase64String(imageBytes);
+            return imageString;
+        }
 
         public async Task<List<ListCompanyManagerVm>> GetCompanyManagers()
         {

@@ -33,8 +33,9 @@ namespace IKProjesi.UI.Services.User
         //}
 
 
-        //public async Task Logout()
-        //{
-        //}
+        public async Task Logout()
+        {
+            await _userApiService.Logout();
+        }
     }
 }

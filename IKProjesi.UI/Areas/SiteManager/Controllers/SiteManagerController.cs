@@ -1,15 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using IKProjesi.UI.Models;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
+using IKProjesi.UI.Models.VMs.Pagination;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Refit;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
@@ -38,10 +42,28 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CompanyManagerList()
+        public async Task<IActionResult> CompanyManagerList(int pg=1)
         {
-             var companyManagers = await _companyManagerService.GetCompanyManagers();
-            return View(companyManagers);
+            var companyManagers = await _companyManagerService.GetCompanyManagers();
+
+            //Pagination:
+            const int pageSize = 12;
+            if (pg<1)
+            {
+                pg = 1;
+            }
+
+            int recsCount = companyManagers.Count();
+
+            var pager = new PaginationParams(recsCount, pg, pageSize);
+
+            int recSkip = (pg - 1) * pageSize;
+
+            var data=companyManagers.Skip(recSkip).Take(pager.PageSize).ToList();
+
+            this.ViewBag.Pager = pager;
+
+            return View(data);            
         }
 
         [HttpGet]
@@ -121,10 +143,29 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             //}
         }
 
-        public async Task<IActionResult> CompanyIndex()
+        public async Task<IActionResult> CompanyIndex(int pg = 1)
         {
             var companies = await _companyService.GetCompanies();
-            return View(companies);
+
+            //Pagination:
+            const int pageSize = 12;
+            if (pg < 1)
+            {
+                pg = 1;
+            }
+
+            int recsCount = companies.Count();
+
+            var pager = new PaginationParams(recsCount, pg, pageSize);
+
+            int recSkip = (pg - 1) * pageSize;
+
+            var data = companies.Skip(recSkip).Take(pager.PageSize).ToList();
+
+            this.ViewBag.Pager = pager;
+
+            return View(data);
+
         }
 
 

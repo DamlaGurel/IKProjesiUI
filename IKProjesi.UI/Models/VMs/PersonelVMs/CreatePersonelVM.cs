@@ -20,7 +20,5 @@ namespace IKProjesi.UI.Models.VMs.PersonelVMs
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
         public string CompanyName { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public Status? Status { get; set; }
     }
 }
