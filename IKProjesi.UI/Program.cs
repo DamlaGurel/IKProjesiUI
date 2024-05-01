@@ -40,7 +40,7 @@ namespace IKProjesi.UI
 
             builder.Services.AddScoped<ICompanyService, CompanyService>()
                             .AddScoped<ISiteManagerService, SiteManagerService>()
-                            .AddScoped<ICompanyManagerService, CompanyManagerService>()
+                            .AddScoped<ICompanyManagerService, CompanyManagerService>();
 
             builder.Services.AddTransient<IUserService, UserService>()
                             .AddTransient<ISuperAdminService, SuperAdminService>();
