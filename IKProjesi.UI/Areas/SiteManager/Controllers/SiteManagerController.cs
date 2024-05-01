@@ -101,7 +101,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> AddCompanyManager()
+        public async Task<IActionResult> CreateCompanyManager()
         {
             CompanyManagerCompanyVm model = new CompanyManagerCompanyVm
             {
@@ -112,7 +112,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompanyManager(CompanyManagerCompanyVm model,int companyId)
+        public async Task<IActionResult> CreateCompanyManager(CompanyManagerCompanyVm model,int companyId)
         {
 
             //if (ModelState.IsValid)
