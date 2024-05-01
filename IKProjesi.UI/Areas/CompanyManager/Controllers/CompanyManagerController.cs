@@ -41,11 +41,11 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
 
         [HttpGet]
-        public IActionResult GetCompanyManagerUpdate(int id)
+        public async Task<IActionResult> GetCompanyManagerUpdate(int id)
         {
             //var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
 
-            var companyManagerUpdate = _companyManagerService.GetCompanyManagerById(id);
+            var companyManagerUpdate = await _companyManagerService.GetCompanyManagerById(id);
 
             string imageString = null;
 
