@@ -18,9 +18,17 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             _employeeService = employeeService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateExpense()
+        {
+            return View();
+        }
+
     }
 }

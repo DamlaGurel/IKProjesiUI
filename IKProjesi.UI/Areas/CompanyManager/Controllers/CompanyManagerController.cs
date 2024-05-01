@@ -44,13 +44,13 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public IActionResult GetCompanyManagerUpdate(int id)
         {
-            var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
+            var companyManagerUpdate = new UpdateCompanyManagerVM { Id = id };
             return View(companyManagerUpdate);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVm companyManagerUpdateVM)
+        public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVM companyManagerUpdateVM)
         {
             await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             return RedirectToAction("GetCompanyManagerDetail");
@@ -63,7 +63,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEmployee(CreateEmployeeVm model)
+        public async Task<IActionResult> CreateEmployee(CreateEmployeeVM model)
         {
             await _employeeService.CreateEmployee(model);
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-    public class DetailsCompanyManagerVm
+    public class DetailsCompanyManagerVM
     {
         public string FirstName { get; set; }
         public string? SecondName { get; set; }

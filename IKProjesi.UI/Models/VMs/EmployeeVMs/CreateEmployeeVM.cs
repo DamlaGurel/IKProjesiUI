@@ -1,6 +1,6 @@
 ﻿namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-    public class CreateEmployeeVm
+    public class CreateEmployeeVM
     {
         public string FirstName { get; set; }
         public string? SecondName { get; set; }

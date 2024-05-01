@@ -6,7 +6,7 @@ using IKProjesi.UI.Models.VMs.CompanyVMs;
 
 namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-    public class CreateCompanyManagerVm
+    public class CreateCompanyManagerVM
     {
         public string FirstName { get; set; }
         public string? SecondName { get; set; }

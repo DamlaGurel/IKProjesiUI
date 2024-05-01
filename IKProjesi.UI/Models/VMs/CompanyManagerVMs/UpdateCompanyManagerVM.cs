@@ -1,6 +1,6 @@
 ﻿namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-    public class UpdateCompanyManagerVm
+    public class UpdateCompanyManagerVM
     {
         public int Id { get; set; }
         public string? ImagePath { get; set; }

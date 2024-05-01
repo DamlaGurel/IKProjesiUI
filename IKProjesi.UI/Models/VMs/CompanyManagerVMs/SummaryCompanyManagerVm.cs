@@ -2,7 +2,7 @@
 
 namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-    public class SummaryCompanyManagerVm
+    public class SummaryCompanyManagerVM
     {
         public string? FirstName { get; set; }
         public string? SecondName { get; set; }

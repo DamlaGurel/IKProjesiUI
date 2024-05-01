@@ -11,9 +11,14 @@ namespace IKProjesi.UI.Services.Employee
             _employeeApiService = employeeApiService;
         }
 
-        public async Task CreateEmployee(CreateEmployeeVm model)
+        public async Task CreateEmployee(CreateEmployeeVM model)
         {
             await _employeeApiService.CreateEmployee(model);
+        }
+
+        public async Task CreateExpense(CreateExpenseVM model)
+        {
+            await _employeeApiService.CreateExpense(model);
         }
     }
 }

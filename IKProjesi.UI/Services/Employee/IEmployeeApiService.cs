@@ -6,7 +6,10 @@ namespace IKProjesi.UI.Services.Employee
     public interface IEmployeeApiService
     {
         [Post("/api/CompanyManager/CreateEmployee")]
-        Task CreateEmployee(CreateEmployeeVm model);
+        Task CreateEmployee(CreateEmployeeVM model);
+
+        [Post("/api/Employee/CreateExpense")]
+        Task CreateExpense(CreateExpenseVM model);
     }
 
 }
