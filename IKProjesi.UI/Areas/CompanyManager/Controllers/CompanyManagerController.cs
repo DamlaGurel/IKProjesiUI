@@ -1,6 +1,7 @@
-﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;using IKProjesi.UI.Models.VMs.PersonelVMs;
+﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.CompanyManager;
-using IKProjesi.UI.Services.Personel;
+using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Areas.CompanyManager.Controllers
@@ -9,18 +10,18 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
     public class CompanyManagerController : Controller
     {
         private readonly ICompanyManagerService _companyManagerService;
-        private readonly IPersonelService _personelService;
+        private readonly IEmployeeService _employeeService;
 
-        public CompanyManagerController(ICompanyManagerService companyManagerService, IPersonelService personelService)
+        public CompanyManagerController(ICompanyManagerService companyManagerService, IEmployeeService employeeService)
         {
             _companyManagerService = companyManagerService;
-            _personelService = personelService;
+            _employeeService = employeeService;
         }
 
         
         public IActionResult Index()
         {
-            return View();
+            return View(); 
         }
 
         [HttpGet]
@@ -69,15 +70,15 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreatePersonel()
+        public IActionResult CreateEmployee()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePersonel(CreatePersonelVM model)
+        public async Task<IActionResult> CreateEmployee(CreateEmployeeVm model)
         {
-            await _personelService.CreatePersonel(model);
+            await _employeeService.CreateEmployee(model);
 
             return RedirectToAction(nameof(Index));
         }

@@ -6,7 +6,7 @@ namespace IKProjesi.UI.Models.Enums
         SuperAdmin = 1,
         SiteManager,
         CompanyManager,
-        Personel
+        Employee
     }
 }
 
