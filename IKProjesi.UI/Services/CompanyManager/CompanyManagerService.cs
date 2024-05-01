@@ -31,6 +31,11 @@ namespace IKProjesi.UI.Services.CompanyManager
 
         }
 
+        public async Task<UpdateCompanyManagerVm> GetCompanyManagerById(int id)
+        {
+            return await _companyManagerApiService.GetCompanyManagerById(id);            
+        }
+
         private async Task<string> SaveImage(IFormFile image)
         {
             var imageFile = image;

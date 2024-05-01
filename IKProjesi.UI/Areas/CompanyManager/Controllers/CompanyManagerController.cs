@@ -24,7 +24,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerSummary(int id = 22)
+        public async Task<IActionResult> GetCompanyManagerSummary(int id)
         {
             /*https://localhost:7023/CompanyManager/CompanyManager/GetCompanyManagerSummary*/
             var companyManagerSummary = await _companyManagerService.GetCompanyManagerSummary(id);
@@ -33,7 +33,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerDetail(int id = 22)
+        public async Task<IActionResult> GetCompanyManagerDetail(int id)
         {
             var companyManagerDetail = await _companyManagerService.GetCompanyManagerDetails(id);
             return View(companyManagerDetail);
@@ -41,9 +41,20 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
 
         [HttpGet]
-        public IActionResult GetCompanyManagerUpdate(int id = 22)
+        public IActionResult GetCompanyManagerUpdate(int id)
         {
-            var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
+            //var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
+
+            var companyManagerUpdate = _companyManagerService.GetCompanyManagerById(id);
+
+            string imageString = null;
+
+            //if (companyManagerUpdate != null && companyManagerUpdate.ImageBytes != null)
+            //{
+            //    imageString = Convert.ToBase64String(companyManagerUpdate.ImageBytes);
+            //}
+
+            //companyManagerUpdate.ImageString = imageString;
             return View(companyManagerUpdate);
         }
 
@@ -51,7 +62,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVm companyManagerUpdateVM)
         {
-            companyManagerUpdateVM.Id = 22;
+
+
             await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             return RedirectToAction("GetCompanyManagerDetail");
         }

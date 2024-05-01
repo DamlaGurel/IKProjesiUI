@@ -5,6 +5,7 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
     public class DetailsCompanyManagerVm
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string? SecondName { get; set; }
 

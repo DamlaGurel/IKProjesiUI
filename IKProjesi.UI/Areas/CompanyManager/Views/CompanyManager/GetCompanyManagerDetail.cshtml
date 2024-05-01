@@ -16,6 +16,10 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Id</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adı</td>
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.FirstName</td>
                             </tr>
                             <tr>
@@ -77,7 +81,7 @@
                             <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">Profil Resmi</td>
                                 <td>
-                                    <label for="LogoBytes" class="form-label fw-semibold"></label>
+                                    <label for="ImageString" class="form-label fw-semibold"></label>
                                     <img src="data:image;base64,@(Convert.ToBase64String(Model.ImageBytes))" class="img-fluid" alt="Profil Resmi">
                                 </td>
                             </tr>
@@ -86,10 +90,10 @@
 
                 </div>
                 <div class="mb-3">
-                    <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate">Düzenle</a>
+                    <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" asp-route-id="@Model.Id">Düzenle</a>
                 </div>
                 <div class="mb-3">
-                    <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="Index">Geri Dön</a>
+                    <a class="btn btn-danger rounded-3 fw-semibold" asp-area="SiteManager" asp-controller="SiteManager" asp-action="CompanyManagerList">Geri Dön</a>
                 </div>
             </div>
 

@@ -3,6 +3,7 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
 	public class ListCompanyManagerVm
 	{
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }
