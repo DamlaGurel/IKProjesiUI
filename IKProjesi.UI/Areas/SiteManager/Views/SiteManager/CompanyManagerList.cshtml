@@ -28,21 +28,22 @@
                     {
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="data:image;base64,@(Convert.ToBase64String(manager.ImageBytes))" class="img-fluid" alt="Company Logo">
+
                                 <div class="card-body">
                                     <h5 class="card-title">@manager.FirstName @manager.LastName</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">@manager.CompanyName</h6>
                                     <p class="card-text">
                                         <strong>Telefon: @manager.PhoneNumber</strong>
+                                    </p>
+
+                                    <p>
                                         <strong>E-Posta: @manager.Email</strong>
                                     </p>
-                                    
+
                                     <a asp-area="SiteManager" asp-controller="SiteManager" asp-action="GetSiteManagerDetail" class="card-link btn btn-danger rounded-3 fw-semibold">Şirket Yöneticisi Detayları</a>
                                 </div>
                             </div>
                         </div>
-                    }
-
                     }
                 </div>
             </div>
