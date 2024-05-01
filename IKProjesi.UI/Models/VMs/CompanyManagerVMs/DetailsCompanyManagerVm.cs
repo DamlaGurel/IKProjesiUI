@@ -7,7 +7,6 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
     {
         public string FirstName { get; set; }
         public string? SecondName { get; set; }
-
         public string LastName { get; set; }
         public string? SecondLastName { get; set; }
         public string Password { get; set; }
