@@ -1,0 +1,73 @@
+﻿@model IKProjesi.UI.Models.VMs.EmployeeVMs.SummaryEmployeeVm
+
+@{
+    ViewData["Title"] = "GetEmployeeSummary";
+    Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Personel Özeti</h5>
+                <div class="table-responsive">
+                    <table class="table text-nowrap mb-0 align-middle">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.FirstName</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">İkinci Adı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.SecondName</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Soyadı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.LastName</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">İkinci Soyadı</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.SecondLastName</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Meslek</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.JobName</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Departman</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.DepartmentName</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adres</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Address</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Email</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Email</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Telefon Numarası</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.PhoneNumber</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Profil Resmi</td>
+                                <td>
+                                    <label for="LogoBytes" class="form-label fw-semibold"></label>
+                                    <img src="data:image;base64,@(Convert.ToBase64String(Model.ImageBytes))" class="img-fluid" alt="Profil Resmi">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate">Düzenle</a>
+                    </div>
+                    <div>
+                        <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="Index">Geri Dön</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

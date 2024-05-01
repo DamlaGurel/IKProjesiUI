@@ -1,4 +1,6 @@
-﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
+﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Services.CompanyManager;
 
 namespace IKProjesi.UI.Services.Employee
 {
@@ -14,6 +16,16 @@ namespace IKProjesi.UI.Services.Employee
         public async Task CreateEmployee(CreateEmployeeVm model)
         {
             await _employeeApiService.CreateEmployee(model);
+        }
+
+        public async Task<SummaryEmployeeVm> GetEmployeeSummary(int id)
+        {
+            return await _employeeApiService.GetEmployeeSummary(id);
+        }
+
+        public async Task<EmployeeDetailsVm> GetEmployeeDetails(int id)
+        {
+            return await _employeeApiService.GetEmployeeDetails(id);
         }
     }
 }
