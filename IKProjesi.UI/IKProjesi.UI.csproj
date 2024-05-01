@@ -28,7 +28,6 @@
     <Folder Include="Areas\SiteManager\Views\Shared\" />
     <Folder Include="Areas\SiteManager\Views\Company\" />
     <Folder Include="Areas\CompanyManager\Views\Shared\" />
-    <Folder Include="Areas\CompanyManager\Views\CompanyManager\" />
   </ItemGroup>
 
   <ItemGroup>

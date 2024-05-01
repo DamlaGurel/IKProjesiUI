@@ -1,12 +1,11 @@
 
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.User;
-using NuGet.Common;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 using Refit;
 using IKProjesi.UI.Services.SuperAdmin;
-using IKProjesi.UI.Services.Personel;
+using IKProjesi.UI.Services.Employee;
 
 namespace IKProjesi.UI
 {
@@ -36,18 +35,16 @@ namespace IKProjesi.UI
             builder.Services.AddRefitClient<ISuperAdminApiService>()
                             .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
 
-            builder.Services.AddRefitClient<IPersonelApiService>()
+            builder.Services.AddRefitClient<IEmployeeApiService>()
                             .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
 
             builder.Services.AddScoped<ICompanyService, CompanyService>()
                             .AddScoped<ISiteManagerService, SiteManagerService>()
                             .AddScoped<ICompanyManagerService, CompanyManagerService>()
-                            ;
-
 
             builder.Services.AddTransient<IUserService, UserService>()
                             .AddTransient<ISuperAdminService, SuperAdminService>();
-            builder.Services.AddTransient<IPersonelService, PersonelService>();
+            builder.Services.AddTransient<IEmployeeService, EmployeeService>();
 
             builder.Services.AddHttpContextAccessor();
 
