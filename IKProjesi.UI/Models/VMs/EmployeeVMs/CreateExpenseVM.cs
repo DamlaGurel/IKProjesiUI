@@ -10,7 +10,7 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
         public double? TotalExpense { get; set; }
         public MoneyType? MoneyType { get; set; }
         public ApprovalType? ApprovalType { get; set; }
-        public DateTime? ResponseTime { get; set; }
+        public DateTime? ResponseDate { get; set; }
         public DateTime? RequestDate { get; set; }
         //public string dosyaeklemepropu { get; set; }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,9 +26,16 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateExpense()
+        public IActionResult CreateExpense()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateExpense(CreateExpenseVM createExpense)
+        {
+            await _employeeService.CreateExpense(createExpense);
+            return RedirectToAction(nameof(CreateExpense));
         }
 
     }
