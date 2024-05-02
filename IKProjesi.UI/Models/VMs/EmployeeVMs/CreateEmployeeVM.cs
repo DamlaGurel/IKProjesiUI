@@ -1,8 +1,6 @@
-﻿using IKProjesi.UI.Models.Enums;
-
-namespace IKProjesi.UI.Models.VMs.PersonelVMs
+﻿namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-    public class CreatePersonelVM
+    public class CreateEmployeeVM
     {
         public string FirstName { get; set; }
         public string? SecondName { get; set; }

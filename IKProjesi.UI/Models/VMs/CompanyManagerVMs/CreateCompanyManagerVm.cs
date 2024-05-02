@@ -6,13 +6,15 @@ using IKProjesi.UI.Models.VMs.CompanyVMs;
 
 namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-    public class CreateCompanyManagerVm
+    public class CreateCompanyManagerVM
     {
 
-        [Required(ErrorMessage ="Lütfen adınızı giriniz.")]
+
+        
+
         public string FirstName { get; set; }
         public string? SecondName { get; set; }
-        [Required(ErrorMessage = "Lütfen soyadınızı giriniz.")]
+       
         public string? LastName { get; set; }
         public string? SecondLastName { get; set; }
         public DateTime? BirthDate { get; set; }

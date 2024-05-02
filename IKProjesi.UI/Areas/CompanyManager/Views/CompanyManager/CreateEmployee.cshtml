@@ -1,18 +1,18 @@
-﻿@model IKProjesi.UI.Models.VMs.PersonelVMs.CreatePersonelVM
+﻿@model CreateEmployeeVM
 
 @{
-    ViewData["Title"] = "CreatePersonel";
+    ViewData["Title"] = "CreateEmployee";
     Layout = "~/Areas/CompanyManager/Views/Shared/_CompanyManagerLayout.cshtml";
 
 }
 
-<h1>CreatePersonel</h1>
+<h1>CreateEmployee</h1>
 
-<h4>CreatePersonelVM</h4>
+<h4>CreateEmployeeVM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreatePersonel" method="post">
+        <form asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>

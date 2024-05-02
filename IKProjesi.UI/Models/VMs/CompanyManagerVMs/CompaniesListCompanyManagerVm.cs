@@ -3,10 +3,10 @@ using IKProjesi.UI.Models.VMs.CompanyVMs;
 
 namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-	public class CompaniesListCompanyManagerVm
+	public class CompaniesListCompanyManagerVM
 	{
         public List<CompanyListVM?> Companies { get; set; }
-        public List<ListCompanyManagerVm?> ListCompanyManagerVms { get; set; }
+        public List<ListCompanyManagerVM?> ListCompanyManagerVms { get; set; }
 
 
 
