@@ -29,6 +29,7 @@
     <Folder Include="Areas\SiteManager\Views\Company\" />
     <Folder Include="Areas\CompanyManager\Views\Shared\" />
     <Folder Include="Areas\CompanyManager\Views\CompanyManager\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,5 +43,6 @@
     <None Remove="Areas\SiteManager\Views\Company\" />
     <None Remove="Areas\CompanyManager\Views\Shared\" />
     <None Remove="Areas\CompanyManager\Views\CompanyManager\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
 </Project>
