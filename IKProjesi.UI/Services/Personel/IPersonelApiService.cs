@@ -8,5 +8,8 @@ namespace IKProjesi.UI.Services.Personel
     {
         [Post("/api/CompanyManager/CreatePersonel")]
         Task CreatePersonel(CreatePersonelVM model);
+
+        [Post("/api/CompanyManager/ApprovalCreateDaysOff")]
+        Task CreateTakeOffDay(CreateDaysOffVm model);
     }
 }

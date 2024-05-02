@@ -15,5 +15,11 @@ namespace IKProjesi.UI.Services.Personel
         {
             await _personelApiService.CreatePersonel(model);
         }
+
+        public async Task CreateTakeOffDay(CreateDaysOffVm model)
+        {
+            await _personelApiService.CreateTakeOffDay(model);
+
+        }
     }
 }
