@@ -1,0 +1,46 @@
+﻿@model CreateExpenseVM
+
+@{
+    ViewData["Title"] = "CreateExpense";
+    Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
+}
+
+<h1>CreateExpense</h1>
+
+<h4>CreateExpenseVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateExpense">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <input asp-for="EmployeeId" class="form-control" />
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="ExpenseType" class="control-label"></label>
+                <input asp-for="ExpenseType" class="form-control" />
+                <span asp-validation-for="ExpenseType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalExpense" class="control-label"></label>
+                <input asp-for="TotalExpense" class="form-control" />
+                <span asp-validation-for="TotalExpense" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoneyType" class="control-label"></label>
+                <input asp-for="MoneyType" class="form-control" />
+                <span asp-validation-for="MoneyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -9,23 +9,20 @@ namespace IKProjesi.UI.Services.CompanyManager
 	public interface ICompanyManagerApiService
 	{
 
-        [Post("/api/SiteManager/AddCompanyManager")]
-        Task CreateCompanyManager( CreateCompanyManagerVm model);
+        [Post("/api/SiteManager/CreateCompanyManager")]
+        Task CreateCompanyManager( CreateCompanyManagerVM model);
 
         [Get("/api/SiteManager/GetAllCompanyManagers")]
-        Task<List<ListCompanyManagerVm>> GetCompanyManagers();
-
+        Task<List<ListCompanyManagerVM>> GetCompanyManagers();
 
         [Get("/api/CompanyManager/GetCompanyManagerSummary/{id}")]
-        Task<SummaryCompanyManagerVm> GetCompanyManagerSummary(int id);
-
+        Task<SummaryCompanyManagerVM> GetCompanyManagerSummary(int id);
 
         [Get("/api/CompanyManager/GetCompanyManagerDetails/{id}")]
-        Task<DetailsCompanyManagerVm> GetCompanyManagerDetails(int id);
-
+        Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id);
 
         [Put("/api/CompanyManager/GetCompanyManagerUpdate")]
-        Task GetCompanyManagerUpdate(UpdateCompanyManagerVm updateCompanyManager);
+        Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
 
     }
 }

@@ -2,10 +2,6 @@
 using IKProjesi.UI.Models.VMs.UserVM;
 using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol.Plugins;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Cryptography.X509Certificates;
 
 namespace IKProjesi.UI.Controllers
 {

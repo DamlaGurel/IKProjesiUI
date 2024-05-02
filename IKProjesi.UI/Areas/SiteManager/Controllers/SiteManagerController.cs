@@ -39,13 +39,13 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CompanyManagerList(int pg=1)
+        public async Task<IActionResult> CompanyManagerList(int pg = 1)
         {
             var companyManagers = await _companyManagerService.GetCompanyManagers();
 
             //Pagination:
             const int pageSize = 12;
-            if (pg<1)
+            if (pg < 1)
             {
                 pg = 1;
             }
@@ -56,15 +56,15 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
             int recSkip = (pg - 1) * pageSize;
 
-            var data=companyManagers.Skip(recSkip).Take(pager.PageSize).ToList();
+            var data = companyManagers.Skip(recSkip).Take(pager.PageSize).ToList();
 
             this.ViewBag.Pager = pager;
 
-            return View(data);            
+            return View(data);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerSummary(int id = 5)
+        public async Task<IActionResult> GetSiteManagerSummary(int id)
         {
             var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
             return View(siteManagerSummary);
@@ -72,7 +72,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerDetail(int id = 5)
+        public async Task<IActionResult> GetSiteManagerDetail(int id)
         {
             var siteManagerDetail = await _siteManagerService.SiteManagerDetails(id);
             return View(siteManagerDetail);
@@ -80,7 +80,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
 
         [HttpGet]
-        public IActionResult GetSiteManagerUpdate(int id = 5)
+        public IActionResult GetSiteManagerUpdate(int id)
         {
             var siteManagerUpdate = new SiteManagerUpdateVM { Id = id };
             return View(siteManagerUpdate);
@@ -90,7 +90,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
-            siteManagerUpdateVM.Id = 5;
+            //siteManagerUpdateVM.Id = 5;
             await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
             return RedirectToAction("GetSiteManagerDetail");
         }
@@ -98,25 +98,25 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> AddCompanyManager()
+        public async Task<IActionResult> CreateCompanyManager()
         {
-            CompanyManagerCompanyVm model = new CompanyManagerCompanyVm
+            CompanyManagerCompanyVM model = new CompanyManagerCompanyVM
             {
-                     Companies= await _companyService.GetCompanies(),
+                Companies = await _companyService.GetCompanies(),
+            };
 
-                };
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompanyManager(CompanyManagerCompanyVm model,int companyId)
+        public async Task<IActionResult> CreateCompanyManager(CompanyManagerCompanyVM model, int companyId)
         {
 
             //if (ModelState.IsValid)
             //{
-                model.CreateCompanyManagerVm.CompanyId = companyId;
+            model.CreateCompanyManagerVM.CompanyId = companyId;
 
-            var vm=model.CreateCompanyManagerVm;
+            var vm = model.CreateCompanyManagerVM;
 
             await _companyManagerService.CreateCompanyManager(vm);
 
@@ -156,7 +156,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> CreateCompany()
+        public IActionResult CreateCompany()
         {
             return View();
         }
@@ -164,11 +164,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompany(CreateCompanyVM model)
         {
-            
-                await _companyService.CreateCompany(model);
-                return RedirectToAction(nameof(CompanyIndex));
-            
-            
+            await _companyService.CreateCompany(model);
+            return RedirectToAction(nameof(CompanyIndex));
         }
 
         [HttpGet]

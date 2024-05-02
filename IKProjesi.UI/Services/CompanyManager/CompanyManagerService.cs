@@ -20,21 +20,17 @@ namespace IKProjesi.UI.Services.CompanyManager
             _companyManagerApiService = companyManagerApiService;
         }
 
-        public async Task CreateCompanyManager(CreateCompanyManagerVm model)
+        public async Task CreateCompanyManager(CreateCompanyManagerVM model)
         {
             if (model.Image is not null)
-            {
                 model.ImageString = await SaveImage(model.Image);
-            }
+
             await _companyManagerApiService.CreateCompanyManager(model);
-
-
         }
 
         private async Task<string> SaveImage(IFormFile image)
         {
             var imageFile = image;
-
             byte[] imageBytes = null;
 
             using (var memoryStream = new MemoryStream())
@@ -42,39 +38,33 @@ namespace IKProjesi.UI.Services.CompanyManager
                 await imageFile.CopyToAsync(memoryStream);
 
                 if (memoryStream.Length < 2097152)
-                {
                     imageBytes = memoryStream.ToArray();
-                }
                 else
-                {
                     imageBytes = null;
-                }
             }
 
             string imageString = Convert.ToBase64String(imageBytes);
             return imageString;
         }
 
-        public async Task<List<ListCompanyManagerVm>> GetCompanyManagers()
+        public async Task<List<ListCompanyManagerVM>> GetCompanyManagers()
         {
             return await _companyManagerApiService.GetCompanyManagers();
-
         }
 
-        public async Task<SummaryCompanyManagerVm> GetCompanyManagerSummary(int id)
+        public async Task<SummaryCompanyManagerVM> GetCompanyManagerSummary(int id)
         {
             return await _companyManagerApiService.GetCompanyManagerSummary(id);
         }
 
-        public async Task GetCompanyManagerUpdate(UpdateCompanyManagerVm updateCompanyManager)
+        public async Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager)
         {
             await _companyManagerApiService.GetCompanyManagerUpdate(updateCompanyManager);
         }
 
-        public async Task<DetailsCompanyManagerVm> GetCompanyManagerDetails(int id)
+        public async Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id)
         {
             return await _companyManagerApiService.GetCompanyManagerDetails(id);
-
         }
 
     }

@@ -1,6 +1,7 @@
-﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;using IKProjesi.UI.Models.VMs.PersonelVMs;
+﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.CompanyManager;
-using IKProjesi.UI.Services.Personel;
+using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Areas.CompanyManager.Controllers
@@ -9,22 +10,22 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
     public class CompanyManagerController : Controller
     {
         private readonly ICompanyManagerService _companyManagerService;
-        private readonly IPersonelService _personelService;
+        private readonly IEmployeeService _employeeService;
 
-        public CompanyManagerController(ICompanyManagerService companyManagerService, IPersonelService personelService)
+        public CompanyManagerController(ICompanyManagerService companyManagerService, IEmployeeService employeeService)
         {
             _companyManagerService = companyManagerService;
-            _personelService = personelService;
+            _employeeService = employeeService;
         }
 
         
         public IActionResult Index()
         {
-            return View();
+            return View(); 
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerSummary(int id = 22)
+        public async Task<IActionResult> GetCompanyManagerSummary(int id)
         {
             /*https://localhost:7023/CompanyManager/CompanyManager/GetCompanyManagerSummary*/
             var companyManagerSummary = await _companyManagerService.GetCompanyManagerSummary(id);
@@ -33,7 +34,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerDetail(int id = 22)
+        public async Task<IActionResult> GetCompanyManagerDetail(int id)
         {
             var companyManagerDetail = await _companyManagerService.GetCompanyManagerDetails(id);
             return View(companyManagerDetail);
@@ -41,31 +42,30 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
 
         [HttpGet]
-        public IActionResult GetCompanyManagerUpdate(int id = 22)
+        public IActionResult GetCompanyManagerUpdate(int id)
         {
-            var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
+            var companyManagerUpdate = new UpdateCompanyManagerVM { Id = id };
             return View(companyManagerUpdate);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVm companyManagerUpdateVM)
+        public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVM companyManagerUpdateVM)
         {
-            companyManagerUpdateVM.Id = 22;
             await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             return RedirectToAction("GetCompanyManagerDetail");
         }
 
         [HttpGet]
-        public IActionResult CreatePersonel()
+        public IActionResult CreateEmployee()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePersonel(CreatePersonelVM model)
+        public async Task<IActionResult> CreateEmployee(CreateEmployeeVM model)
         {
-            await _personelService.CreatePersonel(model);
+            await _employeeService.CreateEmployee(model);
 
             return RedirectToAction(nameof(Index));
         }
