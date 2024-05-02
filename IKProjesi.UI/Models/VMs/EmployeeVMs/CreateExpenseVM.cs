@@ -12,6 +12,6 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
         public ApprovalType? ApprovalType { get; set; }
         public DateTime? ResponseDate { get; set; }
         public DateTime? RequestDate { get; set; }
-        //public string dosyaeklemepropu { get; set; }
+        public IFormFile File { get; set; }
     }
 }
