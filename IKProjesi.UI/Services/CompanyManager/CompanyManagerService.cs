@@ -28,6 +28,11 @@ namespace IKProjesi.UI.Services.CompanyManager
             await _companyManagerApiService.CreateCompanyManager(model);
         }
 
+        public async Task<UpdateCompanyManagerVm> GetCompanyManagerById(int id)
+        {
+            return await _companyManagerApiService.GetCompanyManagerById(id);            
+        }
+
         private async Task<string> SaveImage(IFormFile image)
         {
             var imageFile = image;

@@ -1,0 +1,117 @@
+
+@{
+    ViewData["Title"] = "CreateTakeOffDay";
+    Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
+
+}
+
+@model CreateDaysOffVm
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-center text-primary">İzin Talebi Oluştur</h5>
+                <div class="row">
+
+                    <form asp-area="Employee" asp-controller="Employee" asp-action="CreateTakeOffDay" enctype="multipart/form-data" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="DayOffType" class="control-label">İzin Türü</label>
+                            <select asp-for="DayOffType" class="form-select" id="DayOffType">
+                                <option value="">İzin Türünü Seçiniz</option>
+                                @foreach (var type in Enum.GetValues(typeof(DayOffType)))
+                                {
+
+                                    <option value="@type">@((type as Enum).GetDisplayName())</option>
+                                }
+                            </select>
+                            <span asp-validation-for="DayOffType" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="DayOffStartTime" class="control-label">İzin Başlangıç Tarihi</label>
+                            <input asp-for="DayOffStartTime" type="date" class="form-control" id="DayOffStartTime" />
+                            <span asp-validation-for="DayOffStartTime" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="DayOffEndTime" class="control-label">İzin Bitiş Tarihi</label>
+                            <input asp-for="DayOffEndTime" type="date" class="form-control" id="DayOffEndTime" />
+                            <span asp-validation-for="DayOffEndTime" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="Description" class="control-label">Açıklama</label>
+                            <input asp-for="Description" type="text" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <input type="submit" onclick="calculateDayOffNumber" class="btn btn-danger rounded-3 fw-semibold" value="İzin Hesapla" />
+                        </div>
+
+                        <div class="card mb-0" id="additionalContent" style="display:none;">
+                            <div class="card-body">
+
+                                <fieldset disabled>
+                                    <legend>Disabled fieldset example</legend>
+                                    <div class="mb-3">
+                                        <label for="dayOffNumber" class="form-label">Talep Edilen İzin Gün Sayısı </label>
+                                        <input type="number" id="dayOffNumber" class="form-control" placeholder="Disabled input">
+                                        <label for="ChosenDayOffType" class="form-label">Talep Edilen İzin Gün Sayısı </label>
+                                        <input type="text" id="ChosenDayOffType" class="form-control" placeholder="Disabled input" value="">
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 form-group">
+                            <a asp-action="CompanyManagerList" class="btn btn-danger rounded-3 fw-semibold ">Listeye dön</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <script>function showAdditionalContent() {
+                // Burada hesaplama yapılabilir, örneğin bir değerin kontrolü
+                var result = 5 + 3; // Örnek hesaplama
+                DayOffEndTime
+
+                // Sonuca göre ek kısmın görünürlüğünü kontrol et
+                if (result > 5) {
+                    document.getElementById("additionalContent").style.display = "block";
+                } else {
+                    document.getElementById("additionalContent").style.display = "none";
+                }
+            }</script>
+
+        <!-- Hesaplama sonrası görünmesini istediğiniz kısım -->
+        <div id="additionalContent" style="display:none;">
+            Bu kısım, hesaplama sonrası görünecek içerik.
+        </div>
+        <script>function calculateDayOffNumber() {
+                var startDate = new Date(document.getElementById("DayOffStartTime").value);
+                var endDate = new Date(document.getElementById("DayOffEndTime").value);
+
+                var differenceInDay = endDate.getDay() - startDate.getDay();
+
+
+
+                return document.getElementById("dayOffNumber").innerText = differenceInDay + " gün";
+            }</script>
+
+        <!-- Display the result here -->
+        <div class="mb-3 form-group">
+            <label class="control-label">İzin Süresi</label>
+            <div id="dayOffNumber"></div>
+        </div>

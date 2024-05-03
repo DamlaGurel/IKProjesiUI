@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.Employee;
+using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
     [Area("Employee")]
-
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
@@ -20,6 +20,13 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
 
         [HttpGet]
+        private readonly IEmployeeService _employeeService;
+
+        public EmployeeController(IEmployeeService employeeService)
+        {
+            _employeeService = employeeService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -47,5 +54,32 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             await _employeeService.CreateAdvancePayment(createAdvancePayment);
             return RedirectToAction(nameof(CreateAdvancePayment));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEmployeeSummary(int id)
+        {
+            var employeeSummary = await _employeeService.GetEmployeeSummary(id);
+
+            return View(employeeSummary);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEmployeeDetails(int id)
+        {
+            var employeeDetails = await _employeeService.GetEmployeeDetails(id);
+            return View(employeeDetails);
+        }
+
+        
+        public IActionResult CreateTakeOffDay()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public IActionResult CreateTakeOffDay(int id)
+        //{
+        //    return View();
+        //}
     }
 }

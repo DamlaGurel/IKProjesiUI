@@ -8,12 +8,14 @@ namespace IKProjesi.UI.Services.CompanyManager
 {
     public interface ICompanyManagerService
     {
-        Task CreateCompanyManager( CreateCompanyManagerVM model);
-        Task<List<ListCompanyManagerVM>> GetCompanyManagers();
-        Task<SummaryCompanyManagerVM> GetCompanyManagerSummary(int id);
-        Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
-        Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id);
 
+        Task CreateCompanyManager( CreateCompanyManagerVm model);
+        
+        Task<List<ListCompanyManagerVm>> GetCompanyManagers();
+        Task<SummaryCompanyManagerVm> GetCompanyManagerSummary(int id);
+        Task GetCompanyManagerUpdate(UpdateCompanyManagerVm updateCompanyManager);
+        Task<DetailsCompanyManagerVm> GetCompanyManagerDetails(int id);
+        Task<UpdateCompanyManagerVm> GetCompanyManagerById(int id);
     }
 }
 

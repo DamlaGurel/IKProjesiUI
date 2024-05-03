@@ -17,9 +17,11 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                         <div class="mb-3 form-group">
-                            <label asp-for="@Model.CreateCompanyManagerVM.FirstName" class="control-label">Adı</label>
-                            <input asp-for="@Model.CreateCompanyManagerVM.FirstName" class="form-control" />
-                            <span asp-validation-for="@Model.CreateCompanyManagerVM.FirstName" class="text-danger"></span>
+                            <label asp-for="@Model.CreateCompanyManagerVm.FirstName" class="control-label">Adı</label>
+                            <input asp-for="@Model.CreateCompanyManagerVm.FirstName" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVm.FirstName" class="text-danger"></span>
+                            
+
                         </div>
                         <div class="mb-3 form-group">
                             <label asp-for="@Model.CreateCompanyManagerVM.SecondName" class="control-label">İkinci Adı</label>
@@ -66,8 +68,8 @@
                             <input asp-for="@Model.CreateCompanyManagerVM.PhoneNumber" class="form-control" />
                             <span asp-validation-for="@Model.CreateCompanyManagerVM.PhoneNumber" class="text-danger"></span>
                         </div>
-                        <div class="mb-3 orm-group">
-                            <label asp-for="@Model.CreateCompanyManagerVM.CompanyId" class="control-label">Şirketler</label>
+                        <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVm.CompanyId" class="control-label">Şirketler</label>
                             <select id="CompanyId" name="CompanyId" class="form-select">
                                 <option value="Seçiniz"></option>
                                 @foreach (var company in Model.Companies)

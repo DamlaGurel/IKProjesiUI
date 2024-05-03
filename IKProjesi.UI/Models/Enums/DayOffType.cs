@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace IKProjesi.UI.Models.Enums
 {
-    public enum DayOffType
-    {
+	public enum DayOffType
+	{
         [Display(Name = "İdari İzin")]
         administrativeLeave = 1,
         [Display(Name = "Hastalık İzni&Rapor")]
@@ -11,4 +14,6 @@ namespace IKProjesi.UI.Models.Enums
         [Display(Name = "Yıllık İzin")]
         annualLeave
     }
+    
 }
+
