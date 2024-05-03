@@ -5,42 +5,62 @@
     Layout = "~/Areas/SiteManager/Views/Shared/_SiteManagerLayout.cshtml";
 }
 
-<h1>CreateExpense</h1>
 
-<h4>CreateExpenseVM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateExpense">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="EmployeeId" class="control-label"></label>
-                <input asp-for="EmployeeId" class="form-control" />
-                <span asp-validation-for="EmployeeId" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="ExpenseType" class="control-label"></label>
-                <input asp-for="ExpenseType" class="form-control" />
-                <span asp-validation-for="ExpenseType" class="text-danger"></span>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-center text-primary">Şirket Yöneticisi Oluştur</h5>
+                <div class="row">
+                    <form asp-area="Employee" asp-controller="Employee" asp-action="CreateExpense" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="ExpenseType" class="control-label">Harcama Türü</label>
+                            <select id="ExpenseType" name="ExpenseType" class="form-select">
+                                <option value="">Seçiniz</option>
+                                @foreach (var expense in ViewBag.ExpenseTypes)
+                                {
+                                    <option value="@expense">@EnumExtensions.GetDisplayName(expense)</option>
+                                }
+                            </select>
+                            <span asp-validation-for="ExpenseType" class="text-danger"></span>
+                        </div>
+
+                        
+                            <div class="mb-3 form-group">
+                                <label asp-for="MoneyType" class="control-label">Para Birimi</label>
+                                <select id="MoneyType" name="MoneyType" class="form-select">
+                                    <option value="">Seçiniz</option>
+                                    @foreach (var money in ViewBag.MoneyType)
+                                    {
+                                        <option value="@money">@EnumExtensions.GetDisplayName(money)</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MoneyType" class="text-danger"></span>
+                            </div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="TotalExpense" class="control-label">Harcama Ücreti</label>
+                            <input asp-for="TotalExpense" class="form-control" />
+                            <span asp-validation-for="TotalExpense" class="text-danger"></span>
+                        </div>
+
+                        <!--<div class="mb-3 form-group">-->
+                        @*<label asp-for="File" class="control-label"></label>*@
+                        <!--<div>
+                        <input asp-for="File" type="file" class="form-control" id="inputGroupFile02" accept=".pdf,.png,.jpeg">-->
+                        @*<label class="custom-file-label" for="customFile">Dosya Seçiniz</label>*@
+                        <!--</div>
+                            <span asp-validation-for="File" class="text-danger"></span>
+                        </div>-->
+                        <div class="mb-3 form-group">
+                            <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="TotalExpense" class="control-label"></label>
-                <input asp-for="TotalExpense" class="form-control" />
-                <span asp-validation-for="TotalExpense" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MoneyType" class="control-label"></label>
-                <input asp-for="MoneyType" class="form-control" />
-                <span asp-validation-for="MoneyType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
-

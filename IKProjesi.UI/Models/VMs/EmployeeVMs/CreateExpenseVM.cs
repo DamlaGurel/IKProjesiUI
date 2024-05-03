@@ -5,13 +5,13 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
     public class CreateExpenseVM
     {
-        public int? EmployeeId { get; set; }
         public ExpenseType? ExpenseType { get; set; }
+        public int ExpenseTypeId { get; set; }
         public double? TotalExpense { get; set; }
         public MoneyType? MoneyType { get; set; }
-        public ApprovalType? ApprovalType { get; set; }
-        public DateTime? ResponseDate { get; set; }
-        public DateTime? RequestDate { get; set; }
-        //public string dosyaeklemepropu { get; set; }
+        public int MoneyTypeId { get; set; }
+        //public DateTime? ResponseDate { get; set; }
+        //public byte[] FileByteArray { get; set; }
+        //public IFormFile? File { get; set; }
     }
 }
