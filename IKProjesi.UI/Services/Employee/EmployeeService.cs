@@ -37,7 +37,18 @@ namespace IKProjesi.UI.Services.Employee
 
         public async Task CreateExpense(CreateExpenseVM model)
         {
-            EnumExtensions.GetEnumValue(model);
+            if (model.File is not null)
+            {
+                using var memorystream = new MemoryStream();
+                await model.File.CopyToAsync(memorystream);
+
+                if (memorystream.Length < 2097152)
+                    model.FileByteArray = memorystream.ToArray();
+            }
+
+            model.ExpenseTypeId = (int)model.ExpenseType;
+            model.MoneyTypeId = (int)model.MoneyType;
+
             await _employeeApiService.CreateExpense(model);
         }
     }

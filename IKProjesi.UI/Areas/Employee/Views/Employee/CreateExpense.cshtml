@@ -27,18 +27,18 @@
                             <span asp-validation-for="ExpenseType" class="text-danger"></span>
                         </div>
 
-                        
-                            <div class="mb-3 form-group">
-                                <label asp-for="MoneyType" class="control-label">Para Birimi</label>
-                                <select id="MoneyType" name="MoneyType" class="form-select">
-                                    <option value="">Seçiniz</option>
-                                    @foreach (var money in ViewBag.MoneyType)
-                                    {
-                                        <option value="@money">@EnumExtensions.GetDisplayName(money)</option>
-                                    }
-                                </select>
-                                <span asp-validation-for="MoneyType" class="text-danger"></span>
-                            </div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="MoneyType" class="control-label">Para Birimi</label>
+                            <select id="MoneyType" name="MoneyType" class="form-select">
+                                <option value="">Seçiniz</option>
+                                @foreach (var money in ViewBag.MoneyType)
+                                {
+                                    <option value="@money">@EnumExtensions.GetDisplayName(money)</option>
+                                }
+                            </select>
+                            <span asp-validation-for="MoneyType" class="text-danger"></span>
+                        </div>
 
                         <div class="mb-3 form-group">
                             <label asp-for="TotalExpense" class="control-label">Harcama Ücreti</label>
@@ -46,14 +46,14 @@
                             <span asp-validation-for="TotalExpense" class="text-danger"></span>
                         </div>
 
-                        <!--<div class="mb-3 form-group">-->
-                        @*<label asp-for="File" class="control-label"></label>*@
-                        <!--<div>
-                        <input asp-for="File" type="file" class="form-control" id="inputGroupFile02" accept=".pdf,.png,.jpeg">-->
-                        @*<label class="custom-file-label" for="customFile">Dosya Seçiniz</label>*@
-                        <!--</div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="File" class="control-label"></label>
+                            <div>
+                                <input asp-for="File" type="file" class="form-control" id="inputGroupFile02" accept=".pdf,.png,.jpeg">
+                                <label class="custom-file-label" for="customFile">Dosya Seçiniz</label>
+                            </div>
                             <span asp-validation-for="File" class="text-danger"></span>
-                        </div>-->
+                        </div>
                         <div class="mb-3 form-group">
                             <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />
                         </div>
