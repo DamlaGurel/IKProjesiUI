@@ -128,6 +128,17 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
             //else
             //{
+            //    if (string.IsNullOrEmpty(model.CreateCompanyManagerVm.FirstName))
+            //{
+            //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.FirstName), "Lütfen adınızı giriniz.");
+            //}
+
+         
+            //if (string.IsNullOrEmpty(model.CreateCompanyManagerVm.LastName))
+            //{
+            //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.LastName), "Lütfen soyadınızı giriniz.");
+            //}
+
             //    return View();
             //}
         }

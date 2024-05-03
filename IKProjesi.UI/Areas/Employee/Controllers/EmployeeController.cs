@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
     [Area("Employee")]
-
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
@@ -37,5 +36,17 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             var employeeDetails = await _employeeService.GetEmployeeDetails(id);
             return View(employeeDetails);
         }
+
+        
+        public IActionResult CreateTakeOffDay()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public IActionResult CreateTakeOffDay(int id)
+        //{
+        //    return View();
+        //}
     }
 }
