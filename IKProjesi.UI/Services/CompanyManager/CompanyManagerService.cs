@@ -28,7 +28,7 @@ namespace IKProjesi.UI.Services.CompanyManager
             await _companyManagerApiService.CreateCompanyManager(model);
         }
 
-        public async Task<UpdateCompanyManagerVm> GetCompanyManagerById(int id)
+        public async Task<CreateCompanyManagerVM> GetCompanyManagerById(int id)
         {
             return await _companyManagerApiService.GetCompanyManagerById(id);            
         }
@@ -71,6 +71,7 @@ namespace IKProjesi.UI.Services.CompanyManager
         {
             return await _companyManagerApiService.GetCompanyManagerDetails(id);
         }
+
 
     }
 }
