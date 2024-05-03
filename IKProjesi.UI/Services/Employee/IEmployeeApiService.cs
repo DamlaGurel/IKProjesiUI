@@ -11,5 +11,4 @@ namespace IKProjesi.UI.Services.Employee
         [Post("/api/Employee/CreateExpense")]
         Task CreateExpense(CreateExpenseVM model);
     }
-
 }

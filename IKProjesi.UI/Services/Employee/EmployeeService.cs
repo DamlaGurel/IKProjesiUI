@@ -1,8 +1,10 @@
-﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
+﻿using IKProjesi.UI.Models.Enums;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using System.IO.Compression;
 
 namespace IKProjesi.UI.Services.Employee
 {
-    public class EmployeeService:IEmployeeService
+    public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeApiService _employeeApiService;
 
@@ -18,6 +20,7 @@ namespace IKProjesi.UI.Services.Employee
 
         public async Task CreateExpense(CreateExpenseVM model)
         {
+            EnumExtensions.GetEnumValue(model);
             await _employeeApiService.CreateExpense(model);
         }
     }
