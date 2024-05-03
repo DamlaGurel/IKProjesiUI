@@ -7,11 +7,11 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
     {
         public ExpenseType? ExpenseType { get; set; }
         public int ExpenseTypeId { get; set; }
-        public double? TotalExpense { get; set; }
         public MoneyType? MoneyType { get; set; }
         public int MoneyTypeId { get; set; }
-        //public DateTime? ResponseDate { get; set; }
-        //public byte[] FileByteArray { get; set; }
-        //public IFormFile? File { get; set; }
+        public double? TotalExpense { get; set; }
+        public IFormFile? File { get; set; }
+        public byte[]? FileByteArray { get; set; }
+
     }
 }

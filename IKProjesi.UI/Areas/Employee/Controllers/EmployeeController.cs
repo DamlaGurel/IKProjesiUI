@@ -38,19 +38,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateExpense(CreateExpenseVM createExpense)
         {
-            //if (createExpense.File.ContentType == "application/pdf" || createExpense.File.ContentType == "image/png" || createExpense.File.ContentType == "image/jpeg")
-            //{
             await _employeeService.CreateExpense(createExpense);
-
-            //    // File iþleme iþlemi tamamlandýktan sonra API tarzýnda bir çýktý oluþturun
-            //    return Ok(new { basarili = true, mesaj = "File baþarýyla yüklendi!" });
-            //}
-            //else
-            //{
-            //    // Yalnýzca PDF, PNG veya JPEG dosyalarý kabul edilir.
-            //    return BadRequest(new { basarili = false, mesaj = "Yalnýzca PDF, PNG veya JPEG dosyalarý kabul edilir." });
-            //}
-
             return RedirectToAction(nameof(CreateExpense));
         }
 
