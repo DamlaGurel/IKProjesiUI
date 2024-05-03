@@ -10,6 +10,8 @@ namespace IKProjesi.UI.Services.Employee
 
         [Post("/api/Employee/CreateExpense")]
         Task CreateExpense(CreateExpenseVM model);
-    }
 
+        [Post("/api/Employee/CreateAdvancePayment")]
+        Task CreateAdvancePayment(CreateAdvancePaymentVM model);
+    }
 }

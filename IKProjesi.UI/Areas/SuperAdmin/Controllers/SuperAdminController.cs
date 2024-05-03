@@ -4,12 +4,12 @@ using IKProjesi.UI.Services.SiteManager;
 using IKProjesi.UI.Services.SuperAdmin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 using Refit;
 
 namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
 {
     [Area("SuperAdmin")]
-    //[Authorize(Roles = "SUPERADMİN")]
     public class SuperAdminController : Controller
     {
         private readonly ISiteManagerService _siteManagerService;
@@ -21,9 +21,10 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
             _superAdminService = superAdminService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var sitemanagers = await _superAdminService.GetSiteManagers();
+            return View(sitemanagers);
         }
 
         [HttpGet]

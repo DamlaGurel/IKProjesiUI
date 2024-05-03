@@ -1,9 +1,46 @@
-﻿0
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/SuperAdmin/Views/Shared/_SuperAdminLayout.cshtml";
-
 }
 
-<h1>Index</h1>
+@model List<SiteManagerDetailsVM>
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Site Yöneticisi Özeti</h5>
+                <div class="table-responsive">
+                    <table class="table text-nowrap mb-0 align-middle">
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adı</td>
+                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.FirstName</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">İkinci Adı</td>
+                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.SecondName</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Soyadı</td>
+                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.LastName</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">İkinci Soyadı</td>
+                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.SecondLastName</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Telefon Numarası</td>
+                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.PhoneNumber</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

@@ -40,7 +40,7 @@ namespace IKProjesi.UI.Services.CompanyManager
                 if (memoryStream.Length < 2097152)
                     imageBytes = memoryStream.ToArray();
                 else
-                    imageBytes = null;
+                    return null;
             }
 
             string imageString = Convert.ToBase64String(imageBytes);

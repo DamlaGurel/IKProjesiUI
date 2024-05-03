@@ -6,5 +6,7 @@ namespace IKProjesi.UI.Services.Employee
     {
         Task CreateEmployee(CreateEmployeeVM model);
         Task CreateExpense(CreateExpenseVM model);
+
+        Task CreateAdvancePayment(CreateAdvancePaymentVM model);
     }
 }

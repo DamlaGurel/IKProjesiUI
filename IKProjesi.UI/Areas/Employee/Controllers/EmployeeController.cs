@@ -37,6 +37,15 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             await _employeeService.CreateExpense(createExpense);
             return RedirectToAction(nameof(CreateExpense));
         }
-
+        public IActionResult CreateAdvancePayment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateAdvancePayment(CreateAdvancePaymentVM createAdvancePayment)
+        {
+            await _employeeService.CreateAdvancePayment(createAdvancePayment);
+            return RedirectToAction(nameof(CreateAdvancePayment));
+        }
     }
 }

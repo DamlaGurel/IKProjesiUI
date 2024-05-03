@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.VMs.UserVM;
+﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+using IKProjesi.UI.Models.VMs.UserVM;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -14,5 +15,6 @@ namespace IKProjesi.UI.Services.User
         Task<string> SendMail(string email);
         Task ChangePassword(ChangePasswordVM password);
         Task Logout();
+        Task<string> ValidationToken(string token);
     }
 }
