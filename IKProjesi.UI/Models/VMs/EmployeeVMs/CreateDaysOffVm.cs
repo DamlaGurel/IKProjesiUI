@@ -1,9 +1,9 @@
 ﻿using System;
 using IKProjesi.UI.Models.Enums;
 
-namespace IKProjesi.UI.Models.VMs.PersonelVMs
+namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-	public class CreateDaysOffVm
+	public class CreateDaysOffVM
 	{
         public int EmployeeId { get; set; }
         public ApprovalType? ApprovalType { get; set; }

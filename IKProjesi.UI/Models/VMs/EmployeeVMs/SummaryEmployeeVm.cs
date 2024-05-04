@@ -2,7 +2,7 @@
 
 namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-    public class SummaryEmployeeVm
+    public class SummaryEmployeeVM
     {
         public string? ImageString { get; set; }
         public byte[]? ImageBytes { get; set; }
