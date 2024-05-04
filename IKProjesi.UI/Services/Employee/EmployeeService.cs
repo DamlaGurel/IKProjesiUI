@@ -25,12 +25,12 @@ namespace IKProjesi.UI.Services.Employee
             await _employeeApiService.CreateEmployee(model);
         }
 
-        public async Task<SummaryEmployeeVm> GetEmployeeSummary(int id)
+        public async Task<SummaryEmployeeVM> GetEmployeeSummary(int id)
         {
             return await _employeeApiService.GetEmployeeSummary(id);
         }
 
-        public async Task<EmployeeDetailsVm> GetEmployeeDetails(int id)
+        public async Task<EmployeeDetailsVM> GetEmployeeDetails(int id)
         {
             return await _employeeApiService.GetEmployeeDetails(id);
         }

@@ -72,7 +72,10 @@ namespace IKProjesi.UI.Services.CompanyManager
             return await _companyManagerApiService.GetCompanyManagerDetails(id);
         }
 
-
+        public async Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id)
+        {
+            return await _companyManagerApiService.GetCompanyManagerById(id);
+        }
     }
 }
 

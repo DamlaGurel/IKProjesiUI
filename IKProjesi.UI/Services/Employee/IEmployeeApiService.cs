@@ -7,14 +7,13 @@ namespace IKProjesi.UI.Services.Employee
     public interface IEmployeeApiService
     {
         [Post("/api/CompanyManager/CreateEmployee")]
-        Task CreateEmployee(CreateEmployeeVm model);
+        Task CreateEmployee(CreateEmployeeVM model);
 
         [Get("/api/Employee/GetEmployeeSummary/{id}")]
-        Task<SummaryEmployeeVm> GetEmployeeSummary(int id);
+        Task<SummaryEmployeeVM> GetEmployeeSummary(int id);
 
         [Get("/api/Employee/GetEmployeeDetails/{id}")]
-        Task<EmployeeDetailsVm> GetEmployeeDetails(int id);
-        Task CreateEmployee(CreateEmployeeVM model);
+        Task<EmployeeDetailsVM> GetEmployeeDetails(int id);
 
         [Post("/api/Employee/CreateExpense")]
         Task CreateExpense(CreateExpenseVM model);
