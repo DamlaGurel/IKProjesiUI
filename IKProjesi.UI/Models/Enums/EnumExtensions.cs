@@ -50,6 +50,6 @@ namespace IKProjesi.UI.Models.Enums
                 createExpense.MoneyTypeId = 10;
             else if (createExpense.MoneyType == MoneyType.BRL)
                 createExpense.MoneyTypeId = 11;
-        } 
+        }
     }
 }

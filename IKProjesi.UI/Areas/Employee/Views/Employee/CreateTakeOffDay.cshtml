@@ -21,11 +21,11 @@
                             <label asp-for="DayOffType" class="control-label">İzin Türü</label>
                             <select asp-for="DayOffType" class="form-select" id="DayOffType">
                                 <option value="">İzin Türünü Seçiniz</option>
-                                @foreach (var type in Enum.GetValues(typeof(DayOffType)))
+                                @* @foreach (var type in Enum.GetValues(typeof(DayOffType)))
                                 {
 
                                     <option value="@type">@((type as Enum).GetDisplayName())</option>
-                                }
+                                } *@
                             </select>
                             <span asp-validation-for="DayOffType" class="text-danger"></span>
                         </div>
