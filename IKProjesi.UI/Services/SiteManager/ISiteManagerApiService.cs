@@ -14,5 +14,8 @@ namespace IKProjesi.UI.Services.SiteManager
 
         [Put("/api/SiteManager/UpdateSiteManager")]
         Task GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
+
+        [Get("/api/SiteManager/GetSiteManager/{id}")]
+        Task<SiteManagerUpdateVM> GetSiteManager(int id);
     }
 }

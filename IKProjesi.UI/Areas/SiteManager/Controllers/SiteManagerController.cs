@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using IKProjesi.UI.Models;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
 using IKProjesi.UI.Models.VMs.Pagination;
@@ -11,10 +5,7 @@ using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Refit;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
@@ -32,7 +23,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             _companyManagerService = companyManagerService;
             _companyService = companyService;
         }
-
 
         public IActionResult Index()
         {
@@ -78,14 +68,12 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             return View(siteManagerDetail);
         }
 
-
         [HttpGet]
-        public IActionResult GetSiteManagerUpdate(int id)
+        public async Task<IActionResult> GetSiteManagerUpdate(int id)
         {
-            var siteManagerUpdate = new SiteManagerUpdateVM { Id = id };
+            var siteManagerUpdate = await _siteManagerService.GetSiteManager(id);
             return View(siteManagerUpdate);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
@@ -94,8 +82,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
             return RedirectToAction("GetSiteManagerDetail");
         }
-
-
 
         [HttpGet]
         public async Task<IActionResult> CreateCompanyManager()
@@ -140,6 +126,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             //}
         }
 
+        [HttpGet]
         public async Task<IActionResult> CompanyIndex(int pg = 1)
         {
             var companies = await _companyService.GetCompanies();
@@ -185,8 +172,5 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             var company = await _companyService.GetCompanyDetails(id);
             return View(company);
         }
-
-
-
     }
 }

@@ -46,7 +46,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         {
             //var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
 
-            var companyManagerUpdate = await _companyManagerService.GetCompanyManagerById(id);
+            //var companyManagerUpdate = await _companyManagerService.GetCompanyManagerById(id);
 
             string imageString = null;
 
@@ -56,7 +56,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             //}
 
             //companyManagerUpdate.ImageString = imageString;
-            return View(companyManagerUpdate);
+            //return View(companyManagerUpdate);
+            return View();
         }
 
 

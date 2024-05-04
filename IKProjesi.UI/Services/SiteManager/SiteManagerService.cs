@@ -16,6 +16,11 @@ namespace IKProjesi.UI.Services.SiteManager
             return await _siteManagerApiService.GetSiteManagerSummary(id);
         }
 
+        public async Task<SiteManagerUpdateVM> GetSiteManager(int id)
+        {
+            return await _siteManagerApiService.GetSiteManager(id);
+        }
+
         public async Task GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
             await _siteManagerApiService.GetSiteManagerUpdate(siteManagerUpdateVM);
