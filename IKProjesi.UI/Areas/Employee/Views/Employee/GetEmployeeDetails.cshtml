@@ -1,23 +1,20 @@
+﻿@using IKProjesi.UI.Models.VMs.EmployeeVMs
 
 @{
-    ViewData["Title"] = "GetCompanyManagerDetail";
-    Layout = "~/Areas/CompanyManager/Views/Shared/_CompanyManagerLayout.cshtml";
+    ViewData["Title"] = "GetEmployeeDetails";
+    Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-@model DetailsCompanyManagerVM
+@model EmployeeDetailsVM
 
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Şirket Yöneticisi Detayları</h5>
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Personel Özeti</h5>
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <tbody>
-                            <tr>
-                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adı</td>
-                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Id</td>
-                            </tr>
                             <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adı</td>
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.FirstName</td>
@@ -35,14 +32,6 @@
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.SecondLastName</td>
                             </tr>
                             <tr>
-                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Şifre</td>
-                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Password</td>
-                            </tr>
-                            @*<tr>
-                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Kullanıcı Adı</td>
-                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.UserName</td>
-                            </tr>*@
-                            <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">Doğum Tarihi</td>
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.BirthDate</td>
                             </tr>
@@ -51,16 +40,20 @@
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.BirthPlace</td>
                             </tr>
                             <tr>
-                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">TC Kimlik Numarası</td>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Kimlik Numarası</td>
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.IdentityNumber</td>
                             </tr>
                             <tr>
-                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">İşe Başlangıç Tarihi</td>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">İşe Giriş Tarihi</td>
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.StartDateOfWork</td>
                             </tr>
                             <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">İşten Çıkış Tarihi</td>
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.FinishDateOfWork</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Şirket İsmi</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.CompanyName</td>
                             </tr>
                             <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">Meslek</td>
@@ -75,31 +68,33 @@
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Address</td>
                             </tr>
                             <tr>
+                                <td class="border-bottom-0 fw-semibold mb-1 fs-4">Email</td>
+                                <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.Email</td>
+                            </tr>
+                            <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">Telefon Numarası</td>
                                 <td class="border-bottom-0 fw-normal mb-1 fs-4"> @Model.PhoneNumber</td>
                             </tr>
                             <tr>
                                 <td class="border-bottom-0 fw-semibold mb-1 fs-4">Profil Resmi</td>
                                 <td>
-                                    <label for="ImageString" class="form-label fw-semibold"></label>
+                                    <label for="LogoBytes" class="form-label fw-semibold"></label>
                                     <img src="data:image;base64,@(Convert.ToBase64String(Model.ImageBytes))" class="img-fluid" alt="Profil Resmi">
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div>
+                        <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate">Düzenle</a>
+                    </div>
+                    <div>
+                        <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="Index">Geri Dön</a>
+                    </div>
 
-                </div>
-                <div class="mb-3">
-                    <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" asp-route-id="@Model.Id">Düzenle</a>
-                </div>
-                <div class="mb-3">
-                    <a class="btn btn-danger rounded-3 fw-semibold" asp-area="SiteManager" asp-controller="SiteManager" asp-action="CompanyManagerList">Geri Dön</a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
 
 
-       

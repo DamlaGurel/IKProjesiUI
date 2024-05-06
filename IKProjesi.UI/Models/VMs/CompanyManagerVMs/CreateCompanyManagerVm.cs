@@ -8,10 +8,7 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
     public class CreateCompanyManagerVM
     {
-
-
-        
-
+        [Required(ErrorMessage ="Lütfen adınızı giriniz.")]
         public string FirstName { get; set; }
         public string? SecondName { get; set; }
        
@@ -24,10 +21,12 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
         public int CompanyId { get; set; }
-        public DateTime CreatedDate => DateTime.Now;
-        public Status Status => Status.Active;
+        //public DateTime CreatedDate => DateTime.Now;
+        //public Status Status => Status.Active;
         public IFormFile? Image { get; set; }
         public string? ImageString { get; set; }
+
+        public double? Payment { get; set; }
     }
 }
 

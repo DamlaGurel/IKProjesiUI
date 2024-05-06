@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.VMs.UserVM;
+﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+using IKProjesi.UI.Models.VMs.UserVM;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 
@@ -15,7 +16,12 @@ namespace IKProjesi.UI.Services.User
         [Get("/api/User/Logout")]
         Task Logout();
 
-        //[Get("/api/User/Token")]
-        //Task<string> GetUser([Header("Authorization")] string bearerToken);
+        [Post("/api/User/ChangePassword")]
+        Task ChangePassword(ChangePasswordVM password);
+        [Get("/api/SuperAdmin/SiteManagerDetail")]
+        Task<List<SiteManagerDetailsVM>> SiteManagerDetails();
+
+        [Get("/api/User/ValidateToken")]
+        Task<string> ValidateToken([Header("Authorization")] string bearerToken);
     }
 }

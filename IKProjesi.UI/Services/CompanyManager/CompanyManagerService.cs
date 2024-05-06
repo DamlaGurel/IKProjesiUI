@@ -28,6 +28,11 @@ namespace IKProjesi.UI.Services.CompanyManager
             await _companyManagerApiService.CreateCompanyManager(model);
         }
 
+        //public async Task<CreateCompanyManagerVM> GetCompanyManagerById(int id)
+        //{
+        //    return await _companyManagerApiService.GetCompanyManagerById(id);            
+        //}
+
         private async Task<string> SaveImage(IFormFile image)
         {
             var imageFile = image;
@@ -40,7 +45,7 @@ namespace IKProjesi.UI.Services.CompanyManager
                 if (memoryStream.Length < 2097152)
                     imageBytes = memoryStream.ToArray();
                 else
-                    imageBytes = null;
+                    return null;
             }
 
             string imageString = Convert.ToBase64String(imageBytes);
@@ -67,6 +72,7 @@ namespace IKProjesi.UI.Services.CompanyManager
             return await _companyManagerApiService.GetCompanyManagerDetails(id);
         }
 
+
         public async Task<List<ListWaitingApprovalForOffDaysVm>> ListApprovalForOffDay()
 
         {
@@ -87,6 +93,12 @@ namespace IKProjesi.UI.Services.CompanyManager
         }
 
         
+
+        public async Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id)
+        {
+            return await _companyManagerApiService.GetCompanyManagerById(id);
+        }
+
     }
 }
 

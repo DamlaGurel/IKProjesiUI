@@ -26,9 +26,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         private readonly ICompanyManagerService _companyManagerService;
         private readonly ICompanyService _companyService;
 
-
-
-
         public SiteManagerController(ISiteManagerService siteManagerService, ICompanyManagerService companyManagerService, ICompanyService companyService)
         {
             _siteManagerService = siteManagerService;

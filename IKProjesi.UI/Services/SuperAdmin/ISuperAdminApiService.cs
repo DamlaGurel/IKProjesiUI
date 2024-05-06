@@ -7,6 +7,9 @@ namespace IKProjesi.UI.Services.SuperAdmin
     {
         [Post("/api/SuperAdmin/CreateSiteManager")]
         Task CreateSiteManagerVM(CreateSiteManagerVM createSiteManager);
+
+        [Get("/api/SuperAdmin/SiteManagerDetail")]
+        Task<List<SiteManagerDetailsVM>> SiteManagerDetails();
     }
 }
 

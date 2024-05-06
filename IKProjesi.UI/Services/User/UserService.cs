@@ -1,4 +1,6 @@
-﻿using IKProjesi.UI.Models.VMs.UserVM;
+﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+using IKProjesi.UI.Models.VMs.UserVM;
+using IKProjesi.UI.Services.SiteManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Common;
@@ -35,6 +37,16 @@ namespace IKProjesi.UI.Services.User
         public async Task Logout()
         {
             await _userApiService.Logout();
+        }
+
+        public async Task ChangePassword(ChangePasswordVM password)
+        {
+            await _userApiService.ChangePassword(password);
+        }
+
+        public async Task<string> ValidationToken(string token)
+        {
+           return await _userApiService.ValidateToken(token);
         }
     }
 }
