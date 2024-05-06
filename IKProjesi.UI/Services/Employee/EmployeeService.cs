@@ -19,6 +19,13 @@ namespace IKProjesi.UI.Services.Employee
             {
                 model.ImageString = await SaveImage(model.Image);
             }
+
+            if (model.DepartmentName.HasValue)
+            {
+                // Cast the enum value to int and assign it to the corresponding property
+                model.DepartmentNumber = (int)model.DepartmentName;
+            }
+
             await _employeeApiService.CreateEmployee(model);
         }
 

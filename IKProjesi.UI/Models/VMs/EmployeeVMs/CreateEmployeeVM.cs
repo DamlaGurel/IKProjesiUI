@@ -15,6 +15,7 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
         public string? IdentityNumber { get; set; }
         public DateTime? StartDateOfWork { get; set; }
         public Department? DepartmentName { get; set; }
+        public int? DepartmentNumber { get; set; }
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
         //public string CompanyName { get; set; }

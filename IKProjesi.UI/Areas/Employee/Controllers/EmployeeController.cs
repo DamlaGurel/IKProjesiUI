@@ -44,14 +44,15 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         {
             var employee = await _employeeService.GetEmployeeById(id); 
 
-            string imageString = null;
+            //string imageString = null;
 
-            if (employee != null && employee.ImageBytes != null)
-            {
-                imageString = Convert.ToBase64String(employee.ImageBytes);
-            }
+            //if (employee != null && employee.ImageBytes != null)
+            //{
+            //    imageString = Convert.ToBase64String(employee.ImageBytes);
+            //}
 
-            employee.ImageString = imageString;
+            //employee.ImageString = imageString;
+
             return View(employee);
         }
 
@@ -59,7 +60,8 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         public async Task<IActionResult> UpdateEmployee(UpdateEmployeeVm model)
         {
             await _employeeService.UpdateEmployee(model);
-            return RedirectToAction("GetEmployeeDetails");
+            TempData["UpdateMessage"] = "Employee güncellendi.";
+            return View();
         }
         public IActionResult CreateTakeOffDay()
         {

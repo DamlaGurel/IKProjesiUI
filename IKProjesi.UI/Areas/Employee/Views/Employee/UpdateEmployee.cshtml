@@ -7,11 +7,25 @@
 
 @model UpdateEmployeeVm
 
+<script>
+    setTimeout(function() {
+        $('#updateMessage').fadeOut('slow');
+    }, 5000);
+</script>
+
+@if (TempData["UpdateMessage"] is not null)
+{
+    <div id="updateMessage" class="alert alert-success" role="alert">
+        @TempData["UpdateMessage"]
+    </div>
+}
+
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Personel Düzenle</h5>
+
                 <form method="post" asp-action="UpdateEmployee" asp-controller="Employee">
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
@@ -20,7 +34,7 @@
                                 <tr>
                                     <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adres</td>
                                     <td class="border-bottom-0 fw-normal mb-1 fs-4"> 
-                                        <input type="text" class="form-control" id="Addrwaa" name="Address" value="@Model.Address" />
+                                        <input type="text" class="form-control" id="Address" name="Address" value="@Model.Address" />
                                     </td>
                                 </tr>
 
@@ -66,4 +80,5 @@
         </div>
     </div>
 </div>
-</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        ></script>
