@@ -1,10 +1,12 @@
 ﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
 
+
 namespace IKProjesi.UI.Services.Employee
 {
     public class EmployeeService:IEmployeeService
     {
         private readonly IEmployeeApiService _employeeApiService;
+
 
         public EmployeeService(IEmployeeApiService employeeApiService)
         {
@@ -20,5 +22,19 @@ namespace IKProjesi.UI.Services.Employee
         {
             await _employeeApiService.CreateExpense(model);
         }
+        public async Task CreateTakeDayOff(CreateOffDayVm model)
+        {
+            await _employeeApiService.CreateTakeDayOff(model);
+
+        }
+
+        public async Task<List<ListOffDaysVm>> ListTakeDayOff(int id)
+        {
+            return await _employeeApiService.ListTakeDayOff(id);
+        }
+
+
+
+
     }
 }

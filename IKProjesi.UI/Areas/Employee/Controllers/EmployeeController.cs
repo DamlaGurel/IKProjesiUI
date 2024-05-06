@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
-
+using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
+
 using IKProjesi.UI.Services.Employee;
 
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
@@ -27,21 +30,10 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View();
         }
 
-
-        [HttpGet]
-        public IActionResult CreateTakeOffDay()
-        {
-            return View();
-        }
+        
 
         [HttpGet]
         public IActionResult CreateExpense()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateTakeOffDay(CreateDaysOffVm model)
         {
             return View();
         }
@@ -53,6 +45,31 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return RedirectToAction(nameof(CreateExpense));
         }
 
+        //İzin İşlemleri
+        [HttpGet]
+        public IActionResult CreateTakeDayOff()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVm model)
+        {
+            await _employeeService.CreateTakeDayOff(model);
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListTakeDayOff(int id)
+
+        {
+            List<ListOffDaysVm> model = await _employeeService.ListTakeDayOff(id);
+            return View(model);
+        }
+
+
+
+       
 
     }
 }
+

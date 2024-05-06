@@ -1,11 +1,12 @@
 ﻿using System;
 using IKProjesi.UI.Models.Enums;
 
-namespace IKProjesi.UI.Models.VMs.PersonelVMs
+namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
 {
-	public class SummaryDaysOffVm
+	public class ListWaitingApprovalForOffDaysVm
 	{
-        public ApprovalType? ApprovalType { get; set; }
+        public int? Id { get; set; }
+        public int ApprovalType { get; set; }
         public DateTime? RequestTime { get; set; }
         public DateTime? DayOffStartTime { get; set; }
         public DateTime? DayOffEndTime { get; set; }
@@ -13,6 +14,9 @@ namespace IKProjesi.UI.Models.VMs.PersonelVMs
         public DateTime? ResponseTime { get; set; }
         public DayOffType? DayOffType { get; set; }
         public int? DaysOffNumber { get; set; }
+
+        public int? EmployeeId { get; set; }
+        public int? EmployeeFullName { get; set; }
 
     }
 }

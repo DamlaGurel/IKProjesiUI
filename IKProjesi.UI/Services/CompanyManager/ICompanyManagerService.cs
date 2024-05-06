@@ -8,12 +8,19 @@ namespace IKProjesi.UI.Services.CompanyManager
 {
     public interface ICompanyManagerService
     {
-        Task CreateCompanyManager( CreateCompanyManagerVM model);
+        Task CreateCompanyManager(CreateCompanyManagerVM model);
         Task<List<ListCompanyManagerVM>> GetCompanyManagers();
         Task<SummaryCompanyManagerVM> GetCompanyManagerSummary(int id);
         Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
         Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id);
+        Task<List<ListWaitingApprovalForOffDaysVm>> ListApprovalForOffDay();
 
+
+        Task GetApprovalForOffDay(UpdateDayOffVm model);
+
+        Task<UpdateDayOffVm> GetApprovalForOffDay(int id);
+        
     }
 }
+
 

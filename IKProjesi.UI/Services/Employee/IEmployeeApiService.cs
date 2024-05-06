@@ -1,4 +1,5 @@
 ﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using Microsoft.AspNetCore.Mvc;
 using Refit;
 
 namespace IKProjesi.UI.Services.Employee
@@ -10,6 +11,14 @@ namespace IKProjesi.UI.Services.Employee
 
         [Post("/api/Employee/CreateExpense")]
         Task CreateExpense(CreateExpenseVM model);
+
+        [Post("/api/Employee/CreateTakeDayOff")]
+        Task CreateTakeDayOff(CreateOffDayVm model);
+
+        [Get("/api/Employee/ListTakeDayOff/{id}")]
+        Task<List<ListOffDaysVm>> ListTakeDayOff(int id );
+
+
     }
 
 }

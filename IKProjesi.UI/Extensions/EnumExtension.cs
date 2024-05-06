@@ -19,6 +19,11 @@ namespace IKProjesi.UI.Extensions
             }
             return enumValue.ToString();
         }
+
+        public static int ConvertToInt<T>(T enumValue) where T : Enum
+        {
+            return Convert.ToInt32(enumValue);
+        }
     }
 }
 

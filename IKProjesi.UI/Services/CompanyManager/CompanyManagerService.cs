@@ -67,6 +67,26 @@ namespace IKProjesi.UI.Services.CompanyManager
             return await _companyManagerApiService.GetCompanyManagerDetails(id);
         }
 
+        public async Task<List<ListWaitingApprovalForOffDaysVm>> ListApprovalForOffDay()
+
+        {
+            return await _companyManagerApiService.ListApprovalForOffDay();
+
+        }
+
+        public async Task GetApprovalForOffDay(UpdateDayOffVm model)
+        {
+            await _companyManagerApiService.ApprovalForOffDay(model);
+
+        }
+
+        public async Task<UpdateDayOffVm> GetApprovalForOffDay(int id)
+        {
+            return await _companyManagerApiService.GetApprovalForOffDay(id);
+
+        }
+
+        
     }
 }
 

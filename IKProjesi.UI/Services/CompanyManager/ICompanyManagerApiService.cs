@@ -24,6 +24,16 @@ namespace IKProjesi.UI.Services.CompanyManager
         [Put("/api/CompanyManager/GetCompanyManagerUpdate")]
         Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
 
+        [Get("/api/CompanyManager/ListApprovalForOffDay")]
+        Task<List<ListWaitingApprovalForOffDaysVm>> ListApprovalForOffDay();
+
+        [Put("/api/CompanyManager/UpdateApprovalForOffDay")]
+        Task ApprovalForOffDay(UpdateDayOffVm model);
+
+
+        [Get("/api/CompanyManager/GetApprovalForOffDay/{id}")]
+        Task<UpdateDayOffVm> GetApprovalForOffDay(int id);
+        
     }
 }
 
