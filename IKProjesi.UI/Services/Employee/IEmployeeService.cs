@@ -10,8 +10,8 @@ namespace IKProjesi.UI.Services.Employee
         Task<EmployeeDetailsVM> GetEmployeeDetails(int id);
         Task CreateExpense(CreateExpenseVM model);
 
-        Task CreateTakeDayOff(CreateOffDayVm model);
-        Task<List<ListOffDaysVm>> ListTakeDayOff(int id);
+        Task CreateTakeDayOff(CreateOffDayVM model);
+        Task<List<ListOffDaysVM>> ListTakeDayOff(int id);
 
 
 

@@ -3,7 +3,7 @@ using IKProjesi.UI.Models.Enums;
 
 namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-    public class CreateOffDayVm
+    public class CreateOffDayVM
     {
 
         public DateTime? DayOffStartTime { get; set; }

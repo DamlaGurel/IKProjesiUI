@@ -1,5 +1,6 @@
 ﻿using System;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
@@ -28,14 +29,14 @@ namespace IKProjesi.UI.Services.CompanyManager
         Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
 
         [Get("/api/CompanyManager/ListApprovalForOffDay")]
-        Task<List<ListWaitingApprovalForOffDaysVm>> ListApprovalForOffDay();
+        Task<List<ListWaitingApprovalForOffDaysVM>> ListApprovalForOffDay();
 
         [Put("/api/CompanyManager/UpdateApprovalForOffDay")]
-        Task ApprovalForOffDay(UpdateDayOffVm model);
+        Task ApprovalForOffDay(UpdateDayOffVM model);
 
 
         [Get("/api/CompanyManager/GetApprovalForOffDay/{id}")]
-        Task<UpdateDayOffVm> GetApprovalForOffDay(int id);
+        Task<UpdateDayOffVM> GetApprovalForOffDay(int id);
         
     }
 }

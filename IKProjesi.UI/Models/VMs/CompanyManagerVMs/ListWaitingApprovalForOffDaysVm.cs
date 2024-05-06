@@ -4,7 +4,7 @@ using IKProjesi.UI.Models.Enums;
 
 namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-	public class CreateDaysOffVM
+	public class ListWaitingApprovalForOffDaysVM
 	{
         public int? Id { get; set; }
         public int ApprovalType { get; set; }

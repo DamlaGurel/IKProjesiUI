@@ -3,7 +3,7 @@ using IKProjesi.UI.Models.Enums;
 
 namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-	public class ListOffDaysVm
+	public class ListOffDaysVM
     {
         public int? ApprovalType { get; set; }
         public DateTime? RequestTime { get; set; }

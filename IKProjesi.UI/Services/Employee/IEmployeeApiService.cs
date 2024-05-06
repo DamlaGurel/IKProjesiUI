@@ -21,10 +21,10 @@ namespace IKProjesi.UI.Services.Employee
 
 
         [Post("/api/Employee/CreateTakeDayOff")]
-        Task CreateTakeDayOff(CreateOffDayVm model);
+        Task CreateTakeDayOff(CreateOffDayVM model);
 
         [Get("/api/Employee/ListTakeDayOff/{id}")]
-        Task<List<ListOffDaysVm>> ListTakeDayOff(int id );
+        Task<List<ListOffDaysVM>> ListTakeDayOff(int id );
 
 
 

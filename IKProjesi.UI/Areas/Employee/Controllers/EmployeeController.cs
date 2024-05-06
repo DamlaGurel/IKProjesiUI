@@ -88,7 +88,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVm model)
+        public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVM model)
         {
             await _employeeService.CreateTakeDayOff(model);
             return View();
@@ -98,7 +98,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         public async Task<IActionResult> ListTakeDayOff(int id)
 
         {
-            List<ListOffDaysVm> model = await _employeeService.ListTakeDayOff(id);
+            List<ListOffDaysVM> model = await _employeeService.ListTakeDayOff(id);
             return View(model);
         }
 

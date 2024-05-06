@@ -97,7 +97,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> GetApprovalForOffDay(UpdateDayOffVm model)
+        public async Task<IActionResult> GetApprovalForOffDay(UpdateDayOffVM model)
         {
            
             await _companyManagerService.GetApprovalForOffDay(model);

@@ -53,13 +53,13 @@ namespace IKProjesi.UI.Services.Employee
 
             await _employeeApiService.CreateExpense(model);
         }
-        public async Task CreateTakeDayOff(CreateOffDayVm model)
+        public async Task CreateTakeDayOff(CreateOffDayVM model)
         {
             await _employeeApiService.CreateTakeDayOff(model);
 
         }
 
-        public async Task<List<ListOffDaysVm>> ListTakeDayOff(int id)
+        public async Task<List<ListOffDaysVM>> ListTakeDayOff(int id)
         {
             return await _employeeApiService.ListTakeDayOff(id);
         }
