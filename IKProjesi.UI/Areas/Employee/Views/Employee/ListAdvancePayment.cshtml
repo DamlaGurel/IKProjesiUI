@@ -1,0 +1,51 @@
+﻿@model List<ListAdvancePaymentVM>
+@{
+    ViewData["Title"] = "ListAdvancePayment";
+    Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<h1>ListAdvancePayment</h1>
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Avans Taleplerim</h5>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <table class="table text-nowrap mb-0 align-middle">
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Para Miktarı</td>
+                                                <td class="fw-normal">@item.TotalAdvance</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Para Türü</td>
+                                                <td class="fw-normal">@item.MoneyType</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Talep</td>
+                                                <td class="fw-normal">@item.AdvanceType</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Onay Durumu</td>
+                                                <td class="fw-normal">@item.ApprovalType</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div>
+                    <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="Employee" asp-action="Index">Geri Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,5 +10,6 @@ namespace IKProjesi.UI.Services.Employee
         Task CreateExpense(CreateExpenseVM model);
 
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
+        Task<List<ListAdvancePaymentVM>> AdvancePayments();
     }
 }

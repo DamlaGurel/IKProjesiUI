@@ -17,6 +17,8 @@ namespace IKProjesi.UI.Services.Employee
 
         public async Task CreateAdvancePayment(CreateAdvancePaymentVM model)
         {
+            model.AdvanceTypeId = (int)model.AdvanceType;
+            model.MoneyTypeId = (int)model.MoneyType;
             await _employeeApiService.CreateAdvancePayment(model);
         }
 
@@ -50,6 +52,11 @@ namespace IKProjesi.UI.Services.Employee
             model.MoneyTypeId = (int)model.MoneyType;
 
             await _employeeApiService.CreateExpense(model);
+        }
+
+        public async Task<List<ListAdvancePaymentVM>> AdvancePayments()
+        {
+            return await _employeeApiService.AdvancePayments();
         }
     }
 }

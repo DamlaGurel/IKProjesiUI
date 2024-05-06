@@ -34,15 +34,27 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             await _employeeService.CreateExpense(createExpense);
             return RedirectToAction(nameof(CreateExpense));
         }
+        [HttpGet]
         public IActionResult CreateAdvancePayment()
         {
+            ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateAdvancePayment(CreateAdvancePaymentVM createAdvancePayment)
         {
             await _employeeService.CreateAdvancePayment(createAdvancePayment);
-            return RedirectToAction(nameof(CreateAdvancePayment));
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> ListAdvancePayment()
+        {
+            ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
+            ViewBag.ApprovalType = Enum.GetValues<ApprovalType>();
+            var advance = await _employeeService.AdvancePayments();
+            return View(advance);
         }
 
         [HttpGet]

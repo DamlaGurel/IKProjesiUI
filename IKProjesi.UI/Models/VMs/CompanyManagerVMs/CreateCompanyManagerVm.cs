@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
+using IKProjesi.UI.Extensions;
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
 
@@ -17,7 +18,9 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         public string? SecondLastName { get; set; }
         public DateTime? BirthDate { get; set; }
         public string? BirthPlace { get; set; }
+        [IdentificationNumberValidation]
         public string? IdentityNumber { get; set; }
+        [BirthDateValidation]
         public DateTime? StartDateOfWork { get; set; }
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
