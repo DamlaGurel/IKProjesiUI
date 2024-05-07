@@ -9,7 +9,7 @@ namespace IKProjesi.UI.Services.Employee
 {
     public interface IEmployeeApiService
     {
-        //Employee İşlemleri
+        #region Employee
         [Post("/api/CompanyManager/CreateEmployee")]
         Task CreateEmployee(CreateEmployeeVM model);
 
@@ -24,31 +24,33 @@ namespace IKProjesi.UI.Services.Employee
 
         [Get("/api/Employee/GetEmployeeById/{id}")]
         Task<UpdateEmployeeVM> GetEmployeeById(int id);
+        #endregion
 
 
-        //Expense İşlemleri
+        #region Expense
         [Post("/api/Employee/CreateExpense")]
         Task CreateExpense(CreateExpenseVM model);
 
         [Get("/api/Employee/ListExpense/{id}")]
         Task<List<ListExpenseVM>> ListExpense(int id);
+        #endregion
 
 
-        //OffDay İşlemleri
+        #region Off Day
         [Post("/api/Employee/CreateOffDay")]
         Task CreateTakeDayOff(CreateOffDayVM model);
 
         [Get("/api/Employee/ListOffDay/{id}")]
         Task<List<ListOffDayVM>> ListOffDay(int id );
+        #endregion
 
 
-        //AdvancePayment İşlemleri
+        #region Advance Payment
         [Post("/api/Employee/CreateAdvancePayment")]
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
 
         [Get("/api/Employee/ListAdvancePayment/{id}")]
         Task<List<ListAdvancePaymentVM>> ListAdvancePayment(int id);
-
-
+        #endregion
     }
 }

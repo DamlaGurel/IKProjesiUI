@@ -27,6 +27,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             return View(); 
         }
 
+        #region Company Manager 
         [HttpGet]
         public async Task<IActionResult> GetCompanyManagerSummary(int id)
         {
@@ -71,7 +72,9 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             return RedirectToAction("GetCompanyManagerDetail");
         }
+        #endregion
 
+        #region Employee
         [HttpGet]
         public IActionResult CreateEmployee()
         {
@@ -88,9 +91,9 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             }
             return View();
         }
+        #endregion
 
-
-        //İzin İşlemleri
+        #region Off Day
         [HttpGet]
         public async Task<IActionResult> ListApprovalForOffDay()
         {
@@ -99,16 +102,11 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             return View(listApprovalForOffDay);
         }
 
-        
-
-
         [HttpPost]
         public async Task<IActionResult> GetApprovalForOffDay(UpdateOffDayVM model)
         {
-           
             await _companyManagerService.GetApprovalForOffDay(model);
             return RedirectToAction(nameof(ListApprovalForOffDay));
-
         }
 
         [HttpGet]
@@ -117,8 +115,9 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             var getApprovalForOffDay = await _companyManagerService.GetApprovalForOffDay(id);
             return View(getApprovalForOffDay);
         }
+        #endregion
 
-        //Expense İşlemleri
+        #region Expense
         [HttpGet]
         public async Task<IActionResult> ListApprovalForExpense()
         {
@@ -126,7 +125,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
             return View(listApprovalForExpense);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> GetApprovalForExpense(UpdateExpenseVM model)
@@ -141,7 +139,10 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             var getApprovalForExpense = await _companyManagerService.GetApprovalForExpense(id);
             return View(getApprovalForExpense);
         }
-        //AdvancePayment İşlemleri
+        #endregion
+
+        #region Advance Payment
+
         [HttpGet]
         public async Task<IActionResult> ListApprovalForAdvancePayment()
         {
@@ -149,7 +150,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
             return View(listApprovalForAdvancePayment);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> GetApprovalForAdvancePayment(UpdateAdvancePaymentVM model)
@@ -164,5 +164,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             var getApprovalForAdvancePayment = await _companyManagerService.GetApprovalForAdvancePayment(id);
             return View(getApprovalForAdvancePayment);
         }
+        #endregion
     }
 }

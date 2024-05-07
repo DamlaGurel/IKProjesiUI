@@ -12,44 +12,34 @@ namespace IKProjesi.UI.Services.CompanyManager
 {
     public interface ICompanyManagerService
     {
-
-
+        #region CompanyManager
         Task CreateCompanyManager(CreateCompanyManagerVM model);
-
-
         Task<List<ListCompanyManagerVM>> GetCompanyManagers();
         Task<SummaryCompanyManagerVM> GetCompanyManagerSummary(int id);
         Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
         Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id);
-
-        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay();
-
-
-        Task GetApprovalForOffDay(UpdateOffDayVM model);
-
-        Task<UpdateOffDayVM> GetApprovalForOffDay(int id);
-
-
         Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id);
+        #endregion
 
+        #region Off Day
+        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay();
+        Task GetApprovalForOffDay(UpdateOffDayVM model);
+        Task<UpdateOffDayVM> GetApprovalForOffDay(int id);
+        #endregion
 
+        #region Expense
         Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense();
-
-
         Task GetApprovalForExpense(UpdateExpenseVM model);
-
-
         Task<UpdateExpenseVM> GetApprovalForExpense(int id);
+        #endregion
 
-
+        #region CompanyManager
         Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment();
-
-
         Task GetApprovalForAdvancePayment(UpdateAdvancePaymentVM model);
-
-
         Task<UpdateAdvancePaymentVM> GetApprovalForAdvancePayment(int id);
+        #endregion
 
+       
 
     }
 }
