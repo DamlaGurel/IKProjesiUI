@@ -9,6 +9,7 @@ using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
+using System.Reflection;
 
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
@@ -78,6 +79,11 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVM model)
+        {
+            await _employeeService.CreateTakeDayOff(model);
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> UpdateEmployee(int id)
         {
@@ -102,11 +108,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             TempData["UpdateMessage"] = "Employee güncellendi.";
             return View(model);
         }
-        public IActionResult CreateTakeOffDay()
-        {
-            await _employeeService.CreateTakeDayOff(model);
-            return View();
-        }
+        
 
         [HttpGet]
         public async Task<IActionResult> ListTakeDayOff(int id)
