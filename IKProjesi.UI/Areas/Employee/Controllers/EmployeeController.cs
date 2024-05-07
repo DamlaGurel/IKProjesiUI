@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.Employee;
+
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +14,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
     [Area("Employee")]
     public class EmployeeController : Controller
     {
+
         private readonly IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService employeeService)
@@ -20,6 +23,12 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CreateTakeOffDay()
         {
             return View();
         }
@@ -46,6 +55,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             await _employeeService.CreateAdvancePayment(createAdvancePayment);
             return RedirectToAction(nameof(CreateAdvancePayment));
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetEmployeeSummary(int id)

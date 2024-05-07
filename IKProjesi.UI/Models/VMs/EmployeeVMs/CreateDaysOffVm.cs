@@ -14,7 +14,9 @@ namespace IKProjesi.UI.Models.VMs.PersonelVMs
         public DateTime? ResponseTime { get; set; }
         public DayOffType? DayOffType { get; set; }
         public int? DaysOffNumber { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
+        public int? RemainingDaysOffNumber { get; set; }
+
 
     }
 }

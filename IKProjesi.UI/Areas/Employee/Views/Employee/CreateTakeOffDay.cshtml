@@ -1,8 +1,6 @@
-
 @{
     ViewData["Title"] = "CreateTakeOffDay";
     Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
-
 }
 
 @model CreateDaysOffVm
@@ -14,7 +12,7 @@
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">İzin Talebi Oluştur</h5>
                 <div class="row">
 
-                    <form asp-area="Employee" asp-controller="Employee" asp-action="CreateTakeOffDay" enctype="multipart/form-data" method="post">
+                    <form id="takeOffForm" asp-area="Employee" asp-controller="Employee" asp-action="CreateTakeOffDay" enctype="multipart/form-data" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                         <div class="mb-3 form-group">
@@ -23,7 +21,6 @@
                                 <option value="">İzin Türünü Seçiniz</option>
                                 @foreach (var type in Enum.GetValues(typeof(DayOffType)))
                                 {
-
                                     <option value="@type">@((type as Enum).GetDisplayName())</option>
                                 }
                             </select>
@@ -44,27 +41,50 @@
 
                         <div class="mb-3 form-group">
                             <label asp-for="Description" class="control-label">Açıklama</label>
-                            <input asp-for="Description" type="text" class="form-control" />
+                            <input asp-for="Description" type="text" class="form-control" id="Description" />
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3 form-group">
-                            <input type="submit" onclick="calculateDayOffNumber" class="btn btn-danger rounded-3 fw-semibold" value="İzin Hesapla" />
+                            <fieldset disabled>
+                                <label asp-for="DaysOffNumber" class="control-label">Yıllık İzin Hakkınız</label>
+                                <input asp-for="DaysOffNumber" type="text" class="form-control" id="Description" />
+                                <span asp-validation-for="DaysOffNumber" class="text-danger"></span>
+                            </fieldset>
                         </div>
 
-                        <div class="card mb-0" id="additionalContent" style="display:none;">
+                        <div class="mb-3 form-group">
+                            <fieldset disabled>
+                                <label asp-for="RemainingDaysOffNumber" class="control-label">Kalan Yıllık İzin Hakkınız</label>
+                                <input asp-for="RemainingDaysOffNumber" type="text" class="form-control" id="Description" />
+                                <span asp-validation-for="RemainingDaysOffNumber" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        
+                        <div class="mb-3 form-group">
+                            <input type="button" id="calculateButton" class="btn btn-danger rounded-3 fw-semibold" value="İzin Hesapla" />
+                        </div>
+
+                        <div class="card mb-3" id="DayOffSummary" style="display:none;">
                             <div class="card-body">
 
                                 <fieldset disabled>
-                                    <legend>Disabled fieldset example</legend>
+                                    <legend>Bu İzin Talebini Onaylıyor Musunuz?</legend>
                                     <div class="mb-3">
-                                        <label for="dayOffNumber" class="form-label">Talep Edilen İzin Gün Sayısı </label>
-                                        <input type="number" id="dayOffNumber" class="form-control" placeholder="Disabled input">
-                                        <label for="ChosenDayOffType" class="form-label">Talep Edilen İzin Gün Sayısı </label>
-                                        <input type="text" id="ChosenDayOffType" class="form-control" placeholder="Disabled input" value="">
+                                        <label for="ChosenDayOffNumber" class="form-label">Talep Edilen İzin Gün Sayısı </label>
+                                        <input type="text" id="ChosenDayOffNumber" class="form-control">
+                                        <label for="ChosenDayOffType" class="form-label">Talep Edilen İzin Türü </label>
+                                        <input type="text" id="ChosenDayOffType" class="form-control">
+                                        <label for="ChosenDayOffDescription" class="form-label">Açıklama </label>
+                                        <input type="text" id="ChosenDayOffDescription" class="form-control">
+                                        <label for="ChosenRemainingDayOff" class="form-label">Güncellendiğinde Kalan Yıllık İzin Sayısı </label>
+                                        <input type="text" id="ChosenRemainingDayOff" class="form-control">
+
                                     </div>
                                 </fieldset>
-
+                                <div class="mb-3 form-group">
+                                    <input type="submit" id="AskDayOff" class="btn btn-danger rounded-3 fw-semibold" value="Onaylıyorum, İzin Talep Et" />
+                                </div>
                             </div>
                         </div>
 
@@ -77,41 +97,55 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<script>document.getElementById("calculateButton").addEventListener("click", function () {
+        calculateDayOffNumber();
+    });
+
+    function calculateDayOffNumber() {
+        document.getElementById("DayOffSummary").style.display = "block";
+
+        var startDate = new Date(document.getElementById("DayOffStartTime").value);
+        var endDate = new Date(document.getElementById("DayOffEndTime").value);
+
+        var differenceInTime = endDate.getTime() - startDate.getTime();
+        var differenceInDay = differenceInTime / (1000 * 3600 * 24);
+
+        document.getElementById("ChosenDayOffNumber").value = differenceInDay;
+
+        var DayOffTypeDisplayName = getDayOffTypeDisplayName(document.getElementById("DayOffType").value);
+        document.getElementById("ChosenDayOffType").value = DayOffTypeDisplayName;
+
+        document.getElementById("DayOffDescription").value = document.getElementById("Description").value;
+    }
+
+    function getDayOffTypeDisplayName(value) {
+        switch (value) {
+            case "administrativeLeave":
+                return "İdari İzin";
+            case "sickDay":
+                return "Hastalık İzni&Rapor";
+            case "annualLeave":
+                return "Yıllık İzin";
+            default:
+                return "Unknown";
+        }
+    }
+
+    function calculateRemainingDayOffNumber{
+        var totalNumberOfDayOff = document.getElementById("RemainingDaysOffNumber").value;
+        var askDayOffNumber = document.getElementById("ChosenDayOffNumber").value;
+
+        
+        document.getElementById("ChosenRemainingDayOff").value = totalNumberOfDayOff - askDayOffNumber;
+
+
+    }
+
+
+    </script>
 
 
 
-
-
-        <script>function showAdditionalContent() {
-                // Burada hesaplama yapılabilir, örneğin bir değerin kontrolü
-                var result = 5 + 3; // Örnek hesaplama
-                DayOffEndTime
-
-                // Sonuca göre ek kısmın görünürlüğünü kontrol et
-                if (result > 5) {
-                    document.getElementById("additionalContent").style.display = "block";
-                } else {
-                    document.getElementById("additionalContent").style.display = "none";
-                }
-            }</script>
-
-        <!-- Hesaplama sonrası görünmesini istediğiniz kısım -->
-        <div id="additionalContent" style="display:none;">
-            Bu kısım, hesaplama sonrası görünecek içerik.
-        </div>
-        <script>function calculateDayOffNumber() {
-                var startDate = new Date(document.getElementById("DayOffStartTime").value);
-                var endDate = new Date(document.getElementById("DayOffEndTime").value);
-
-                var differenceInDay = endDate.getDay() - startDate.getDay();
-
-
-
-                return document.getElementById("dayOffNumber").innerText = differenceInDay + " gün";
-            }</script>
-
-        <!-- Display the result here -->
-        <div class="mb-3 form-group">
-            <label class="control-label">İzin Süresi</label>
-            <div id="dayOffNumber"></div>
-        </div>
