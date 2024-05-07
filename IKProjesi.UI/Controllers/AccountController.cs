@@ -4,6 +4,7 @@ using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
+using System.ComponentModel.DataAnnotations;
 
 namespace IKProjesi.UI.Controllers
 {
@@ -71,14 +72,23 @@ namespace IKProjesi.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> SendMail(string email)
         {
-            var password = await _userService.SendMail(email);
-            if (string.IsNullOrEmpty(password))
+
+            if (string.IsNullOrEmpty(email))
             {
-                TempData["Warning"] = "Geçiçi şifreniz göndeirlemedi. Lütfen kayıtlı bir mail adresi giriniz.";
-                return View();
+                TempData["Warning"] = "Lütfen e-posta adresinizi giriniz.";
             }
-            TempData["Success"] = "Şifreniz gönderildi. Lütfen mailinizi kontrol ediniz.";
-            return RedirectToAction("ChangePassword", "Account");
+            if (ModelState.IsValid)
+            {
+                var password = await _userService.SendMail(email);
+                if (string.IsNullOrEmpty(password))
+                {
+                    TempData["Warning"] = "Geçiçi şifreniz gönderilemedi. Lütfen kayıtlı bir mail adresi giriniz.";
+                    return View();
+                }
+                TempData["Success"] = "Şifreniz gönderildi. Lütfen mailinizi kontrol ediniz.";
+                return RedirectToAction("ChangePassword", "Account");
+            }
+            return View();
         }
 
         [HttpGet]

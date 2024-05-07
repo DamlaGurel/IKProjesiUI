@@ -18,6 +18,7 @@ namespace IKProjesi.UI.Services.User
 
         [Post("/api/User/ChangePassword")]
         Task ChangePassword(ChangePasswordVM password);
+
         [Get("/api/SuperAdmin/SiteManagerDetail")]
         Task<List<SiteManagerDetailsVM>> SiteManagerDetails();
 
