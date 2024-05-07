@@ -73,12 +73,12 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
-        public async Task<IActionResult> ListAdvancePayment()
+        public async Task<IActionResult> ListAdvancePayment(int id)
         {
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             ViewBag.ApprovalType = Enum.GetValues<ApprovalType>();
-            var advance = await _employeeService.AdvancePayments();
+            var advance = await _employeeService.AdvancePayments(id);
             return View(advance);
         }
 

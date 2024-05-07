@@ -1,9 +1,14 @@
-﻿namespace IKProjesi.UI.Models.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace IKProjesi.UI.Models.Enums
 {
     public enum AdvanceType
     {
-        Talep1=1,
-		Talep2,
-		Talep3
+        [Display(Name = "İlk Talep")]
+        Talep1 =1,
+        [Display(Name = "İkinci Talep")]
+        Talep2,
+        [Display(Name = "Üçüncü Talep")]
+        Talep3
     }
 }

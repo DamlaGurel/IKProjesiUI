@@ -19,7 +19,7 @@
 
                         <div class="mb-3 form-group">
                             <label asp-for="AdvanceType" class="control-label">Avans Talebi</label>
-                            <select asp-for="AdvanceType" class="form-control">
+                            <select id="AdvanceType" name="AdvanceType" class="form-select">
                                 <option value="">Seçiniz</option>
                                 @foreach (var advanceType in ViewBag.AdvanceType)
                                 {
@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label asp-for="MoneyType" class="control-label">Para Tipi</label>
-                            <select asp-for="MoneyType" class="form-control">
+                            <select id="MoneyType" name="MoneyType" class="form-select">
                                 <option value="">Seçiniz</option>
                                 @foreach (var moneyType in ViewBag.MoneyType)
                                 {

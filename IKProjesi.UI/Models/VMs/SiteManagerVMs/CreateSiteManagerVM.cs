@@ -24,9 +24,6 @@ namespace IKProjesi.UI.Models.VMs.SiteManagerVMs
         public string? Image { get; set; }
         public string? ImageString { get; set; }
 
-
-
-
         //[BirthDateValidation]
         public DateTime? BirthDate { get; set; }
         public string? BirthPlace { get; set; }

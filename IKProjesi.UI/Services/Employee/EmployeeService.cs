@@ -117,9 +117,9 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.GetEmployeeById(id);
         }
 
-        public async Task<List<ListAdvancePaymentVM>> AdvancePayments()
+        public async Task<List<ListAdvancePaymentVM>> AdvancePayments(int id)
         {
-            return await _employeeApiService.AdvancePayments();
+            return await _employeeApiService.AdvancePayments(id);
         }
 
         public async Task<List<ListExpenseVM>> Expenses(int id)

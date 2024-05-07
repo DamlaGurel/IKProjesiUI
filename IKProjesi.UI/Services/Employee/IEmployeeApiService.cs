@@ -33,8 +33,8 @@ namespace IKProjesi.UI.Services.Employee
         [Post("/api/Employee/CreateAdvancePayment")]
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
 
-        [Get("/api/Employee/ListAdvancePayment")]
-        Task<List<ListAdvancePaymentVM>> AdvancePayments();
+        [Get("/api/Employee/ListAdvancePayment/{id}")]
+        Task<List<ListAdvancePaymentVM>> AdvancePayments(int id);
 
 
         [Put("/api/Employee/UpdateEmployee")]
