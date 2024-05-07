@@ -1,6 +1,9 @@
 ﻿using System;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
@@ -29,15 +32,35 @@ namespace IKProjesi.UI.Services.CompanyManager
         Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
 
         [Get("/api/CompanyManager/ListApprovalForOffDay")]
-        Task<List<ListWaitingApprovalForOffDaysVM>> ListApprovalForOffDay();
+        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay();
 
         [Put("/api/CompanyManager/UpdateApprovalForOffDay")]
-        Task ApprovalForOffDay(UpdateDayOffVM model);
+        Task ApprovalForOffDay(UpdateOffDayVM model);
 
 
         [Get("/api/CompanyManager/GetApprovalForOffDay/{id}")]
-        Task<UpdateDayOffVM> GetApprovalForOffDay(int id);
-        
+        Task<UpdateOffDayVM> GetApprovalForOffDay(int id);
+
+        [Get("/api/CompanyManager/ListApprovalForExpense")]
+        Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense();
+
+        [Put("/api/CompanyManager/UpdateApprovalForExpense")]
+        Task ApprovalForExpense(UpdateExpenseVM model);
+
+
+        [Get("/api/CompanyManager/GetApprovalForExpense/{id}")]
+        Task<UpdateExpenseVM> GetApprovalForExpense(int id);
+
+
+        [Get("/api/CompanyManager/ListApprovalForAdvancePayment")]
+        Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment();
+
+        [Put("/api/CompanyManager/UpdateApprovalForAdvancePayment")]
+        Task ApprovalForAdvancePayment(UpdateAdvancePaymentVM model);
+
+
+        [Get("/api/CompanyManager/GetApprovalForAdvancePayment/{id}")]
+        Task<UpdateAdvancePaymentVM> GetApprovalForAdvancePayment(int id);
     }
 }
 

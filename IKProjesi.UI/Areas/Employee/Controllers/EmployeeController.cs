@@ -10,6 +10,9 @@ using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 using System.Reflection;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
@@ -84,14 +87,14 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
 
         //�zin ��lemleri
         [HttpGet]
-        public IActionResult CreateTakeDayOff()
+        public IActionResult CreateOffDay()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVM model)
+        public async Task<IActionResult> CreateOffDay(CreateOffDayVM model)
         {
-            await _employeeService.CreateTakeDayOff(model);
+            await _employeeService.CreateOffDay(model);
             return View();
         }
 
@@ -122,10 +125,10 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         
 
         [HttpGet]
-        public async Task<IActionResult> ListTakeDayOff(int id)
+        public async Task<IActionResult> ListOffDay(int id)
 
         {
-            List<ListOffDaysVM> model = await _employeeService.ListTakeDayOff(id);
+            List<ListOffDayVM> model = await _employeeService.ListOffDay(id);
             return View(model);
         }
     }

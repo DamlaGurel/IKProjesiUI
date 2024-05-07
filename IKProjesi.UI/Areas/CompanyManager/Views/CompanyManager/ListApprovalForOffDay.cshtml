@@ -5,7 +5,7 @@
 
 }
 
-@model List<ListWaitingApprovalForOffDaysVM>
+@model List<ListWaitingApprovalForOffDayVM>
 
 
 
@@ -28,7 +28,7 @@
                                     <h6 class="card-subtitle mb-2 text-muted">İzin Bitiş Tarihi: @offDays.DayOffEndTime?.ToString("dd/MM/yyyy") </h6>
                                     <h6 class="card-subtitle mb-2 text-muted">İzin Türü: @offDays.DayOffType</h6>
                                     <h6 class="card-subtitle mb-2 text-muted">Talep Zamanı: @offDays.RequestTime?.ToString("dd/MM/yyyy")</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Onay Türü: @offDays.ApprovalType</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Onay Türü: </h6>
                                     <div class="mb-3 form-group">
                                         <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForOffDay" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
                                     </div>

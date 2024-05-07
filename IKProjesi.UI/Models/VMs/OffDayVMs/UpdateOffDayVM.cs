@@ -1,7 +1,8 @@
 ﻿using System;
-namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
+
+namespace IKProjesi.UI.Models.VMs.OffDayVMs
 {
-	public class UpdateDayOffVM
+    public class UpdateOffDayVM
 	{
         public int? Id { get; set; }
         public int? EmployeeId { get; set; }

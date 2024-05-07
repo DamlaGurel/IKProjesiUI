@@ -3,7 +3,9 @@ using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.CompanyManager;
 using System.IO.Compression;
-
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 
 namespace IKProjesi.UI.Services.Employee
 {
@@ -90,20 +92,21 @@ namespace IKProjesi.UI.Services.Employee
 
             await _employeeApiService.CreateExpense(model);
         }
-        public async Task CreateTakeDayOff(CreateOffDayVM model)
+        public async Task CreateOffDay(CreateOffDayVM model)
         {
             await _employeeApiService.CreateTakeDayOff(model);
 
         }
 
-        public async Task<List<ListOffDaysVM>> ListTakeDayOff(int id)
+        public async Task<List<ListOffDayVM>> ListOffDay(int id)
         {
-            return await _employeeApiService.ListTakeDayOff(id);
+            return await _employeeApiService.ListOffDay(id);
         }
 
 
+        
 
-
+      
 
         public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
         {
