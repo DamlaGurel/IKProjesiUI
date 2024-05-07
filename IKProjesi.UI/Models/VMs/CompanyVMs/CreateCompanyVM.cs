@@ -1,4 +1,6 @@
-﻿using System.Net.NetworkInformation;
+﻿using IKProjesi.UI.Extensions;
+using System.ComponentModel.DataAnnotations;
+using System.Net.NetworkInformation;
 
 namespace IKProjesi.UI.Models.VMs.CompanyVMs
 {
@@ -15,7 +17,9 @@ namespace IKProjesi.UI.Models.VMs.CompanyVMs
         public string Address { get; set; }
         public string Email { get; set; }
         public int EmployeeNumber { get; set; }
+        [CompanyDateTimeValidation]
         public DateTime FoundationYear { get; set; }
+        [ContractDateValidation]
         public DateTime StartContractDate { get; set; }
         public DateTime EndContractDate { get; set; }
 

@@ -78,9 +78,12 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateEmployee(CreateEmployeeVM model)
         {
-            await _employeeService.CreateEmployee(model);
-
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                await _employeeService.CreateEmployee(model);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
 
 

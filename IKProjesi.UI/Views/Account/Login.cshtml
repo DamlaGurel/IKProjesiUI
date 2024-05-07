@@ -4,6 +4,7 @@
     Layout = "_Layout";
 }
 
+
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
     <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
@@ -28,7 +29,7 @@
                                         <input asp-for="Password" type="password" class="form-control" id="Password" name="Password">
                                         <button type="button" class="btn btn-outline-secondary" id="togglePasswordVisibility">
                                             <span id="passwordVisibilityIcon">
-                                                <i class="bi bi-eye-slash"></i>
+                                                <i class="ti ti-eye-off"></i>
                                             </span>
                                         </button>
                                     </div>
@@ -58,11 +59,11 @@
     togglePasswordVisibilityBtn.addEventListener('click', function () {
         if (isPasswordVisible) {
             passwordInput.type = 'password';
-            passwordVisibilityIcon.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            passwordVisibilityIcon.innerHTML = '<i class="ti ti-eye-off"></i>';
             isPasswordVisible = false;
         } else {
             passwordInput.type = 'text';
-            passwordVisibilityIcon.innerHTML = '<i class="fas fa-eye"></i>';
+            passwordVisibilityIcon.innerHTML = '<i class="ti ti-eye"></i>';
             isPasswordVisible = true;
         }
     });

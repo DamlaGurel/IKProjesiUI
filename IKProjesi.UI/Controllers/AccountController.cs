@@ -29,33 +29,38 @@ namespace IKProjesi.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM user)
         {
-            var token = await _userService.Login(user);
-            var tokenString = token.Token;
-            await _userService.ValidationToken(tokenString);
+            if (ModelState.IsValid)
+            {
+                var token = await _userService.Login(user);
+                var tokenString = token.Token;
+                await _userService.ValidationToken(tokenString);
 
-            if (string.IsNullOrEmpty(token.Token))
-            {
-                return RedirectToAction("Login");
+                if (string.IsNullOrEmpty(token.Token))
+                {
+                    TempData["Warning"] = "Kullanıcı adı ya da şifre hatalı.";
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    if (token.Role == Job.SuperAdmin.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "SuperAdmin", new { area = "SuperAdmin" });
+                    }
+                    else if (token.Role == Job.SiteManager.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
+                    }
+                    else if (token.Role == Job.CompanyManager.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "CompanyManager", new { area = "CompanyManager" });
+                    }
+                    else if (token.Role == Job.Employee.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "Employee", new { area = "Employee" });
+                    }
+                }
             }
-            else
-            {
-                if (token.Role == Job.SuperAdmin.ToString().ToUpper())
-                {
-                    return RedirectToAction("Index", "SuperAdmin", new { area = "SuperAdmin" });
-                }
-                else if (token.Role == Job.SiteManager.ToString().ToUpper())
-                {
-                    return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
-                }
-                else if (token.Role == Job.CompanyManager.ToString().ToUpper())
-                {
-                    return RedirectToAction("Index", "CompanyManager", new { area = "CompanyManager" });
-                }
-                else if (token.Role == Job.Employee.ToString().ToUpper())
-                {
-                    return RedirectToAction("Index", "Employee", new { area = "Employee" });
-                }
-            }
+            
             return View();
 
         }
@@ -67,9 +72,9 @@ namespace IKProjesi.UI.Controllers
         public async Task<IActionResult> SendMail(string email)
         {
             var password = await _userService.SendMail(email);
-            if (password == null)
+            if (string.IsNullOrEmpty(password))
             {
-                TempData["Warning"] = "Geçiçi şifreniz gönderilemedi. Tekrar deneyiniz";
+                TempData["Warning"] = "Geçiçi şifreniz göndeirlemedi. Lütfen kayıtlı bir mail adresi giriniz.";
                 return View();
             }
             TempData["Success"] = "Şifreniz gönderildi. Lütfen mailinizi kontrol ediniz.";
@@ -85,14 +90,18 @@ namespace IKProjesi.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordVM password)
         {
-            await _userService.ChangePassword(password);
-            if (password == null)
+            if (ModelState.IsValid)
             {
-                TempData["Warning"] = "Şifreniz değiştirilemedi";
-                return View();
+                await _userService.ChangePassword(password);
+                if (password == null)
+                {
+                    TempData["Warning"] = "Şifreniz değiştirilemedi";
+                    return View();
+                }
+                TempData["Success"] = "Şifreniz değiştirildi.";
+                return RedirectToAction("Login", "Account");
             }
-            TempData["Success"] = "Şifreniz değiştirildi.";
-            return RedirectToAction("Login", "Account");
+            return View();
         }
 
         public async Task<IActionResult> Logout()

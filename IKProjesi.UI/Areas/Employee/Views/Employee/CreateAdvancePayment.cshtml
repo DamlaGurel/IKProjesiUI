@@ -8,64 +8,71 @@
 <h1>Avans</h1>
 
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateAdvancePayment">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AdvanceType" class="control-label">Avans Talebi</label>
-                <select asp-for="AdvanceType" class="form-control">
-                    <option value="">Seçiniz</option>
-                    @foreach (var advanceTypeName in Enum.GetNames(typeof(AdvanceType)))
-                    {
-                        <option value="@advanceTypeName">@advanceTypeName</option>
-                    }
-                </select>
-                <span asp-validation-for="AdvanceType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MoneyType" class="control-label">Para Tipi</label>
-                <select asp-for="MoneyType" class="form-control">
-                    <option value="">Seçiniz</option>
-                    @foreach (var moneyTypeName in Enum.GetNames(typeof(MoneyType)))
-                    {
-                        <option value="@moneyTypeName">@moneyTypeName</option>
-                    }
-                </select>
-                <span asp-validation-for="MoneyType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RequestDate" class="control-label">Talep Tarihi</label>
-                <input asp-for="RequestDate" type="date" class="form-control" />
-                <span asp-validation-for="RequestDate" class="text-danger"></span>
-            </div>
-            @* <div class="form-group">
-                <label asp-for="TotalAdvance" class="control-label">Talep Edilen Miktar</label>
-                <select asp-for="TotalAdvance" type="number" class="form-control" min="0" max="@Model.Salary * 3" step="0.01">Seçiniz</select>
-                <span asp-validation-for="TotalAdvance" class="text-danger"></span>
-            </div> *@ @*Personel eklendiğinde girilen maaşına göre 3 katı hesaplanacak*@
-            <div class="form-group">
-                <label asp-for="Description" class="control-label">Açıklama</label>
-                <input asp-for="Description" type="text" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmployeeId" class="control-label">Personel</label>
-                <input asp-for="EmployeeId" type="number" class="form-control" />
-                <span asp-validation-for="EmployeeId" class="text-danger"></span>
-            </div>
-            <div class="mb-3 form-group">
-                <div>
-                    <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />
-                </div>
-            </div>
-            <div class="mb-3 form-group">
-                <div>
-                    <a asp-controller="Employee" asp-action="Index" class="btn btn-danger rounded-3 fw-semibold ">Ana Sayfaya Dön</a>
-                </div>
-            </div>
-        </form>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-center text-primary">Avans Talebi</h5>
+                <div class="row">
+                    <form asp-area="Employee" asp-controller="Employee" asp-action="CreateAdvancePayment" method="post" >
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+                        <div class="mb-3 form-group">
+                            <label asp-for="AdvanceType" class="control-label">Avans Talebi</label>
+                            <select asp-for="AdvanceType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var advanceType in ViewBag.AdvanceType)
+                                {
+                                    <option value="@advanceType">@EnumExtension.GetDisplayName(advanceType)</option>
+                                }
+                            </select>
+                            <span asp-validation-for="AdvanceType" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="MoneyType" class="control-label">Para Tipi</label>
+                            <select asp-for="MoneyType" class="form-control">
+                                <option value="">Seçiniz</option>
+                                @foreach (var moneyType in ViewBag.MoneyType)
+                                {
+                                    <option value="@moneyType">@EnumExtension.GetDisplayName(moneyType)</option>
+                                }
+                            </select>
+                            <span asp-validation-for="MoneyType" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="TotalAdvance" class="control-label">Avans Miktarı</label>
+                            <input asp-for="TotalAdvance" type="text" class="form-control"/>
+                            <span asp-validation-for="TotalAdvance" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="RequestDate" class="control-label">Talep Tarihi</label>
+                            <input asp-for="RequestDate" type="date" class="form-control" />
+                            <span asp-validation-for="RequestDate" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="Description" class="control-label">Açıklama</label>
+                            <input asp-for="Description" type="text" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        @* <div class="mb-3 form-group">
+                            <label asp-for="EmployeeId" class="control-label">Personel</label>
+                            <input asp-for="EmployeeId" type="number" class="form-control" />
+                            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                        </div> *@
+                        <div class="mb-3 form-group">
+                            <div>
+                                <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Talep Et" />
+                            </div>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <div>
+                                <a asp-controller="Employee" asp-action="Index" class="btn btn-danger rounded-3 fw-semibold ">Ana Sayfaya Dön</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

@@ -112,16 +112,16 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         public async Task<IActionResult> CreateCompanyManager(CompanyManagerCompanyVM model, int companyId)
         {
 
-            //if (ModelState.IsValid)
-            //{
-            model.CreateCompanyManagerVM.CompanyId = companyId;
+            if (ModelState.IsValid)
+            {
+                model.CreateCompanyManagerVM.CompanyId = companyId;
 
-            var vm = model.CreateCompanyManagerVM;
+                var vm = model.CreateCompanyManagerVM;
 
-            await _companyManagerService.CreateCompanyManager(vm);
+                await _companyManagerService.CreateCompanyManager(vm);
 
-            return RedirectToAction(nameof(CompanyManagerList));
-            //}
+                return RedirectToAction(nameof(CompanyManagerList));
+            }
 
             //else
             //{
@@ -130,7 +130,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.FirstName), "Lütfen adınızı giriniz.");
             //}
 
-         
+
             //if (string.IsNullOrEmpty(model.CreateCompanyManagerVm.LastName))
             //{
             //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.LastName), "Lütfen soyadınızı giriniz.");
@@ -138,6 +138,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
             //    return View();
             //}
+            return View();
         }
 
         public async Task<IActionResult> CompanyIndex(int pg = 1)
@@ -175,8 +176,13 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompany(CreateCompanyVM model)
         {
-            await _companyService.CreateCompany(model);
-            return RedirectToAction(nameof(CompanyIndex));
+            if (ModelState.IsValid)
+            {
+                await _companyService.CreateCompany(model);
+                return RedirectToAction(nameof(CompanyIndex));
+            }
+            return View();
+            
         }
 
         [HttpGet]

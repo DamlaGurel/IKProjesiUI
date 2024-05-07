@@ -9,38 +9,43 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Site Yöneticisi Özeti</h5>
-                <div class="table-responsive">
-                    <table class="table text-nowrap mb-0 align-middle">
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adı</td>
-                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.FirstName</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">İkinci Adı</td>
-                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.SecondName</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Soyadı</td>
-                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.LastName</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">İkinci Soyadı</td>
-                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.SecondLastName</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Telefon Numarası</td>
-                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">@item.PhoneNumber</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Site Yöneticileri</h5>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <table class="table text-nowrap mb-0 align-middle">
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Adı</td>
+                                                <td class="fw-normal">@item.FirstName</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">İkinci Adı</td>
+                                                <td class="fw-normal">@item.SecondName</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Soyadı</td>
+                                                <td class="fw-normal">@item.LastName</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">İkinci Soyadı</td>
+                                                <td class="fw-normal">@item.SecondLastName</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Telefon</td>
+                                                <td class="fw-normal">@item.PhoneNumber</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
-

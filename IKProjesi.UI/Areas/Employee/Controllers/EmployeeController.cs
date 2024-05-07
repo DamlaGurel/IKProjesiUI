@@ -47,13 +47,24 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpGet]
         public IActionResult CreateAdvancePayment()
         {
+            ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateAdvancePayment(CreateAdvancePaymentVM createAdvancePayment)
         {
             await _employeeService.CreateAdvancePayment(createAdvancePayment);
-            return RedirectToAction(nameof(CreateAdvancePayment));
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> ListAdvancePayment()
+        {
+            ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
+            ViewBag.ApprovalType = Enum.GetValues<ApprovalType>();
+            var advance = await _employeeService.AdvancePayments();
+            return View(advance);
         }
 
         [HttpGet]
@@ -71,7 +82,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View(employeeDetails);
         }
 
-        //İzin İşlemleri
+        //�zin ��lemleri
         [HttpGet]
         public IActionResult CreateTakeDayOff()
         {
@@ -105,7 +116,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         public async Task<IActionResult> UpdateEmployee(UpdateEmployeeVm model)
         {
             await _employeeService.UpdateEmployee(model);
-            TempData["UpdateMessage"] = "Employee güncellendi.";
+            TempData["UpdateMessage"] = "Employee g�ncellendi.";
             return View(model);
         }
         
