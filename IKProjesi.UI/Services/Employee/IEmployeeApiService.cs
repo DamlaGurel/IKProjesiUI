@@ -19,6 +19,9 @@ namespace IKProjesi.UI.Services.Employee
         [Post("/api/Employee/CreateExpense")]
         Task CreateExpense(CreateExpenseVM model);
 
+        [Get("/api/Employee/ListExpense/{id}")]
+        Task<List<ListExpenseVM>> ListExpense(int id);
+
 
         [Post("/api/Employee/CreateTakeDayOff")]
         Task CreateTakeDayOff(CreateOffDayVM model);

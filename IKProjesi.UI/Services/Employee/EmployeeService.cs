@@ -101,10 +101,6 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.ListTakeDayOff(id);
         }
 
-
-
-
-
         public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
         {
             if (model.Image is not null)
@@ -124,6 +120,11 @@ namespace IKProjesi.UI.Services.Employee
         public async Task<List<ListAdvancePaymentVM>> AdvancePayments()
         {
             return await _employeeApiService.AdvancePayments();
+        }
+
+        public async Task<List<ListExpenseVM>> Expenses(int id)
+        {
+            return await _employeeApiService.ListExpense(id);
         }
     }
 }
