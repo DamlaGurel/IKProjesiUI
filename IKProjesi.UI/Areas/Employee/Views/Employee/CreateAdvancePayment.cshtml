@@ -14,15 +14,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="AdvanceType" class="control-label">Avans Talebi</label>
-                <select asp-for="AdvanceType" class="form-control" asp-items="Html.GetEnumSelectList<AdvanceType>()">
+                <select asp-for="AdvanceType" class="form-control">
                     <option value="">Seçiniz</option>
+                    @foreach (var advanceTypeName in Enum.GetNames(typeof(AdvanceType)))
+                    {
+                        <option value="@advanceTypeName">@advanceTypeName</option>
+                    }
                 </select>
                 <span asp-validation-for="AdvanceType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MoneyType" class="control-label">Para Tipi</label>
-                <select asp-for="MoneyType" class="form-control" asp-items="Html.GetEnumSelectList<MoneyType>()">
+                <select asp-for="MoneyType" class="form-control">
                     <option value="">Seçiniz</option>
+                    @foreach (var moneyTypeName in Enum.GetNames(typeof(MoneyType)))
+                    {
+                        <option value="@moneyTypeName">@moneyTypeName</option>
+                    }
                 </select>
                 <span asp-validation-for="MoneyType" class="text-danger"></span>
             </div>

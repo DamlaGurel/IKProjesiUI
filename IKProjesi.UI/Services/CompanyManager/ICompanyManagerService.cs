@@ -15,7 +15,7 @@ namespace IKProjesi.UI.Services.CompanyManager
         Task<SummaryCompanyManagerVM> GetCompanyManagerSummary(int id);
         Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
         Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id);
-        //Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id);
+        Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id);
     }
 }
 

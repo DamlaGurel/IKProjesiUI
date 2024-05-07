@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
-using IKProjesi.UI.Services.Employee;
-
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +35,8 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpGet]
         public IActionResult CreateExpense()
         {
+            ViewBag.ExpenseTypes = Enum.GetValues<ExpenseType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             return View();
         }
 
