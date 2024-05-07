@@ -78,6 +78,31 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVM model)
+        [HttpGet]
+        public async Task<IActionResult> UpdateEmployee(int id)
+        {
+            var employee = await _employeeService.GetEmployeeById(id); 
+
+            //string imageString = null;
+
+            //if (employee != null && employee.ImageBytes != null)
+            //{
+            //    imageString = Convert.ToBase64String(employee.ImageBytes);
+            //}
+
+            //employee.ImageString = imageString;
+
+            return View(employee);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeVm model)
+        {
+            await _employeeService.UpdateEmployee(model);
+            TempData["UpdateMessage"] = "Employee güncellendi.";
+            return View(model);
+        }
+        public IActionResult CreateTakeOffDay()
         {
             await _employeeService.CreateTakeDayOff(model);
             return View();

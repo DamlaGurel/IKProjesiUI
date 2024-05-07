@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Personel Özeti</h5>
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Personel Detayı</h5>
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <tbody>
@@ -85,11 +85,11 @@
                         </tbody>
                     </table>
                     <div>
-                        <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate">Düzenle</a>
+                        <a class="btn btn-danger rounded-3 fw-semibold"  asp-area="Employee" asp-controller="Employee" asp-action="UpdateEmployee" asp-route-id="@Model.Id">Düzenle</a>
                     </div>
-                    <div>
+@*                     <div>
                         <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="Index">Geri Dön</a>
-                    </div>
+                    </div> *@
 
                 </div>
             </div>

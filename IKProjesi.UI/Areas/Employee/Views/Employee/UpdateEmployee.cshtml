@@ -1,0 +1,83 @@
+﻿@using IKProjesi.UI.Models.VMs.EmployeeVMs
+
+@{
+    ViewData["Title"] = "EmployeeDetails";
+    Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+@model UpdateEmployeeVm
+
+<script>
+    setTimeout(function() {
+        $('#updateMessage').fadeOut('slow');
+    }, 5000);
+</script>
+
+@if (TempData["UpdateMessage"] is not null)
+{
+    <div id="updateMessage" class="alert alert-success" role="alert">
+        @TempData["UpdateMessage"]
+    </div>
+}
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Personel Düzenle</h5>
+
+                <form method="post" asp-action="UpdateEmployee" asp-controller="Employee" enctype="multipart/form-data">
+                    <div class="table-responsive">
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <tbody>
+
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Adres</td>
+                                    <td class="border-bottom-0 fw-normal mb-1 fs-4"> 
+                                        <input type="text" class="form-control" id="Address" name="Address" value="@Model.Address" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Telefon Numarası</td>
+                                    <td class="border-bottom-0 fw-normal mb-1 fs-4">
+                                        <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Profil Resmi</td>
+                                    <td>
+                                        <label for="ImageBytes" class="form-label fw-semibold"></label>
+                                        <img src="data:image;base64,@(Convert.ToBase64String(Model.ImageBytes))" class="img-fluid" alt="Profil Resmi"> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Resim Değiştir</td>
+                                    <td>
+                                        <div class="mb-3 form-group">
+                                                <div>
+                                                <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" name="Image" />
+                                                
+                                            </div>
+                                            <span asp-validation-for="Image" class="text-danger"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="submit" class="btn btn-danger rounded-3 fw-semibold" asp-controller="Employee" asp-action="UpdateEmployee">Kaydet</button>
+                        </div>
+                </form>
+                <div>
+                    <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="CompanyManager" asp-action="Index">Geri Dön</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        ></script>

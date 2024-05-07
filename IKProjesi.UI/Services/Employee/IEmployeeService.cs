@@ -14,10 +14,9 @@ namespace IKProjesi.UI.Services.Employee
         Task<List<ListOffDaysVM>> ListTakeDayOff(int id);
 
 
-
-
-
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
 
+        Task<UpdateEmployeeVm> UpdateEmployee(UpdateEmployeeVm model);
+        Task<UpdateEmployeeVm> GetEmployeeById(int id);
     }
 }

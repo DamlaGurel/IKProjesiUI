@@ -24,10 +24,45 @@ namespace IKProjesi.UI.Services.Employee
 
         public async Task CreateEmployee(CreateEmployeeVM model)
         {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
+
+            if (model.DepartmentName.HasValue)
+            {
+                // Cast the enum value to int and assign it to the corresponding property
+                model.DepartmentNumber = (int)model.DepartmentName;
+            }
+
             await _employeeApiService.CreateEmployee(model);
         }
 
-        public async Task<SummaryEmployeeVM> GetEmployeeSummary(int id)
+        public async Task<string?> SaveImage(IFormFile image)
+        {
+            var imageFile = image;
+
+            byte[] imageBytes = null;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await imageFile.CopyToAsync(memoryStream);
+
+                if (memoryStream.Length < 2097152)
+                {
+                    imageBytes = memoryStream.ToArray();
+                }
+                else
+                {
+                   return null;
+                }
+            }
+
+            string imageString = Convert.ToBase64String(imageBytes);
+            return imageString;
+        }
+
+        public async Task<SummaryEmployeeVm> GetEmployeeSummary(int id)
         {
             return await _employeeApiService.GetEmployeeSummary(id);
         }
@@ -67,5 +102,21 @@ namespace IKProjesi.UI.Services.Employee
 
 
 
+
+        public async Task<UpdateEmployeeVm> UpdateEmployee(UpdateEmployeeVm model)
+        {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
+            await _employeeApiService.UpdateEmployee(model);
+
+            return model;
+        }
+
+        public async Task<UpdateEmployeeVm> GetEmployeeById(int id)
+        {
+            return await _employeeApiService.GetEmployeeById(id);
+        }
     }
 }
