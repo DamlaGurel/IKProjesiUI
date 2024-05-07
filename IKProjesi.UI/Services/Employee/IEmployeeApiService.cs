@@ -35,9 +35,9 @@ namespace IKProjesi.UI.Services.Employee
 
 
         [Put("/api/Employee/UpdateEmployee")]
-        Task UpdateEmployee(UpdateEmployeeVm model);
+        Task UpdateEmployee(UpdateEmployeeVM model);
 
         [Get("/api/Employee/GetEmployeeById/{id}")]
-        Task<UpdateEmployeeVm> GetEmployeeById(int id);
+        Task<UpdateEmployeeVM> GetEmployeeById(int id);
     }
 }

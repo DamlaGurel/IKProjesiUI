@@ -113,7 +113,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeVm model)
+        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeVM model)
         {
             await _employeeService.UpdateEmployee(model);
             TempData["UpdateMessage"] = "Employee g�ncellendi.";

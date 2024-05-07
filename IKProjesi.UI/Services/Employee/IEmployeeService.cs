@@ -16,8 +16,8 @@ namespace IKProjesi.UI.Services.Employee
 
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
 
-        Task<UpdateEmployeeVm> UpdateEmployee(UpdateEmployeeVm model);
-        Task<UpdateEmployeeVm> GetEmployeeById(int id);
+        Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model);
+        Task<UpdateEmployeeVM> GetEmployeeById(int id);
         Task<List<ListAdvancePaymentVM>> AdvancePayments();
     }
 }

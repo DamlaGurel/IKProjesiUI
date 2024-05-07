@@ -2,7 +2,7 @@
 
 namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
-    public class UpdateEmployeeVm
+    public class UpdateEmployeeVM
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

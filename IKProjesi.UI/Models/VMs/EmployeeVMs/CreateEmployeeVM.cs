@@ -1,4 +1,8 @@
-﻿namespace IKProjesi.UI.Models.VMs.EmployeeVMs
+﻿using IKProjesi.UI.Extensions;
+using IKProjesi.UI.Models.Enums;
+using System.ComponentModel.DataAnnotations;
+
+namespace IKProjesi.UI.Models.VMs.EmployeeVMs
 {
     public class CreateEmployeeVM
     {

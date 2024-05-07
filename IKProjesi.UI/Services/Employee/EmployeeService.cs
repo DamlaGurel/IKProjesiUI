@@ -64,7 +64,7 @@ namespace IKProjesi.UI.Services.Employee
             return imageString;
         }
 
-        public async Task<SummaryEmployeeVm> GetEmployeeSummary(int id)
+        public async Task<SummaryEmployeeVM> GetEmployeeSummary(int id)
         {
             return await _employeeApiService.GetEmployeeSummary(id);
         }
@@ -105,7 +105,7 @@ namespace IKProjesi.UI.Services.Employee
 
 
 
-        public async Task<UpdateEmployeeVm> UpdateEmployee(UpdateEmployeeVm model)
+        public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
         {
             if (model.Image is not null)
             {
@@ -116,7 +116,7 @@ namespace IKProjesi.UI.Services.Employee
             return model;
         }
 
-        public async Task<UpdateEmployeeVm> GetEmployeeById(int id)
+        public async Task<UpdateEmployeeVM> GetEmployeeById(int id)
         {
             return await _employeeApiService.GetEmployeeById(id);
         }
