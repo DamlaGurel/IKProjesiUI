@@ -1,12 +1,18 @@
+<<<<<<<<< Temporary merge branch 1
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
+using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 
 using IKProjesi.UI.Models.Enums;
+>>>>>>>>> Temporary merge branch 2
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
+
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
@@ -26,20 +32,33 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View();
         }
 
+<<<<<<<<< Temporary merge branch 1
+
         [HttpGet]
         public IActionResult CreateTakeOffDay()
+=========
+        [HttpGet]
+        public IActionResult CreateExpense()
+>>>>>>>>> Temporary merge branch 2
         {
             return View();
         }
 
+<<<<<<<<< Temporary merge branch 1
         [HttpGet]
         public IActionResult CreateExpense()
         {
-            ViewBag.ExpenseTypes = Enum.GetValues<ExpenseType>();
-            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             return View();
         }
 
+        [HttpPost]
+        public IActionResult CreateTakeOffDay(CreateDaysOffVm model)
+        {
+            return View();
+        }
+
+=========
+>>>>>>>>> Temporary merge branch 2
         [HttpPost]
         public async Task<IActionResult> CreateExpense(CreateExpenseVM createExpense)
         {
@@ -79,10 +98,33 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult CreateTakeOffDay(int id)
+
+        //İzin İşlemleri
+        [HttpGet]
+        public IActionResult CreateTakeDayOff()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVM model)
+        {
+        [HttpGet]
+        public async Task<IActionResult> ListTakeDayOff(int id)
+
+        {
+            List<ListOffDaysVM> model = await _employeeService.ListTakeDayOff(id);
+            return View(model);
+        }
+
+
+
+       
+
+
         //{
         //    return View();
         //}
+>>>>>>>>> Temporary merge branch 2
     }
 }
+

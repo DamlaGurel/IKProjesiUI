@@ -2,6 +2,7 @@
 using System.Reflection;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.SiteManager;
@@ -72,10 +73,33 @@ namespace IKProjesi.UI.Services.CompanyManager
             return await _companyManagerApiService.GetCompanyManagerDetails(id);
         }
 
+
+        public async Task<List<ListWaitingApprovalForOffDaysVM>> ListApprovalForOffDay()
+
+        {
+            return await _companyManagerApiService.ListApprovalForOffDay();
+
+        }
+
+        public async Task GetApprovalForOffDay(UpdateDayOffVM model)
+        {
+            await _companyManagerApiService.ApprovalForOffDay(model);
+
+        }
+
+        public async Task<UpdateDayOffVM> GetApprovalForOffDay(int id)
+        {
+            return await _companyManagerApiService.GetApprovalForOffDay(id);
+
+        }
+
+        
+
         public async Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id)
         {
             return await _companyManagerApiService.GetCompanyManagerById(id);
         }
+
     }
 }
 

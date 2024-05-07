@@ -18,9 +18,11 @@
 
                         <div class="mb-3 form-group">
 
+
                             <label asp-for="@Model.CreateCompanyManagerVM.FirstName" class="control-label">Adı</label>
                             <input asp-for="@Model.CreateCompanyManagerVM.FirstName" class="form-control" />
                             <span asp-validation-for="@Model.CreateCompanyManagerVM.FirstName" class="text-danger"></span>
+
 
                         </div>
                         <div class="mb-3 form-group">
@@ -70,7 +72,14 @@
                         </div>
 
                         <div class="mb-3 form-group">
+                            <label asp-for="@Model.CreateCompanyManagerVM.Payment" class="control-label">Maaş</label>
+                            <input asp-for="@Model.CreateCompanyManagerVM.Payment" class="form-control" />
+                            <span asp-validation-for="@Model.CreateCompanyManagerVM.Payment" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 orm-group">
                             <label asp-for="@Model.CreateCompanyManagerVM.CompanyId" class="control-label">Şirketler</label>
+
 
                             <select id="CompanyId" name="CompanyId" class="form-select">
                                 <option value="Seçiniz"></option>

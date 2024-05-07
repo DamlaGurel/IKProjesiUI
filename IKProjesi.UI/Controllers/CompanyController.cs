@@ -19,11 +19,18 @@ namespace IKProjesi.UI.Controllers
         }
 
 
+        //[HttpGet]
+        //public async Task<IActionResult> Create()
+        //{
+        //    return View();
+        //}
+
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCompanyVM model)

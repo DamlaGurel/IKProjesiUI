@@ -82,5 +82,34 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        //İzin İşlemleri
+        [HttpGet]
+        public async Task<IActionResult> ListApprovalForOffDay()
+        {
+            var listApprovalForOffDay = await _companyManagerService.ListApprovalForOffDay();
+
+            return View(listApprovalForOffDay);
+        }
+
+        
+
+
+        [HttpPost]
+        public async Task<IActionResult> GetApprovalForOffDay(UpdateDayOffVM model)
+        {
+           
+            await _companyManagerService.GetApprovalForOffDay(model);
+            return RedirectToAction(nameof(ListApprovalForOffDay));
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetApprovalForOffDay(int id)
+        {
+            var getApprovalForOffDay = await _companyManagerService.GetApprovalForOffDay(id);
+            return View(getApprovalForOffDay);
+        }
     }
 }

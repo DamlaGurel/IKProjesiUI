@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
+﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 
 namespace IKProjesi.UI.Services.Employee
 {
@@ -9,6 +10,14 @@ namespace IKProjesi.UI.Services.Employee
         Task<EmployeeDetailsVM> GetEmployeeDetails(int id);
         Task CreateExpense(CreateExpenseVM model);
 
+        Task CreateTakeDayOff(CreateOffDayVM model);
+        Task<List<ListOffDaysVM>> ListTakeDayOff(int id);
+
+
+
+
+
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
+
     }
 }
