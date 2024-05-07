@@ -7,7 +7,7 @@ namespace IKProjesi.UI.Services.Employee
         Task CreateEmployee(CreateEmployeeVm model);
         Task<SummaryEmployeeVm> GetEmployeeSummary(int id);
         Task<EmployeeDetailsVm> GetEmployeeDetails(int id);
-        Task UpdateEmployee(UpdateEmployeeVm model);
+        Task<UpdateEmployeeVm> UpdateEmployee(UpdateEmployeeVm model);
         Task<UpdateEmployeeVm> GetEmployeeById(int id);
     }
 }

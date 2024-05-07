@@ -26,7 +26,7 @@
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Personel Düzenle</h5>
 
-                <form method="post" asp-action="UpdateEmployee" asp-controller="Employee">
+                <form method="post" asp-action="UpdateEmployee" asp-controller="Employee" enctype="multipart/form-data">
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
                             <tbody>
@@ -48,17 +48,16 @@
                                 <tr>
                                     <td class="border-bottom-0 fw-semibold mb-1 fs-4">Profil Resmi</td>
                                     <td>
-                                        <label for="LogoBytes" class="form-label fw-semibold"></label>
+                                        <label for="ImageBytes" class="form-label fw-semibold"></label>
                                         <img src="data:image;base64,@(Convert.ToBase64String(Model.ImageBytes))" class="img-fluid" alt="Profil Resmi"> 
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td></td>
+                                    <td class="border-bottom-0 fw-semibold mb-1 fs-4">Resim Değiştir</td>
                                     <td>
                                         <div class="mb-3 form-group">
-                                            <label asp-for="Image" class="control-label"></label>
-                                            <div>
+                                                <div>
                                                 <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" name="Image" />
                                                 
                                             </div>

@@ -61,7 +61,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         {
             await _employeeService.UpdateEmployee(model);
             TempData["UpdateMessage"] = "Employee güncellendi.";
-            return View();
+            return View(model);
         }
         public IActionResult CreateTakeOffDay()
         {

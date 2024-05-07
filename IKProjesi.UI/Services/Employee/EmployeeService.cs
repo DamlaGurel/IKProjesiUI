@@ -63,13 +63,15 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.GetEmployeeDetails(id);
         }
 
-        public async Task UpdateEmployee(UpdateEmployeeVm model)
+        public async Task<UpdateEmployeeVm> UpdateEmployee(UpdateEmployeeVm model)
         {
             if (model.Image is not null)
             {
                 model.ImageString = await SaveImage(model.Image);
             }
             await _employeeApiService.UpdateEmployee(model);
+
+            return model;
         }
 
         public async Task<UpdateEmployeeVm> GetEmployeeById(int id)
