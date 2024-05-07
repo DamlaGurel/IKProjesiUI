@@ -1,15 +1,11 @@
-<<<<<<<<< Temporary merge branch 1
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
-
 using IKProjesi.UI.Models.Enums;
->>>>>>>>> Temporary merge branch 2
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
-
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
@@ -32,39 +28,22 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View();
         }
 
-<<<<<<<<< Temporary merge branch 1
-
-        [HttpGet]
-        public IActionResult CreateTakeOffDay()
-=========
-        [HttpGet]
-        public IActionResult CreateExpense()
->>>>>>>>> Temporary merge branch 2
-        {
-            return View();
-        }
-
-<<<<<<<<< Temporary merge branch 1
         [HttpGet]
         public IActionResult CreateExpense()
         {
+            ViewBag.ExpenseTypes = Enum.GetValues<ExpenseType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             return View();
         }
 
-        [HttpPost]
-        public IActionResult CreateTakeOffDay(CreateDaysOffVm model)
-        {
-            return View();
-        }
-
-=========
->>>>>>>>> Temporary merge branch 2
         [HttpPost]
         public async Task<IActionResult> CreateExpense(CreateExpenseVM createExpense)
         {
             await _employeeService.CreateExpense(createExpense);
             return RedirectToAction(nameof(CreateExpense));
         }
+
+        [HttpGet]
         public IActionResult CreateAdvancePayment()
         {
             return View();
@@ -75,7 +54,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             await _employeeService.CreateAdvancePayment(createAdvancePayment);
             return RedirectToAction(nameof(CreateAdvancePayment));
         }
-
 
         [HttpGet]
         public async Task<IActionResult> GetEmployeeSummary(int id)
@@ -92,13 +70,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View(employeeDetails);
         }
 
-        
-        public IActionResult CreateTakeOffDay()
-        {
-            return View();
-        }
-
-
         //İzin İşlemleri
         [HttpGet]
         public IActionResult CreateTakeDayOff()
@@ -108,6 +79,10 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVM model)
         {
+            await _employeeService.CreateTakeDayOff(model);
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> ListTakeDayOff(int id)
 
@@ -115,16 +90,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             List<ListOffDaysVM> model = await _employeeService.ListTakeDayOff(id);
             return View(model);
         }
-
-
-
-       
-
-
-        //{
-        //    return View();
-        //}
->>>>>>>>> Temporary merge branch 2
     }
 }
 
