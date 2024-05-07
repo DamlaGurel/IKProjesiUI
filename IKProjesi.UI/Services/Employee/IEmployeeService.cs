@@ -8,22 +8,26 @@ namespace IKProjesi.UI.Services.Employee
 {
     public interface IEmployeeService
     {
+        //Employee İşlemleri
         Task CreateEmployee(CreateEmployeeVM model);
         Task<SummaryEmployeeVM> GetEmployeeSummary(int id);
         Task<EmployeeDetailsVM> GetEmployeeDetails(int id);
-        Task CreateExpense(CreateExpenseVM model);
-        Task<List<ListExpenseVM>> Expenses(int id);
+        Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model);
+        Task<UpdateEmployeeVM> GetEmployeeById(int id);
 
+        //Expense İşlemleri
+        Task CreateExpense(CreateExpenseVM model);
+        Task<List<ListExpenseVM>> ListExpense(int id);
+
+        //DayOff İşlemleri
         Task CreateOffDay(CreateOffDayVM model);
         Task<List<ListOffDayVM>> ListOffDay(int id);
 
-
+        //AdvancePayment İşlemleri
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
-        Task<List<ListAdvancePaymentVM>> AdvancePayments(int id);
+        Task<List<ListAdvancePaymentVM>> ListAdvancePayment(int id);
 
 
-        Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model);
-        Task<UpdateEmployeeVM> GetEmployeeById(int id);
         
     }
 }

@@ -1,10 +1,47 @@
-@page
 @{
     ViewData["Title"] = "ListApprovalForAdvancePayment";
+    Layout = "~/Areas/CompanyManager/Views/Shared/_CompanyManagerLayout.cshtml";
 }
 
-<h1>ListApprovalForAdvancePayment</h1>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+@model List<ListWaitingApprovalForAdvancePaymentVM>
+
+
+
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Avans Talepleri</h5>
+                <div class="row">
+
+                    @foreach (var offDays in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"> </h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Onay Türü: </h6>
+                                    <div class="mb-3 form-group">
+                                        <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForAdvancePayment" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
