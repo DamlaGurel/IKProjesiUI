@@ -23,7 +23,7 @@
                                 <option value="">Seçiniz</option>
                                 @foreach (var advanceType in ViewBag.AdvanceType)
                                 {
-                                    <option value="@advanceType">@EnumExtension.GetDisplayName(advanceType)</option>
+                                    <option value="@advanceType">@EnumExtensions.GetDisplayName(advanceType)</option>
                                 }
                             </select>
                             <span asp-validation-for="AdvanceType" class="text-danger"></span>
@@ -34,7 +34,7 @@
                                 <option value="">Seçiniz</option>
                                 @foreach (var moneyType in ViewBag.MoneyType)
                                 {
-                                    <option value="@moneyType">@EnumExtension.GetDisplayName(moneyType)</option>
+                                    <option value="@moneyType">@EnumExtensions.GetDisplayName(moneyType)</option>
                                 }
                             </select>
                             <span asp-validation-for="MoneyType" class="text-danger"></span>

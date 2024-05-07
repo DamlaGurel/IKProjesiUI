@@ -15,8 +15,8 @@ namespace IKProjesi.UI.Services.SuperAdmin
 
         public async Task CreateSiteManager(CreateSiteManagerVM createSiteManager)
         {
-            if (createSiteManager.Image is not null)
-                createSiteManager.ImageString = await SaveImage(createSiteManager.Image);
+            //if (createSiteManager.Image is not null)
+            //    createSiteManager.ImageString = await SaveImage(createSiteManager.Image);
             await _superAdminApiService.CreateSiteManagerVM(createSiteManager);
         }
 
