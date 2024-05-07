@@ -21,6 +21,9 @@ namespace IKProjesi.UI.Services.Employee
         [Post("/api/Employee/CreateExpense")]
         Task CreateExpense(CreateExpenseVM model);
 
+        [Get("/api/Employee/ListExpense/{id}")]
+        Task<List<ListExpenseVM>> ListExpense(int id);
+
 
         [Post("/api/Employee/CreateOffDay")]
         Task CreateTakeDayOff(CreateOffDayVM model);
@@ -32,8 +35,8 @@ namespace IKProjesi.UI.Services.Employee
         [Post("/api/Employee/CreateAdvancePayment")]
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
 
-        [Get("/api/Employee/ListAdvancePayment")]
-        Task<List<ListAdvancePaymentVM>> AdvancePayments();
+        [Get("/api/Employee/ListAdvancePayment/{id}")]
+        Task<List<ListAdvancePaymentVM>> AdvancePayments(int id);
 
 
         [Put("/api/Employee/UpdateEmployee")]

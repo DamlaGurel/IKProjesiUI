@@ -12,15 +12,18 @@ namespace IKProjesi.UI.Services.Employee
         Task<SummaryEmployeeVM> GetEmployeeSummary(int id);
         Task<EmployeeDetailsVM> GetEmployeeDetails(int id);
         Task CreateExpense(CreateExpenseVM model);
+        Task<List<ListExpenseVM>> Expenses(int id);
 
         Task CreateOffDay(CreateOffDayVM model);
         Task<List<ListOffDayVM>> ListOffDay(int id);
 
 
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
+        Task<List<ListAdvancePaymentVM>> AdvancePayments(int id);
+
 
         Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model);
         Task<UpdateEmployeeVM> GetEmployeeById(int id);
-        Task<List<ListAdvancePaymentVM>> AdvancePayments();
+        
     }
 }
