@@ -1,4 +1,3 @@
-
 @{
     ViewData["Title"] = "CreateSiteManager";
     Layout = "~/Areas/SuperAdmin/Views/Shared/_SuperAdminLayout.cshtml";
@@ -69,6 +68,11 @@
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
+                    <div>
+                        <input asp-for="@Model.Image" type="file" class="form-control" id="inputGroupFile02" />
+                        <label class="custom-file-label" for="customFile">Dosya Seçiniz</label>
+                    </div>
+                    <span asp-validation-for="@Model.Image" class="text-danger"></span>
                     <div class=" mb-3 form-group">
                         <div>
                             <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />
