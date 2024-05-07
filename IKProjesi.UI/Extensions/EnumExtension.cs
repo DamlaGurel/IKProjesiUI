@@ -6,7 +6,7 @@ namespace IKProjesi.UI.Extensions
 {
 	public static class EnumExtension
 	{
-        public static string GetDisplayName(this Enum enumValue)
+        public static string GetDisplayNameD(this Enum enumValue)
         {
             var memberInfo = enumValue.GetType().GetMember(enumValue.ToString()).FirstOrDefault();
             if (memberInfo != null)
@@ -24,6 +24,13 @@ namespace IKProjesi.UI.Extensions
         {
             return Convert.ToInt32(enumValue);
         }
+
+
+        public static string GetDisplayNameInt<TEnum>(int value) where TEnum : Enum
+        {
+            return Enum.GetName(typeof(TEnum), value);
+        }
+
     }
 }
 

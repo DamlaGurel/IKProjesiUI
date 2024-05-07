@@ -23,7 +23,7 @@
                                 @foreach (var type in Enum.GetValues(typeof(DayOffType)))
                                 {
                                     int intValue = EnumExtension.ConvertToInt((DayOffType)type);
-                                    <option value="@intValue">@((type as Enum).GetDisplayName())</option>
+                                    <option value="@intValue">@((type as Enum).GetDisplayNameD())</option>
                                 }
                             </select>
 
@@ -74,7 +74,7 @@
                                         <label for="ChosenDayOffNumber" class="form-label">Talep Edilen İzin Gün Sayısı </label>
                                         <input type="text" id="ChosenDayOffNumber" class="form-control">
                                         <label for="ChosenDayOffType" class="form-label">Talep Edilen İzin Türü </label>
-                                        <input type="text" id="ChosenDayOffType" class="form-control">
+                                        <input type="text" id="ChosenDayOffType" class="form-control" value="">
                                         @*<label for="ChosenRemainingDayOff" class="form-label">Güncellendiğinde Kalan Yıllık İzin Sayısı </label>
                         <input type="text" id="ChosenRemainingDayOff" class="form-control">*@
 
@@ -108,28 +108,26 @@
         var startDate = new Date(document.getElementById("DayOffStartTime").value);
         var endDate = new Date(document.getElementById("DayOffEndTime").value);
 
-        var differenceInTime = endDate.getTime() - startDate.getTime();
-        var differenceInDay = differenceInTime / (1000 * 3600 * 24);
+        var differenceInDay = endDate.getDay() - startDate.getDay();
 
         document.getElementById("ChosenDayOffNumber").value = differenceInDay;
 
         var DayOffTypeDisplayName = getDayOffTypeDisplayName(document.getElementById("DayOffType").value);
-        document.getElementById("ChosenDayOffType").value = DayOffTypeDisplayName;
-        document.getElementById("takeOffForm").submit();
+       document.getElementById("ChosenDayOffType").value = DayOffTypeDisplayName;
+       /* document.getElementById("takeOffForm").submit();*/
 
 
     }
 
     function getDayOffTypeDisplayName(value) {
         switch (value) {
-            case "administrativeLeave":
+            case "1":
                 return "İdari İzin";
-            case "sickDay":
+            case "2":
                 return "Hastalık İzni&Rapor";
-            case "annualLeave":
+            case "3":
                 return "Yıllık İzin";
-            default:
-                return "Unknown";
+           
         }
     }
 

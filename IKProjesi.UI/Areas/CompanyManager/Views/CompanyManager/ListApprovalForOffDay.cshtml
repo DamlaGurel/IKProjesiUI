@@ -4,10 +4,11 @@
     Layout = "~/Areas/CompanyManager/Views/Shared/_CompanyManagerLayout.cshtml";
 
 }
+
 @model List<ListWaitingApprovalForOffDaysVM>
 
 
-<h1>ApprovalForOffDay</h1>
+
 
 <div class="container-fluid">
     <div class="container-fluid">
@@ -23,11 +24,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">@offDays.EmployeeFullName</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">@offDays.DayOffType</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">@($"{offDays.DayOffEndTime?.ToString("dd/MM/yyyy")} - {offDays.DayOffStartTime?.ToString("dd/MM/yyyy")}")</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">@offDays.DayNumber</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">İzin Başlangıç Tarihi: @offDays.DayOffStartTime?.ToString("dd/MM/yyyy") </h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">İzin Bitiş Tarihi: @offDays.DayOffEndTime?.ToString("dd/MM/yyyy") </h6>
                                     <h6 class="card-subtitle mb-2 text-muted">İzin Türü: @offDays.DayOffType</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">İstek Zamanı: @offDays.RequestTime?.ToString("dd/MM/yyyy")</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Onaylanan İzin Süresi: @offDays.DaysOffNumber</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Talep Zamanı: @offDays.RequestTime?.ToString("dd/MM/yyyy")</h6>
                                     <h6 class="card-subtitle mb-2 text-muted">Onay Türü: @offDays.ApprovalType</h6>
                                     <div class="mb-3 form-group">
                                         <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForOffDay" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     }
-                    
+
                 </div>
             </div>
         </div>
