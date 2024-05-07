@@ -10,7 +10,7 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
     public class CreateCompanyManagerVM
     {
 
-        [Required(ErrorMessage ="Lütfen adınızı giriniz.")]
+        //[Required(ErrorMessage ="Lütfen adınızı giriniz.")]
         public string FirstName { get; set; }
         public string? SecondName { get; set; }
        
@@ -18,9 +18,9 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
         public string? SecondLastName { get; set; }
         public DateTime? BirthDate { get; set; }
         public string? BirthPlace { get; set; }
-        [IdentificationNumberValidation]
+        //[IdentificationNumberValidation]
         public string? IdentityNumber { get; set; }
-        [BirthDateValidation]
+        //[BirthDateValidation]
         public DateTime? StartDateOfWork { get; set; }
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }

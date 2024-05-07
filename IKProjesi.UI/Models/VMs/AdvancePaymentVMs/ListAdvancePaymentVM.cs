@@ -1,6 +1,6 @@
 ﻿using IKProjesi.UI.Models.Enums;
 
-namespace IKProjesi.UI.Models.VMs.EmployeeVMs
+namespace IKProjesi.UI.Models.VMs.AdvancePaymentVMs
 {
     public class ListAdvancePaymentVM
     {

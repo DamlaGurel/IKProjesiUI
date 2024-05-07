@@ -1,6 +1,8 @@
-﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+﻿using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
-
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 using Refit;
 
 namespace IKProjesi.UI.Services.Employee
@@ -23,11 +25,11 @@ namespace IKProjesi.UI.Services.Employee
         Task<List<ListExpenseVM>> ListExpense(int id);
 
 
-        [Post("/api/Employee/CreateTakeDayOff")]
+        [Post("/api/Employee/CreateOffDay")]
         Task CreateTakeDayOff(CreateOffDayVM model);
 
-        [Get("/api/Employee/ListTakeDayOff/{id}")]
-        Task<List<ListOffDaysVM>> ListTakeDayOff(int id );
+        [Get("/api/Employee/ListOffDay/{id}")]
+        Task<List<ListOffDayVM>> ListOffDay(int id );
 
 
         [Post("/api/Employee/CreateAdvancePayment")]

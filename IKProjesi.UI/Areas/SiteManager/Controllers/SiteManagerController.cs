@@ -112,8 +112,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         public async Task<IActionResult> CreateCompanyManager(CompanyManagerCompanyVM model, int companyId)
         {
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 model.CreateCompanyManagerVM.CompanyId = companyId;
 
                 var vm = model.CreateCompanyManagerVM;
@@ -121,7 +121,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
                 await _companyManagerService.CreateCompanyManager(vm);
 
                 return RedirectToAction(nameof(CompanyManagerList));
-            }
+            //}
 
             //else
             //{
@@ -138,7 +138,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
             //    return View();
             //}
-            return View();
+           // return View();
         }
 
         public async Task<IActionResult> CompanyIndex(int pg = 1)

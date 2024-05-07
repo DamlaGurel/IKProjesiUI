@@ -10,6 +10,9 @@ using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 using System.Reflection;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
@@ -84,27 +87,9 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
 
         #endregion
 
-        #region TakeOffDay
+        #region OffDay
 
-        [HttpGet]
-        public IActionResult CreateTakeDayOff()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateTakeDayOff(CreateOffDayVM model)
-        {
-            await _employeeService.CreateTakeDayOff(model);
-            return View();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> ListTakeDayOff(int id)
-
-        {
-            List<ListOffDaysVM> model = await _employeeService.ListTakeDayOff(id);
-            return View(model);
-        }
+        
         #endregion
 
 
@@ -122,7 +107,23 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             var employeeDetails = await _employeeService.GetEmployeeDetails(id);
             return View(employeeDetails);
         }
+
+
+        //�zin ��lemleri
+        [HttpGet]
+        public IActionResult CreateOffDay()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateOffDay(CreateOffDayVM model)
+        {
+            await _employeeService.CreateOffDay(model);
+            return View();
+        }
+
        
+
 
         [HttpGet]
         public async Task<IActionResult> UpdateEmployee(int id)
@@ -148,6 +149,17 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             TempData["UpdateMessage"] = "Employee g�ncellendi.";
             return View(model);
         }
+
+        
+
+        [HttpGet]
+        public async Task<IActionResult> ListOffDay(int id)
+
+        {
+            List<ListOffDayVM> model = await _employeeService.ListOffDay(id);
+            return View(model);
+        }
+
     }
 }
 

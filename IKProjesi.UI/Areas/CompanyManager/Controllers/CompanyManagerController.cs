@@ -1,5 +1,8 @@
-﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+﻿using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
@@ -100,7 +103,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> GetApprovalForOffDay(UpdateDayOffVM model)
+        public async Task<IActionResult> GetApprovalForOffDay(UpdateOffDayVM model)
         {
            
             await _companyManagerService.GetApprovalForOffDay(model);
@@ -113,6 +116,53 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         {
             var getApprovalForOffDay = await _companyManagerService.GetApprovalForOffDay(id);
             return View(getApprovalForOffDay);
+        }
+
+        //Expense İşlemleri
+        [HttpGet]
+        public async Task<IActionResult> ListApprovalForExpense()
+        {
+            var listApprovalForExpense = await _companyManagerService.ListApprovalForExpense();
+
+            return View(listApprovalForExpense);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GetApprovalForExpense(UpdateExpenseVM model)
+        {
+            await _companyManagerService.GetApprovalForExpense(model);
+            return RedirectToAction(nameof(ListApprovalForExpense));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetApprovalForExpense(int id)
+        {
+            var getApprovalForExpense = await _companyManagerService.GetApprovalForExpense(id);
+            return View(getApprovalForExpense);
+        }
+        //AdvancePayment İşlemleri
+        [HttpGet]
+        public async Task<IActionResult> ListApprovalForAdvancePayment()
+        {
+            var listApprovalForAdvancePayment = await _companyManagerService.ListApprovalForAdvancePayment();
+
+            return View(listApprovalForAdvancePayment);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GetApprovalForAdvancePayment(UpdateAdvancePaymentVM model)
+        {
+            await _companyManagerService.GetApprovalForAdvancePayment(model);
+            return RedirectToAction(nameof(ListApprovalForAdvancePayment));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetApprovalForAdvancePayment(int id)
+        {
+            var getApprovalForAdvancePayment = await _companyManagerService.GetApprovalForAdvancePayment(id);
+            return View(getApprovalForAdvancePayment);
         }
     }
 }

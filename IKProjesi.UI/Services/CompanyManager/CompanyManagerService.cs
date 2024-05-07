@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Reflection;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.SiteManager;
@@ -74,20 +77,20 @@ namespace IKProjesi.UI.Services.CompanyManager
         }
 
 
-        public async Task<List<ListWaitingApprovalForOffDaysVM>> ListApprovalForOffDay()
+        public async Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay()
 
         {
             return await _companyManagerApiService.ListApprovalForOffDay();
 
         }
 
-        public async Task GetApprovalForOffDay(UpdateDayOffVM model)
+        public async Task GetApprovalForOffDay(UpdateOffDayVM model)
         {
             await _companyManagerApiService.ApprovalForOffDay(model);
 
         }
 
-        public async Task<UpdateDayOffVM> GetApprovalForOffDay(int id)
+        public async Task<UpdateOffDayVM> GetApprovalForOffDay(int id)
         {
             return await _companyManagerApiService.GetApprovalForOffDay(id);
 
@@ -100,6 +103,44 @@ namespace IKProjesi.UI.Services.CompanyManager
             return await _companyManagerApiService.GetCompanyManagerById(id);
         }
 
+
+        public async Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense()
+
+        {
+            return await _companyManagerApiService.ListApprovalForExpense();
+
+        }
+
+        public async Task GetApprovalForExpense(UpdateExpenseVM model)
+        {
+            await _companyManagerApiService.ApprovalForExpense(model);
+
+        }
+
+        public async Task<UpdateExpenseVM> GetApprovalForExpense(int id)
+        {
+            return await _companyManagerApiService.GetApprovalForExpense(id);
+
+        }
+
+        public async Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment()
+
+        {
+            return await _companyManagerApiService.ListApprovalForAdvancePayment();
+
+        }
+
+        public async Task GetApprovalForAdvancePayment(UpdateAdvancePaymentVM model)
+        {
+            await _companyManagerApiService.ApprovalForAdvancePayment(model);
+
+        }
+
+        public async Task<UpdateAdvancePaymentVM> GetApprovalForAdvancePayment(int id)
+        {
+            return await _companyManagerApiService.GetApprovalForAdvancePayment(id);
+
+        }
     }
 }
 
