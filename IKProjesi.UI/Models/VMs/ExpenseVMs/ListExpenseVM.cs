@@ -1,11 +1,13 @@
-﻿using IKProjesi.UI.Models.Enums;
+﻿using System;
+using IKProjesi.UI.Models.Enums;
 
-namespace IKProjesi.UI.Models.VMs.EmployeeVMs
+namespace IKProjesi.UI.Models.VMs.ExpenseVMs
 {
-    public class ListExpenseVM
-    {
+	public class ListExpenseVM
+	{
         public ExpenseType? ExpenseType { get; set; }
         public MoneyType? MoneyType { get; set; }
         public double? TotalExpense { get; set; }
     }
 }
+

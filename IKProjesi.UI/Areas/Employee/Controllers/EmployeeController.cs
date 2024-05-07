@@ -54,14 +54,13 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         {
             ViewBag.ExpenseTypes = Enum.GetValues<ExpenseType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
-            List<ListExpenseVM> expense = await _employeeService.Expenses(id);
+            List<ListExpenseVM> expense = await _employeeService.ListExpense(id);
             return View(expense);
         }
 
         #endregion
 
         #region Advance
-
         [HttpGet]
         public IActionResult CreateAdvancePayment()
         {
@@ -69,30 +68,48 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateAdvancePayment(CreateAdvancePaymentVM createAdvancePayment)
         {
             await _employeeService.CreateAdvancePayment(createAdvancePayment);
             return RedirectToAction(nameof(Index));
         }
+
         [HttpGet]
         public async Task<IActionResult> ListAdvancePayment(int id)
         {
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             ViewBag.ApprovalType = Enum.GetValues<ApprovalType>();
-            var advance = await _employeeService.AdvancePayments(id);
+            var advance = await _employeeService.ListAdvancePayment(id);
             return View(advance);
         }
-
         #endregion
 
         #region OffDay
+        [HttpGet]
+        public IActionResult CreateOffDay()
+        {
+            return View();
+        }
 
-        
+        [HttpPost]
+        public async Task<IActionResult> CreateOffDay(CreateOffDayVM model)
+        {
+            await _employeeService.CreateOffDay(model);
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListOffDay(int id)
+        {
+            List<ListOffDayVM> model = await _employeeService.ListOffDay(id);
+            return View(model);
+        }
         #endregion
 
-
+        #region Employee
         [HttpGet]
         public async Task<IActionResult> GetEmployeeSummary(int id)
         {
@@ -107,23 +124,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             var employeeDetails = await _employeeService.GetEmployeeDetails(id);
             return View(employeeDetails);
         }
-
-
-        //�zin ��lemleri
-        [HttpGet]
-        public IActionResult CreateOffDay()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateOffDay(CreateOffDayVM model)
-        {
-            await _employeeService.CreateOffDay(model);
-            return View();
-        }
-
-       
-
 
         [HttpGet]
         public async Task<IActionResult> UpdateEmployee(int id)
@@ -149,16 +149,9 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             TempData["UpdateMessage"] = "Employee g�ncellendi.";
             return View(model);
         }
+        #endregion
 
-        
 
-        [HttpGet]
-        public async Task<IActionResult> ListOffDay(int id)
-
-        {
-            List<ListOffDayVM> model = await _employeeService.ListOffDay(id);
-            return View(model);
-        }
 
     }
 }

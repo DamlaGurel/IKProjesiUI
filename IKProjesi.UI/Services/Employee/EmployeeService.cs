@@ -1,11 +1,11 @@
 ﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.Enums;
-using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.CompanyManager;
 using System.IO.Compression;
 using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
 using IKProjesi.UI.Models.VMs.OffDayVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 
 namespace IKProjesi.UI.Services.Employee
 {
@@ -17,13 +17,6 @@ namespace IKProjesi.UI.Services.Employee
         public EmployeeService(IEmployeeApiService employeeApiService)
         {
             _employeeApiService = employeeApiService;
-        }
-
-        public async Task CreateAdvancePayment(CreateAdvancePaymentVM model)
-        {
-            model.AdvanceTypeId = (int)model.AdvanceType;
-            model.MoneyTypeId = (int)model.MoneyType;
-            await _employeeApiService.CreateAdvancePayment(model);
         }
 
         public async Task CreateEmployee(CreateEmployeeVM model)
@@ -76,34 +69,6 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.GetEmployeeDetails(id);
         }
 
-        public async Task CreateExpense(CreateExpenseVM model)
-        {
-            if (model.File is not null)
-            {
-                using var memorystream = new MemoryStream();
-                await model.File.CopyToAsync(memorystream);
-
-                if (memorystream.Length < 2097152)
-                    model.FileByteArray = memorystream.ToArray();
-            }
-
-            model.ExpenseTypeId = (int)model.ExpenseType;
-            model.MoneyTypeId = (int)model.MoneyType;
-
-            await _employeeApiService.CreateExpense(model);
-        }
-        public async Task CreateOffDay(CreateOffDayVM model)
-        {
-            await _employeeApiService.CreateTakeDayOff(model);
-
-        }
-
-        public async Task<List<ListOffDayVM>> ListOffDay(int id)
-        {
-            return await _employeeApiService.ListOffDay(id);
-        }
-
-
         public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
         {
             if (model.Image is not null)
@@ -120,14 +85,53 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.GetEmployeeById(id);
         }
 
-        public async Task<List<ListAdvancePaymentVM>> AdvancePayments(int id)
+        //Expense İşlemleri
+        public async Task CreateExpense(CreateExpenseVM model)
         {
-            return await _employeeApiService.AdvancePayments(id);
+            if (model.File is not null)
+            {
+                using var memorystream = new MemoryStream();
+                await model.File.CopyToAsync(memorystream);
+
+                if (memorystream.Length < 2097152)
+                    model.FileByteArray = memorystream.ToArray();
+            }
+
+            model.ExpenseTypeId = (int)model.ExpenseType;
+            model.MoneyTypeId = (int)model.MoneyType;
+
+            await _employeeApiService.CreateExpense(model);
         }
 
-        public async Task<List<ListExpenseVM>> Expenses(int id)
+        public async Task<List<ListExpenseVM>> ListExpense(int id)
         {
             return await _employeeApiService.ListExpense(id);
+        }
+
+
+        //OffDay İşlemleri
+        public async Task CreateOffDay(CreateOffDayVM model)
+        {
+            await _employeeApiService.CreateTakeDayOff(model);
+        }
+
+        public async Task<List<ListOffDayVM>> ListOffDay(int id)
+        {
+            return await _employeeApiService.ListOffDay(id);
+        }
+
+
+        //AdvancePayment İşlemleri
+        public async Task CreateAdvancePayment(CreateAdvancePaymentVM model)
+        {
+            model.AdvanceTypeId = (int)model.AdvanceType;
+            model.MoneyTypeId = (int)model.MoneyType;
+            await _employeeApiService.CreateAdvancePayment(model);
+        }
+
+        public async Task<List<ListAdvancePaymentVM>> ListAdvancePayment(int id)
+        {
+            return await _employeeApiService.ListAdvancePayment(id);
         }
     }
 }
