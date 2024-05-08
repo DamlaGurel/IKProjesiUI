@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
+﻿using IKProjesi.UI.Models.Enums;
+using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.SiteManager;
 using IKProjesi.UI.Services.SuperAdmin;
@@ -30,6 +31,7 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateSiteManager()
         {
+            ViewBag.Department = Enum.GetValues<Department>();
             return View();
         }
 
@@ -40,6 +42,7 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
             if (ModelState.IsValid)
             {
                 await _superAdminService.CreateSiteManager(model);
+                TempData["Success"] = "Site Yöneticisi Eklendi.";
                 return RedirectToAction(nameof(Index));
             }
 

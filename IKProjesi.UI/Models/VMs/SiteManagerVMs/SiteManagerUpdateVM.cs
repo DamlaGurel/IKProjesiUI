@@ -3,7 +3,7 @@
     public class SiteManagerUpdateVM
     {
         public int Id { get; set; }
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
         public string? ImageString { get; set; }
         public byte[]? ImageBytes { get; set; }
         public string? Address { get; set; }

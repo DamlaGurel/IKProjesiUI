@@ -15,6 +15,7 @@ namespace IKProjesi.UI.Services.SuperAdmin
 
         public async Task CreateSiteManager(CreateSiteManagerVM createSiteManager)
         {
+            createSiteManager.DepartmentId = (int)createSiteManager.Department;
             if (createSiteManager.Image is not null)
                 createSiteManager.ImageString = await SaveImage(createSiteManager.Image);
 
