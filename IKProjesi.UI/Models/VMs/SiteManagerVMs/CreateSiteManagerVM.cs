@@ -21,7 +21,7 @@ namespace IKProjesi.UI.Models.VMs.SiteManagerVMs
         //[NotMapped]
         //public IFormFile? ProfilePicture { get; set; }
 
-        public string? Image { get; set; }
+        public IFormFile? Image { get; set; }
         public string? ImageString { get; set; }
 
 

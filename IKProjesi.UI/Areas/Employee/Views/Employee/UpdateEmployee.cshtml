@@ -7,16 +7,19 @@
 
 @model UpdateEmployeeVM
 
+﻿@{
+    var successMessage = TempData["UpdateMessage"] as string;
+}
 <script>
     setTimeout(function() {
         $('#updateMessage').fadeOut('slow');
     }, 5000);
 </script>
 
-@if (TempData["UpdateMessage"] is not null)
+@if (successMessage is not null)
 {
     <div id="updateMessage" class="alert alert-success" role="alert">
-        @TempData["UpdateMessage"]
+        @successMessage
     </div>
 }
 

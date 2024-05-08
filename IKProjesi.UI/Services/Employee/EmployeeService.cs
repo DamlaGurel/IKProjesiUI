@@ -111,9 +111,9 @@ namespace IKProjesi.UI.Services.Employee
             {
                 model.ImageString = await SaveImage(model.Image);
             }
-            await _employeeApiService.UpdateEmployee(model);
+            var employee=await _employeeApiService.UpdateEmployee(model);
 
-            return model;
+            return employee;
         }
 
         public async Task<UpdateEmployeeVM> GetEmployeeById(int id)
