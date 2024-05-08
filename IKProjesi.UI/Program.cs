@@ -21,22 +21,22 @@ namespace IKProjesi.UI
 
 
             builder.Services.AddRefitClient<ICompanyApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
 
             builder.Services.AddRefitClient<IUserApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
 
             builder.Services.AddRefitClient<ISiteManagerApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
 
             builder.Services.AddRefitClient<ICompanyManagerApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
 
             builder.Services.AddRefitClient<ISuperAdminApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
 
             builder.Services.AddRefitClient<IEmployeeApiService>()
-                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
+                            .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
 
             builder.Services.AddScoped<ICompanyService, CompanyService>()
                             .AddScoped<ISiteManagerService, SiteManagerService>()
