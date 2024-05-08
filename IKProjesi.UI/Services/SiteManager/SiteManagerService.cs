@@ -1,4 +1,6 @@
-﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+using IKProjesi.UI.Services.Employee;
 
 namespace IKProjesi.UI.Services.SiteManager
 {
@@ -15,12 +17,43 @@ namespace IKProjesi.UI.Services.SiteManager
         {
             return await _siteManagerApiService.GetSiteManagerSummary(id);
         }
-
-        public async Task GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
+        public async Task<SiteManagerUpdateVM> GetSiteManagerById(int id)
         {
-            await _siteManagerApiService.GetSiteManagerUpdate(siteManagerUpdateVM);
+            return await _siteManagerApiService.GetSiteManagerById(id);
         }
 
+        public async Task<SiteManagerUpdateVM> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
+        {
+            if (siteManagerUpdateVM.Image is not null)
+                siteManagerUpdateVM.ImageString = await SaveImage(siteManagerUpdateVM.Image);
+            
+            var siteManager= await _siteManagerApiService.GetSiteManagerUpdate(siteManagerUpdateVM);
+            return siteManager;
+        }
+
+        public async Task<string?> SaveImage(IFormFile image)
+        {
+            var imageFile = image;
+
+            byte[] imageBytes = null;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await imageFile.CopyToAsync(memoryStream);
+
+                if (memoryStream.Length < 2097152)
+                {
+                    imageBytes = memoryStream.ToArray();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            string imageString = Convert.ToBase64String(imageBytes);
+            return imageString;
+        }
         public async Task<SiteManagerDetailsVM> SiteManagerDetails(int id)
         {
             return await _siteManagerApiService.GetSiteManagerDetails(id);
