@@ -1,4 +1,5 @@
-﻿@model CreateEmployeeVM
+﻿@using IKProjesi.UI.Extensions
+@model IKProjesi.UI.Models.VMs.EmployeeVMs.CreateEmployeeVM
 
 @{
     ViewData["Title"] = "CreateEmployee";
@@ -6,13 +7,12 @@
 
 }
 
-<h1>CreateEmployee</h1>
+<h1>Create Employee</h1>
 
-<h4>CreateEmployeeVM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee" method="post">
+        <form asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -35,16 +35,6 @@
                 <span asp-validation-for="SecondLastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="BirthDate" class="control-label"></label>
                 <input asp-for="BirthDate" class="form-control" />
                 <span asp-validation-for="BirthDate" class="text-danger"></span>
@@ -64,11 +54,20 @@
                 <input asp-for="StartDateOfWork" class="form-control" />
                 <span asp-validation-for="StartDateOfWork" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DepartmentName" class="control-label"></label>
-                <input asp-for="DepartmentName" class="form-control" />
+
+@*             <div class="mb-3 form-group">
+                <label asp-for="DepartmentName" class="control-label">Departman</label>
+                <select asp-for="DepartmentName" class="form-select" id="DayOffType">
+                    <option value="">Departman Seçiniz</option>
+                    @foreach (var type in Enum.GetValues(typeof(Department)))
+                    {
+
+                        <option value="@type">@((type as Enum).GetDisplayName())</option>
+                    }
+                </select>
                 <span asp-validation-for="DepartmentName" class="text-danger"></span>
-            </div>
+            </div> *@
+
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
                 <input asp-for="Address" class="form-control" />
@@ -79,10 +78,13 @@
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" />
-                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            <div class="mb-3 form-group">
+               
+                <div>
+                    <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" name="Image" />
+                    <label class="custom-file-label" for="customFile">Dosya Seçiniz</label>
+                </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             
             <div class="form-group">

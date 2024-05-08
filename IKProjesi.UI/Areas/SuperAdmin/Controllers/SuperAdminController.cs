@@ -32,11 +32,18 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateSiteManager(CreateSiteManagerVM model)
         {
-            await _superAdminService.CreateSiteManager(model);
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                await _superAdminService.CreateSiteManager(model);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View();
         }
     }
 }

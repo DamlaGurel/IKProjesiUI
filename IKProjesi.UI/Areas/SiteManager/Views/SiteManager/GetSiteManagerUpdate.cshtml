@@ -14,11 +14,7 @@
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">Şirket Yöneticisi Güncelle</h5>
                 <form asp-controller="SiteManager" asp-action="GetSiteManagerUpdate" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="ImagePath" class="control-label">Resim Yolu</label>
-                        <input asp-for="ImagePath" class="form-control" />
-                        <span asp-validation-for="ImagePath" class="text-danger"></span>
-                    </div>
+
                     <div class="mb-3 form-group">
                         <label asp-for="Address" class="control-label">Adres</label>
                         <input asp-for="Address" class="form-control" />

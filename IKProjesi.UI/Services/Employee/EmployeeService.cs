@@ -1,8 +1,11 @@
 ﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.Enums;
-using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.CompanyManager;
 using System.IO.Compression;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
 
 namespace IKProjesi.UI.Services.Employee
 {
@@ -10,19 +13,51 @@ namespace IKProjesi.UI.Services.Employee
     {
         private readonly IEmployeeApiService _employeeApiService;
 
+
         public EmployeeService(IEmployeeApiService employeeApiService)
         {
             _employeeApiService = employeeApiService;
         }
 
-        public async Task CreateAdvancePayment(CreateAdvancePaymentVM model)
-        {
-            await _employeeApiService.CreateAdvancePayment(model);
-        }
-
+        #region Employee
         public async Task CreateEmployee(CreateEmployeeVM model)
         {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
+
+            if (model.DepartmentName.HasValue)
+            {
+                // Cast the enum value to int and assign it to the corresponding property
+                model.DepartmentNumber = (int)model.DepartmentName;
+            }
+
             await _employeeApiService.CreateEmployee(model);
+        }
+
+        public async Task<string?> SaveImage(IFormFile image)
+        {
+            var imageFile = image;
+
+            byte[] imageBytes = null;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await imageFile.CopyToAsync(memoryStream);
+
+                if (memoryStream.Length < 2097152)
+                {
+                    imageBytes = memoryStream.ToArray();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            string imageString = Convert.ToBase64String(imageBytes);
+            return imageString;
         }
 
         public async Task<SummaryEmployeeVM> GetEmployeeSummary(int id)
@@ -35,6 +70,24 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.GetEmployeeDetails(id);
         }
 
+        public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
+        {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
+            await _employeeApiService.UpdateEmployee(model);
+
+            return model;
+        }
+
+        public async Task<UpdateEmployeeVM> GetEmployeeById(int id)
+        {
+            return await _employeeApiService.GetEmployeeById(id);
+        }
+        #endregion
+
+        #region Expense
         public async Task CreateExpense(CreateExpenseVM model)
         {
             if (model.File is not null)
@@ -51,5 +104,53 @@ namespace IKProjesi.UI.Services.Employee
 
             await _employeeApiService.CreateExpense(model);
         }
+
+        public async Task<List<ListExpenseVM>> ListExpense(int id)
+        {
+            return await _employeeApiService.ListExpense(id);
+        }
+        #endregion
+
+        #region Off Day
+        public async Task CreateOffDay(CreateOffDayVM model)
+        {
+            await _employeeApiService.CreateTakeDayOff(model);
+        }
+
+
+
+
+
+        public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
+        {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
+            var employee=await _employeeApiService.UpdateEmployee(model);
+
+            return employee;
+        public async Task<List<ListOffDayVM>> ListOffDay(int id)
+        {
+            return await _employeeApiService.ListOffDay(id);
+        }
+        #endregion
+
+        #region Advance Payment
+        public async Task CreateAdvancePayment(CreateAdvancePaymentVM model)
+        {
+            model.AdvanceTypeId = (int)model.AdvanceType;
+            model.MoneyTypeId = (int)model.MoneyType;
+            await _employeeApiService.CreateAdvancePayment(model);
+        }
+
+        public async Task<List<ListAdvancePaymentVM>> ListAdvancePayment(int id)
+        {
+            return await _employeeApiService.ListAdvancePayment(id);
+        }
+        #endregion
+
+       
+
     }
 }

@@ -1,13 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
+using System.Threading.Tasks;
+using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
+using System.Reflection;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 
 namespace IKProjesi.UI.Areas.Emloyee.Controllers
 {
     [Area("Employee")]
     public class EmployeeController : Controller
     {
+
         private readonly IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService employeeService)
@@ -19,6 +31,8 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         {
             return View();
         }
+
+        #region Expense
 
         [HttpGet]
         public IActionResult CreateExpense()
@@ -34,17 +48,68 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             await _employeeService.CreateExpense(createExpense);
             return RedirectToAction(nameof(CreateExpense));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ListExpense(int id)
+        {
+            ViewBag.ExpenseTypes = Enum.GetValues<ExpenseType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
+            List<ListExpenseVM> expense = await _employeeService.ListExpense(id);
+            return View(expense);
+        }
+
+        #endregion
+
+        #region Advance
+        [HttpGet]
         public IActionResult CreateAdvancePayment()
         {
+            ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateAdvancePayment(CreateAdvancePaymentVM createAdvancePayment)
         {
             await _employeeService.CreateAdvancePayment(createAdvancePayment);
-            return RedirectToAction(nameof(CreateAdvancePayment));
+            return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ListAdvancePayment(int id)
+        {
+            ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
+            ViewBag.ApprovalType = Enum.GetValues<ApprovalType>();
+            var advance = await _employeeService.ListAdvancePayment(id);
+            return View(advance);
+        }
+        #endregion
+
+        #region OffDay
+        [HttpGet]
+        public IActionResult CreateOffDay()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateOffDay(CreateOffDayVM model)
+        {
+            await _employeeService.CreateOffDay(model);
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListOffDay(int id)
+        {
+            List<ListOffDayVM> model = await _employeeService.ListOffDay(id);
+            return View(model);
+        }
+        #endregion
+
+        #region Employee
         [HttpGet]
         public async Task<IActionResult> GetEmployeeSummary(int id)
         {
@@ -60,16 +125,34 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             return View(employeeDetails);
         }
 
-        
-        public IActionResult CreateTakeOffDay()
+        [HttpGet]
+        public async Task<IActionResult> UpdateEmployee(int id)
         {
-            return View();
+            var employee = await _employeeService.GetEmployeeById(id);
+
+            //string imageString = null;
+
+            //if (employee != null && employee.ImageBytes != null)
+            //{
+            //    imageString = Convert.ToBase64String(employee.ImageBytes);
+            //}
+
+            //employee.ImageString = imageString;
+
+            return View(employee);
         }
 
-        //[HttpPost]
-        //public IActionResult CreateTakeOffDay(int id)
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeVM model)
+        {
+            var employee=await _employeeService.UpdateEmployee(model);
+            TempData["UpdateMessage"] = "Employee güncellendi.";
+            return View(employee);
+        }
+        #endregion
+
+
+
     }
 }
+

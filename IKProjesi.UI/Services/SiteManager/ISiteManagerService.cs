@@ -6,7 +6,7 @@ namespace IKProjesi.UI.Services.SiteManager
     {
         Task<SiteManagerSummaryVM> GetSiteManagerSummary(int id);
         Task<SiteManagerDetailsVM> SiteManagerDetails(int id);
-        Task GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
-        Task<SiteManagerUpdateVM> GetSiteManager(int id);
+        Task<SiteManagerUpdateVM> GetSiteManagerById(int id);
+        Task<SiteManagerUpdateVM> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
     }
 }

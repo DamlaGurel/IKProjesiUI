@@ -5,14 +5,14 @@ namespace IKProjesi.UI.Models.VMs.SiteManagerVMs
 {
     public class SiteManagerDetailsVM
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string? SecondName { get; set; }
         public string LastName { get; set; }
         public string? SecondLastName { get; set; }
         public string Password { get; set; }
-        public string? ImagePath { get; set; }
-        [NotMapped]
-        public IFormFile ProfilePicture { get; set; }
+        public string? ImageString { get; set; }
+        public byte[]? ImageBytes { get; set; }
         public DateTime BirthDate { get; set; }
         public string? BirthPlace { get; set; }
         public string? IdentityNumber { get; set; }

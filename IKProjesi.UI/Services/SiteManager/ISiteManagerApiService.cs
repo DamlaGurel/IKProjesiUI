@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using Refit;
 
 namespace IKProjesi.UI.Services.SiteManager
@@ -13,9 +14,9 @@ namespace IKProjesi.UI.Services.SiteManager
         Task<SiteManagerDetailsVM> GetSiteManagerDetails(int id);
 
         [Put("/api/SiteManager/UpdateSiteManager")]
-        Task GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
+        Task<SiteManagerUpdateVM> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM);
 
-        [Get("/api/SiteManager/GetSiteManager/{id}")]
-        Task<SiteManagerUpdateVM> GetSiteManager(int id);
+        [Get("/api/SiteManager/GetSiteManagerById/{id}")]
+        Task<SiteManagerUpdateVM> GetSiteManagerById(int id);
     }
 }

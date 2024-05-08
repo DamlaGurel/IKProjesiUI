@@ -1,7 +1,7 @@
 ﻿using IKProjesi.UI.Models.Enums;
 using Microsoft.DotNet.Scaffolding.Shared.Project;
 
-namespace IKProjesi.UI.Models.VMs.EmployeeVMs
+namespace IKProjesi.UI.Models.VMs.ExpenseVMs
 {
     public class CreateExpenseVM
     {

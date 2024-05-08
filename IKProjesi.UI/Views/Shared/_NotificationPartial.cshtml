@@ -1,32 +1,34 @@
 ﻿@if (TempData["Danger"] != null)
 {
     <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5><i class="icon fas fa-ban"></i> Hata!</h5>
+        <h5><i class="ti ti-alert-triangle"></i>Hata!</h5>
         @TempData["Danger"]
     </div>
 }
 @if (TempData["Info"] != null)
 {
     <div class="alert alert-info alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5><i class="icon fas fa-info"></i> Bilgi!</h5>
+        <h5><i class="ti ti-info-circle"></i> Bilgi!</h5>
         @TempData["Info"].
     </div>
 }
 @if (TempData["Warning"] != null)
 {
     <div class="alert alert-warning alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5><i class="icon fas fa-exclamation-triangle"></i> Uyarı!</h5>
+        <h5><i class="ti ti-alert-circle"></i> Uyarı!</h5>
         @TempData["Warning"]
     </div>
 }
 @if (TempData["Success"] != null)
 {
     <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5><i class="icon fas fa-check"></i> Başarılı!</h5>
+        <h5><i class="ti ti-circle-dashed-check"></i>Başarılı!</h5>
         @TempData["Success"]
     </div>
 }
+
+<script>
+    setTimeout(function () {
+        $('.alert').fadeOut('slow');
+    }, 10000);
+</script>

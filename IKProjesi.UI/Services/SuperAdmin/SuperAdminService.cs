@@ -15,6 +15,9 @@ namespace IKProjesi.UI.Services.SuperAdmin
 
         public async Task CreateSiteManager(CreateSiteManagerVM createSiteManager)
         {
+            if (createSiteManager.Image is not null)
+                createSiteManager.ImageString = await SaveImage(createSiteManager.Image);
+
             await _superAdminApiService.CreateSiteManagerVM(createSiteManager);
         }
 
@@ -22,6 +25,25 @@ namespace IKProjesi.UI.Services.SuperAdmin
         public async Task<List<SiteManagerDetailsVM>> GetSiteManagers()
         {
             return await _superAdminApiService.SiteManagerDetails();
+        }
+
+        private async Task<string> SaveImage(IFormFile image)
+        {
+            var imageFile = image;
+            byte[] imageBytes = null;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await imageFile.CopyToAsync(memoryStream);
+
+                if (memoryStream.Length < 2097152)
+                    imageBytes = memoryStream.ToArray();
+                else
+                    return null;
+            }
+
+            string imageString = Convert.ToBase64String(imageBytes);
+            return imageString;
         }
     }
 }

@@ -28,7 +28,9 @@
     <Folder Include="Areas\SiteManager\Views\Company\" />
     <Folder Include="Areas\CompanyManager\Views\Shared\" />
     <Folder Include="Areas\CompanyManager\Views\CompanyManager\" />
-    <Folder Include="Extensions\" />
+    <Folder Include="Models\VMs\ExpenseVMs\" />
+    <Folder Include="Models\VMs\AdvancePaymentVMs\" />
+    <Folder Include="Models\VMs\OffDayVMs\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,5 +45,8 @@
     <None Remove="Areas\CompanyManager\Views\Shared\" />
     <None Remove="Areas\CompanyManager\Views\CompanyManager\" />
     <None Remove="Extensions\" />
+    <None Remove="Models\VMs\ExpenseVMs\" />
+    <None Remove="Models\VMs\AdvancePaymentVMs\" />
+    <None Remove="Models\VMs\OffDayVMs\" />
   </ItemGroup>
 </Project>

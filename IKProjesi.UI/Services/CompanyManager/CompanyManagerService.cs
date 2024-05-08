@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Reflection;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
+using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.ExpenseVMs;
+using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.SiteManager;
@@ -20,19 +24,7 @@ namespace IKProjesi.UI.Services.CompanyManager
             _companyManagerApiService = companyManagerApiService;
         }
 
-        public async Task CreateCompanyManager(CreateCompanyManagerVM model)
-        {
-            if (model.Image is not null)
-                model.ImageString = await SaveImage(model.Image);
-
-            await _companyManagerApiService.CreateCompanyManager(model);
-        }
-
-        //public async Task<CreateCompanyManagerVM> GetCompanyManagerById(int id)
-        //{
-        //    return await _companyManagerApiService.GetCompanyManagerById(id);            
-        //}
-
+        #region Image
         private async Task<string> SaveImage(IFormFile image)
         {
             var imageFile = image;
@@ -51,6 +43,21 @@ namespace IKProjesi.UI.Services.CompanyManager
             string imageString = Convert.ToBase64String(imageBytes);
             return imageString;
         }
+        #endregion
+
+        #region CompanyManager
+        public async Task CreateCompanyManager(CreateCompanyManagerVM model)
+        {
+            if (model.Image is not null)
+                model.ImageString = await SaveImage(model.Image);
+
+            await _companyManagerApiService.CreateCompanyManager(model);
+        }
+
+        //public async Task<CreateCompanyManagerVM> GetCompanyManagerById(int id)
+        //{
+        //    return await _companyManagerApiService.GetCompanyManagerById(id);            
+        //}
 
         public async Task<List<ListCompanyManagerVM>> GetCompanyManagers()
         {
@@ -76,6 +83,71 @@ namespace IKProjesi.UI.Services.CompanyManager
         {
             return await _companyManagerApiService.GetCompanyManagerById(id);
         }
+        #endregion
+
+        #region OffDay
+        public async Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay()
+
+        {
+            return await _companyManagerApiService.ListApprovalForOffDay();
+
+        }
+
+        public async Task GetApprovalForOffDay(UpdateOffDayVM model)
+        {
+            await _companyManagerApiService.ApprovalForOffDay(model);
+
+        }
+
+        public async Task<UpdateOffDayVM> GetApprovalForOffDay(int id)
+        {
+            return await _companyManagerApiService.GetApprovalForOffDay(id);
+
+        }
+        #endregion
+
+
+        #region Expense
+        public async Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense()
+
+        {
+            return await _companyManagerApiService.ListApprovalForExpense();
+
+        }
+
+        public async Task GetApprovalForExpense(UpdateExpenseVM model)
+        {
+            await _companyManagerApiService.ApprovalForExpense(model);
+
+        }
+
+        public async Task<UpdateExpenseVM> GetApprovalForExpense(int id)
+        {
+            return await _companyManagerApiService.GetApprovalForExpense(id);
+
+        }
+        #endregion
+
+        #region Advance Payment
+        public async Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment()
+
+        {
+            return await _companyManagerApiService.ListApprovalForAdvancePayment();
+
+        }
+
+        public async Task GetApprovalForAdvancePayment(UpdateAdvancePaymentVM model)
+        {
+            await _companyManagerApiService.ApprovalForAdvancePayment(model);
+
+        }
+
+        public async Task<UpdateAdvancePaymentVM> GetApprovalForAdvancePayment(int id)
+        {
+            return await _companyManagerApiService.GetApprovalForAdvancePayment(id);
+
+        }
+        #endregion
     }
 }
 

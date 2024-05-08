@@ -69,18 +69,18 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerUpdate(int id = 5)
+        public async Task<IActionResult> GetSiteManagerUpdate(int id)
         {
-            var siteManagerUpdate = await _siteManagerService.GetSiteManager(id);
+            var siteManagerUpdate = await _siteManagerService.GetSiteManagerById(id);
             return View(siteManagerUpdate);
         }
 
         [HttpPost]
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
-            //siteManagerUpdateVM.Id = 5;
-            await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
-            return RedirectToAction("GetSiteManagerDetail");
+            var siteManager= await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
+            TempData["UpdateMessage"] = "Site manager güncellendi.";
+            return View(siteManager);
         }
 
         [HttpGet]
@@ -100,13 +100,13 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
             //if (ModelState.IsValid)
             //{
-            model.CreateCompanyManagerVM.CompanyId = companyId;
+                model.CreateCompanyManagerVM.CompanyId = companyId;
 
-            var vm = model.CreateCompanyManagerVM;
+                var vm = model.CreateCompanyManagerVM;
 
-            await _companyManagerService.CreateCompanyManager(vm);
+                await _companyManagerService.CreateCompanyManager(vm);
 
-            return RedirectToAction(nameof(CompanyManagerList));
+                return RedirectToAction(nameof(CompanyManagerList));
             //}
 
             //else
@@ -116,7 +116,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.FirstName), "Lütfen adınızı giriniz.");
             //}
 
-         
+
             //if (string.IsNullOrEmpty(model.CreateCompanyManagerVm.LastName))
             //{
             //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.LastName), "Lütfen soyadınızı giriniz.");
@@ -124,6 +124,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
             //    return View();
             //}
+           // return View();
         }
 
         [HttpGet]
@@ -162,8 +163,13 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompany(CreateCompanyVM model)
         {
-            await _companyService.CreateCompany(model);
-            return RedirectToAction(nameof(CompanyIndex));
+            if (ModelState.IsValid)
+            {
+                await _companyService.CreateCompany(model);
+                return RedirectToAction(nameof(CompanyIndex));
+            }
+            return View();
+            
         }
 
         [HttpGet]
