@@ -48,5 +48,10 @@ namespace IKProjesi.UI.Services.User
         {
            return await _userApiService.ValidateToken(token);
         }
+
+        public async Task<bool> ValidateCredentials(string email, string password)
+        {
+            return await _userApiService.ValidateCredentials(email, password);
+        }
     }
 }

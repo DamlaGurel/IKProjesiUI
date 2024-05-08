@@ -17,7 +17,7 @@
                                 @*<img src="../assets/images/logos/dark-logo.svg" width="180" alt="">*@
                             </a>
                             <p class="text-center">Your Social Campaigns - Buraya da ne istersek </p>
-                            <form asp-controller="Account" asp-action="Login" method="post" enctype="multipart/form-data">
+                            <form asp-controller="Account" asp-action="ValidationCredentials" method="post">
                                 <div class="mb-3">
                                     <label asp-for="Email" class="form-label">E-Posta</label>
                                     <input asp-for="Email" type="text" class="form-control" id="Email" name="Email">
