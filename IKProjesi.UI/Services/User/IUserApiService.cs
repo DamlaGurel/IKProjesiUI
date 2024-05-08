@@ -22,6 +22,10 @@ namespace IKProjesi.UI.Services.User
         [Get("/api/SuperAdmin/SiteManagerDetail")]
         Task<List<SiteManagerDetailsVM>> SiteManagerDetails();
 
+        [Post("/api/User/ValidateCredentials/{email}/{password}")]
+        Task<bool> ValidateCredentials(string email, string password);
+
+
         [Get("/api/User/ValidateToken")]
         Task<string> ValidateToken([Header("Authorization")] string bearerToken);
     }

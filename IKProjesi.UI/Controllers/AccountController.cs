@@ -27,6 +27,22 @@ namespace IKProjesi.UI.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> ValidationCredentials(string email, string password)
+        {
+            var user = await _userService.ValidateCredentials(email, password);
+            if (user)
+            {
+                return await Login(new LoginVM { Email = email, Password = password });
+            }
+            else
+            {
+                TempData["Warning"] = "Kullanıcı adı ya da şifre hatalı";
+                return RedirectToAction("Login");
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM user)
         {
@@ -61,9 +77,7 @@ namespace IKProjesi.UI.Controllers
                     }
                 }
             }
-            
             return View();
-
         }
         public IActionResult SendMail()
         {

@@ -15,6 +15,7 @@ namespace IKProjesi.UI.Services.User
         Task<string> SendMail(string email);
         Task ChangePassword(ChangePasswordVM password);
         Task Logout();
+        Task<bool> ValidateCredentials(string email, string password);
         Task<string> ValidationToken(string token);
     }
 }
