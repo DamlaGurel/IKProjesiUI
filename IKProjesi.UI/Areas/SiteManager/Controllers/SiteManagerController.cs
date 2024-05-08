@@ -80,9 +80,9 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
 
         [HttpGet]
-        public IActionResult GetSiteManagerUpdate(int id)
+        public async Task<IActionResult> GetSiteManagerUpdate(int id)
         {
-            var siteManagerUpdate = new SiteManagerUpdateVM { Id = id };
+            var siteManagerUpdate = await _siteManagerService.GetSiteManagerById(id);
             return View(siteManagerUpdate);
         }
 
@@ -90,9 +90,9 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
-            //siteManagerUpdateVM.Id = 5;
-            await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
-            return RedirectToAction("GetSiteManagerDetail");
+            var siteManager= await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
+            TempData["UpdateMessage"] = "Site manager güncellendi.";
+            return View(siteManager);
         }
 
 

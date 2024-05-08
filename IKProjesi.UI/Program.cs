@@ -40,12 +40,12 @@ namespace IKProjesi.UI
 
             builder.Services.AddScoped<ICompanyService, CompanyService>()
                             .AddScoped<ISiteManagerService, SiteManagerService>()
-                            .AddScoped<ICompanyManagerService, CompanyManagerService>().
-                            AddScoped<IEmployeeService, EmployeeService>(); ;
+                            .AddScoped<ICompanyManagerService, CompanyManagerService>();
+                            //.AddScoped<IEmployeeService, EmployeeService>(); 
 
             builder.Services.AddTransient<IUserService, UserService>()
                             .AddTransient<ISuperAdminService, SuperAdminService>();
-            //builder.Services.AddTransient<IEmployeeService, EmployeeService>();
+            builder.Services.AddTransient<IEmployeeService, EmployeeService>();
 
             builder.Services.AddHttpContextAccessor();
 

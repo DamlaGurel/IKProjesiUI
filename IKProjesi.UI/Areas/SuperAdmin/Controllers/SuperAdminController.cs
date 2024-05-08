@@ -27,17 +27,13 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
             return View(sitemanagers);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> CreateSiteManager()
-        //{
-        //    return View();
-        //}
-
         [HttpGet]
-        public IActionResult CreateSiteManager()
+        public async Task<IActionResult> CreateSiteManager()
         {
             return View();
         }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateSiteManager(CreateSiteManagerVM model)
         {

@@ -117,6 +117,19 @@ namespace IKProjesi.UI.Services.Employee
             await _employeeApiService.CreateTakeDayOff(model);
         }
 
+
+
+
+
+        public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
+        {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
+            var employee=await _employeeApiService.UpdateEmployee(model);
+
+            return employee;
         public async Task<List<ListOffDayVM>> ListOffDay(int id)
         {
             return await _employeeApiService.ListOffDay(id);
