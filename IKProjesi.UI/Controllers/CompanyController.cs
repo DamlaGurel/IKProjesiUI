@@ -19,12 +19,6 @@ namespace IKProjesi.UI.Controllers
         }
 
 
-        //[HttpGet]
-        //public async Task<IActionResult> Create()
-        //{
-        //    return View();
-        //}
-
         [HttpGet]
         public IActionResult Create()
         {

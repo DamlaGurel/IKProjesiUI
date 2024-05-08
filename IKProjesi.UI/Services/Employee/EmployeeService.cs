@@ -19,6 +19,7 @@ namespace IKProjesi.UI.Services.Employee
             _employeeApiService = employeeApiService;
         }
 
+        #region Employee
         public async Task CreateEmployee(CreateEmployeeVM model)
         {
             if (model.Image is not null)
@@ -51,7 +52,7 @@ namespace IKProjesi.UI.Services.Employee
                 }
                 else
                 {
-                   return null;
+                    return null;
                 }
             }
 
@@ -84,8 +85,9 @@ namespace IKProjesi.UI.Services.Employee
         {
             return await _employeeApiService.GetEmployeeById(id);
         }
+        #endregion
 
-        //Expense İşlemleri
+        #region Expense
         public async Task CreateExpense(CreateExpenseVM model)
         {
             if (model.File is not null)
@@ -107,9 +109,9 @@ namespace IKProjesi.UI.Services.Employee
         {
             return await _employeeApiService.ListExpense(id);
         }
+        #endregion
 
-
-        //OffDay İşlemleri
+        #region Off Day
         public async Task CreateOffDay(CreateOffDayVM model)
         {
             await _employeeApiService.CreateTakeDayOff(model);
@@ -119,9 +121,9 @@ namespace IKProjesi.UI.Services.Employee
         {
             return await _employeeApiService.ListOffDay(id);
         }
+        #endregion
 
-
-        //AdvancePayment İşlemleri
+        #region Advance Payment
         public async Task CreateAdvancePayment(CreateAdvancePaymentVM model)
         {
             model.AdvanceTypeId = (int)model.AdvanceType;
@@ -133,5 +135,9 @@ namespace IKProjesi.UI.Services.Employee
         {
             return await _employeeApiService.ListAdvancePayment(id);
         }
+        #endregion
+
+       
+
     }
 }
