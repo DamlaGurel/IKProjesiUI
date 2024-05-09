@@ -4,25 +4,34 @@
     Layout = "~/Areas/CompanyManager/Views/Shared/_CompanyManagerLayout.cshtml";
 }
 
+﻿@{
+    var successMessage = TempData["UpdateMessage"] as string;
+}
+<script>
+    setTimeout(function() {
+        $('#updateMessage').fadeOut('slow');
+    }, 5000);
+</script>
+
 @model UpdateCompanyManagerVM
 
+@if (successMessage is not null)
+{
+    <div id="updateMessage" class="alert alert-success" role="alert">
+        @successMessage
+    </div>
+}
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">Şirket Yöneticisi Güncelle</h5>
-                <form asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" method="post">
+                <form asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@*                     <div class="mb-3 form-group">
-                        <label asp-for="ImagePath" class="control-label">Resim Yolu</label>
-                        <input asp-for="ImagePath" class="form-control" />
-                        <span asp-validation-for="ImagePath" class="text-danger"></span>
-                    </div> *@
                     <div class="mb-3 form-group">
                         <label asp-for="@Model.Image" class="control-label"></label>
                         <div>
                             <input asp-for="@Model.Image" type="file" class="form-control" id="inputGroupFile02" />
-                            <label class="custom-file-label" for="customFile">Dosya Seçiniz</label>
                         </div>
                         <span asp-validation-for="@Model.Image" class="text-danger"></span>
                     </div>
@@ -54,11 +63,11 @@
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <input type="submit" value="Kaydet" class="btn btn-danger rounded-3 fw-semibold" />
+                        <input type="submit" value="Kaydet" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" asp-route-id="@Model.Id" class="btn btn-danger rounded-3 fw-semibold" />
                     </div>
                     <div class=" mb-3 form-group">
                         <div>
-                            <a asp-action="Index" class="btn btn-danger rounded-3 fw-semibold ">Geri Dön</a>
+                            <a asp-controller="CompanyManager" asp-action="GetCompanyManagerDetail" asp-route-id="@Model.Id" class="btn btn-danger rounded-3 fw-semibold ">Geri Dön</a>
                         </div>
                     </div>
                 </form>

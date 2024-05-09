@@ -29,7 +29,6 @@ namespace IKProjesi.UI.Services.Employee
 
             if (model.DepartmentName.HasValue)
             {
-                // Cast the enum value to int and assign it to the corresponding property
                 model.DepartmentNumber = (int)model.DepartmentName;
             }
 

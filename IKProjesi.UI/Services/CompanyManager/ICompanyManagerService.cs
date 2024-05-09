@@ -16,7 +16,7 @@ namespace IKProjesi.UI.Services.CompanyManager
         Task CreateCompanyManager(CreateCompanyManagerVM model);
         Task<List<ListCompanyManagerVM>> GetCompanyManagers();
         Task<SummaryCompanyManagerVM> GetCompanyManagerSummary(int id);
-        Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
+        Task<UpdateCompanyManagerVM> GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
         Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id);
         Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id);
         #endregion

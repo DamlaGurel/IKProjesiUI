@@ -69,9 +69,15 @@ namespace IKProjesi.UI.Services.CompanyManager
             return await _companyManagerApiService.GetCompanyManagerSummary(id);
         }
 
-        public async Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager)
+        public async Task<UpdateCompanyManagerVM> GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager)
         {
-            await _companyManagerApiService.GetCompanyManagerUpdate(updateCompanyManager);
+            if (updateCompanyManager.Image is not null)
+            {
+                updateCompanyManager.ImageString = await SaveImage(updateCompanyManager.Image);
+            }
+            var companyManager= await _companyManagerApiService.GetCompanyManagerUpdate(updateCompanyManager);
+
+            return companyManager;
         }
 
         public async Task<DetailsCompanyManagerVM> GetCompanyManagerDetails(int id)

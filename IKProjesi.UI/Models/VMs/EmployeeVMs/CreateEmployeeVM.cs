@@ -31,5 +31,6 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
         //public string CompanyName { get; set; }
+        public double Payment { get; set; }
     }
 }
