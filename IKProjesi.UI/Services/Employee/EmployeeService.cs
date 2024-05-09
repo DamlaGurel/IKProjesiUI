@@ -6,13 +6,14 @@ using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
 using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.UserVM;
 
 namespace IKProjesi.UI.Services.Employee
 {
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeApiService _employeeApiService;
-
+        int _companyManagerId;
 
         public EmployeeService(IEmployeeApiService employeeApiService)
         {
@@ -22,6 +23,9 @@ namespace IKProjesi.UI.Services.Employee
         #region Employee
         public async Task CreateEmployee(CreateEmployeeVM model)
         {
+            TokenVM token = new TokenVM();
+            model.CompanyManagerId = AssignUser(token);
+
             if (model.Image is not null)
             {
                 model.ImageString = await SaveImage(model.Image);
@@ -34,6 +38,15 @@ namespace IKProjesi.UI.Services.Employee
             }
 
             await _employeeApiService.CreateEmployee(model);
+        }
+
+        public int AssignUser(TokenVM token)
+        {
+            if (token != null)
+            {
+                _companyManagerId = Convert.ToInt32(token.UserId);
+            }
+            return _companyManagerId;
         }
 
         public async Task<string?> SaveImage(IFormFile image)

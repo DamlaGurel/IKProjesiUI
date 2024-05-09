@@ -51,6 +51,7 @@ namespace IKProjesi.UI.Controllers
                 var token = await _userService.Login(user);
                 var tokenString = token.Token;
                 var tokenRole = token.Role;
+                var userId = token.UserId;
                 await _userService.ValidationToken(tokenString, tokenRole);
 
                 SetTokenCookie(tokenString, tokenRole);
@@ -72,7 +73,7 @@ namespace IKProjesi.UI.Controllers
                     }
                     else if (token.Role == Job.CompanyManager.ToString().ToUpper())
                     {
-                        return RedirectToAction("Index", "CompanyManager", new { area = "CompanyManager" });
+                        return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager", id = userId });
                     }
                     else if (token.Role == Job.Employee.ToString().ToUpper())
                     {

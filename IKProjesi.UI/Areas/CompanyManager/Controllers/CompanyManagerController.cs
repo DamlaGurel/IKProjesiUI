@@ -29,7 +29,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
         #region Company Manager 
         [HttpGet]
-        [Route("CompanyManager/CompanyManager/AnaSayfa/{id}")]
         public async Task<IActionResult> GetCompanyManagerSummary(int id)
         {
             /*https://localhost:7023/CompanyManager/CompanyManager/GetCompanyManagerSummary*/
@@ -68,6 +67,10 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public IActionResult CreateEmployee()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account", new { area = ""});
+            }
             return View();
         }
 
