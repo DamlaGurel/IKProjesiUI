@@ -29,6 +29,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
         #region Company Manager 
         [HttpGet]
+        [Route("CompanyManager/CompanyManager/AnaSayfa/{id}")]
         public async Task<IActionResult> GetCompanyManagerSummary(int id)
         {
             /*https://localhost:7023/CompanyManager/CompanyManager/GetCompanyManagerSummary*/
@@ -48,18 +49,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCompanyManagerUpdate(int id)
         {
-            //var companyManagerUpdate = new UpdateCompanyManagerVm { Id = id };
-
             var companyManagerUpdate = await _companyManagerService.GetCompanyManagerById(id);
 
-            string imageString = null;
-
-            //if (companyManagerUpdate != null && companyManagerUpdate.ImageBytes != null)
-            //{
-            //    imageString = Convert.ToBase64String(companyManagerUpdate.ImageBytes);
-            //}
-
-            //companyManagerUpdate.ImageString = imageString;
             return View(companyManagerUpdate);
         }
 
@@ -67,10 +58,9 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVM companyManagerUpdateVM)
         {
-
-
-            await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
-            return RedirectToAction("GetCompanyManagerDetail");
+            var companyManager= await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
+            TempData["UpdateMessage"] = "Profil güncellendi.";
+            return View(companyManager);
         }
         #endregion
 
@@ -87,8 +77,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             if (ModelState.IsValid)
             {
                 await _employeeService.CreateEmployee(model);
-                return RedirectToAction(nameof(Index));
-            }
+                TempData["Success"] = "Personel eklendi";
+            }           
             return View();
         }
         #endregion
