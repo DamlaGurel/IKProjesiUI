@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace IKProjesi.UI.Extensions
 {
@@ -8,12 +9,15 @@ namespace IKProjesi.UI.Extensions
         {
             var paymentProperty = validationContext.ObjectType.GetProperty("Payment");
             var paymentValue = (double?)paymentProperty.GetValue(validationContext.ObjectInstance);
+            var totalAdvanceValue = (double?)value;
 
-            //var totalAdvancePayment
+            if (paymentValue != null && totalAdvanceValue != null && totalAdvanceValue > (paymentValue * 3))
+            {
+                return new ValidationResult("Toplam avans miktarı, maaşın 3 katından fazla olamaz.");
+            }
 
+            return ValidationResult.Success;
 
-
-            return base.IsValid(value, validationContext);
         }
     }
 }
