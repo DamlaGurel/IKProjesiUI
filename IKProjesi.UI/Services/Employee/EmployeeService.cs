@@ -30,6 +30,7 @@ namespace IKProjesi.UI.Services.Employee
             if (model.DepartmentName.HasValue)
             {
                 model.DepartmentNumber = (int)model.DepartmentName;
+                model.DepartmentName=null;
             }
 
             await _employeeApiService.CreateEmployee(model);
