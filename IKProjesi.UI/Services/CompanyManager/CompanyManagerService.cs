@@ -93,10 +93,8 @@ namespace IKProjesi.UI.Services.CompanyManager
 
         #region OffDay
         public async Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay()
-
         {
             return await _companyManagerApiService.ListApprovalForOffDay();
-
         }
 
         public async Task GetApprovalForOffDay(UpdateOffDayVM model)
@@ -108,7 +106,6 @@ namespace IKProjesi.UI.Services.CompanyManager
         public async Task<UpdateOffDayVM> GetApprovalForOffDay(int id)
         {
             return await _companyManagerApiService.GetApprovalForOffDay(id);
-
         }
         #endregion
 
