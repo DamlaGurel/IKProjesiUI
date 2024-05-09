@@ -27,7 +27,6 @@ namespace IKProjesi.UI.Services.SuperAdmin
         {
             return await _superAdminApiService.SiteManagerDetails();
         }
-
         private async Task<string> SaveImage(IFormFile image)
         {
             var imageFile = image;

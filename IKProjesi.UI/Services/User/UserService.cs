@@ -44,9 +44,9 @@ namespace IKProjesi.UI.Services.User
             await _userApiService.ChangePassword(password);
         }
 
-        public async Task<string> ValidationToken(string token)
+        public async Task<string> ValidationToken(string token, string tokenRole)
         {
-           return await _userApiService.ValidateToken(token);
+           return await _userApiService.ValidateToken(token, tokenRole);
         }
 
         public async Task<bool> ValidateCredentials(string email, string password)
