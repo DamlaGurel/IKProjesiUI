@@ -7,11 +7,9 @@ namespace IKProjesi.UI.Services.SuperAdmin
     public interface ISuperAdminApiService
     {
         [Post("/api/SuperAdmin/CreateSiteManager")]
-        [Headers("Authorization: Bearer")]
         Task CreateSiteManagerVM(CreateSiteManagerVM createSiteManager);
 
         [Get("/api/SuperAdmin/SiteManagerDetail")]
-        [Headers("Authorization: Bearer")]
         Task<List<SiteManagerDetailsVM>> SiteManagerDetails();
     }
 }

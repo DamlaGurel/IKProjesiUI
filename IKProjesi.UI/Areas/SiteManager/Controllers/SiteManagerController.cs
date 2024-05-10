@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using IKProjesi.UI.Models;
+using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
 using IKProjesi.UI.Models.VMs.Pagination;
@@ -11,6 +12,7 @@ using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
+using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -38,10 +40,10 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
             var token = _contextAccessor.HttpContext.Request.Cookies["token"];
-            var role = Job.SiteManager.ToString().ToUpper();
+            var role = Job.SITEMANAGER.ToString().ToUpper();
             await _userService.ValidationToken(token, role);
             return View();
         }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IKProjesi.UI.Extensions
+namespace IKProjesi.UI.Extensions.Validation
 {
     public class ContractDateValidationAttribute : ValidationAttribute
     {

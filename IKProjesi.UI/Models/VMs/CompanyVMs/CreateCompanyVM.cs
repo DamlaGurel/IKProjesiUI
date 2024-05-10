@@ -1,4 +1,5 @@
 ﻿using IKProjesi.UI.Extensions;
+using IKProjesi.UI.Extensions.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
 

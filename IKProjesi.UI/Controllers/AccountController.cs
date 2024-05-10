@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.Enums;
+﻿using IKProjesi.UI.Extensions;
+using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.UserVM;
 using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Identity;
@@ -11,10 +12,12 @@ namespace IKProjesi.UI.Controllers
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IHttpContextAccessor contextAccessor)
         {
             _userService = userService;
+            _contextAccessor = contextAccessor;
         }
 
         public IActionResult Index()
@@ -49,37 +52,39 @@ namespace IKProjesi.UI.Controllers
             if (ModelState.IsValid)
             {
                 var token = await _userService.Login(user);
+                _contextAccessor.HttpContext.Session.AddObjectSession(token);
+
                 var tokenString = token.Token;
                 var tokenRole = token.Role;
                 var userId = token.UserId;
-                await _userService.ValidationToken(tokenString, tokenRole);
+                //await _userService.ValidationToken(tokenString, tokenRole);
 
-                SetTokenCookie(tokenString, tokenRole);
+                //SetTokenCookie(tokenString, tokenRole);
 
-                if (string.IsNullOrEmpty(token.Token))
+                //if (string.IsNullOrEmpty(token.Token))
+                //{
+                //    TempData["Warning"] = "Kullanıcı adı ya da şifre hatalı.";
+                //    return RedirectToAction("Login");
+                //}
+                //else
+                //{
+                if (token.Role == Job.SuperAdmin.ToString().ToUpper())
                 {
-                    TempData["Warning"] = "Kullanıcı adı ya da şifre hatalı.";
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Index", "SuperAdmin", new { area = "SuperAdmin" });
                 }
-                else
+                else if (token.Role == Job.SITEMANAGER.ToString().ToUpper())
                 {
-                    if (token.Role == Job.SuperAdmin.ToString().ToUpper())
-                    {
-                        return RedirectToAction("Index", "SuperAdmin", new { area = "SuperAdmin" });
-                    }
-                    else if (token.Role == Job.SiteManager.ToString().ToUpper())
-                    {
-                        return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
-                    }
-                    else if (token.Role == Job.CompanyManager.ToString().ToUpper())
-                    {
-                        return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager", id = userId });
-                    }
-                    else if (token.Role == Job.Employee.ToString().ToUpper())
-                    {
-                        return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee",id=userId });
-                    }
+                    return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
                 }
+                else if (token.Role == Job.CompanyManager.ToString().ToUpper())
+                {
+                    return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager", id = userId });
+                }
+                else if (token.Role == Job.Employee.ToString().ToUpper())
+                {
+                    return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee", id = userId });
+                }
+                //}
             }
             return View();
         }

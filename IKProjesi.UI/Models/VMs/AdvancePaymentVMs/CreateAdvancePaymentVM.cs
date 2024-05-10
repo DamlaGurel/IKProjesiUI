@@ -1,4 +1,5 @@
 ﻿using IKProjesi.UI.Extensions;
+using IKProjesi.UI.Extensions.Validation;
 using IKProjesi.UI.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 

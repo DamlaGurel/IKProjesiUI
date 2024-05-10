@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace IKProjesi.UI.Extensions
+namespace IKProjesi.UI.Extensions.Validation
 {
     public class TotalAdvanceValidationAttribute : ValidationAttribute
     {
@@ -11,7 +11,7 @@ namespace IKProjesi.UI.Extensions
             var paymentValue = (double?)paymentProperty.GetValue(validationContext.ObjectInstance);
             var totalAdvanceValue = (double?)value;
 
-            if (paymentValue != null && totalAdvanceValue != null && totalAdvanceValue > (paymentValue * 3))
+            if (paymentValue != null && totalAdvanceValue != null && totalAdvanceValue > paymentValue * 3)
             {
                 return new ValidationResult("Toplam avans miktarı, maaşın 3 katından fazla olamaz.");
             }
