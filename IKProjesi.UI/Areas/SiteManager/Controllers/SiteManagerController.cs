@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using IKProjesi.UI.Models;
+using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
 using IKProjesi.UI.Models.VMs.Pagination;
@@ -11,9 +12,11 @@ using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
+using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Net.Http.Headers;
 using Refit;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
@@ -25,17 +28,24 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         private readonly ISiteManagerService _siteManagerService;
         private readonly ICompanyManagerService _companyManagerService;
         private readonly ICompanyService _companyService;
+        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IUserService _userService;
 
-        public SiteManagerController(ISiteManagerService siteManagerService, ICompanyManagerService companyManagerService, ICompanyService companyService)
+        public SiteManagerController(ISiteManagerService siteManagerService, ICompanyManagerService companyManagerService, ICompanyService companyService, IHttpContextAccessor contextAccessor, IUserService userService)
         {
             _siteManagerService = siteManagerService;
             _companyManagerService = companyManagerService;
             _companyService = companyService;
+            _contextAccessor = contextAccessor;
+            _userService = userService;
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var token = _contextAccessor.HttpContext.Request.Cookies["token"];
+            var role = Job.SiteManager.ToString().ToUpper();
+            await _userService.ValidationToken(token, role);
             return View();
         }
 

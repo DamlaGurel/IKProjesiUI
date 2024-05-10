@@ -29,7 +29,7 @@ namespace IKProjesi.UI.Services.CompanyManager
         Task<UpdateCompanyManagerVM> GetCompanyManagerById(int id);
 
         [Put("/api/CompanyManager/GetCompanyManagerUpdate")]
-        Task GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
+        Task<UpdateCompanyManagerVM> GetCompanyManagerUpdate(UpdateCompanyManagerVM updateCompanyManager);
         #endregion
 
         #region OffDay

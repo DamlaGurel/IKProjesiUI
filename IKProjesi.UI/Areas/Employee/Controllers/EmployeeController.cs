@@ -72,8 +72,14 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAdvancePayment(CreateAdvancePaymentVM createAdvancePayment)
         {
-            await _employeeService.CreateAdvancePayment(createAdvancePayment);
-            return RedirectToAction(nameof(Index));
+            if (createAdvancePayment != null && ModelState.IsValid)
+            {
+                await _employeeService.CreateAdvancePayment(createAdvancePayment);
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
+            ViewBag.MoneyType = Enum.GetValues<MoneyType>();
+            return View();
         }
 
         [HttpGet]
@@ -98,6 +104,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         public async Task<IActionResult> CreateOffDay(CreateOffDayVM model)
         {
             await _employeeService.CreateOffDay(model);
+            TempData["Success"] = "İzin talebi oluşturuldu";
             return View();
         }
 
@@ -145,7 +152,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateEmployee(UpdateEmployeeVM model)
         {
-            var employee=await _employeeService.UpdateEmployee(model);
+            var employee = await _employeeService.UpdateEmployee(model);
             TempData["UpdateMessage"] = "Employee güncellendi.";
             return View(employee);
         }

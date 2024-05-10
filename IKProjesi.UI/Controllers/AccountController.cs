@@ -50,7 +50,11 @@ namespace IKProjesi.UI.Controllers
             {
                 var token = await _userService.Login(user);
                 var tokenString = token.Token;
-                await _userService.ValidationToken(tokenString);
+                var tokenRole = token.Role;
+                var userId = token.UserId;
+                await _userService.ValidationToken(tokenString, tokenRole);
+
+                SetTokenCookie(tokenString, tokenRole);
 
                 if (string.IsNullOrEmpty(token.Token))
                 {
@@ -69,11 +73,11 @@ namespace IKProjesi.UI.Controllers
                     }
                     else if (token.Role == Job.CompanyManager.ToString().ToUpper())
                     {
-                        return RedirectToAction("Index", "CompanyManager", new { area = "CompanyManager" });
+                        return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager", id = userId });
                     }
                     else if (token.Role == Job.Employee.ToString().ToUpper())
                     {
-                        return RedirectToAction("Index", "Employee", new { area = "Employee" });
+                        return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee",id=userId });
                     }
                 }
             }
@@ -135,7 +139,7 @@ namespace IKProjesi.UI.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        private void SetTokenCookie(string token)
+        private void SetTokenCookie(string token, string role)
         {
             var cookieOptions = new CookieOptions
             {
@@ -146,6 +150,7 @@ namespace IKProjesi.UI.Controllers
             };
 
             Response.Cookies.Append("token", token, cookieOptions);
+            Response.Cookies.Append("role", role, cookieOptions);
         }
     }
 }
