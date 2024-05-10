@@ -70,17 +70,6 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.GetEmployeeDetails(id);
         }
 
-        public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
-        {
-            if (model.Image is not null)
-            {
-                model.ImageString = await SaveImage(model.Image);
-            }
-            await _employeeApiService.UpdateEmployee(model);
-
-            return model;
-        }
-
         public async Task<UpdateEmployeeVM> GetEmployeeById(int id)
         {
             return await _employeeApiService.GetEmployeeById(id);
@@ -118,18 +107,17 @@ namespace IKProjesi.UI.Services.Employee
         }
 
 
-
-
-
         public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
         {
             if (model.Image is not null)
             {
                 model.ImageString = await SaveImage(model.Image);
             }
-            var employee=await _employeeApiService.UpdateEmployee(model);
+            var employee = await _employeeApiService.UpdateEmployee(model);
 
             return employee;
+        }
+
         public async Task<List<ListOffDayVM>> ListOffDay(int id)
         {
             return await _employeeApiService.ListOffDay(id);
