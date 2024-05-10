@@ -1,6 +1,5 @@
 ﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using Refit;
-using System.Net;
 
 namespace IKProjesi.UI.Services.SuperAdmin
 {

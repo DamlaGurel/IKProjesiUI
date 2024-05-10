@@ -1,9 +1,4 @@
 ﻿using IKProjesi.UI.Models.VMs.CompanyVMs;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using NuGet.ProjectModel;
-using Refit;
-using System.Reflection;
 
 namespace IKProjesi.UI.Services.Company
 {

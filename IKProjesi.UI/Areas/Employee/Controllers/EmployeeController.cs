@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Threading.Tasks;
-using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
-using Refit;
-using System.Reflection;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
 using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.OffDayVMs;
@@ -121,7 +113,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         public async Task<IActionResult> GetEmployeeSummary(int id)
         {
             var employeeSummary = await _employeeService.GetEmployeeSummary(id);
-
             return View(employeeSummary);
         }
 
@@ -136,16 +127,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         public async Task<IActionResult> UpdateEmployee(int id)
         {
             var employee = await _employeeService.GetEmployeeById(id);
-
-            //string imageString = null;
-
-            //if (employee != null && employee.ImageBytes != null)
-            //{
-            //    imageString = Convert.ToBase64String(employee.ImageBytes);
-            //}
-
-            //employee.ImageString = imageString;
-
             return View(employee);
         }
 

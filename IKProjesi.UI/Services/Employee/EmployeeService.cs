@@ -1,8 +1,4 @@
-﻿using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
-using IKProjesi.UI.Models.Enums;
-using IKProjesi.UI.Services.CompanyManager;
-using System.IO.Compression;
-using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+﻿using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
 using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;

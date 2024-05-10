@@ -17,7 +17,7 @@
             <div class="row bg-secondary py-2 px-xl-5">
                 <div class="col-lg-11 text-lg-right">
                     <div class="d-flex justify-content-sm-end ">
-                        @if (User.IsInRole(Job.SuperAdmin.ToString().ToUpper()))
+                        @if (User.IsInRole(Job.SUPERADMIN.ToString().ToUpper()))
                         {
                             <a class="text-dark mr-3" asp-area="SuperAdmin" asp-controller="SuperAdmin" asp-action="Index">SuperAdmin Panel</a>
                         }

@@ -2,10 +2,7 @@
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.UserVM;
 using IKProjesi.UI.Services.User;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Refit;
-using System.ComponentModel.DataAnnotations;
 
 namespace IKProjesi.UI.Controllers
 {
@@ -54,37 +51,30 @@ namespace IKProjesi.UI.Controllers
                 var token = await _userService.Login(user);
                 _contextAccessor.HttpContext.Session.AddObjectSession(token);
 
-                var tokenString = token.Token;
-                var tokenRole = token.Role;
-                var userId = token.UserId;
-                //await _userService.ValidationToken(tokenString, tokenRole);
-
-                //SetTokenCookie(tokenString, tokenRole);
-
-                //if (string.IsNullOrEmpty(token.Token))
-                //{
-                //    TempData["Warning"] = "Kullanıcı adı ya da şifre hatalı.";
-                //    return RedirectToAction("Login");
-                //}
-                //else
-                //{
-                if (token.Role == Job.SuperAdmin.ToString().ToUpper())
+                if (string.IsNullOrEmpty(token.Token))
                 {
-                    return RedirectToAction("Index", "SuperAdmin", new { area = "SuperAdmin" });
+                    TempData["Warning"] = "Kullanıcı adı ya da şifre hatalı.";
+                    return RedirectToAction("Login");
                 }
-                else if (token.Role == Job.SITEMANAGER.ToString().ToUpper())
+                else
                 {
-                    return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
+                    if (token.Role == Job.SUPERADMIN.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "SuperAdmin", new { area = "SuperAdmin" });
+                    }
+                    else if (token.Role == Job.SITEMANAGER.ToString().ToUpper())
+                    {
+                        return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
+                    }
+                    else if (token.Role == Job.COMPANYMANAGER.ToString().ToUpper())
+                    {
+                        return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager", id = token.UserId });
+                    }
+                    else if (token.Role == Job.EMPLOYEE.ToString().ToUpper())
+                    {
+                        return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee", id = token.UserId });
+                    }
                 }
-                else if (token.Role == Job.CompanyManager.ToString().ToUpper())
-                {
-                    return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager", id = userId });
-                }
-                else if (token.Role == Job.Employee.ToString().ToUpper())
-                {
-                    return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee", id = userId });
-                }
-                //}
             }
             return View();
         }
@@ -142,20 +132,6 @@ namespace IKProjesi.UI.Controllers
             await _userService.Logout();
             TempData["Success"] = "Çıkış yapıldı.";
             return RedirectToAction("Login", "Account");
-        }
-
-        private void SetTokenCookie(string token, string role)
-        {
-            var cookieOptions = new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTimeOffset.UtcNow.AddMinutes(10)
-            };
-
-            Response.Cookies.Append("token", token, cookieOptions);
-            Response.Cookies.Append("role", role, cookieOptions);
         }
     }
 }

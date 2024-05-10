@@ -29,11 +29,6 @@ namespace IKProjesi.UI.Services.User
             return password;
         }
 
-        //public async Task<TokenVM> GetToken(LoginVM login)
-        //{
-        //    return await _userApiService.GetToken(login);
-        //}
-
         public async Task Logout()
         {
             await _userApiService.Logout();
@@ -42,11 +37,6 @@ namespace IKProjesi.UI.Services.User
         public async Task ChangePassword(ChangePasswordVM password)
         {
             await _userApiService.ChangePassword(password);
-        }
-
-        public async Task<string> ValidationToken(string token, string tokenRole)
-        {
-           return await _userApiService.ValidateToken(token, tokenRole);
         }
 
         public async Task<bool> ValidateCredentials(string email, string password)

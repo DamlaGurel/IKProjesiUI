@@ -1,17 +1,7 @@
-﻿using System;
-using System.Reflection;
-using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+﻿using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
-using IKProjesi.UI.Models.VMs.CompanyVMs;
-using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
 using IKProjesi.UI.Models.VMs.OffDayVMs;
-using IKProjesi.UI.Models.VMs.SiteManagerVMs;
-using IKProjesi.UI.Services.Company;
-using IKProjesi.UI.Services.SiteManager;
-using Microsoft.AspNetCore.Mvc;
-using Refit;
-
 
 namespace IKProjesi.UI.Services.CompanyManager
 {

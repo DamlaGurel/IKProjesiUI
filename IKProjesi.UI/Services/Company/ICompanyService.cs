@@ -1,5 +1,4 @@
 ﻿using IKProjesi.UI.Models.VMs.CompanyVMs;
-using Microsoft.AspNetCore.Mvc;
 
 namespace IKProjesi.UI.Services.Company
 {

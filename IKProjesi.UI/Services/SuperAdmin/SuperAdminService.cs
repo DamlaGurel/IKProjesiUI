@@ -1,6 +1,4 @@
 ﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
-using IKProjesi.UI.Services.SiteManager;
-using IKProjesi.UI.Services.User;
 
 namespace IKProjesi.UI.Services.SuperAdmin
 {

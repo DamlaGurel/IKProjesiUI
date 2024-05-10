@@ -1,13 +1,9 @@
 ﻿using IKProjesi.UI.Models.Enums;
-using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Services.SiteManager;
 using IKProjesi.UI.Services.SuperAdmin;
 using IKProjesi.UI.Services.User;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Common;
-using Refit;
 
 namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
 {

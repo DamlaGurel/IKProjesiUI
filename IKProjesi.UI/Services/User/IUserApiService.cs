@@ -1,6 +1,5 @@
 ﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 using IKProjesi.UI.Models.VMs.UserVM;
-using Microsoft.AspNetCore.Mvc;
 using Refit;
 
 namespace IKProjesi.UI.Services.User
@@ -24,9 +23,5 @@ namespace IKProjesi.UI.Services.User
 
         [Post("/api/User/ValidateCredentials/{email}/{password}")]
         Task<bool> ValidateCredentials(string email, string password);
-
-
-        [Get("/api/User/ValidateToken")]
-        Task<string> ValidateToken([Header("Authorization")] string bearerToken, string tokenRole);
     }
 }

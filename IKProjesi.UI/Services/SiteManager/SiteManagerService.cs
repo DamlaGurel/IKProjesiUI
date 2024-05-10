@@ -1,6 +1,4 @@
-﻿using IKProjesi.UI.Models.VMs.EmployeeVMs;
-using IKProjesi.UI.Models.VMs.SiteManagerVMs;
-using IKProjesi.UI.Services.Employee;
+﻿using IKProjesi.UI.Models.VMs.SiteManagerVMs;
 
 namespace IKProjesi.UI.Services.SiteManager
 {

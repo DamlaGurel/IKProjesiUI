@@ -1,9 +1,7 @@
-
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.User;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
-using Refit;
 using IKProjesi.UI.Services.SuperAdmin;
 using IKProjesi.UI.Services.Employee;
 using IKProjesi.UI.Extensions.HttpClientHandler;
@@ -20,49 +18,9 @@ namespace IKProjesi.UI
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
             builder.Services.AddRazorPages();
 
-
-            #region RefitClient 
-            //builder.Services.AddRefitClient<ICompanyApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
-
-            //builder.Services.AddRefitClient<IUserApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
-
-            //builder.Services.AddRefitClient<ISiteManagerApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
-
-            //builder.Services.AddRefitClient<ICompanyManagerApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
-
-            //builder.Services.AddRefitClient<ISuperAdminApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
-
-            //builder.Services.AddRefitClient<IEmployeeApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://yonetiminsankaynaklari.azurewebsites.net"));
-
-            //builder.Services.AddRefitClient<ICompanyApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
-
-            //builder.Services.AddRefitClient<IUserApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
-
-            //builder.Services.AddRefitClient<ISiteManagerApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
-
-            //builder.Services.AddRefitClient<ICompanyManagerApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
-
-            //builder.Services.AddRefitClient<ISuperAdminApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828"));
-
-            //builder.Services.AddRefitClient<IEmployeeApiService>()
-            //                .ConfigureHttpClient(client => client.BaseAddress = new Uri("http://localhost:44828")); 
-            #endregion
-
             builder.Services.AddScoped<ICompanyService, CompanyService>()
                             .AddScoped<ISiteManagerService, SiteManagerService>()
                             .AddScoped<ICompanyManagerService, CompanyManagerService>();
-                            //.AddScoped<IEmployeeService, EmployeeService>(); 
 
             builder.Services.AddTransient<IUserService, UserService>()
                             .AddTransient<ISuperAdminService, SuperAdminService>();

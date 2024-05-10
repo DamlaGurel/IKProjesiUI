@@ -1,5 +1,4 @@
 ﻿using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
-using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
 using IKProjesi.UI.Models.VMs.OffDayVMs;

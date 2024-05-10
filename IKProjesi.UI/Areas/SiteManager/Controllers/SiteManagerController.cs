@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using IKProjesi.UI.Models;
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
@@ -13,15 +7,11 @@ using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 using IKProjesi.UI.Services.User;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Refit;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
     [Area("SiteManager")]
-    //[Authorize(AuthenticationSchemes = "Bearer", Roles = "SITEMANAGER")]
     public class SiteManagerController : Controller
     {
         private readonly ISiteManagerService _siteManagerService;
@@ -97,7 +87,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
-            var siteManager= await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
+            var siteManager = await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
             TempData["UpdateMessage"] = "Site manager güncellendi.";
             return View(siteManager);
         }
@@ -116,34 +106,12 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompanyManager(CompanyManagerCompanyVM model, int companyId)
         {
+            model.CreateCompanyManagerVM.CompanyId = companyId;
 
-            //if (ModelState.IsValid)
-            //{
-                model.CreateCompanyManagerVM.CompanyId = companyId;
+            var vm = model.CreateCompanyManagerVM;
+            await _companyManagerService.CreateCompanyManager(vm);
 
-                var vm = model.CreateCompanyManagerVM;
-
-                await _companyManagerService.CreateCompanyManager(vm);
-
-                return RedirectToAction(nameof(CompanyManagerList));
-            //}
-
-            //else
-            //{
-            //    if (string.IsNullOrEmpty(model.CreateCompanyManagerVm.FirstName))
-            //{
-            //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.FirstName), "Lütfen adınızı giriniz.");
-            //}
-
-
-            //if (string.IsNullOrEmpty(model.CreateCompanyManagerVm.LastName))
-            //{
-            //    ModelState.AddModelError(nameof(model.CreateCompanyManagerVm.LastName), "Lütfen soyadınızı giriniz.");
-            //}
-
-            //    return View();
-            //}
-           // return View();
+            return RedirectToAction(nameof(CompanyManagerList));
         }
 
         [HttpGet]
@@ -188,7 +156,7 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
                 return RedirectToAction(nameof(CompanyIndex));
             }
             return View();
-            
+
         }
 
         [HttpGet]
