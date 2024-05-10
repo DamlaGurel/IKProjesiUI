@@ -29,7 +29,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
         #region Company Manager 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerSummary(int id = 49)
+        public async Task<IActionResult> GetCompanyManagerSummary(int id)
         {
             var companyManagerSummary = await _companyManagerService.GetCompanyManagerSummary(id);
             return View(companyManagerSummary);
