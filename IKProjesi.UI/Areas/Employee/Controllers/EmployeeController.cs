@@ -104,6 +104,7 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         public async Task<IActionResult> CreateOffDay(CreateOffDayVM model)
         {
             await _employeeService.CreateOffDay(model);
+            TempData["Success"] = "İzin talebi oluşturuldu";
             return View();
         }
 

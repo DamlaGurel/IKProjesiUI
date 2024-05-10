@@ -77,7 +77,7 @@ namespace IKProjesi.UI.Controllers
                     }
                     else if (token.Role == Job.Employee.ToString().ToUpper())
                     {
-                        return RedirectToAction("Index", "Employee", new { area = "Employee" });
+                        return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee",id=userId });
                     }
                 }
             }

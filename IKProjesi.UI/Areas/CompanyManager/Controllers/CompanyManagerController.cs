@@ -31,7 +31,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCompanyManagerSummary(int id)
         {
-            /*https://localhost:7023/CompanyManager/CompanyManager/GetCompanyManagerSummary*/
             var companyManagerSummary = await _companyManagerService.GetCompanyManagerSummary(id);
             return View(companyManagerSummary);
 
