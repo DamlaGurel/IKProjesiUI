@@ -26,6 +26,13 @@
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
+                        <label asp-for="Image" class="control-label">Fotoğraf</label>
+                        <div>
+                            <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" name="Image" />
+                        </div>
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
                         <input type="submit" value="Kaydet" class="btn btn-danger rounded-3 fw-semibold" />
                     </div>
                     <div class=" mb-3 form-group">

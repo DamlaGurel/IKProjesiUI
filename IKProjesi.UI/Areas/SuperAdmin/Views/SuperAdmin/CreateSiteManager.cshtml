@@ -54,6 +54,17 @@
                         <span asp-validation-for="IdentityNumber" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
+                        <label asp-for="Department" class="control-label">Departman</label>
+                        <select id="Department" name="Department" class="form-select">
+                            <option value="">Seçiniz</option>
+                            @foreach (var department in ViewBag.Department)
+                            {
+                                <option value="@department">@EnumExtensions.GetDisplayName(department)</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Department" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
                         <label asp-for="Address" class="control-label">Adres</label>
                         <textarea asp-for="Address" class="form-control"></textarea>
                         <span asp-validation-for="Address" class="text-danger"></span>

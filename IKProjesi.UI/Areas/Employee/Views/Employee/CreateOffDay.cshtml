@@ -8,6 +8,7 @@
 
 <div class="container-fluid">
     <div class="container-fluid">
+        @Html.Partial("_NotificationPartial")
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">İzin Talebi Oluştur</h5>
@@ -81,7 +82,7 @@
                                     </div>
                                 </fieldset>
                                 <div class="mb-3 form-group">
-                                    <input type="submit" id="AskDayOff" class="btn btn-danger rounded-3 fw-semibold" value="Onaylıyorum, İzin Talep Et" />
+                                    <input type="submit" asp-controller="Employee" asp-action="CreateOffDay" id="AskDayOff" class="btn btn-danger rounded-3 fw-semibold" value="Onaylıyorum, İzin Talep Et" />
                                 </div>
                             </div>
                         </div>

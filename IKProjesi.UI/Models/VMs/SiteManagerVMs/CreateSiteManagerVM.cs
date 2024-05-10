@@ -15,6 +15,10 @@ namespace IKProjesi.UI.Models.VMs.SiteManagerVMs
         public string LastName { get; set; }
         public string? SecondLastName { get; set; }
         public string Password { get; set; }
+
+        public Department? Department { get; set; }
+        public int DepartmentId { get; set; }
+
         //public string? ImagePath { get; set; }
         public string? UserName { get; set; }
 

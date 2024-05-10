@@ -27,6 +27,6 @@ namespace IKProjesi.UI.Services.User
 
 
         [Get("/api/User/ValidateToken")]
-        Task<string> ValidateToken([Header("Authorization")] string bearerToken);
+        Task<string> ValidateToken([Header("Authorization")] string bearerToken, string tokenRole);
     }
 }

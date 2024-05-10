@@ -60,22 +60,9 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                <i class="ti ti-layout-dashboard">Personeller</i>
+                            <a class="nav-link nav-icon-hover" asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee">
+                                <i class="ti ti-layout-dashboard fs-6">Personel Ekle</i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                                <div class="message-body">
-                                    <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="EmployeeList" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <i class="ti ti-user fs-6"></i>
-                                        <p class="mb-0 fs-3">Personel Listesi</p>
-                                    </a>
-                                    <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <i class="ti ti-mail fs-6"></i>
-                                        <p class="mb-0 fs-3">Personel Ekle</p>
-                                    </a>
-                                </div>
-                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover" data-bs-toggle="dropdown"
@@ -102,17 +89,18 @@
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                            
-                            
+
+
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                                    aria-expanded="false">
                                     <img src="~/assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                                    @* <img src="data:image;base64,@(Convert.ToBase64String(Model.ImageBytes))" class="img-fluid" alt="Profil Resmi"> *@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <div class="message-body">
-                                        <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetCompanyManagerDetail" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetCompanyManagerDetail" asp-route-id="" class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-user fs-6"></i>
                                             <p class="mb-0 fs-3">Profil</p>
                                         </a>

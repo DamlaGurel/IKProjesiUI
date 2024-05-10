@@ -1,5 +1,6 @@
 ﻿using IKProjesi.UI.Extensions;
 using IKProjesi.UI.Models.Enums;
+using IKProjesi.UI.Models.VMs.UserVM;
 using System.ComponentModel.DataAnnotations;
 
 namespace IKProjesi.UI.Models.VMs.EmployeeVMs
@@ -16,7 +17,7 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
         //[StringLength(30, ErrorMessage = "En az 3, en çok 30 karakterden oluşmalıdır.", MinimumLength = 3)]
         public string LastName { get; set; }
         public string? UserName { get; set; }
-
+        public int? CompanyManagerId { get; set; }
         public string? SecondLastName { get; set; }
         public IFormFile? Image { get; set; }
         public string? ImageString { get; set; }
@@ -31,5 +32,8 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
         //public string CompanyName { get; set; }
+        public double Payment { get; set; }
+
+        
     }
 }

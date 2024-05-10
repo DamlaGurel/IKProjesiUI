@@ -6,13 +6,14 @@ using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
 using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
+using IKProjesi.UI.Models.VMs.UserVM;
 
 namespace IKProjesi.UI.Services.Employee
 {
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeApiService _employeeApiService;
-
+        int _companyManagerId;
 
         public EmployeeService(IEmployeeApiService employeeApiService)
         {
@@ -22,6 +23,9 @@ namespace IKProjesi.UI.Services.Employee
         #region Employee
         public async Task CreateEmployee(CreateEmployeeVM model)
         {
+            TokenVM token = new TokenVM();
+            model.CompanyManagerId = AssignUser(token);
+
             if (model.Image is not null)
             {
                 model.ImageString = await SaveImage(model.Image);
@@ -29,11 +33,20 @@ namespace IKProjesi.UI.Services.Employee
 
             if (model.DepartmentName.HasValue)
             {
-                // Cast the enum value to int and assign it to the corresponding property
                 model.DepartmentNumber = (int)model.DepartmentName;
+                model.DepartmentName=null;
             }
 
             await _employeeApiService.CreateEmployee(model);
+        }
+
+        public int AssignUser(TokenVM token)
+        {
+            if (token != null)
+            {
+                _companyManagerId = Convert.ToInt32(token.UserId);
+            }
+            return _companyManagerId;
         }
 
         public async Task<string?> SaveImage(IFormFile image)
@@ -68,6 +81,18 @@ namespace IKProjesi.UI.Services.Employee
         public async Task<EmployeeDetailsVM> GetEmployeeDetails(int id)
         {
             return await _employeeApiService.GetEmployeeDetails(id);
+        }
+
+
+        public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
+        {
+            if (model.Image is not null)
+            {
+                model.ImageString = await SaveImage(model.Image);
+            }
+             var employee = await _employeeApiService.UpdateEmployee(model);
+
+            return employee;
         }
 
         public async Task<UpdateEmployeeVM> GetEmployeeById(int id)
@@ -106,18 +131,6 @@ namespace IKProjesi.UI.Services.Employee
             await _employeeApiService.CreateTakeDayOff(model);
         }
 
-
-        public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
-        {
-            if (model.Image is not null)
-            {
-                model.ImageString = await SaveImage(model.Image);
-            }
-            var employee = await _employeeApiService.UpdateEmployee(model);
-
-            return employee;
-        }
-
         public async Task<List<ListOffDayVM>> ListOffDay(int id)
         {
             return await _employeeApiService.ListOffDay(id);
@@ -137,8 +150,6 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.ListAdvancePayment(id);
         }
         #endregion
-
-       
-
     }
 }
+
