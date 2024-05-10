@@ -25,9 +25,6 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var token = _contextAccessor.HttpContext.Request.Cookies["token"];
-            var role = _contextAccessor.HttpContext.Request.Cookies["role"];
-            await _userService.ValidationToken(token, role);
             var sitemanagers = await _superAdminService.GetSiteManagers();
             return View(sitemanagers);
         }
@@ -35,9 +32,6 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateSiteManager()
         {
-            var token = _contextAccessor.HttpContext.Request.Cookies["token"];
-            var role = _contextAccessor.HttpContext.Request.Cookies["role"];
-            await _userService.ValidationToken(token, role);
             ViewBag.Department = Enum.GetValues<Department>();
             return View();
         }
@@ -46,9 +40,7 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSiteManager(CreateSiteManagerVM model)
         {
-            var token = _contextAccessor.HttpContext.Request.Cookies["token"];
-            var role = _contextAccessor.HttpContext.Request.Cookies["role"];
-            await _userService.ValidationToken(token, role);
+
             if (ModelState.IsValid)
             {
                 await _superAdminService.CreateSiteManager(model);

@@ -32,9 +32,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            var token = _contextAccessor.HttpContext.Request.Cookies["token"];
+            
             var role = Job.SITEMANAGER.ToString().ToUpper();
-            await _userService.ValidationToken(token, role);
             return View();
         }
 
