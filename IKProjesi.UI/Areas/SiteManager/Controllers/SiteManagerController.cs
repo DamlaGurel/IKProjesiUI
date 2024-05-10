@@ -19,7 +19,7 @@ using Refit;
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
     [Area("SiteManager")]
-    //[Authorize(AuthenticationSchemes = "Bearer", Roles = "S�TEMANAGER")]
+    //[Authorize(AuthenticationSchemes = "Bearer", Roles = "SITEMANAGER")]
     public class SiteManagerController : Controller
     {
         private readonly ISiteManagerService _siteManagerService;
