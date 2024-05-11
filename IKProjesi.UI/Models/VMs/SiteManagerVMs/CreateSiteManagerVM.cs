@@ -16,6 +16,7 @@ namespace IKProjesi.UI.Models.VMs.SiteManagerVMs
         public string? SecondLastName { get; set; }
         public string Password { get; set; }
 
+        public string PersonalEmail { get; set; }
         public Department? Department { get; set; }
         public int DepartmentId { get; set; }
 

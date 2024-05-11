@@ -1,13 +1,16 @@
+using IKProjesi.UI.Extensions;
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
 using IKProjesi.UI.Models.VMs.Pagination;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+using IKProjesi.UI.Models.VMs.UserVM;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
@@ -62,24 +65,26 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerSummary(int id)
+        public async Task<IActionResult> GetSiteManagerSummary()
         {
-            var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(Id);
             return View(siteManagerSummary);
-
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerDetail(int id)
+        public async Task<IActionResult> GetSiteManagerDetail()
         {
-            var siteManagerDetail = await _siteManagerService.SiteManagerDetails(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var siteManagerDetail = await _siteManagerService.SiteManagerDetails(Id);
             return View(siteManagerDetail);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerUpdate(int id)
+        public async Task<IActionResult> GetSiteManagerUpdate()
         {
-            var siteManagerUpdate = await _siteManagerService.GetSiteManagerById(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var siteManagerUpdate = await _siteManagerService.GetSiteManagerById(Id);
             return View(siteManagerUpdate);
         }
 
@@ -87,8 +92,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
             var siteManager = await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
-            TempData["UpdateMessage"] = "Site manager güncellendi.";
-            return View(siteManager);
+            TempData["Success"] = "Bilgileriniz güncellendi.";
+            return RedirectToAction(nameof(GetSiteManagerDetail));
         }
 
         [HttpGet]
@@ -155,7 +160,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
                 return RedirectToAction(nameof(CompanyIndex));
             }
             return View();
-
         }
 
         [HttpGet]

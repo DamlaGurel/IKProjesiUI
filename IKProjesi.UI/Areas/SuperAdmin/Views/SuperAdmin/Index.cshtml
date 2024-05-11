@@ -22,18 +22,24 @@
                                                 <td class="fw-semibold">Adı</td>
                                                 <td class="fw-normal">@item.FirstName</td>
                                             </tr>
-                                            <tr>
-                                                <td class="fw-semibold">İkinci Adı</td>
-                                                <td class="fw-normal">@item.SecondName</td>
-                                            </tr>
+                                            @if (!string.IsNullOrEmpty(item.SecondName))
+                                            {
+                                                <tr>
+                                                    <td class="fw-semibold">İkinci Adı</td>
+                                                    <td class="fw-normal">@item.SecondName</td>
+                                                </tr>
+                                            }
                                             <tr>
                                                 <td class="fw-semibold">Soyadı</td>
                                                 <td class="fw-normal">@item.LastName</td>
                                             </tr>
-                                            <tr>
-                                                <td class="fw-semibold">İkinci Soyadı</td>
-                                                <td class="fw-normal">@item.SecondLastName</td>
-                                            </tr>
+                                            @if (!string.IsNullOrEmpty(item.SecondLastName))
+                                            {
+                                                <tr>
+                                                    <td class="fw-semibold">İkinci Soyadı</td>
+                                                    <td class="fw-normal">@item.SecondLastName</td>
+                                                </tr>
+                                            }
                                             <tr>
                                                 <td class="fw-semibold">Telefon</td>
                                                 <td class="fw-normal">@item.PhoneNumber</td>

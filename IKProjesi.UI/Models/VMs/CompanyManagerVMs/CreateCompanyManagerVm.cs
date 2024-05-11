@@ -16,6 +16,7 @@ namespace IKProjesi.UI.Models.VMs.CompanyManagerVMs
        
         public string? LastName { get; set; }
         public string? SecondLastName { get; set; }
+        public string PersonalEmail { get; set; }
         public DateTime? BirthDate { get; set; }
         public string? BirthPlace { get; set; }
         //[IdentificationNumberValidation]

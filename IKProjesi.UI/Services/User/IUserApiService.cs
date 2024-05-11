@@ -12,6 +12,9 @@ namespace IKProjesi.UI.Services.User
         [Post("/api/Mail/SendMail/{email}")]
         Task<string> SendMail(string email);
 
+        [Post("/api/Mail/SendPassword/{personalEmail}")]
+        Task<string> SendPassword(string personalEmail);
+
         [Get("/api/User/Logout")]
         Task Logout();
 
@@ -23,5 +26,6 @@ namespace IKProjesi.UI.Services.User
 
         [Post("/api/User/ValidateCredentials/{email}/{password}")]
         Task<bool> ValidateCredentials(string email, string password);
+
     }
 }

@@ -50,6 +50,10 @@ namespace IKProjesi.UI.Controllers
             {
                 var token = await _userService.Login(user);
                 _contextAccessor.HttpContext.Session.AddObjectSession(token);
+                _contextAccessor.HttpContext.Session.SetInt32("UserId", Convert.ToInt32(token.UserId));
+                _contextAccessor.HttpContext.Session.SetString("FirstName", token.FirstName);
+                //ViewData["FirstName"] = token.FirstName;
+                ViewBag.FirstName = token.FirstName;
 
                 if (string.IsNullOrEmpty(token.Token))
                 {
@@ -68,11 +72,11 @@ namespace IKProjesi.UI.Controllers
                     }
                     else if (token.Role == Job.COMPANYMANAGER.ToString().ToUpper())
                     {
-                        return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager", id = token.UserId });
+                        return RedirectToAction("GetCompanyManagerSummary", "CompanyManager", new { area = "CompanyManager" });
                     }
                     else if (token.Role == Job.EMPLOYEE.ToString().ToUpper())
                     {
-                        return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee", id = token.UserId });
+                        return RedirectToAction("GetEmployeeSummary", "Employee", new { area = "Employee" });
                     }
                 }
             }
@@ -100,6 +104,32 @@ namespace IKProjesi.UI.Controllers
                 }
                 TempData["Success"] = "Şifreniz gönderildi. Lütfen mailinizi kontrol ediniz.";
                 return RedirectToAction("ChangePassword", "Account");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult SendPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendPassword(string personalEmail)
+        {
+            if (string.IsNullOrEmpty(personalEmail))
+            {
+                TempData["Warning"] = "Lütfen e-posta adresinizi giriniz.";
+            }
+            if (ModelState.IsValid)
+            {
+                var infomation = await _userService.SendPassword(personalEmail);
+                if (string.IsNullOrEmpty(infomation))
+                {
+                    return View();
+                }
+                TempData["Success"] = "Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.";
+                return RedirectToAction("Login", "Account");
             }
             return View();
         }
@@ -133,5 +163,7 @@ namespace IKProjesi.UI.Controllers
             TempData["Success"] = "Çıkış yapıldı.";
             return RedirectToAction("Login", "Account");
         }
+
+        
     }
 }

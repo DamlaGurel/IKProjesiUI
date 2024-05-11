@@ -18,6 +18,7 @@ namespace IKProjesi.UI.Models.VMs.EmployeeVMs
         public string LastName { get; set; }
         public string? UserName { get; set; }
         public int? CompanyManagerId { get; set; }
+        public string PersonalEmail { get; set; }
         public string? SecondLastName { get; set; }
         public IFormFile? Image { get; set; }
         public string? ImageString { get; set; }

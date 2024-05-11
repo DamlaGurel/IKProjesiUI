@@ -1,4 +1,3 @@
-
 @{
     ViewData["Title"] = "GetCompanyManagerUpdate";
     Layout = "~/Areas/CompanyManager/Views/Shared/_CompanyManagerLayout.cshtml";
@@ -8,7 +7,7 @@
     var successMessage = TempData["UpdateMessage"] as string;
 }
 <script>
-    setTimeout(function() {
+    setTimeout(function () {
         $('#updateMessage').fadeOut('slow');
     }, 5000);
 </script>
@@ -28,6 +27,8 @@
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">Şirket Yöneticisi Güncelle</h5>
                 <form asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="@Model.Id" />
+
                     <div class="mb-3 form-group">
                         <label asp-for="@Model.Image" class="control-label"></label>
                         <div>
@@ -36,8 +37,7 @@
                         <span asp-validation-for="@Model.Image" class="text-danger"></span>
                     </div>
 
-
-                    <div class="form-floating mb-3" style="position: relative;">    
+                    <div class="form-floating mb-3" style="position: relative;">
 
                         <input class="form-control readonly-input" readonly />
 
@@ -48,9 +48,6 @@
                         }
                         <span asp-validation-for="ImageString" class="text-danger"></span>
                     </div>
-
-
-
 
                     <div class="mb-3 form-group">
                         <label asp-for="Address" class="control-label">Adres</label>
