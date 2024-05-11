@@ -19,8 +19,6 @@ namespace IKProjesi.UI.Services.Employee
         #region Employee
         public async Task CreateEmployee(CreateEmployeeVM model)
         {
-            TokenVM token = new TokenVM();
-            model.CompanyManagerId = AssignUser(token);
 
             if (model.Image is not null)
             {
@@ -36,14 +34,6 @@ namespace IKProjesi.UI.Services.Employee
             await _employeeApiService.CreateEmployee(model);
         }
 
-        public int AssignUser(TokenVM token)
-        {
-            if (token != null)
-            {
-                _companyManagerId = Convert.ToInt32(token.UserId);
-            }
-            return _companyManagerId;
-        }
 
         public async Task<string?> SaveImage(IFormFile image)
         {

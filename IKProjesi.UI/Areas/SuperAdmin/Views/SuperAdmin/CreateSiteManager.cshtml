@@ -14,47 +14,62 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <form asp-area="SuperAdmin" asp-controller="SuperAdmin" asp-action="CreateSiteManager" enctype="multipart/form-data" method="post">
                     <div class="mb-3 form-group">
-                        <label asp-for="FirstName" class="control-label">Adı</label>
-                        <input asp-for="FirstName" class="form-control" />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                        <label asp-for="@Model.IdentityNumber" class="control-label">TC Kimlik Numarası</label>
+                        <input asp-for="@Model.IdentityNumber" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.IdentityNumber" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="SecondName" class="control-label">İkinci Adı</label>
-                        <input asp-for="SecondName" class="form-control" />
-                        <span asp-validation-for="SecondName" class="text-danger"></span>
+                        <label asp-for="@Model.FirstName" class="control-label">Adı</label>
+                        <input asp-for="@Model.FirstName" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="LastName" class="control-label">Soyadı</label>
-                        <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
+                        <label asp-for="@Model.SecondName" class="control-label">İkinci Adı</label>
+                        <input asp-for="@Model.SecondName" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.SecondName" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="SecondLastName" class="control-label">İkinci Soyadı</label>
-                        <input asp-for="SecondLastName" class="form-control" />
-                        <span asp-validation-for="SecondLastName" class="text-danger"></span>
+                        <label asp-for="@Model.LastName" class="control-label">Soyadı</label>
+                        <input asp-for="@Model.LastName" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.LastName" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="BirthDate" class="control-label">Doğum Tarihi</label>
-                        <input asp-for="BirthDate" type="date" class="form-control" />
-                        <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        <label asp-for="@Model.SecondLastName" class="control-label">İkinci Soyadı</label>
+                        <input asp-for="@Model.SecondLastName" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.SecondLastName" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="BirthPlace" class="control-label">Doğum Yeri</label>
-                        <input asp-for="BirthPlace" type="text" class="form-control" />
-                        <span asp-validation-for="BirthPlace" class="text-danger"></span>
+                        <label asp-for="@Model.PersonalEmail" class="control-label">Email</label>
+                        <input asp-for="@Model.PersonalEmail" type="email" class="form-control" />
+                        <span asp-validation-for="@Model.PersonalEmail" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="StartDateOfWork" class="control-label">İşe Başlangıç Tarihi</label>
-                        <input asp-for="StartDateOfWork" type="date" class="form-control" />
-                        <span asp-validation-for="StartDateOfWork" class="text-danger"></span>
+                        <label asp-for="@Model.BirthDate" class="control-label">Doğum Tarihi</label>
+                        <input asp-for="@Model.BirthDate" type="date" class="form-control" />
+                        <span asp-validation-for="@Model.BirthDate" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="IdentityNumber" class="control-label">TC Kimlik Numarası</label>
-                        <input asp-for="IdentityNumber" type="text" class="form-control" />
-                        <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+                        <label asp-for="@Model.BirthPlace" class="control-label">Doğum Yeri</label>
+                        <input asp-for="@Model.BirthPlace" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.BirthPlace" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="Department" class="control-label">Departman</label>
+                        <label asp-for="@Model.Address" class="control-label">Adres</label>
+                        <textarea asp-for="@Model.Address" type="text" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.Address" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="@Model.PhoneNumber" class="control-label">Telefon Numarası</label>
+                        <input asp-for="@Model.PhoneNumber" type="number" class="form-control" />
+                        <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="@Model.StartDateOfWork" class="control-label">İşe Başlangıç Tarihi</label>
+                        <input asp-for="@Model.StartDateOfWork" type="date" class="form-control" />
+                        <span asp-validation-for="@Model.StartDateOfWork" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label asp-for="@Model.Department" class="control-label">Departman</label>
                         <select id="Department" name="Department" class="form-select">
                             <option value="">Seçiniz</option>
                             @foreach (var department in ViewBag.Department)
@@ -62,22 +77,12 @@
                                 <option value="@department">@EnumExtensions.GetDisplayName(department)</option>
                             }
                         </select>
-                        <span asp-validation-for="Department" class="text-danger"></span>
+                        <span asp-validation-for="@Model.Department" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="Address" class="control-label">Adres</label>
-                        <textarea asp-for="Address" class="form-control"></textarea>
-                        <span asp-validation-for="Address" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label asp-for="Password" class="control-label">Şifre</label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <label asp-for="@Model.Password" class="control-label">Şifre</label>
+                        <input asp-for="@Model.Password" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
                     </div>
                     <div>
                         <input asp-for="@Model.Image" type="file" class="form-control" id="inputGroupFile02" />
@@ -88,14 +93,12 @@
                         <div>
                             <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />
                         </div>
-
                     </div>
                     <div class=" mb-3 form-group">
                         <div>
                             <a asp-controller="SuperAdmin" asp-action="Index" class="btn btn-danger rounded-3 fw-semibold ">Site Yöneticileri Listesine Dön</a>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>

@@ -110,23 +110,26 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
 
         #region Employee
         [HttpGet]
-        public async Task<IActionResult> GetEmployeeSummary(int id)
+        public async Task<IActionResult> GetEmployeeSummary()
         {
-            var employeeSummary = await _employeeService.GetEmployeeSummary(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var employeeSummary = await _employeeService.GetEmployeeSummary(Id);
             return View(employeeSummary);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEmployeeDetails(int id)
+        public async Task<IActionResult> GetEmployeeDetails()
         {
-            var employeeDetails = await _employeeService.GetEmployeeDetails(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var employeeDetails = await _employeeService.GetEmployeeDetails(Id);
             return View(employeeDetails);
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateEmployee(int id)
+        public async Task<IActionResult> UpdateEmployee()
         {
-            var employee = await _employeeService.GetEmployeeById(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var employee = await _employeeService.GetEmployeeById(Id);
             return View(employee);
         }
 

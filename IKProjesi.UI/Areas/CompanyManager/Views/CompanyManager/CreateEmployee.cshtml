@@ -15,6 +15,12 @@
                 <div class="row">
                     <form asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="@Model.CompanyManagerId"/>
+                        <div class="mb-3 form-group">
+                            <label asp-for="IdentityNumber" class="control-label">T.C. Kimlik Numarası</label>
+                            <input asp-for="IdentityNumber" class="form-control" />
+                            <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+                        </div>
                         <div class="mb-3 form-group">
                             <label asp-for="FirstName" class="control-label">Adı</label>
                             <input asp-for="FirstName" class="form-control" />
@@ -36,7 +42,22 @@
                             <span asp-validation-for="SecondLastName" class="text-danger"></span>
                         </div>
                         <div class="mb-3 form-group">
-                            <label asp-for="BirthDate" class="control-label">Doğrum Tarihi</label>
+                            <label asp-for="PersonalEmail" class="control-label">Email</label>
+                            <input asp-for="PersonalEmail" class="form-control" />
+                            <span asp-validation-for="PersonalEmail" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="Address" class="control-label">Adres</label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label asp-for="BirthDate" class="control-label">Doğum Tarihi</label>
                             <input asp-for="BirthDate" type="date" class="form-control" />
                             <span asp-validation-for="BirthDate" class="text-danger"></span>
                         </div>
@@ -46,16 +67,10 @@
                             <span asp-validation-for="BirthPlace" class="text-danger"></span>
                         </div>
                         <div class="mb-3 form-group">
-                            <label asp-for="IdentityNumber" class="control-label">T.C. Kimlik Numarası</label>
-                            <input asp-for="IdentityNumber" class="form-control" />
-                            <span asp-validation-for="IdentityNumber" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3 form-group">
                             <label asp-for="StartDateOfWork" class="control-label">İşe Başlama Tarihi</label>
                             <input asp-for="StartDateOfWork" type="date" class="form-control" />
                             <span asp-validation-for="StartDateOfWork" class="text-danger"></span>
                         </div>
-
                         <div class="mb-3 form-group">
                             <label asp-for="DepartmentName" class="control-label">Departman</label>
                             <select asp-for="DepartmentName" class="form-select" id="DayOffType">
@@ -67,17 +82,6 @@
                                 }
                             </select>
                             <span asp-validation-for="DepartmentName" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3 form-group">
-                            <label asp-for="Address" class="control-label">Adres</label>
-                            <input asp-for="Address" class="form-control" />
-                            <span asp-validation-for="Address" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3 form-group">
-                            <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
-                            <input asp-for="PhoneNumber" class="form-control" />
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         <div class="mb-3 form-group">
                             <label asp-for="Payment" class="control-label">Maaşı</label>

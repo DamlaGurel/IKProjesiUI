@@ -29,6 +29,11 @@ namespace IKProjesi.UI.Services.User
             return password;
         }
 
+        public async Task<string> SendPassword(string personalEmail)
+        {
+            var information = await _userApiService.SendPassword(personalEmail);
+            return information;
+        }
         public async Task Logout()
         {
             await _userApiService.Logout();

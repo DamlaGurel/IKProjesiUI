@@ -65,16 +65,15 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerSummary(int id)
+        public async Task<IActionResult> GetSiteManagerSummary()
         {
             int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
             var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(Id);
             return View(siteManagerSummary);
-
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerDetail(int id)
+        public async Task<IActionResult> GetSiteManagerDetail()
         {
             int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
             var siteManagerDetail = await _siteManagerService.SiteManagerDetails(Id);
@@ -82,9 +81,10 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSiteManagerUpdate(int id)
+        public async Task<IActionResult> GetSiteManagerUpdate()
         {
-            var siteManagerUpdate = await _siteManagerService.GetSiteManagerById(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var siteManagerUpdate = await _siteManagerService.GetSiteManagerById(Id);
             return View(siteManagerUpdate);
         }
 
@@ -92,8 +92,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         public async Task<IActionResult> GetSiteManagerUpdate(SiteManagerUpdateVM siteManagerUpdateVM)
         {
             var siteManager = await _siteManagerService.GetSiteManagerUpdate(siteManagerUpdateVM);
-            TempData["UpdateMessage"] = "Site manager güncellendi.";
-            return View(siteManager);
+            TempData["Success"] = "Bilgileriniz güncellendi.";
+            return RedirectToAction(nameof(GetSiteManagerDetail));
         }
 
         [HttpGet]
@@ -160,7 +160,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
                 return RedirectToAction(nameof(CompanyIndex));
             }
             return View();
-
         }
 
         [HttpGet]

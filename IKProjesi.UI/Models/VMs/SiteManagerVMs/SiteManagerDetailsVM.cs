@@ -10,6 +10,7 @@ namespace IKProjesi.UI.Models.VMs.SiteManagerVMs
         public string? SecondName { get; set; }
         public string LastName { get; set; }
         public string? SecondLastName { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
         public string? ImageString { get; set; }
         public byte[]? ImageBytes { get; set; }

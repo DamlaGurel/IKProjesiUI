@@ -14,11 +14,13 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
     {
         private readonly ICompanyManagerService _companyManagerService;
         private readonly IEmployeeService _employeeService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CompanyManagerController(ICompanyManagerService companyManagerService, IEmployeeService employeeService)
+        public CompanyManagerController(ICompanyManagerService companyManagerService, IEmployeeService employeeService, IHttpContextAccessor httpContextAccessor)
         {
             _companyManagerService = companyManagerService;
             _employeeService = employeeService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
 
@@ -29,26 +31,28 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 
         #region Company Manager 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerSummary(int id)
+        public async Task<IActionResult> GetCompanyManagerSummary()
         {
-            var companyManagerSummary = await _companyManagerService.GetCompanyManagerSummary(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var companyManagerSummary = await _companyManagerService.GetCompanyManagerSummary(Id);
             return View(companyManagerSummary);
 
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerDetail(int id)
+        public async Task<IActionResult> GetCompanyManagerDetail()
         {
-            var companyManagerDetail = await _companyManagerService.GetCompanyManagerDetails(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var companyManagerDetail = await _companyManagerService.GetCompanyManagerDetails(Id);
             return View(companyManagerDetail);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanyManagerUpdate(int id)
+        public async Task<IActionResult> GetCompanyManagerUpdate()
         {
-            var companyManagerUpdate = await _companyManagerService.GetCompanyManagerById(id);
-
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var companyManagerUpdate = await _companyManagerService.GetCompanyManagerById(Id);
             return View(companyManagerUpdate);
         }
 
@@ -66,7 +70,9 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public IActionResult CreateEmployee()
         {
-            return View();
+            CreateEmployeeVM employee = new CreateEmployeeVM();
+            employee.CompanyManagerId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            return View(employee);
         }
 
         [HttpPost]
@@ -77,7 +83,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
                 await _employeeService.CreateEmployee(model);
                 TempData["Success"] = "Personel eklendi";
             }
-            return View();
+            return RedirectToAction(nameof(CreateEmployee));
         }
         #endregion
 

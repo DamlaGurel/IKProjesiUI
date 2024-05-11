@@ -15,22 +15,24 @@
                 <form asp-controller="SiteManager" asp-action="GetSiteManagerUpdate" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+                    <input type="hidden" asp-for="@Model.Id" />
+
                     <div class="mb-3 form-group">
-                        <label asp-for="Address" class="control-label">Adres</label>
-                        <input asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <label asp-for="@Model.Address" class="control-label">Adres</label>
+                        <input asp-for="@Model.Address" class="form-control" />
+                        <span asp-validation-for="@Model.Address" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        <label asp-for="@Model.PhoneNumber" class="control-label">Telefon Numarası</label>
+                        <input asp-for="@Model.PhoneNumber" class="form-control" />
+                        <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
-                        <label asp-for="Image" class="control-label">Fotoğraf</label>
+                        <label asp-for="@Model.Image" class="control-label">Fotoğraf</label>
                         <div>
-                            <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" name="Image" />
+                            <input asp-for="@Model.Image" type="file" class="form-control" id="inputGroupFile02" name="Image" />
                         </div>
-                        <span asp-validation-for="Image" class="text-danger"></span>
+                        <span asp-validation-for="@Model.Image" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-group">
                         <input type="submit" value="Kaydet" class="btn btn-danger rounded-3 fw-semibold" />
@@ -45,38 +47,3 @@
         </div>
     </div>
 </div>
-
-
-@*<h1>GetSiteManagerUpdate</h1>
-
-<h4>SiteManagerUpdateVM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="GetSiteManagerUpdate">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@

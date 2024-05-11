@@ -1,7 +1,7 @@
-﻿
+﻿@* 
 @{
-    var firstName = ViewData["FirstName"];
-}
+    var firstName = 
+} *@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,9 +83,9 @@
 
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-                        <a>@firstName</a>
+                        <h2>@ViewBag.FirstName</h2>
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-
+                            
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                                    aria-expanded="false">
