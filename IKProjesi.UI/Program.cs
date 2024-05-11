@@ -29,22 +29,22 @@ namespace IKProjesi.UI
             builder.Services.AddHttpContextAccessor();
 
             #region localhost
-            //builder.Services.AddRefit<IUserApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
-            //builder.Services.AddRefit<ICompanyApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
-            //builder.Services.AddRefit<ICompanyManagerApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
-            //builder.Services.AddRefit<IEmployeeApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
-            //builder.Services.AddRefit<ISiteManagerApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
-            //builder.Services.AddRefit<ISuperAdminApiService, AuthenticatedHttpClientHandler>("http://localhost:44828"); 
+            builder.Services.AddRefit<IUserApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
+            builder.Services.AddRefit<ICompanyApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
+            builder.Services.AddRefit<ICompanyManagerApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
+            builder.Services.AddRefit<IEmployeeApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
+            builder.Services.AddRefit<ISiteManagerApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
+            builder.Services.AddRefit<ISuperAdminApiService, AuthenticatedHttpClientHandler>("http://localhost:44828");
             #endregion
 
-            #region canli
-            builder.Services.AddRefit<IUserApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
-            builder.Services.AddRefit<ICompanyApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
-            builder.Services.AddRefit<ICompanyManagerApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
-            builder.Services.AddRefit<IEmployeeApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
-            builder.Services.AddRefit<ISiteManagerApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
-            builder.Services.AddRefit<ISuperAdminApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net"); 
-            #endregion
+            //#region canli
+            //builder.Services.AddRefit<IUserApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
+            //builder.Services.AddRefit<ICompanyApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
+            //builder.Services.AddRefit<ICompanyManagerApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
+            //builder.Services.AddRefit<IEmployeeApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
+            //builder.Services.AddRefit<ISiteManagerApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net");
+            //builder.Services.AddRefit<ISuperAdminApiService, AuthenticatedHttpClientHandler>("https://yonetiminsankaynaklari.azurewebsites.net"); 
+            //#endregion
 
             builder.Services.AddSession();
 

@@ -21,10 +21,10 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             _employeeService = employeeService;
         }
 
-        
+
         public IActionResult Index()
         {
-            return View(); 
+            return View();
         }
 
         #region Company Manager 
@@ -56,7 +56,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpPost]
         public async Task<IActionResult> GetCompanyManagerUpdate(UpdateCompanyManagerVM companyManagerUpdateVM)
         {
-            var companyManager= await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
+            var companyManager = await _companyManagerService.GetCompanyManagerUpdate(companyManagerUpdateVM);
             TempData["UpdateMessage"] = "Profil güncellendi.";
             return View(companyManager);
         }
@@ -66,10 +66,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public IActionResult CreateEmployee()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Account", new { area = ""});
-            }
             return View();
         }
 
@@ -80,7 +76,7 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             {
                 await _employeeService.CreateEmployee(model);
                 TempData["Success"] = "Personel eklendi";
-            }           
+            }
             return View();
         }
         #endregion

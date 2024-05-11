@@ -1,13 +1,16 @@
+using IKProjesi.UI.Extensions;
 using IKProjesi.UI.Models.Enums;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.CompanyVMs;
 using IKProjesi.UI.Models.VMs.Pagination;
 using IKProjesi.UI.Models.VMs.SiteManagerVMs;
+using IKProjesi.UI.Models.VMs.UserVM;
 using IKProjesi.UI.Services.Company;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.SiteManager;
 using IKProjesi.UI.Services.User;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 
 namespace IKProjesi.UI.Areas.SiteManager.Controllers
 {
@@ -64,7 +67,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSiteManagerSummary(int id)
         {
-            var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var siteManagerSummary = await _siteManagerService.GetSiteManagerSummary(Id);
             return View(siteManagerSummary);
 
         }
@@ -72,7 +76,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSiteManagerDetail(int id)
         {
-            var siteManagerDetail = await _siteManagerService.SiteManagerDetails(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var siteManagerDetail = await _siteManagerService.SiteManagerDetails(Id);
             return View(siteManagerDetail);
         }
 

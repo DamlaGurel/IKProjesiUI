@@ -25,6 +25,7 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["UserId"] = HttpContext.Session.GetInt32("UserId");
             var sitemanagers = await _superAdminService.GetSiteManagers();
             return View(sitemanagers);
         }

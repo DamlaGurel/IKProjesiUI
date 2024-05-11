@@ -50,6 +50,9 @@ namespace IKProjesi.UI.Controllers
             {
                 var token = await _userService.Login(user);
                 _contextAccessor.HttpContext.Session.AddObjectSession(token);
+                _contextAccessor.HttpContext.Session.SetInt32("UserId", Convert.ToInt32(token.UserId));
+                _contextAccessor.HttpContext.Session.SetString("FirstName", token.FirstName);
+                ViewData["FirstName"] = token.FirstName;
 
                 if (string.IsNullOrEmpty(token.Token))
                 {
