@@ -50,6 +50,9 @@ namespace IKProjesi.UI.Services.Employee
 
         [Get("/api/Employee/ListAdvancePayment/{id}")]
         Task<List<ListAdvancePaymentVM>> ListAdvancePayment(int id);
+
+        [Get("/api/Employee/TotalAdvancePayment/{employeeId}")]
+        Task<double?> TotalAdvancePayment(int employeeId);
         #endregion
     }
 }

@@ -9,7 +9,6 @@ namespace IKProjesi.UI.Services.Employee
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeApiService _employeeApiService;
-        int _companyManagerId;
 
         public EmployeeService(IEmployeeApiService employeeApiService)
         {
@@ -19,7 +18,6 @@ namespace IKProjesi.UI.Services.Employee
         #region Employee
         public async Task CreateEmployee(CreateEmployeeVM model)
         {
-
             if (model.Image is not null)
             {
                 model.ImageString = await SaveImage(model.Image);
@@ -69,7 +67,6 @@ namespace IKProjesi.UI.Services.Employee
             return await _employeeApiService.GetEmployeeDetails(id);
         }
 
-
         public async Task<UpdateEmployeeVM> UpdateEmployee(UpdateEmployeeVM model)
         {
             if (model.Image is not null)
@@ -98,7 +95,6 @@ namespace IKProjesi.UI.Services.Employee
                 if (memorystream.Length < 2097152)
                     model.FileByteArray = memorystream.ToArray();
             }
-
             model.ExpenseTypeId = (int)model.ExpenseType;
             model.MoneyTypeId = (int)model.MoneyType;
 
@@ -134,6 +130,11 @@ namespace IKProjesi.UI.Services.Employee
         public async Task<List<ListAdvancePaymentVM>> ListAdvancePayment(int id)
         {
             return await _employeeApiService.ListAdvancePayment(id);
+        }
+
+        public async Task<double?> TotalAdvancePayment(int employeeId)
+        {
+           return await _employeeApiService.TotalAdvancePayment(employeeId);
         }
         #endregion
     }

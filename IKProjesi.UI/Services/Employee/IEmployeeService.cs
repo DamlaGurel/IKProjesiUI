@@ -28,6 +28,7 @@ namespace IKProjesi.UI.Services.Employee
         #region Advance Payment
         Task CreateAdvancePayment(CreateAdvancePaymentVM model);
         Task<List<ListAdvancePaymentVM>> ListAdvancePayment(int id);
+        Task<double?> TotalAdvancePayment(int employeeId);
         #endregion
     }
 }

@@ -11,7 +11,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
     [Area("Employee")]
     public class EmployeeController : Controller
     {
-
         private readonly IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService employeeService)
@@ -54,11 +53,14 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
 
         #region Advance
         [HttpGet]
-        public IActionResult CreateAdvancePayment()
+        public async Task<IActionResult> CreateAdvancePayment()
         {
+            CreateAdvancePaymentVM createAdvancePayment = new CreateAdvancePaymentVM();
+            createAdvancePayment.EmployeeId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            createAdvancePayment.Payment = await _employeeService.TotalAdvancePayment(createAdvancePayment.EmployeeId);
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
-            return View();
+            return View(createAdvancePayment);
         }
 
         [HttpPost]
@@ -66,8 +68,11 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         {
             if (createAdvancePayment != null && ModelState.IsValid)
             {
+                createAdvancePayment.EmployeeId = HttpContext.Session.GetInt32("UserId") ?? 0;
+                await _employeeService.TotalAdvancePayment(createAdvancePayment.EmployeeId);
                 await _employeeService.CreateAdvancePayment(createAdvancePayment);
-                return RedirectToAction(nameof(Index));
+                TempData["Success"] = "Avans talebiniz yöneticinize gönderildi.";
+                return RedirectToAction(nameof(GetEmployeeSummary));
             }
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
@@ -75,12 +80,13 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListAdvancePayment(int id)
+        public async Task<IActionResult> ListAdvancePayment()
         {
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             ViewBag.ApprovalType = Enum.GetValues<ApprovalType>();
-            var advance = await _employeeService.ListAdvancePayment(id);
+            var advance = await _employeeService.ListAdvancePayment(Id);
             return View(advance);
         }
         #endregion
