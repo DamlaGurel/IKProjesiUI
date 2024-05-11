@@ -108,31 +108,36 @@ namespace IKProjesi.UI.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public IActionResult SendPassword()
-        //{
-        //    return View();
-        //}
-
+        [HttpGet]
+        public IActionResult SendPassword()
+        {
+            return View();
+        }
         [HttpPost]
-        public async Task SendPassword(string personalEmail)
+        public async Task<IActionResult> SendPassword(string personalEmail)
         {
             if (string.IsNullOrEmpty(personalEmail))
             {
-                TempData["Warning"] = "Lütfen e-posta adresinizi giriniz.";
+                return BadRequest("Lütfen e-posta adresinizi giriniz.");
             }
+
             if (ModelState.IsValid)
             {
-                var infomation = await _userService.SendPassword(personalEmail);
-                if (string.IsNullOrEmpty(infomation))
+                var response = await _userService.SendPassword(personalEmail);
+
+                if (response is not null)
                 {
-                    //return View();
+                    return Ok("Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.");
                 }
-                TempData["Success"] = "Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.";
-                //return RedirectToAction("Login", "Account");
+                else
+                {
+                    return BadRequest("Bilgileriniz gönderilemedi. Lütfen girdiğiniz mailinizi kontrol ediniz.");
+                }
             }
-            //return RedirectToAction(nameof(Login));
+
+            return BadRequest("Geçersiz e-posta veya şifre.");
         }
+
 
         [HttpGet]
         public IActionResult ChangePassword()
