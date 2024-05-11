@@ -5,7 +5,7 @@ namespace IKProjesi.UI.Models.VMs.OffDayVMs
 {
     public class CreateOffDayVM
     {
-
+        public int EmployeeId { get; set; }
         public DateTime? DayOffStartTime { get; set; }
         public DateTime? DayOffEndTime { get; set; }
         public int? DayOffType { get; set; }

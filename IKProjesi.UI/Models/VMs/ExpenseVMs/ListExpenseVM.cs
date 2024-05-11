@@ -7,6 +7,7 @@ namespace IKProjesi.UI.Models.VMs.ExpenseVMs
 	{
         public ExpenseType? ExpenseType { get; set; }
         public MoneyType? MoneyType { get; set; }
+        public ApprovalType? ApprovalType { get; set; }
         public double? TotalExpense { get; set; }
     }
 }

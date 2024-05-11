@@ -4,11 +4,11 @@ namespace IKProjesi.UI.Models.Enums
 {
     public enum AdvanceType
     {
-        [Display(Name = "İlk Talep")]
-        Talep1 =1,
-        [Display(Name = "İkinci Talep")]
-        Talep2,
-        [Display(Name = "Üçüncü Talep")]
-        Talep3
+        [Display(Name = "Ücret Avansı")]
+        WageAdvance =1,
+        [Display(Name = "İş Avansı")]
+        BusinessAdvance,
+        [Display(Name = "Yıllık Ücretli Avans")]
+        AnnualPaidAdvance
     }
 }
