@@ -4,52 +4,6 @@
     Layout = null;
 }
 
-
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-     data-sidebar-position="fixed" data-header-position="fixed">
-    <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="d-flex align-items-center justify-content-center w-100">
-            <div class="row justify-content-center w-100">
-                <div class="col-md-8 col-lg-6 col-xxl-3">
-                    <div class="card mb-0">
-                        <div class="card-body">
-                            <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                @*<img src="../assets/images/logos/dark-logo.svg" width="180" alt="">*@
-                            </a>
-                            <p class="text-center">Your Social Campaigns - Buraya da ne istersek </p>
-                            <form asp-controller="Account" asp-action="ValidationCredentials" method="post">
-                                <div class="mb-3">
-                                    <label asp-for="Email" class="form-label">E-Posta</label>
-                                    <input asp-for="Email" type="text" class="form-control" id="Email" name="Email">
-                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-                                <div class="mb-4">
-                                    <label asp-for="Password" class="form-label">Şifre</label>
-                                    <div class="input-group">
-                                        <input asp-for="Password" type="password" class="form-control" id="Password" name="Password">
-                                        <button type="button" class="btn btn-outline-secondary" id="togglePasswordVisibility">
-                                            <span id="passwordVisibilityIcon">
-                                                <i class="ti ti-eye-off"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <a asp-controller="Account" asp-action="SendMail" type="submit" class="text-primary fw-bold">Şifremi Unuttum</a>
-                                    <a asp-controller="Account" asp-action="SendPassword" type="submit" class="text-primary fw-bold">Bilgileri gönder</a>
-                                </div>
-                                <div>
-                                    <input type="submit" value="Giriş Yap" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/assets/css/login/loginStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Sign in & Sign up Form</title>
@@ -67,7 +21,7 @@
         <div class="forms-container">
             <div class="signin-signup">
 
-                <form asp-controller="Home" asp-action="Login" class="sign-in-form" method="post">
+                <form asp-controller="Account" asp-action="ValidationCredentials" class="sign-in-form" method="post">
                     <h2 class="title">Giriş Yap</h2>
 
                     <div class="input-field">
@@ -90,25 +44,40 @@
 
                         <div style="display: inline-block;">
                             <a asp-controller="Account" asp-action="SendMail" type="submit" class="text-primary" style="color: #0d6efd; text-decoration: none;">Şifremi Unuttum</a>
+
                         </div>
                     </div>
 
                     <input type="submit" value="Giriş Yap" class="btn solid" />
                 </form>
 
-                <form action="#" class="sign-up-form">
-                    @*formun asp-controller ve asp-action yazılacak*@
-                    <h3 class="title">Erişim için</h3>
+                @*<form asp-controller="Account" asp-action="SendPassword" class="sign-up-form" method="post">
+                        <h3 class="title">Erişim için</h3>
+
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input asp-for="Email" type="email" class="form-control" id="Email" name="Email" placeholder="Kişisel E-Posta" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <input type="submit" class="btn solid" id="sent-btn" value="GÖNDER" />
+
+                    </form>*@
+
+                <form id="sendPasswordForm" asp-controller="Account" asp-action="SendPassword" class="sign-up-form" method="post">
+                    <h3>Erişim için</h3>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input asp-for="Email" type="email" class="form-control" id="Email" name="Email" placeholder="Kişisel E-Posta" />
+                        <input asp-for="Email" type="email" class="form-control" id="personalEmail" name="personalEmail" placeholder="Kişisel E-Posta" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
-                    <input type="submit" class="btn" value="GÖNDER" />
+                    <button type="submit" class="btn solid" id="sent-btn">GÖNDER</button>
 
+                    <div id="send-password-message"></div>
                 </form>
+
             </div>
         </div>
 
@@ -119,7 +88,7 @@
                     <p>Oturum açma bilgileriniz olan e-posta ve şifrenize ulaşmak için</p>
                     <button class="btn transparent" id="sign-up-btn">Tıklayın </button>
                 </div>
-                <img src="~/img/undraw_software_engineer_re_tnjc.svg" class="image" alt="" />
+                <img src="~/assets/images/login/undraw_software_engineer_re_tnjc.svg" class="image" alt="" />
             </div>
 
             <div class="panel right-panel">
@@ -128,27 +97,46 @@
                     <p>Oturum açma bilgileriniz ile giriş yapabilmek için</p>
                     <button class="btn transparent" id="sign-in-btn">Tıklayın</button>
                 </div>
-                <img src="~/img/undraw_login_re_4vu2.svg" class="image" alt="" />
+                <img src="~/assets/images/login/undraw_login_re_4vu2.svg" class="image" alt="" />
             </div>
         </div>
     </div>
 
-    <script src="~/js/app.js"></script>
+    <script src="~/assets/js/Login/app.js"></script>
+    <script src="~/assets/js/Login/passwordLock.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
 
-<script>
-    const passwordInput = document.getElementById('Password');
-    const showPasswordCheckbox = document.getElementById('showPassword');
-    const showPasswordIconLock = document.getElementById('showPasswordIconLock');
 
-    showPasswordCheckbox.addEventListener('change', function () {
-        if (this.checked) {
-            passwordInput.type = 'text';
-            showPasswordIconLock.className = 'fa-solid fa-lock-open';
-        } else {
-            passwordInput.type = 'password';
-            showPasswordIconLock.className = 'fas fa-lock';
-        }
+<script>
+    $(document).ready(function () {
+        $('#sendPasswordForm').submit(function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const email = $('#Email').val(); // Get email address from the form
+
+            $.ajax({
+                url: "/Account/SendPassword/" + email, // Construct URL based on route
+                method: 'POST',
+                data: { personalEmail: email }, // Send email as data
+                success: function (response) {
+                    // Handle successful response
+                    if (response.success) {
+                        $('#send-password-message').text('Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.');
+                    } else {
+                        if (response.error) {
+                            $('#send-password-message').text(response.error);
+                        } else {
+                            $('#send-password-message').text('İşlem başarısız oldu. Lütfen daha sonra tekrar deneyin.');
+                        }
+                    }
+                },
+                error: function (error) {
+                    console.error('AJAX hatası:', error);
+                    $('#send-password-message').text('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                }
+            });
+        });
     });
 </script>

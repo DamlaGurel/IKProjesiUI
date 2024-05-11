@@ -108,14 +108,14 @@ namespace IKProjesi.UI.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult SendPassword()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult SendPassword()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
-        public async Task<IActionResult> SendPassword(string personalEmail)
+        public async Task SendPassword(string personalEmail)
         {
             if (string.IsNullOrEmpty(personalEmail))
             {
@@ -126,12 +126,12 @@ namespace IKProjesi.UI.Controllers
                 var infomation = await _userService.SendPassword(personalEmail);
                 if (string.IsNullOrEmpty(infomation))
                 {
-                    return View();
+                    //return View();
                 }
                 TempData["Success"] = "Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.";
-                return RedirectToAction("Login", "Account");
+                //return RedirectToAction("Login", "Account");
             }
-            return View();
+            //return RedirectToAction(nameof(Login));
         }
 
         [HttpGet]
