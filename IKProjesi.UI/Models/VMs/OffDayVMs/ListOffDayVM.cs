@@ -5,6 +5,7 @@ namespace IKProjesi.UI.Models.VMs.OffDayVMs
 {
     public class ListOffDayVM
     {
+        public int? OffDayId { get; set; }
         public int? ApprovalType { get; set; }
         public DateTime? RequestTime { get; set; }
         public DateTime? DayOffStartTime { get; set; }

@@ -110,10 +110,9 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetApprovalForOffDay()
+        public async Task<IActionResult> GetApprovalForOffDay(int id)
         {
-            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
-            var getApprovalForOffDay = await _companyManagerService.GetApprovalForOffDay(Id);
+            var getApprovalForOffDay = await _companyManagerService.GetApprovalForOffDay(id);
             return View(getApprovalForOffDay);
         }
         #endregion
