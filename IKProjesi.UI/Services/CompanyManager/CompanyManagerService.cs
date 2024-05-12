@@ -82,9 +82,9 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region OffDay
-        public async Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay()
+        public async Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay(int id)
         {
-            return await _companyManagerApiService.ListApprovalForOffDay();
+            return await _companyManagerApiService.ListApprovalForOffDay(id);
         }
 
         public async Task GetApprovalForOffDay(UpdateOffDayVM model)
@@ -99,25 +99,20 @@ namespace IKProjesi.UI.Services.CompanyManager
         }
         #endregion
 
-
         #region Expense
-        public async Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense()
-
+        public async Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense(int id)
         {
-            return await _companyManagerApiService.ListApprovalForExpense();
-
+            return await _companyManagerApiService.ListApprovalForExpense(id);
         }
 
         public async Task GetApprovalForExpense(UpdateExpenseVM model)
         {
             await _companyManagerApiService.ApprovalForExpense(model);
-
         }
 
         public async Task<UpdateExpenseVM> GetApprovalForExpense(int id)
         {
             return await _companyManagerApiService.GetApprovalForExpense(id);
-
         }
         #endregion
 

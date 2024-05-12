@@ -97,7 +97,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public async Task<IActionResult> ListApprovalForOffDay()
         {
-            var listApprovalForOffDay = await _companyManagerService.ListApprovalForOffDay();
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var listApprovalForOffDay = await _companyManagerService.ListApprovalForOffDay(Id);
             return View(listApprovalForOffDay);
         }
 
@@ -121,8 +122,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public async Task<IActionResult> ListApprovalForExpense()
         {
-            var listApprovalForExpense = await _companyManagerService.ListApprovalForExpense();
-
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var listApprovalForExpense = await _companyManagerService.ListApprovalForExpense(Id);
             return View(listApprovalForExpense);
         }
 

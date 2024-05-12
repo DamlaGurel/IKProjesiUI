@@ -17,13 +17,13 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region Off Day
-        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay();
+        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay(int id);
         Task GetApprovalForOffDay(UpdateOffDayVM model);
         Task<UpdateOffDayVM> GetApprovalForOffDay(int id);
         #endregion
 
         #region Expense
-        Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense();
+        Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense(int id);
         Task GetApprovalForExpense(UpdateExpenseVM model);
         Task<UpdateExpenseVM> GetApprovalForExpense(int id);
         #endregion

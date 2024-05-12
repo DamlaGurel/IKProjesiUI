@@ -29,8 +29,8 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region OffDay
-        [Get("/api/CompanyManager/ListApprovalForOffDay")]
-        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay();
+        [Get("/api/CompanyManager/ListApprovalForOffDay/{id}")]
+        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay(int id);
 
         [Put("/api/CompanyManager/UpdateApprovalForOffDay")]
         Task ApprovalForOffDay(UpdateOffDayVM model);
@@ -42,7 +42,7 @@ namespace IKProjesi.UI.Services.CompanyManager
 
         #region Expense
         [Get("/api/CompanyManager/ListApprovalForExpense")]
-        Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense();
+        Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense(int id);
 
         [Put("/api/CompanyManager/UpdateApprovalForExpense")]
         Task ApprovalForExpense(UpdateExpenseVM model);
