@@ -29,8 +29,8 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region OffDay
-        [Get("/api/CompanyManager/ListApprovalForOffDay/{id}")]
-        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay(int id);
+        [Get("/api/CompanyManager/ListApprovalForOffDay")]
+        Task<List<ListWaitingApprovalForOffDayVM>> ListApprovalForOffDay();
 
         [Put("/api/CompanyManager/UpdateApprovalForOffDay")]
         Task ApprovalForOffDay(UpdateOffDayVM model);
