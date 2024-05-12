@@ -51,7 +51,7 @@
                     <input type="submit" value="Giriş Yap" class="btn solid" />
                 </form>
 
-                @*<form asp-controller="Account" asp-action="SendPassword" class="sign-up-form" method="post">
+                <form class="sign-up-form" >
                         <h3 class="title">Erişim için</h3>
 
                         <div class="input-field">
@@ -62,10 +62,10 @@
 
                         <input type="submit" class="btn solid" id="sent-btn" value="GÖNDER" />
 
-                    </form>*@
+                    </form>
 
-                <form id="sendPasswordForm" asp-controller="Account" asp-action="SendPassword" class="sign-up-form" method="post">
-                    <h3>Erişim için</h3>
+                @*<form id="sendPasswordForm" asp-controller="Account" asp-action="SendPassword" class="sign-up-form" method="post">
+                    <h3 class="title">Erişim için</h3>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
@@ -76,7 +76,7 @@
                     <button type="submit" class="btn solid" id="sent-btn">GÖNDER</button>
 
                     <div id="send-password-message"></div>
-                </form>
+                </form>*@
 
             </div>
         </div>
@@ -109,7 +109,7 @@
 </html>
 
 
-<script>
+@*<script>
     $(document).ready(function () {
         $('#sendPasswordForm').submit(function (event) {
             event.preventDefault(); // Prevent default form submission
@@ -117,26 +117,29 @@
             const email = $('#Email').val(); // Get email address from the form
 
             $.ajax({
-                url: "/Account/SendPassword/" + email, // Construct URL based on route
+                url: "http://localhost:44828/Mail/SendPassword/" + email, // Construct URL based on route
                 method: 'POST',
                 data: { personalEmail: email }, // Send email as data
                 success: function (response) {
                     // Handle successful response
                     if (response.success) {
                         $('#send-password-message').text('Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.');
+                        alert('Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.')
                     } else {
                         if (response.error) {
                             $('#send-password-message').text(response.error);
                         } else {
                             $('#send-password-message').text('İşlem başarısız oldu. Lütfen daha sonra tekrar deneyin.');
+                            alert('İşlem başarısız oldu. Lütfen daha sonra tekrar deneyin.')
                         }
                     }
                 },
                 error: function (error) {
                     console.error('AJAX hatası:', error);
                     $('#send-password-message').text('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                    alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.')
                 }
             });
         });
     });
-</script>
+</script>*@
