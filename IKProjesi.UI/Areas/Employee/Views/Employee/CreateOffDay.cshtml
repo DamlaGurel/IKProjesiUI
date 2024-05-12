@@ -77,7 +77,8 @@
     </div>
 </div>
 
-<script>document.getElementById("calculateButton").addEventListener("click", function () {
+<script>
+    document.getElementById("calculateButton").addEventListener("click", function () {
         calculateDayOffNumber();
     });
 
@@ -88,7 +89,6 @@
         var endDate = new Date(document.getElementById("DayOffEndTime").value);
 
         var differenceInTime = endDate.getDate() - startDate.getDate();
-        
 
         document.getElementById("ChosenDayOffNumber").value = differenceInTime;
 
@@ -119,6 +119,3 @@
 
 
     }</script>
-
-
-

@@ -6,41 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IK Projesi</title>
     <link rel="shortcut icon" type="image/png" href="~/assets/images/logos/favicon.png" />
-    <link rel="stylesheet" href="~/assets/css/styles.min.css" />
+    <link rel="stylesheet" href="~/assets/css/styles.css" />
+    <link href="~/assets/css/cardStyle.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
-    <!--  Body Wrapper -->
-   
-    <!--  Main wrapper -->
-    <div class="body-wrapper " data-layout="vertical" data-navbarbg="skin6" data-header-position="fixed" >
-        <!--  Header Start -->
-        <header class="app-header bg-warning">
-            <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="body-wrapper " data-layout="vertical" data-navbarbg="skin6" data-header-position="fixed">
+        <header class="app-header">
+            <nav class="navbar navbar-expand-lg">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon-hover" asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee">
-                            <i class="ti ti-layout-dashboard fs-6">Personel Ekle</i>
+                        <a class="nav-link" asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee">
+                            <i class="ti ti-layout">Personel Ekle</i>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon-hover" data-bs-toggle="dropdown"
+                        <a class="nav-link" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="ti ti-layout-dashboard">Personel Talepleri</i>
+                            <i class="ti ti-layout">Personel Talepleri</i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
                                 <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="ListApprovalForOffDay" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-user fs-6"></i>
-                                    <p class="mb-0 fs-3">İzin Talepleri</p>
+                                    <i class="ti ti-restore"></i>
+                                    <p class="mb-0">İzin Talepleri</p>
                                 </a>
                                 <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="ListApprovalForExpense" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-mail fs-6"></i>
-                                    <p class="mb-0 fs-3">Harcama Talepleri</p>
+                                    <i class="ti ti-restore"></i>
+                                    <p class="mb-0">Harcama Talepleri</p>
                                 </a>
                                 <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="ListApprovalForAdvancePayment" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-mail fs-6"></i>
-                                    <p class="mb-0 fs-3">Avans Talepleri</p>
+                                    <i class="ti ti-restore"></i>
+                                    <p class="mb-0">Avans Talepleri</p>
                                 </a>
                             </div>
                         </div>
@@ -48,24 +46,16 @@
                 </ul>
                 <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-
-
-
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                                aria-expanded="false">
                                 <img src="~/assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                                @* <img src="data:image;base64,@(Convert.ToBase64String(Model.ImageBytes))" class="img-fluid" alt="Profil Resmi"> *@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                 <div class="message-body">
                                     <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetCompanyManagerDetail" asp-route-id="" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <i class="ti ti-user fs-6"></i>
-                                        <p class="mb-0 fs-3">Profil</p>
-                                    </a>
-                                    <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetCompanyManagerUpdate" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <i class="ti ti-user fs-6"></i>
-                                        <p class="mb-0 fs-3">Profil Düzenle</p>
+                                        <i class="ti ti-user"></i>
+                                        <p class="mb-0">Profil</p>
                                     </a>
                                     <a asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-outline-primary mx-3 mt-2 d-block">Çıkış Yap</a>
                                 </div>
@@ -75,28 +65,12 @@
                 </div>
             </nav>
         </header>
-        <!--  Header End -->
-
-
-
 
         <div class="container-fluid">
-            <!--  Row 1 -->
             @RenderBody()
-
-
-
         </div>
-        <footer>
-            <div class="py-6 px-6 text-center text-bottom">
-                <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
-            </div>
-        </footer>
-
-
-
     </div>
-    
+
     <script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/js/sidebarmenu.js"></script>

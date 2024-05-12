@@ -18,6 +18,7 @@
                 <div class="card md-2 cb1 text-center">
                     <div class="card-body">
                         <h2 class="card-title mb-4">
+                            <i class="ti ti-user"></i>
                             @item.FirstName
                             @if (!string.IsNullOrEmpty(item.SecondName))
                             {
@@ -31,12 +32,9 @@
                                 @item.SecondLastName
                             }
                         </h2>
-
-                        <p class="card-text">@item.PhoneNumber</p>
-                        @*<a href="#" class="btn btn-outline-light">Go somewhere</a>*@
+                        <p class="card-text"><i class="ti ti-phone"></i>@item.PhoneNumber</p>
                     </div>
                 </div>
-
             </div>
         }
     </div>

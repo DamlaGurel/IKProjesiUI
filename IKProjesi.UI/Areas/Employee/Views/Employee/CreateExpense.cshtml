@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="card cb1">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4 text-center text-primary">Şirket Yöneticisi Oluştur</h5>
+                <h5 class="card-title fw-semibold mb-4 text-center text-primary">Harcama Oluştur</h5>
                 <div class="row">
                     <form asp-area="Employee" asp-controller="Employee" asp-action="CreateExpense" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -58,6 +58,11 @@
                         </div>
                         <div class="mb-3 form-group">
                             <input type="submit" class="btn btn-danger rounded-3 fw-semibold" value="Kaydet" />
+                        </div>
+                        <div class="mb-3 form-group">
+                            <div>
+                                <a asp-controller="Employee" asp-action="GetEmployeeSummary" class="btn btn-danger rounded-3 fw-semibold ">Ana Sayfaya Dön</a>
+                            </div>
                         </div>
                     </form>
                 </div>

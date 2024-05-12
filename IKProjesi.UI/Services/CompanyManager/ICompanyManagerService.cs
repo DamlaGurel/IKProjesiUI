@@ -23,7 +23,7 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region Expense
-        Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense();
+        Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense(int id);
         Task GetApprovalForExpense(UpdateExpenseVM model);
         Task<UpdateExpenseVM> GetApprovalForExpense(int id);
         #endregion

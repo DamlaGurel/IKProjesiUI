@@ -15,10 +15,8 @@
     <div class="row justify-content-center">
         <div class="card cb1">
             <div class="card-body">
-                <partial name="_NotificationPartial" />
-
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">Personel Oluştur</h5>
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
                     <form asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="CreateEmployee" method="post" enctype="multipart/form-data">
 
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>

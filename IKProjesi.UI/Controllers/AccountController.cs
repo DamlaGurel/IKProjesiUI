@@ -29,13 +29,11 @@ namespace IKProjesi.UI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> ValidationCredentials(string email, string password)
+        public async Task<IActionResult> ValidationCredentials(AnasayfaVM anasayfa)
         {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                TempData["Warning"] = "Kullanıcı adı ve şifre boş bırakılmamalıdır.";
-                return RedirectToAction("Login");
-            }
+            var email = anasayfa.LoginVM.Email;
+            var password = anasayfa.LoginVM.Password;
+
             var user = await _userService.ValidateCredentials(email, password);
             if (user)
             {
@@ -118,29 +116,30 @@ namespace IKProjesi.UI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> SendPassword(string personalEmail)
+        public async Task<IActionResult> SendPassword(AnasayfaVM anasayfa)
         {
-            if (string.IsNullOrEmpty(personalEmail))
-            {
-                return BadRequest("Lütfen e-posta adresinizi giriniz.");
-            }
+            var personalEmail = anasayfa.SendPasswordVM.KisiselMail;
+            var response = await _userService.SendPassword(personalEmail);
+            //if (string.IsNullOrEmpty(personalEmail))
+            //{
+            //    TempData["Warning"] = "Lütfen e-posta adresinizi giriniz.";
+            //}
+            //else if (ModelState.IsValid)
+            //{
 
-            if (ModelState.IsValid)
-            {
-                var response = await _userService.SendPassword(personalEmail);
+            //    if (response is not null)
+            //    {
+            //        TempData["Success"] = "Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.";
+            //    }
+            //    else
+            //    {
+            //        TempData["Danger"] = "Bilgileriniz gönderilemedi. Lütfen mailinizi kontrol ediniz.";
+            //    }
+            //}
 
-                if (response is not null)
-                {
-                    return Ok("Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.");
-                }
-                else
-                {
-                    return BadRequest("Bilgileriniz gönderilemedi. Lütfen girdiğiniz mailinizi kontrol ediniz.");
-                }
-            }
-
-            return BadRequest("Geçersiz e-posta veya şifre.");
+            return RedirectToAction(nameof(Login));
         }
+
 
         [HttpGet]
         public IActionResult ChangePassword()

@@ -7,6 +7,7 @@ using IKProjesi.UI.Models.VMs.OffDayVMs;
 using IKProjesi.UI.Services.CompanyManager;
 using IKProjesi.UI.Services.Employee;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace IKProjesi.UI.Areas.CompanyManager.Controllers
 {
@@ -24,11 +25,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         #region Company Manager 
         [HttpGet]
@@ -120,8 +116,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public async Task<IActionResult> ListApprovalForExpense()
         {
-            var listApprovalForExpense = await _companyManagerService.ListApprovalForExpense();
-
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var listApprovalForExpense = await _companyManagerService.ListApprovalForExpense(Id);
             return View(listApprovalForExpense);
         }
 
@@ -150,19 +146,23 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
             return View(listApprovalForAdvancePayment);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetApprovalForAdvancePayment()
+        {
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var getApprovalForAdvancePayment = await _companyManagerService.GetApprovalForAdvancePayment(Id);
+            return View(getApprovalForAdvancePayment);
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetApprovalForAdvancePayment(UpdateAdvancePaymentVM model)
         {
+            model.EmployeeId = HttpContext.Session.GetInt32("UserId") ?? 0;
             await _companyManagerService.GetApprovalForAdvancePayment(model);
             return RedirectToAction(nameof(ListApprovalForAdvancePayment));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetApprovalForAdvancePayment(int id)
-        {
-            var getApprovalForAdvancePayment = await _companyManagerService.GetApprovalForAdvancePayment(id);
-            return View(getApprovalForAdvancePayment);
-        }
+        
         #endregion
     }
 }

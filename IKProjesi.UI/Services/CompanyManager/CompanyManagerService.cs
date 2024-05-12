@@ -99,25 +99,20 @@ namespace IKProjesi.UI.Services.CompanyManager
         }
         #endregion
 
-
         #region Expense
-        public async Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense()
-
+        public async Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense(int id)
         {
-            return await _companyManagerApiService.ListApprovalForExpense();
-
+            return await _companyManagerApiService.ListApprovalForExpense(id);
         }
 
         public async Task GetApprovalForExpense(UpdateExpenseVM model)
         {
             await _companyManagerApiService.ApprovalForExpense(model);
-
         }
 
         public async Task<UpdateExpenseVM> GetApprovalForExpense(int id)
         {
             return await _companyManagerApiService.GetApprovalForExpense(id);
-
         }
         #endregion
 

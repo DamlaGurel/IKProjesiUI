@@ -16,12 +16,12 @@
     <div class="row justify-content-center ">
         <div class="card cb1 text-center">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4">Avans Talepleri</h5>
+                <h5 class="card-title mb-4">Avans Talepleri</h5>
                 <div class="row">
                     @foreach (var advance in Model)
                     {
-                        <div class="col-md-4">
-                            <div class="card cb-1">
+                        <div class="col-md-4 d-flex">
+                            <div class="card md-2 cb1 text-center">
                                 <div class="card-body">
                                     <h5 class="card-title">Ad Soyad: @advance.EmployeeFullName</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">Avans Türü: @EnumExtensions.GetDisplayName((AdvanceType)advance.AdvanceType)</h6>
@@ -29,16 +29,12 @@
                                     <div class="mb-3 form-group">
                                         <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForAdvancePayment" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     }
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
