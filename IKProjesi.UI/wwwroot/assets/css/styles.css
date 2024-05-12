@@ -456,34 +456,11 @@ label {
 }
 
 button {
-    padding: 1em 2em;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 300;
-    color: #000;
-    background-color: #b5d2dc !important;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
+    border-radius: 0;
 }
 
     button:focus:not(:focus-visible) {
         outline: 0
-    }
-
-    button:hover {
-        background-color: #57b3c8;
-        box-shadow: 0px 15px 20px /*rgba(46, 200, 150, 0.4)*/;
-        color: #fff;
-        transform: translateY(-5px);
-    }
-
-    button:active {
-        transform: translateY(-1px);
     }
 
 button, input, optgroup, select, textarea {
