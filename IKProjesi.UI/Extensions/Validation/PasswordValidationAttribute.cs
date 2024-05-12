@@ -11,11 +11,20 @@ namespace IKProjesi.UI.Extensions.Validation
 
             var password = value.ToString();
 
-            //var model = (string)validationContext.ObjectInstance();
+            if (password.Length < 3 || password.Length > 20)
+            {
+                return new ValidationResult("Şifreniz en az 3, en çok 20 karakterden oluşmalıdır.");
+            }
+            if (!password.Any(char.IsDigit) || !password.Any(char.IsUpper) || !password.Any(char.IsLower))
+            {
+                return new ValidationResult("Şifreniz en az bir büyük harf, bir küçük harf ve bir rakam içermelidir.");
+            }
+            if (password.All(char.IsLetterOrDigit))
+            {
+                return new ValidationResult("Şifreniz en az bir özel karakter içermelidir.");
+            }
 
-            //var userPassword = userService.
-
-            return base.IsValid(value, validationContext);
+            return ValidationResult.Success;
         }
     }
 }
