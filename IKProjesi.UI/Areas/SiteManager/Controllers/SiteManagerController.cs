@@ -32,11 +32,6 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             _userService = userService;
         }
 
-        public async Task<IActionResult> IndexAsync()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> CompanyManagerList(int pg = 1)
         {
             var companyManagers = await _companyManagerService.GetCompanyManagers();

@@ -26,11 +26,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         #region Company Manager 
         [HttpGet]
         public async Task<IActionResult> GetCompanyManagerSummary()
