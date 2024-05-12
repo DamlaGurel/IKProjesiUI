@@ -65,6 +65,7 @@
     --bs-light-secondary-rgb: 232,247,255;
     --bs-light-info-rgb: 235,243,254;
     --bs-light-success-rgb: 230,255,250;
+    --bs-light-success-rgb: 230,255,250;
     --bs-light-warning-rgb: 254,245,229;
     --bs-light-danger-rgb: 251,242,239;
     --bs-light-indigo-rgb: 235,243,254;
@@ -19413,8 +19414,9 @@ textarea.form-control-lg {
     position: relative;
     z-index: 50;
     width: 100%;
-    background: #fff;
-    padding: 0 25px
+    background: none;
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0,0,0,0.5);
+    padding: 10px 25px
 }
 
     .app-header .container-fluid, .app-header .container-lg, .app-header .container-md, .app-header .container-sm, .app-header .container-xl, .app-header .container-xxl {
@@ -19463,7 +19465,7 @@ textarea.form-control-lg {
                 height: 36px;
                 width: 100%;
                 border-radius: 7px;
-                background: #ECF2FF;
+                background: none;
                 z-index: -1
             }
 
@@ -19703,7 +19705,7 @@ textarea.form-control-lg {
     }
 
     #main-wrapper[data-layout=vertical] .app-header.fixed-header .navbar {
-        background: #fff;
+        background: none;
         padding: 0 15px;
         border-radius: 15px;
         -webkit-box-shadow: 1px 0px 20px 0px rgba(0,0,0,0.12);
