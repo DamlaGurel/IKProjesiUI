@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="~/assets/css/login/bootstrap5.css">
     <link rel="stylesheet" href="~/assets/css/login/style.css">
 
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
@@ -28,13 +29,23 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 pt-5">
                 <form asp-area="" asp-controller="Account" asp-action="SendMail" method="post">
-                    <h2 class="main-text pt-5 mt-5">Şifremi Unuttum</h2>
-                    <input type="email" name="email" placeholder="Şifrenin Gönderilmesini İstediğiniz E-posta Adresinizi Giriniz" class="form-control main-input mt-5">
+                    <h2 class="main-text">Şifremi Unuttum</h2>
+
+                    @*<div class="input-field">
+                        <input type="email" name="email" placeholder="Şifrenin Gönderilmesini İstediğiniz E-posta Adresinizi Giriniz" class="form-control main-input mt-5">
+                    </div>*@
+
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" class="form-control" id="Email" name="Email" placeholder="E-Posta" />
+                        <span class="text-danger"></span>
+                    </div>
+
                     <div class="row">
                         <div class="col-3">
-                            <input type="submit" name="btnGonder" class="btn btn-sz-primary mt-5" value="Şifreyi Gönder" />
+                            <input type="submit" name="btnGonder" class="btn btn-sz-primary " value="Şifreyi Gönder" />
                         </div>
-                        <div class="col-6 pt-5">
+                        <div class="col-6 ">
                             <a asp-controller="Account" asp-action="Login" class="back-to-login">Giriş Yap Ekranına Dön</a>
                         </div>
                     </div>
@@ -43,6 +54,11 @@
             </div>
         </div>
     </div>
+
+    <script src="~/assets/js/Login/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </body>
 </html>
 
