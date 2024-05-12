@@ -15,22 +15,17 @@
 <div class="container-fluid">
     <div class="row justify-content-center ">
         <div class="card cb1 text-center">
-            <div class="card-body cb-1">
+            <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4">Avans Talepleri</h5>
                 <div class="row">
-
-                    @foreach (var offDays in Model)
+                    @foreach (var advance in Model)
                     {
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card cb-1">
                                 <div class="card-body">
-                                    <h5 class="card-title"></h5>
-                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                                    <h6 class="card-subtitle mb-2 text-muted"> </h6>
-                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Onay Türü: </h6>
+                                    <h5 class="card-title">Ad Soyad: @advance.EmployeeFullName</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Avans Türü: @EnumExtensions.GetDisplayName((AdvanceType)advance.AdvanceType)</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Onay Türü: @EnumExtensions.GetDisplayName((ApprovalType)advance.ApprovalType)</h6>
                                     <div class="mb-3 form-group">
                                         <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForAdvancePayment" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
                                     </div>
