@@ -40,7 +40,7 @@ namespace IKProjesi.UI.Services.CompanyManager
         Task<UpdateOffDayVM> GetApprovalForOffDay(int id);
         #endregion
 
-        #region Advance Payment
+        #region Expense
         [Get("/api/CompanyManager/ListApprovalForExpense")]
         Task<List<ListWaitingApprovalForExpenseVM>> ListApprovalForExpense();
 
