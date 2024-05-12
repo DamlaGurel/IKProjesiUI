@@ -11,7 +11,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
     [Area("Employee")]
     public class EmployeeController : Controller
     {
-
         private readonly IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService employeeService)
@@ -29,24 +28,28 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpGet]
         public IActionResult CreateExpense()
         {
+            CreateExpenseVM createExpense = new CreateExpenseVM();
+            createExpense.EmployeeId = HttpContext.Session.GetInt32("UserId") ?? 0;
             ViewBag.ExpenseTypes = Enum.GetValues<ExpenseType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
-            return View();
+            return View(createExpense);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateExpense(CreateExpenseVM createExpense)
         {
             await _employeeService.CreateExpense(createExpense);
-            return RedirectToAction(nameof(CreateExpense));
+            TempData["Success"] = "Harcama bilginiz yöneticinize gönderildi.";
+            return RedirectToAction(nameof(GetEmployeeSummary));
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListExpense(int id)
+        public async Task<IActionResult> ListExpense()
         {
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
             ViewBag.ExpenseTypes = Enum.GetValues<ExpenseType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
-            List<ListExpenseVM> expense = await _employeeService.ListExpense(id);
+            List<ListExpenseVM> expense = await _employeeService.ListExpense(Id);
             return View(expense);
         }
 
@@ -54,11 +57,14 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
 
         #region Advance
         [HttpGet]
-        public IActionResult CreateAdvancePayment()
+        public async Task<IActionResult> CreateAdvancePayment()
         {
+            CreateAdvancePaymentVM createAdvancePayment = new CreateAdvancePaymentVM();
+            createAdvancePayment.EmployeeId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            createAdvancePayment.Payment = await _employeeService.TotalAdvancePayment(createAdvancePayment.EmployeeId);
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
-            return View();
+            return View(createAdvancePayment);
         }
 
         [HttpPost]
@@ -66,8 +72,10 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         {
             if (createAdvancePayment != null && ModelState.IsValid)
             {
+                await _employeeService.TotalAdvancePayment(createAdvancePayment.EmployeeId);
                 await _employeeService.CreateAdvancePayment(createAdvancePayment);
-                return RedirectToAction(nameof(Index));
+                TempData["Success"] = "Avans talebiniz yöneticinize gönderildi.";
+                return RedirectToAction(nameof(GetEmployeeSummary));
             }
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
@@ -75,13 +83,14 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListAdvancePayment(int id)
+        public async Task<IActionResult> ListAdvancePayment()
         {
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
             ViewBag.AdvanceType = Enum.GetValues<AdvanceType>();
             ViewBag.MoneyType = Enum.GetValues<MoneyType>();
             ViewBag.ApprovalType = Enum.GetValues<ApprovalType>();
-            var advance = await _employeeService.ListAdvancePayment(id);
-            return View(advance);
+            List<ListAdvancePaymentVM> advances = await _employeeService.ListAdvancePayment(Id);
+            return View(advances);
         }
         #endregion
 
@@ -89,7 +98,9 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         [HttpGet]
         public IActionResult CreateOffDay()
         {
-            return View();
+            CreateOffDayVM createOffDay = new CreateOffDayVM();
+            createOffDay.EmployeeId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            return View(createOffDay);
         }
 
         [HttpPost]
@@ -97,13 +108,14 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
         {
             await _employeeService.CreateOffDay(model);
             TempData["Success"] = "İzin talebi oluşturuldu";
-            return View();
+            return RedirectToAction(nameof(GetEmployeeSummary));
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListOffDay(int id)
+        public async Task<IActionResult> ListOffDay()
         {
-            List<ListOffDayVM> model = await _employeeService.ListOffDay(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            List<ListOffDayVM> model = await _employeeService.ListOffDay(Id);
             return View(model);
         }
         #endregion

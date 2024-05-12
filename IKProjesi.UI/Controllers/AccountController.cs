@@ -55,7 +55,6 @@ namespace IKProjesi.UI.Controllers
                 _contextAccessor.HttpContext.Session.AddObjectSession(token);
                 _contextAccessor.HttpContext.Session.SetInt32("UserId", Convert.ToInt32(token.UserId));
                 _contextAccessor.HttpContext.Session.SetString("FirstName", token.FirstName);
-                //ViewData["FirstName"] = token.FirstName;
                 ViewBag.FirstName = token.FirstName;
 
                 if (string.IsNullOrEmpty(token.Token))
@@ -71,7 +70,7 @@ namespace IKProjesi.UI.Controllers
                     }
                     else if (token.Role == Job.SITEMANAGER.ToString().ToUpper())
                     {
-                        return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
+                        return RedirectToAction("GetSiteManagerSummary", "SiteManager", new { area = "SiteManager" });
                     }
                     else if (token.Role == Job.COMPANYMANAGER.ToString().ToUpper())
                     {
@@ -142,13 +141,11 @@ namespace IKProjesi.UI.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-
         [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordVM password)
         {
@@ -172,7 +169,5 @@ namespace IKProjesi.UI.Controllers
             TempData["Success"] = "Çıkış yapıldı.";
             return RedirectToAction("Login", "Account");
         }
-
-        
     }
 }

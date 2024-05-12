@@ -122,10 +122,10 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region Advance Payment
-        public async Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment()
+        public async Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment(int id)
 
         {
-            return await _companyManagerApiService.ListApprovalForAdvancePayment();
+            return await _companyManagerApiService.ListApprovalForAdvancePayment(id);
 
         }
 

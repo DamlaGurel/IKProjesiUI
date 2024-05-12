@@ -16,7 +16,8 @@
                 <div class="row">
                     <form asp-area="Employee" asp-controller="Employee" asp-action="CreateAdvancePayment" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                        <input type="hidden" asp-for="EmployeeId"/>
+                        <input type="hidden" asp-for="Payment"/>
                         <div class="mb-3 form-group">
                             <label asp-for="AdvanceType" class="control-label">Avans Türü</label>
                             <select id="AdvanceType" name="AdvanceType" class="form-select">
@@ -40,14 +41,14 @@
                             <span asp-validation-for="MoneyType" class="text-danger"></span>
                         </div>
                         <div class="mb-3 form-group">
+                            <label asp-for="Payment" class="control-label">Maaşınız</label>
+                            <input asp-for="Payment" type="text" class="form-control" readonly />
+                            <span asp-validation-for="Payment" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-group">
                             <label asp-for="TotalAdvance" class="control-label">Avans Miktarı</label>
                             <input asp-for="TotalAdvance" type="text" class="form-control" />
                             <span asp-validation-for="TotalAdvance" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3 form-group">
-                            <label asp-for="Payment" class="control-label">Maaş</label>
-                            <input asp-for="Payment" type="text" class="form-control" />
-                            <span asp-validation-for="Payment" class="text-danger"></span>
                         </div>
                         <div class="mb-3 form-group">
                             <label asp-for="RequestDate" class="control-label">Talep Tarihi</label>
@@ -58,11 +59,6 @@
                             <label asp-for="Description" class="control-label">Açıklama</label>
                             <input asp-for="Description" type="text" class="form-control" />
                             <span asp-validation-for="Description" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3 form-group">
-                            <label asp-for="EmployeeId" class="control-label">Personel</label>
-                            <input asp-for="EmployeeId" type="number" class="form-control" />
-                            <span asp-validation-for="EmployeeId" class="text-danger"></span>
                         </div>
                         <div class="mb-3 form-group">
                             <div>

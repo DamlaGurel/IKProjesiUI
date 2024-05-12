@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+﻿using IKProjesi.UI.Models.Enums;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
@@ -72,18 +73,22 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         {
             CreateEmployeeVM employee = new CreateEmployeeVM();
             employee.CompanyManagerId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            ViewBag.Department = Enum.GetValues<Department>();
             return View(employee);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateEmployee(CreateEmployeeVM model)
         {
+            ViewBag.Department = Enum.GetValues<Department>();
+            model.CompanyManagerId = HttpContext.Session.GetInt32("UserId") ?? 0;
             if (ModelState.IsValid)
             {
                 await _employeeService.CreateEmployee(model);
                 TempData["Success"] = "Personel eklendi";
+                return RedirectToAction(nameof(GetCompanyManagerSummary));
             }
-            return RedirectToAction(nameof(CreateEmployee));
+            return View();
         }
         #endregion
 
@@ -92,7 +97,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         public async Task<IActionResult> ListApprovalForOffDay()
         {
             var listApprovalForOffDay = await _companyManagerService.ListApprovalForOffDay();
-
             return View(listApprovalForOffDay);
         }
 
@@ -104,9 +108,10 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetApprovalForOffDay(int id)
+        public async Task<IActionResult> GetApprovalForOffDay()
         {
-            var getApprovalForOffDay = await _companyManagerService.GetApprovalForOffDay(id);
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var getApprovalForOffDay = await _companyManagerService.GetApprovalForOffDay(Id);
             return View(getApprovalForOffDay);
         }
         #endregion
@@ -140,8 +145,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public async Task<IActionResult> ListApprovalForAdvancePayment()
         {
-            var listApprovalForAdvancePayment = await _companyManagerService.ListApprovalForAdvancePayment();
-
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var listApprovalForAdvancePayment = await _companyManagerService.ListApprovalForAdvancePayment(Id);
             return View(listApprovalForAdvancePayment);
         }
 

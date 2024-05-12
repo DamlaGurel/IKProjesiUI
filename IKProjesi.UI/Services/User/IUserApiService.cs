@@ -26,6 +26,5 @@ namespace IKProjesi.UI.Services.User
 
         [Post("/api/User/ValidateCredentials/{email}/{password}")]
         Task<bool> ValidateCredentials(string email, string password);
-
     }
 }

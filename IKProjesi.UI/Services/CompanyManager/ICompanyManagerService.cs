@@ -29,7 +29,7 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region CompanyManager
-        Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment();
+        Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment(int id);
         Task GetApprovalForAdvancePayment(UpdateAdvancePaymentVM model);
         Task<UpdateAdvancePaymentVM> GetApprovalForAdvancePayment(int id);
         #endregion

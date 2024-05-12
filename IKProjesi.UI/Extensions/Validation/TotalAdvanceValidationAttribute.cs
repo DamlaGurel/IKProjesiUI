@@ -17,7 +17,6 @@ namespace IKProjesi.UI.Extensions.Validation
             }
 
             return ValidationResult.Success;
-
         }
     }
 }

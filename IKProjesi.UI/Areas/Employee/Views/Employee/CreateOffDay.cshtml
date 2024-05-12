@@ -8,7 +8,6 @@
 
 <div class="container-fluid">
     <div class="container-fluid">
-        @Html.Partial("_NotificationPartial")
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">İzin Talebi Oluştur</h5>
@@ -16,7 +15,7 @@
 
                     <form id="takeOffForm" asp-area="Employee" asp-controller="Employee" asp-action="CreateTakeDayOff" enctype="multipart/form-data" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                        <input type="hidden" asp-for="EmployeeId"/>
                         <div class="mb-3 form-group">
                             <label asp-for="DayOffType" class="control-label">İzin Türü</label>
                             <select asp-for="DayOffType" class="form-select" id="DayOffType">
@@ -30,10 +29,6 @@
 
                             <span asp-validation-for="DayOffType" class="text-danger"></span>
                         </div>
-
-                       
-
-
                         <div class="mb-3 form-group">
                             <label asp-for="DayOffStartTime" class="control-label">İzin Başlangıç Tarihi</label>
                             <input asp-for="DayOffStartTime" type="date" class="form-control" id="DayOffStartTime" />

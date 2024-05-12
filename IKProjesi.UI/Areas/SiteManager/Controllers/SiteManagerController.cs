@@ -32,11 +32,8 @@ namespace IKProjesi.UI.Areas.SiteManager.Controllers
             _userService = userService;
         }
 
-
         public async Task<IActionResult> IndexAsync()
         {
-            
-            var role = Job.SITEMANAGER.ToString().ToUpper();
             return View();
         }
 
