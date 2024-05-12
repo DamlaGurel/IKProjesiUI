@@ -23,7 +23,7 @@
                                         <h6 class="card-subtitle mb-2 text-muted">İzin Türü: @EnumExtensions.GetDisplayName((DayOffType)offDays.DayOffType)</h6>
                                         <h6 class="card-subtitle mb-2 text-muted">Onay Türü:@EnumExtensions.GetDisplayName((ApprovalType)offDays.ApprovalType)</h6>
                                         <div class="mb-3 form-group">
-                                            <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForOffDay" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
+                                            <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForOffDay" asp-route-id=@offDays.Id class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
                                         </div>
                                     </div>
                                 </div>
