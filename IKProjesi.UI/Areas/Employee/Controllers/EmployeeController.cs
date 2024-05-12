@@ -18,10 +18,6 @@ namespace IKProjesi.UI.Areas.Emloyee.Controllers
             _employeeService = employeeService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         #region Expense
 

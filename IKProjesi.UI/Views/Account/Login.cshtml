@@ -20,7 +20,7 @@
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <partial name="_NotificationPartial" />
+
                 <form asp-controller="Account" asp-action="ValidationCredentials" class="sign-in-form" method="post">
                     <h2 class="title">Giriş Yap</h2>
 
@@ -48,21 +48,23 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="Giriş Yap" class="btn solid" />
+                    <input type="submit" class="btn solid" id="giris-btn" value="Giriş Yap" />
                 </form>
 
-                <form class="sign-up-form" >
-                        <h3 class="title">Erişim için</h3>
+                <form id="sendPasswordForm" asp-controller="Account" asp-action="SendPassword" class="sign-up-form" method="post">
+                    <h3 class="title">Erişim için</h3>
 
-                        <div class="input-field">
-                            <i class="fas fa-envelope"></i>
-                            <input asp-for="SendPasswordVM.KisiselMail" type="email" class="form-control" id="kisiselMail" name="SendPasswordVM.KisiselMail" placeholder="Kişisel E-Posta" />
-                            <span asp-validation-for="SendPasswordVM.KisiselMail" class="text-danger"></span>
-                        </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input asp-for="SendPasswordVM.KisiselMail" type="email" class="form-control" id="personalEmail" name="SendPasswordVM.KisiselMail" placeholder="Kişisel E-Posta" />
+                        <span asp-validation-for="SendPasswordVM.KisiselMail" class="text-danger"></span>
+                    </div>
 
-                        <input type="submit" class="btn solid" id="sent-btn" value="GÖNDER" />
+                    <button type="submit" class="btn solid" id="sent-btn">GÖNDER</button>
 
-                    </form>
+                    <div id="send-password-message"></div>
+                </form>
+
             </div>
         </div>
 
