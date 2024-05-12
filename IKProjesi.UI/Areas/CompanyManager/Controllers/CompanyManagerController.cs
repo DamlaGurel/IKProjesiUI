@@ -97,7 +97,6 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         public async Task<IActionResult> ListApprovalForOffDay()
         {
             var listApprovalForOffDay = await _companyManagerService.ListApprovalForOffDay();
-
             return View(listApprovalForOffDay);
         }
 
