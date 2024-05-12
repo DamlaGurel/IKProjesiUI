@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IKProjesi.UI.Models.Enums;
+using System;
 namespace IKProjesi.UI.Models.VMs.ExpenseVMs
 {
 	public class ListWaitingApprovalForExpenseVM

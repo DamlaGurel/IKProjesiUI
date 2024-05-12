@@ -20,20 +20,13 @@
 
                         @foreach (var offDays in Model)
                         {
-                            <div class="col-md-4">
-                                <div class="card">
-
+                        <div class="col-md-4 d-flex">
+                            <div class="card md-2 cb1 text-center">
                                     <div class="card-body">
-                                        <h5 class="card-title">İzin Türü: @EnumExtensions.GetDisplayName((DayOffType)offDays.DayOffType)</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Başlangıç Tarihi: @offDays.DayOffStartTime?.ToShortDateString()</h6>
-                                        <h6 class="card-subtitle mb-2 text-muted">Bitiş Tarihi: @offDays.DayOffEndTime?.ToShortDateString()</h6>
-
-                                        <p class="card-text">
-                                            <strong>Onay Durumu: @EnumExtensions.GetDisplayName((ApprovalType)offDays.ApprovalType)  </strong><br />
-                                            <strong>İstek Zamanı: @offDays.RequestTime?.ToString("dd.MM.yyyy")</strong><br />
-                                            <strong>İstek Onay Zamanı: @offDays.ResponseTime</strong><br />
-                                            <strong>Onaylanan İzin Süresi: @offDays.RequestOffDayNumber</strong>
-                                        </p>
+                                    <h5 class="card-subtitle mb-2 text-muted">İzin Türü: @EnumExtensions.GetDisplayName((DayOffType)offDays.DayOffType)</h5>
+                                        <h5 class="card-subtitle mb-2 text-muted">Başlangıç Tarihi: @offDays.DayOffStartTime?.ToShortDateString()</h5>
+                                        <h5 class="card-subtitle mb-2 text-muted">Bitiş Tarihi: @offDays.DayOffEndTime?.ToShortDateString()</h5>
+                                    <h5 class="card-subtitle mb-2 text-muted">Onay Durumu: @EnumExtensions.GetDisplayName((ApprovalType)offDays.ApprovalType)</h5>
                                     </div>
                                 </div>
                             </div>

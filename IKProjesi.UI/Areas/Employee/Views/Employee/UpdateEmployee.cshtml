@@ -29,9 +29,7 @@
 
                 <form asp-controller="Employee" asp-action="UpdateEmployee" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
                     <input type="hidden" asp-for="@Model.Id" />
-
                     <div class="mb-3 form-group">
                         <label asp-for="@Model.Address" class="control-label">Adres</label>
                         <input asp-for="@Model.Address" class="form-control" />
@@ -54,7 +52,7 @@
                     </div>
                     <div class=" mb-3 form-group">
                         <div>
-                            <a asp-controller="CompanyManager" asp-action="Index" class="btn btn-danger rounded-3 fw-semibold ">Geri Dön</a>
+                            <a asp-controller="Employee" asp-action="GetEmployeeSummary" class="btn btn-danger rounded-3 fw-semibold ">Geri Dön</a>
                         </div>
                     </div>
                 </form>

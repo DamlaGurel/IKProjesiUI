@@ -15,12 +15,12 @@
                 <div class="row">
                     @foreach (var item in Model)
                     {
-                        <div class="col-md-4">
-                            <div class="card mb-4">
+                        <div class="col-md-4 d-flex">
+                            <div class="card md-2 cb1 text-center">
                                 <div class="card-body">
                                     <h5 class="card-subtitle mb-2 text-muted">Para Miktarı: @item.TotalAdvance</h5>
                                     <h5 class="card-subtitle mb-2 text-muted">Para Türü: @item.MoneyType</h5>
-                                    <h5 class="card-subtitle mb-2 text-muted">Avans Türü: @item.AdvanceType</h5>
+                                    <h5 class="card-subtitle mb-2 text-muted">Avans Türü: @EnumExtensions.GetDisplayName((AdvanceType)item.AdvanceType)</h5>
                                     <h5 class="card-subtitle mb-2 text-muted">Onay Durumu: @EnumExtensions.GetDisplayName((ApprovalType)item.ApprovalType)</h5>
                                 </div>
                             </div>

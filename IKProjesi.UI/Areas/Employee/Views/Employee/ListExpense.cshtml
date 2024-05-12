@@ -14,12 +14,12 @@
     <div class="row justify-content-center ">
         <div class="card cb1 text-center">
             <div class="card-body cb-1">
-                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Avans Taleplerim</h5>
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">Harcama Taleplerim</h5>
                 <div class="row">
                     @foreach (var item in Model)
                     {
-                        <div class="col-md-4">
-                            <div class="card">
+                        <div class="col-md-4 d-flex">
+                            <div class="card md-2 cb1 text-center">
                                 <div class="card-body">
                                     <h5 class="card-subtitle mb-2 text-muted">Para Türü: @EnumExtensions.GetDisplayName((MoneyType)item.MoneyType)</h5>
                                     <h5 class="card-subtitle mb-2 text-muted">Harcama Türü: @EnumExtensions.GetDisplayName((ExpenseType)item.ExpenseType)</h5>
