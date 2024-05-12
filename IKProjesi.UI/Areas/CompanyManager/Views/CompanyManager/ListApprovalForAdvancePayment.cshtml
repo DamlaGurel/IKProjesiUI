@@ -15,31 +15,20 @@
 <div class="container-fluid">
     <div class="row justify-content-center ">
         <div class="card cb1 text-center">
-            <div class="card-body cb-1">
+            <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4">Avans Talepleri</h5>
                 <div class="row">
-
-                    @foreach (var offDays in Model)
+                    @foreach (var advance in Model)
                     {
-                        <form asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForAdvancePayment" method="get">
-                            <div class="table-responsive">
-                                <table class="table text-nowrap mb-0 align-middle">
-                                    <tbody>
-                                        <tr>
-                                            <td class="border-bottom-0 fw-semibold mb-1 fs-4">Talep Eden Kişinin Adı</td>
-                                            <td class="border-bottom-0 fw-normal mb-1 fs-4">@offDays.EmployeeId</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="border-bottom-0 fw-semibold mb-1 fs-4">Avans Tutarı</td>
-                                            <td class="border-bottom-0 fw-normal mb-1 fs-4">@offDays.TotalAdvance</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="border-bottom-0 fw-semibold mb-1 fs-4">Avans Türü</td>
-                                            <td class="border-bottom-0 fw-normal mb-1 fs-4">@offDays.AdvanceType</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="col-md-4">
+                            <div class="card cb-1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ad Soyad: @advance.EmployeeFullName</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Avans Türü: @EnumExtensions.GetDisplayName((AdvanceType)advance.AdvanceType)</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Onay Türü: @EnumExtensions.GetDisplayName((ApprovalType)advance.ApprovalType)</h6>
+                                    <div class="mb-3 form-group">
+                                        <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForAdvancePayment" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
+                                    </div>
 
                             <div class="row mt-3">
                                 <div class="col">

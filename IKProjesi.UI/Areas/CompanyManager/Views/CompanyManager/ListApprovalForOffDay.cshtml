@@ -14,28 +14,21 @@
                 <div class="card-body cb-1">
                     <h5 class="card-title fw-semibold mb-4">İzin Talepleri</h5>
                     <div class="row">
-
                         @foreach (var offDays in Model)
                         {
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">@offDays.EmployeeFullName</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">@offDays.DayOffType</h6>
-                                        <h6 class="card-subtitle mb-2 text-muted">İzin Başlangıç Tarihi: @offDays.DayOffStartTime?.ToString("dd/MM/yyyy") </h6>
-                                        <h6 class="card-subtitle mb-2 text-muted">İzin Bitiş Tarihi: @offDays.DayOffEndTime?.ToString("dd/MM/yyyy") </h6>
-                                        <h6 class="card-subtitle mb-2 text-muted">İzin Türü: @offDays.DayOffType</h6>
-                                        <h6 class="card-subtitle mb-2 text-muted">Talep Zamanı: @offDays.RequestTime?.ToString("dd/MM/yyyy")</h6>
-                                        <h6 class="card-subtitle mb-2 text-muted">Onay Türü: </h6>
+                                        <h5 class="card-title">Ad Soyad: @offDays.EmployeeFullName</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">İzin Türü: @EnumExtensions.GetDisplayName((DayOffType)offDays.DayOffType)</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Onay Türü:@EnumExtensions.GetDisplayName((ApprovalType)offDays.ApprovalType)</h6>
                                         <div class="mb-3 form-group">
                                             <a asp-area="CompanyManager" asp-controller="CompanyManager" asp-action="GetApprovalForOffDay" class="card-link btn btn-danger rounded-3 fw-semibold">Talep Detayları</a>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         }
-
                     </div>
                 </div>
             </div>

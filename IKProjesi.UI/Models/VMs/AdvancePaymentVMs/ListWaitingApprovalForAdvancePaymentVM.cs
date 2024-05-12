@@ -14,6 +14,7 @@ namespace IKProjesi.UI.Models.VMs.AdvancePaymentVMs
         public DateTime? ResponseTime { get; set; }
         public DateTime? RequestDate { get; set; }
         public string? Description { get; set; }
+        public string? EmployeeFullName { get; set; }
     }
 }
 
