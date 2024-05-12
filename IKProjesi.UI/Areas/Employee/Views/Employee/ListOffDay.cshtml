@@ -1,5 +1,3 @@
-
-
 @{
     ViewData["Title"] = "ListTakeDayOff";
     Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
@@ -13,7 +11,8 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4">İzinlerim</h5>
+                <h5 class="card-title fw-semibold mb-4 text-primary text-center fs-8">
+                    İzinlerim</h5>
                 <div class="row">
 
                     @foreach (var offDays in Model)
@@ -22,13 +21,13 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <h5 class="card-title">İzin Türü:@offDays.DayOffType</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Başlangıç Tarihi: @offDays.DayOffStartTime</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Bitiş Tarihi: @offDays.DayOffStartTime</h6>
+                                    <h5 class="card-title">İzin Türü: @EnumExtensions.GetDisplayName((DayOffType)offDays.DayOffType)</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Başlangıç Tarihi: @offDays.DayOffStartTime?.ToShortDateString()</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Bitiş Tarihi: @offDays.DayOffEndTime?.ToShortDateString()</h6>
 
                                     <p class="card-text">
-                                        <strong>Onay Durumu: @offDays.ApprovalType</strong><br />
-                                        <strong>İstek Zamanı: @offDays.RequestTime</strong><br />
+                                        <strong>Onay Durumu: @EnumExtensions.GetDisplayName((ApprovalType)offDays.ApprovalType)  </strong><br />
+                                        <strong>İstek Zamanı: @offDays.RequestTime?.ToString("dd.MM.yyyy")</strong><br />
                                         <strong>İstek Onay Zamanı: @offDays.ResponseTime</strong><br />
                                         <strong>Onaylanan İzin Süresi: @offDays.RequestOffDayNumber</strong>
                                     </p>
@@ -36,6 +35,9 @@
                             </div>
                         </div>
                     }
+                </div>
+                <div>
+                    <a class="btn btn-danger rounded-3 fw-semibold" asp-controller="Employee" asp-action="Index">Geri Dön</a>
                 </div>
             </div>
         </div>

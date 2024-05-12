@@ -1,0 +1,56 @@
+﻿body {
+    background-image: url(../images/login/ForgotPassword.png);
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    color: white !important;
+}
+
+.title {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 40rem !important;
+    font-size: 4rem !important;
+    text-align: center !important;
+}
+
+.card {
+    background-color: cornflowerblue !important;
+    width: 60% !important;
+    max-width: 400px !important;
+    padding: 2.5rem 0.5rem !important;
+    border-radius: 1rem !important;
+    border: 1px solid transparent !important;
+    backdrop-filter: blur(1rem) !important;
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0,0,0,0.5) !important;
+    border-top-color: rgba(225,225,225,0.5) !important;
+    border-left-color: rgba(225,225,225,0.5) !important;
+    border-bottom-color: rgba(225,225,225,0.1) !important;
+    border-right-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.card-body {
+    color: black !important;
+}
+
+.cb1 {
+    background-color: rgba(225,225,225,0.1) !important;
+}
+
+
+.card-number {
+    color: rgba(225,225,225,0.08) !important;
+    font-size: 8rem !important;
+    z-index: -1 !important;
+    position: absolute !important;
+    top: -1rem !important;
+    right: 2.5rem !important;
+}
+
+.btn {
+    border-radius: 2rem !important;
+}
+
+    .btn:hover {
+        box-shadow: 0 0.3rem 1rem rgba(0,0,0,0.3) !important;
+    }

@@ -4,8 +4,6 @@
     Layout = "~/Areas/Employee/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-<h1>ListAdvancePayment</h1>
-
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="card">
@@ -25,15 +23,15 @@
                                             </tr>
                                             <tr>
                                                 <td class="fw-semibold">Para Türü</td>
-                                                <td class="fw-normal">@item.MoneyType</td>
+                                                <td class="fw-normal"> @EnumExtensions.GetDisplayName((MoneyType)item.MoneyType)</td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-semibold">Talep</td>
-                                                <td class="fw-normal">@item.AdvanceType</td>
+                                                <td class="fw-normal"> @EnumExtensions.GetDisplayName((AdvanceType)item.AdvanceType)</td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-semibold">Onay Durumu</td>
-                                                <td class="fw-normal">@item.ApprovalType</td>
+                                                <td class="fw-normal">@EnumExtensions.GetDisplayName((ApprovalType)item.ApprovalType)</td>
                                             </tr>
                                         </tbody>
                                     </table>

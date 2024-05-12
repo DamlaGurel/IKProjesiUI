@@ -52,7 +52,6 @@ namespace IKProjesi.UI.Controllers
                 _contextAccessor.HttpContext.Session.AddObjectSession(token);
                 _contextAccessor.HttpContext.Session.SetInt32("UserId", Convert.ToInt32(token.UserId));
                 _contextAccessor.HttpContext.Session.SetString("FirstName", token.FirstName);
-                //ViewData["FirstName"] = token.FirstName;
                 ViewBag.FirstName = token.FirstName;
 
                 if (string.IsNullOrEmpty(token.Token))
@@ -68,7 +67,7 @@ namespace IKProjesi.UI.Controllers
                     }
                     else if (token.Role == Job.SITEMANAGER.ToString().ToUpper())
                     {
-                        return RedirectToAction("Index", "SiteManager", new { area = "SiteManager" });
+                        return RedirectToAction("GetSiteManagerSummary", "SiteManager", new { area = "SiteManager" });
                     }
                     else if (token.Role == Job.COMPANYMANAGER.ToString().ToUpper())
                     {
@@ -113,26 +112,31 @@ namespace IKProjesi.UI.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> SendPassword(string personalEmail)
         {
             if (string.IsNullOrEmpty(personalEmail))
             {
-                TempData["Warning"] = "Lütfen e-posta adresinizi giriniz.";
+                return BadRequest("Lütfen e-posta adresinizi giriniz.");
             }
+
             if (ModelState.IsValid)
             {
-                var infomation = await _userService.SendPassword(personalEmail);
-                if (string.IsNullOrEmpty(infomation))
+                var response = await _userService.SendPassword(personalEmail);
+
+                if (response is not null)
                 {
-                    return View();
+                    return Ok("Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.");
                 }
-                TempData["Success"] = "Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.";
-                return RedirectToAction("Login", "Account");
+                else
+                {
+                    return BadRequest("Bilgileriniz gönderilemedi. Lütfen girdiğiniz mailinizi kontrol ediniz.");
+                }
             }
-            return View();
+
+            return BadRequest("Geçersiz e-posta veya şifre.");
         }
+
 
         [HttpGet]
         public IActionResult ChangePassword()

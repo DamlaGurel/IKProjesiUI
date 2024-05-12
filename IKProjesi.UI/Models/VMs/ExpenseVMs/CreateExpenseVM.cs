@@ -5,6 +5,7 @@ namespace IKProjesi.UI.Models.VMs.ExpenseVMs
 {
     public class CreateExpenseVM
     {
+        public int EmployeeId { get; set; }
         public ExpenseType? ExpenseType { get; set; }
         public int ExpenseTypeId { get; set; }
         public MoneyType? MoneyType { get; set; }
