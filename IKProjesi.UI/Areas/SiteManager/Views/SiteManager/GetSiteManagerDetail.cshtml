@@ -80,7 +80,7 @@
                 <div class="mb-3 row">
                     <label class="col-sm-6 col-form-label fs-5">Meslek:</label>
                     <div class="col-sm-6">
-                        <input type="text" readonly class="form-control-plaintext fs-5" value="@Model.JobName">
+                        <input type="text" readonly class="form-control-plaintext fs-5" value="@EnumExtensions.GetDisplayName(Model.JobName)">
                     </div>
                 </div>
                 <div class="mb-3 row">

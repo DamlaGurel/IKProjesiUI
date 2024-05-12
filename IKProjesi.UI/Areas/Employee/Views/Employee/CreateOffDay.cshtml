@@ -11,7 +11,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="card cb1 text-center">
+        <div class="card cb1">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4 text-center text-primary">İzin Talebi Oluştur</h5>
                 <div class="row">
@@ -43,28 +43,11 @@
                             <input asp-for="DayOffEndTime" type="date" class="form-control" id="DayOffEndTime" />
                             <span asp-validation-for="DayOffEndTime" class="text-danger"></span>
                         </div>
-
-                        @*<div class="mb-3 form-group">
-                                <fieldset disabled>
-                                    <label asp-for="DaysOffNumber" class="control-label">Yıllık İzin Hakkınız</label>
-                                    <input asp-for="DaysOffNumber" type="text" class="form-control" id="Description" />
-                                    <span asp-validation-for="DaysOffNumber" class="text-danger"></span>
-                                </fieldset>
-                            </div>
-
-                            <div class="mb-3 form-group">
-                                <fieldset disabled>
-                                    <label asp-for="RemainingDaysOffNumber" class="control-label">Kalan Yıllık İzin Hakkınız</label>
-                                    <input asp-for="RemainingDaysOffNumber" type="text" class="form-control" id="Description" />
-                                    <span asp-validation-for="RemainingDaysOffNumber" class="text-danger"></span>
-                                </fieldset>
-                            </div>*@
-
                         <div class="mb-3 form-group">
                             <input type="button" id="calculateButton" class="btn btn-danger rounded-3 fw-semibold" value="İzin Hesapla" />
                         </div>
 
-                        <div class="card mb-3" id="DayOffSummary" style="display:none;">
+                        <div class="card mb-3 cb1 " id="DayOffSummary" style="display:none;">
                             <div class="card-body">
 
                                 <fieldset disabled>
@@ -74,9 +57,6 @@
                                         <input type="text" id="ChosenDayOffNumber" class="form-control">
                                         <label for="ChosenDayOffType" class="form-label">Talep Edilen İzin Türü </label>
                                         <input type="text" id="ChosenDayOffType" class="form-control" value="">
-                                        @*<label for="ChosenRemainingDayOff" class="form-label">Güncellendiğinde Kalan Yıllık İzin Sayısı </label>
-                                            <input type="text" id="ChosenRemainingDayOff" class="form-control">*@
-
                                     </div>
                                 </fieldset>
                                 <div class="mb-3 form-group">
@@ -107,13 +87,13 @@
         var startDate = new Date(document.getElementById("DayOffStartTime").value);
         var endDate = new Date(document.getElementById("DayOffEndTime").value);
 
-        var differenceInDay = endDate.getDay() - startDate.getDay();
+        var differenceInTime = endDate.getDate() - startDate.getDate();
+        
 
-        document.getElementById("ChosenDayOffNumber").value = differenceInDay;
+        document.getElementById("ChosenDayOffNumber").value = differenceInTime;
 
         var DayOffTypeDisplayName = getDayOffTypeDisplayName(document.getElementById("DayOffType").value);
         document.getElementById("ChosenDayOffType").value = DayOffTypeDisplayName;
-        /* document.getElementById("takeOffForm").submit();*/
 
 
     }
