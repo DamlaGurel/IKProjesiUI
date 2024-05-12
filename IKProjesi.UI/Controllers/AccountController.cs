@@ -29,8 +29,11 @@ namespace IKProjesi.UI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> ValidationCredentials(string email, string password)
+        public async Task<IActionResult> ValidationCredentials(AnasayfaVM anasayfa)
         {
+            var email = anasayfa.LoginVM.Email;
+            var password = anasayfa.LoginVM.Password;
+
             var user = await _userService.ValidateCredentials(email, password);
             if (user)
             {
@@ -114,28 +117,29 @@ namespace IKProjesi.UI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> SendPassword(string personalEmail)
+        public async Task<IActionResult> SendPassword(AnasayfaVM anasayfa)
         {
+            var personalEmail = anasayfa.SendPasswordVM.KisiselMail;
             if (string.IsNullOrEmpty(personalEmail))
             {
-                return BadRequest("Lütfen e-posta adresinizi giriniz.");
+                //return BadRequest("Lütfen e-posta adresinizi giriniz.");
             }
-
-            if (ModelState.IsValid)
+            else if (ModelState.IsValid)
             {
                 var response = await _userService.SendPassword(personalEmail);
 
                 if (response is not null)
                 {
-                    return Ok("Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.");
+                    //return Ok("Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.");
                 }
                 else
                 {
-                    return BadRequest("Bilgileriniz gönderilemedi. Lütfen girdiğiniz mailinizi kontrol ediniz.");
+                    //return BadRequest("Bilgileriniz gönderilemedi. Lütfen girdiğiniz mailinizi kontrol ediniz.");
                 }
             }
 
-            return BadRequest("Geçersiz e-posta veya şifre.");
+            //return BadRequest("Geçersiz e-posta veya şifre.");
+            return RedirectToAction(nameof(Login));
         }
 
 

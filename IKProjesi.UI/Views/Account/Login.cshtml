@@ -1,4 +1,4 @@
-﻿@model LoginVM
+﻿@model AnasayfaVM
 @{
     ViewData["Title"] = "Login";
     Layout = null;
@@ -26,14 +26,14 @@
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input asp-for="Email" type="email" class="form-control" id="Email" name="Email" placeholder="E-Posta" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <input asp-for="LoginVM.Email" type="email" class="form-control" id="Email" name="LoginVM.Email" placeholder="E-Posta" />
+                        <span asp-validation-for="LoginVM.Email" class="text-danger"></span>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock" id="showPasswordIconLock"></i>
-                        <input asp-for="Password" type="password" class="form-control" id="Password" name="Password" placeholder="Şifre">
-                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <input asp-for="LoginVM.Password" type="password" class="form-control" id="Password" name="LoginVM.Password" placeholder="Şifre">
+                        <span asp-validation-for="LoginVM.Password" class="text-danger"></span>
                     </div>
 
                     <div class="d-flex justify-content-between" style="margin-top: 15px; margin-bottom: 15px;">
@@ -56,28 +56,13 @@
 
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input asp-for="Email" type="email" class="form-control" id="Email" name="Email" placeholder="Kişisel E-Posta" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <input asp-for="SendPasswordVM.KisiselMail" type="email" class="form-control" id="kisiselMail" name="SendPasswordVM.KisiselMail" placeholder="Kişisel E-Posta" />
+                            <span asp-validation-for="SendPasswordVM.KisiselMail" class="text-danger"></span>
                         </div>
 
                         <input type="submit" class="btn solid" id="sent-btn" value="GÖNDER" />
 
                     </form>
-
-                @*<form id="sendPasswordForm" asp-controller="Account" asp-action="SendPassword" class="sign-up-form" method="post">
-                    <h3 class="title">Erişim için</h3>
-
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input asp-for="Email" type="email" class="form-control" id="personalEmail" name="Email" placeholder="Kişisel E-Posta" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-
-                    <button type="submit" class="btn solid" id="sent-btn">GÖNDER</button>
-
-                    <div id="send-password-message"></div>
-                </form>*@
-
             </div>
         </div>
 
@@ -108,38 +93,3 @@
 </body>
 </html>
 
-
-@*<script>
-    $(document).ready(function () {
-        $('#sendPasswordForm').submit(function (event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const email = $('#Email').val(); // Get email address from the form
-
-            $.ajax({
-                url: "http://localhost:44828/Mail/SendPassword/" + email, // Construct URL based on route
-                method: 'POST',
-                data: { personalEmail: email }, // Send email as data
-                success: function (response) {
-                    // Handle successful response
-                    if (response.success) {
-                        $('#send-password-message').text('Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.');
-                        alert('Bilgileriniz gönderildi. Lütfen mailinizi kontrol ediniz.')
-                    } else {
-                        if (response.error) {
-                            $('#send-password-message').text(response.error);
-                        } else {
-                            $('#send-password-message').text('İşlem başarısız oldu. Lütfen daha sonra tekrar deneyin.');
-                            alert('İşlem başarısız oldu. Lütfen daha sonra tekrar deneyin.')
-                        }
-                    }
-                },
-                error: function (error) {
-                    console.error('AJAX hatası:', error);
-                    $('#send-password-message').text('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
-                    alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.')
-                }
-            });
-        });
-    });
-</script>*@
