@@ -1,4 +1,5 @@
-﻿using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
+﻿using IKProjesi.UI.Models.Enums;
+using IKProjesi.UI.Models.VMs.AdvancePaymentVMs;
 using IKProjesi.UI.Models.VMs.CompanyManagerVMs;
 using IKProjesi.UI.Models.VMs.EmployeeVMs;
 using IKProjesi.UI.Models.VMs.ExpenseVMs;
@@ -72,18 +73,22 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         {
             CreateEmployeeVM employee = new CreateEmployeeVM();
             employee.CompanyManagerId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            ViewBag.Department = Enum.GetValues<Department>();
             return View(employee);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateEmployee(CreateEmployeeVM model)
         {
+            ViewBag.Department = Enum.GetValues<Department>();
+            model.CompanyManagerId = HttpContext.Session.GetInt32("UserId") ?? 0;
             if (ModelState.IsValid)
             {
                 await _employeeService.CreateEmployee(model);
                 TempData["Success"] = "Personel eklendi";
+                return RedirectToAction(nameof(GetCompanyManagerSummary));
             }
-            return RedirectToAction(nameof(CreateEmployee));
+            return View();
         }
         #endregion
 
