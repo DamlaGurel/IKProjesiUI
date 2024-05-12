@@ -27,13 +27,13 @@
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 text-center">
                 <img src="~/assets/images/login/ForgotPassword.png" alt="Main IMG" class="img-fluid">
             </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-6 pt-5">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6" id="formDiv">
                 <form asp-area="" asp-controller="Account" asp-action="SendMail" method="post">
                     <h2 class="main-text">Şifremi Unuttum</h2>
 
-                    @*<div class="input-field">
-                        <input type="email" name="email" placeholder="Şifrenin Gönderilmesini İstediğiniz E-posta Adresinizi Giriniz" class="form-control main-input mt-5">
-                    </div>*@
+
+                    @*<input type="email" name="email" placeholder="Şifrenin Gönderilmesini İstediğiniz E-posta Adresinizi Giriniz" class="form-control main-input mt-5">*@
+
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>

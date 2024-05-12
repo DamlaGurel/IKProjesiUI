@@ -1,9 +1,9 @@
-html, body{
+html, body {
     font-weight: 400 !important;
     font-family: 'Poppins', sans-serif !important;
 }
 
-.primary-color{
+.primary-color {
     color: #4e51fd;
 }
 
@@ -14,17 +14,17 @@ html, body{
     border-radius: 49px;
 }
 
-.btn-sz-primary:hover{
-    background-color: #3c3ff8;
-}
+    .btn-sz-primary:hover {
+        background-color: #3c3ff8;
+    }
 
-.main-text{
+.main-text {
     font-size: 25px;
     line-height: 1.4;
     letter-spacing: 3px;
 }
 
-.main-input{
+.main-input {
     width: 80%;
     border: none !important;
     box-shadow: none !important;
@@ -33,23 +33,16 @@ html, body{
 }
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.col-3 {
+    width: 50%;
 }
 
-body,
-input {
-    font-family: "Poppins", sans-serif;
+.col-6 {
+    width: 75%;
 }
 
-.container {
-    position: relative;
-    width: 100%;
-    background-color: #fff;
-    min-height: 100vh;
-    overflow: hidden;
+.row{
+    flex-wrap:nowrap;
 }
 
 form {
@@ -57,38 +50,19 @@ form {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0rem 5rem;
+    padding: 8rem 5rem;
     transition: all 0.2s 0.7s;
     overflow: hidden;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
 
-.col-3 {
-    flex: 0 0 auto;
-    width: 50%;
-}
-
-/*    form.sign-up-form {
-        opacity: 0;
-        z-index: 1;
-    }
-
-    form.sign-in-form {
-        z-index: 2;
-    }
-*/
-/*.title {
-    font-size: 2.2rem;
-    color: #444;
-    margin-bottom: 10px;
-}*/
 
 .input-field {
     max-width: 380px;
     width: 100%;
     background-color: #f0f0f0;
-    margin: 10px 0;
+    margin: 30px 0;
     height: 55px;
     border-radius: 55px;
     display: grid;
@@ -119,3 +93,4 @@ form {
             color: #aaa;
             font-weight: 500;
         }
+
