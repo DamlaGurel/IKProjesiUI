@@ -41,7 +41,7 @@ namespace IKProjesi.UI.Areas.SuperAdmin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSiteManager(CreateSiteManagerVM model)
         {
-
+            ViewBag.Department = Enum.GetValues<Department>();
             if (ModelState.IsValid)
             {
                 await _superAdminService.CreateSiteManager(model);

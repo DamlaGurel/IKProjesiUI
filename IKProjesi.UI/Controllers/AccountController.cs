@@ -31,6 +31,11 @@ namespace IKProjesi.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> ValidationCredentials(string email, string password)
         {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                TempData["Warning"] = "Kullanıcı adı ve şifre boş bırakılmamalıdır.";
+                return RedirectToAction("Login");
+            }
             var user = await _userService.ValidateCredentials(email, password);
             if (user)
             {
@@ -137,13 +142,11 @@ namespace IKProjesi.UI.Controllers
             return BadRequest("Geçersiz e-posta veya şifre.");
         }
 
-
         [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordVM password)
         {
@@ -167,7 +170,5 @@ namespace IKProjesi.UI.Controllers
             TempData["Success"] = "Çıkış yapıldı.";
             return RedirectToAction("Login", "Account");
         }
-
-        
     }
 }
