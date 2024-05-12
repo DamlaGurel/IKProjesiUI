@@ -53,8 +53,8 @@ namespace IKProjesi.UI.Services.CompanyManager
         #endregion
 
         #region Advance Payment
-        [Get("/api/CompanyManager/ListApprovalForAdvancePayment")]
-        Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment();
+        [Get("/api/CompanyManager/ListApprovalForAdvancePayment/{id}")]
+        Task<List<ListWaitingApprovalForAdvancePaymentVM>> ListApprovalForAdvancePayment(int id);
 
         [Put("/api/CompanyManager/UpdateApprovalForAdvancePayment")]
         Task ApprovalForAdvancePayment(UpdateAdvancePaymentVM model);

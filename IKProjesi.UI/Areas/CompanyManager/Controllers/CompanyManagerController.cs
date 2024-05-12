@@ -141,8 +141,8 @@ namespace IKProjesi.UI.Areas.CompanyManager.Controllers
         [HttpGet]
         public async Task<IActionResult> ListApprovalForAdvancePayment()
         {
-            var listApprovalForAdvancePayment = await _companyManagerService.ListApprovalForAdvancePayment();
-
+            int Id = HttpContext.Session.GetInt32("UserId") ?? 0;
+            var listApprovalForAdvancePayment = await _companyManagerService.ListApprovalForAdvancePayment(Id);
             return View(listApprovalForAdvancePayment);
         }
 
